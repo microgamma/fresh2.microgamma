@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+body {
+  font-family: "Fira Code", monospace;
+}
+
+.fx-overlay {
+  @apply flex flex-col absolute;
+  bottom: 0;
+}
+
+.fresh-gradient {
+  background-color: rgb(255, 0, 255);
+  background-image: linear-gradient(
+    to right bottom,
+    rgb(255, 0, 255),
+    rgb(0, 255, 255),
+    rgb(128, 0, 128)
+  );
+}
+
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(147, 51, 234, 0.1); /* purple-600 with low opacity */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ec4899; /* pink-500 */
+  /* border-radius: 3px; */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #06b6d4; /* cyan-500 */
+}
+
+/* Scroll animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
