@@ -4,11 +4,6 @@ body {
   font-family: "Fira Code", monospace;
 }
 
-.fx-overlay {
-  @apply flex flex-col absolute;
-  bottom: 0;
-}
-
 .fresh-gradient {
   background-color: rgb(255, 0, 255);
   background-image: linear-gradient(

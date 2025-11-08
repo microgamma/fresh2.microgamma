@@ -33,11 +33,11 @@ export default function MainLayout({ children }: LayoutProps) {
               🐦 Twitter
             </a>
             <a
-              href="https://github.com/microgamma"
+              href="https://discord.gg/AbmKZ6QU"
               target="_blank"
               class="text-gray-400 hover:text-white transition"
             >
-              💻 GitHub
+              💻 Discord
             </a>
           </div>
           <p class="text-gray-400 text-sm">

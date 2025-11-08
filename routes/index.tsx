@@ -60,9 +60,6 @@ export default define.page(function Home(ctx) {
                 <p>
                   Stream high-fidelity audio peer-to-peer using WebRTC with Opus
                   codec for optimal compression and quality.{" "}
-                  <a href="/audio-tech">
-                    Learn more about our audio technology
-                  </a>.
                 </p>
               </div>
               <div class="fade-in p-6 bg-transparent border border-pink-400 rounded-lg">

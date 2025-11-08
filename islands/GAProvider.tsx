@@ -92,7 +92,7 @@ export function GAProvider({ id }: GAProviderInput) {
   return (
     <>
       <div
-        className="fx-overlay p-4"
+        className="fixed p-4 bottom-0 flex-col"
         style={`display: ${showOverlay.value ? "flex" : "none"}`}
       >
         <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 max-w-lg w-full text-center">
