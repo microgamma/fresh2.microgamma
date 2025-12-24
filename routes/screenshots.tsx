@@ -1,19 +1,21 @@
 import { Head } from "fresh/runtime";
 import MainLayout from "../components/MainLayout.tsx";
+import Thumbnail from "../islands/Thumbnail.tsx";
 
 export default function ScreenshotsPage() {
+
   const screenshots = [
     {
       title: "Main Interface",
       description:
         "The clean, intuitive main interface showing your music library and playback controls.",
-      image: "/screenshot-main.png", // Placeholder
+      image: "/screenshots/main_wide.png",
     },
     {
       title: "Music Library",
       description:
         "Browse your extensive music collection with smart search and filtering options.",
-      image: "/screenshot-library.png",
+      image: "/screenshots/music_library_wide.png",
     },
     {
       title: "Streaming Setup",
@@ -42,7 +44,7 @@ export default function ScreenshotsPage() {
   ];
 
   return (
-    <>
+    <> 
       <Head>
         <title>Screenshots - Microgamma</title>
       </Head>
@@ -64,14 +66,8 @@ export default function ScreenshotsPage() {
                   key={idx}
                   class="bg-gray-900 rounded-lg overflow-hidden border border-pink-400"
                 >
-                  <div class="aspect-video bg-gray-800 flex items-center justify-center">
-                    <img
-                      src={screenshot.image}
-                      alt={screenshot.title}
-                      class="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
+                  
+                  <Thumbnail screenshot={screenshot}></Thumbnail>
                   <div class="p-6">
                     <h3 class="text-xl font-semibold text-pink-400 mb-2">
                       {screenshot.title}

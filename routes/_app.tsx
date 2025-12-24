@@ -1,10 +1,9 @@
-import { GAProvider } from "../islands/GAProvider.tsx";
+import CountlyAnalytics from "../islands/CountlyAnalytics.tsx";
 import { define } from "../utils.ts";
 
 
 export default define.page(function App({ Component }) {
-  const GA_TRACKING_ID = Deno.env.get('GA_TRACKING_ID');
-  console.log({GA_TRACKING_ID});
+  const COUNTLY_APP_KEY = Deno.env.get('COUNTLY_APP_KEY');
 
   return (
     <html>
@@ -62,7 +61,7 @@ export default define.page(function App({ Component }) {
       </head>
       <body>
         <Component />
-        {GA_TRACKING_ID && <GAProvider id={GA_TRACKING_ID}></GAProvider>}
+        {COUNTLY_APP_KEY && <CountlyAnalytics appKey={COUNTLY_APP_KEY} />}
       </body>
     </html>
   );

@@ -785,6 +785,9 @@
     "convert-source-map@2.0.0": {
       "integrity": "sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg=="
     },
+    "countly-sdk-web@25.4.4": {
+      "integrity": "sha512-el7bqj71HGoK77wmr7sJmRuUo+gWrGBYesTAvkdqmitFWsuzJV2KLSbVW6V7OlBBbQCCwDdKm+OmmTWYq4Rvlw=="
+    },
     "debug@4.4.3": {
       "integrity": "sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==",
       "dependencies": [
