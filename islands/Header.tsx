@@ -1,9 +1,14 @@
 import { useSignal } from "@preact/signals";
 import { useEffect } from "preact/hooks";
+import { State } from "../utils.ts";
 
-export default function Header() {
+interface HeaderProps {
+  user?: State["user"];
+}
+
+export default function Header({ user }: HeaderProps) {
   const scrolled = useSignal(false);
-  const currentPath = useSignal(globalThis.location?.pathname);
+  console.log({user});
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,8 +18,6 @@ export default function Header() {
     globalThis.addEventListener("scroll", handleScroll);
     return () => globalThis.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const isActive = (path: string) => currentPath.value === path;
 
   return (
     <nav
@@ -28,9 +31,7 @@ export default function Header() {
           <li>
             <a
               href="/"
-              class={`hover:text-pink-400 transition ${
-                isActive("/") ? "text-pink-400 border-b-2 border-pink-400" : ""
-              }`}
+              class={`hover:text-pink-400 transition`}
             >
               Home
             </a>
@@ -38,11 +39,7 @@ export default function Header() {
           <li>
             <a
               href="/downloads"
-              class={`hover:text-pink-400 transition ${
-                isActive("/downloads")
-                  ? "text-pink-400 border-b-2 border-pink-400"
-                  : ""
-              }`}
+              class={`hover:text-pink-400 transition`}
             >
               Downloads
             </a>
@@ -50,11 +47,7 @@ export default function Header() {
           <li>
             <a
               href="/news"
-              class={`hover:text-pink-400 transition ${
-                isActive("/news")
-                  ? "text-pink-400 border-b-2 border-pink-400"
-                  : ""
-              }`}
+              class={`hover:text-pink-400 transition`}
             >
               News
             </a>
@@ -62,14 +55,36 @@ export default function Header() {
           <li>
             <a
               href="/screenshots"
-              class={`hover:text-pink-400 transition ${
-                isActive("/screenshots")
-                  ? "text-pink-400 border-b-2 border-pink-400"
-                  : ""
-              }`}
+              class={`hover:text-pink-400 transition`}
             >
               Screenshots
             </a>
+          </li>
+          <li>
+            {user ? (
+              // If user is logged in, show avatar
+              <a href="/private/profile" class="hover:text-pink-400 transition flex items-center">
+                {user.picture ? (
+                  <img
+                    src={user.picture}
+                    alt="User profile"
+                    class="w-8 h-8 rounded-full object-cover border-2 border-pink-400"
+                  />
+                ) : (
+                  <span class="text-2xl" title={user.email || "User"}>👤</span>
+                )}
+              </a>
+            ) : (
+              // If user is not logged in, show login button
+              <a
+                href="/login"
+                f-client-nav={false}
+                class="flex items-center hover:text-pink-400 transition"
+              >
+                <span class="text-xl">🔐</span>
+                <span class="ml-1">Login</span>
+              </a>
+            )}
           </li>
         </ul>
       </div>

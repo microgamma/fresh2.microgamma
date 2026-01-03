@@ -1,14 +1,16 @@
 import { ComponentChildren } from "preact";
 import Header from "../islands/Header.tsx";
+import { State } from "../utils.ts";
 
 interface LayoutProps {
   children?: ComponentChildren;
+  user?: State["user"];
 }
 
-export default function MainLayout({ children }: LayoutProps) {
+export default function MainLayout({ children, user }: LayoutProps) {
   return (
-    <div class="min-h-screen">
-      <Header />
+    <div class="min-h-screen bg-black">
+      <Header user={user} />
       {children}
       {/* Footer */}
       <footer class="bg-purple-800 text-white py-12 border-t border-pink-400">
@@ -41,7 +43,7 @@ export default function MainLayout({ children }: LayoutProps) {
             </a>
           </div>
           <p class="text-gray-400 text-sm">
-            © 2025 Microgamma. All rights reserved.
+            © 2026 Microgamma. All rights reserved.
           </p>
         </div>
       </footer>

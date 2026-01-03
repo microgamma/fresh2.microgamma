@@ -1,7 +1,5 @@
 import { Head } from "fresh/runtime";
 import { define } from "../utils.ts";
-import InteractiveBackground from "../islands/InteractiveBackground.tsx";
-import MainLayout from "../components/MainLayout.tsx";
 
 export default define.page(function Home(ctx) {
   console.log("Shared value " + ctx.state.shared);
@@ -11,10 +9,8 @@ export default define.page(function Home(ctx) {
         <title>Microgamma - Brave New Audio Player</title>
       </Head>
 
-      <MainLayout>
         {/* Hero Section */}
         <section class="relative text-white min-h-screen flex items-center justify-center">
-          <InteractiveBackground />
           <div class="container mx-auto text-center">
             <h1 class="text-6xl font-bold mb-4">Microgamma</h1>
             <p class="text-xl mb-8">A Brave New Audio Player</p>
@@ -92,11 +88,19 @@ export default define.page(function Home(ctx) {
               </div>
               <div class="fade-in p-6 bg-transparent border border-pink-400 rounded-lg">
                 <h3 class="text-2xl font-semibold mb-4 text-pink-400">
-                  📋 Album Information
+                  📋 Album & Artist
                 </h3>
                 <p>
                   Our AI agent searches the web to find the most up-to-date
-                  information about each album.
+                  information about each album and artist.
+                </p>
+              </div>
+              <div class="fade-in p-6 bg-transparent border border-pink-400 rounded-lg">
+                <h3 class="text-2xl font-semibold mb-4 text-pink-400">
+                  🎤 Lyrics
+                </h3>
+                <p>
+                  Add synchronized lyrics in LRC format as part of your song metadata for karaoke-style display.
                 </p>
               </div>
               <div class="fade-in p-6 bg-transparent border border-pink-400 rounded-lg">
@@ -106,6 +110,14 @@ export default define.page(function Home(ctx) {
                 <p>
                   Using Discogs, select community-brought cover art to
                   personalize your collection.
+                </p>
+              </div>
+              <div class="fade-in p-6 bg-transparent border border-pink-400 rounded-lg">
+                <h3 class="text-2xl font-semibold mb-4 text-pink-400">
+                  🔧 Hackable Player
+                </h3>
+                <p>
+                  All metadata is stored in JSON files that can be opened using our open source libraries published under the "@microphi" handle.
                 </p>
               </div>
               <div class="fade-in p-6 bg-transparent border border-pink-400 rounded-lg">
@@ -138,7 +150,55 @@ export default define.page(function Home(ctx) {
             </div>
           </div>
         </section>
-      </MainLayout>
+
+        {/* Upcoming Features */}
+        <section class="bg-gray-800 text-white py-20 px-4">
+          <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-8 text-pink-400">Upcoming Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+              <div class="fade-in p-6 bg-transparent border border-pink-400 rounded-lg">
+                <h3 class="text-2xl font-semibold mb-4 text-pink-400">
+                  🖥️ MPC Server
+                </h3>
+                <p>
+                  Music Player Controller server for advanced remote control capabilities.
+                </p>
+              </div>
+              <div class="fade-in p-6 bg-transparent border border-pink-400 rounded-lg">
+                <h3 class="text-2xl font-semibold mb-4 text-pink-400">
+                  🤖 AI-Driven Song Info
+                </h3>
+                <p>
+                  Enhanced current song information and intelligent suggestions using artificial intelligence.
+                </p>
+              </div>
+              <div class="fade-in p-6 bg-transparent border border-pink-400 rounded-lg">
+                <h3 class="text-2xl font-semibold mb-4 text-pink-400">
+                  🔄 Smarter Infinity Queue
+                </h3>
+                <p>
+                  Improved queue management with smarter recommendations that adapt to your listening habits.
+                </p>
+              </div>
+              <div class="fade-in p-6 bg-transparent border border-pink-400 rounded-lg">
+                <h3 class="text-2xl font-semibold mb-4 text-pink-400">
+                  👥 Multi Profile
+                </h3>
+                <p>
+                  Support for multiple user profiles with personalized libraries and settings.
+                </p>
+              </div>
+              <div class="fade-in p-6 bg-transparent border border-pink-400 rounded-lg">
+                <h3 class="text-2xl font-semibold mb-4 text-pink-400">
+                  🌐 Remote Instance
+                </h3>
+                <p>
+                  Upload your music to selected storage brokers and let us run your Microgamma server for you.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
       <script
         dangerouslySetInnerHTML={{
           __html: `

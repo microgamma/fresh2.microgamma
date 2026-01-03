@@ -41,45 +41,43 @@ export default function NewsPage() {
         <title>News - Microgamma</title>
       </Head>
 
-      <MainLayout>
-        <section class="bg-black text-white py-20 px-4 min-h-screen">
-          <div class="container mx-auto">
-            <h1 class="text-5xl font-bold mb-8 text-pink-400 text-center">
-              News & Updates
-            </h1>
-            <p class="text-xl mb-12 max-w-2xl mx-auto text-center">
-              Stay updated with the latest news, technical articles, and release
-              notes for Microgamma.
-            </p>
+      <section class="bg-black text-white py-20 px-4 min-h-screen">
+        <div class="container mx-auto">
+          <h1 class="text-5xl font-bold mb-8 text-pink-400 text-center">
+            News & Updates
+          </h1>
+          <p class="text-xl mb-12 max-w-2xl mx-auto text-center">
+            Stay updated with the latest news, technical articles, and release
+            notes for Microgamma.
+          </p>
 
-            <div class="space-y-8">
-              {newsItems.map((item, idx) => (
-                <article
-                  key={idx}
-                  class="bg-gray-900 p-6 rounded-lg border border-pink-400"
+          <div class="space-y-8">
+            {newsItems.map((item, idx) => (
+              <article
+                key={idx}
+                class="bg-gray-900 p-6 rounded-lg border border-pink-400"
+              >
+                <div class="flex justify-between items-start mb-4">
+                  <h2 class="text-2xl font-semibold text-pink-400">
+                    {item.title}
+                  </h2>
+                  <span class="text-sm text-cyan-400 bg-cyan-900 px-2 py-1 rounded">
+                    {item.type}
+                  </span>
+                </div>
+                <p class="text-gray-300 mb-4">{item.date}</p>
+                <p class="text-white mb-4">{item.excerpt}</p>
+                <a
+                  href={`/news/${item.slug}`}
+                  class="text-pink-400 hover:text-pink-300 transition"
                 >
-                  <div class="flex justify-between items-start mb-4">
-                    <h2 class="text-2xl font-semibold text-pink-400">
-                      {item.title}
-                    </h2>
-                    <span class="text-sm text-cyan-400 bg-cyan-900 px-2 py-1 rounded">
-                      {item.type}
-                    </span>
-                  </div>
-                  <p class="text-gray-300 mb-4">{item.date}</p>
-                  <p class="text-white mb-4">{item.excerpt}</p>
-                  <a
-                    href={`/news/${item.slug}`}
-                    class="text-pink-400 hover:text-pink-300 transition"
-                  >
-                    Read More →
-                  </a>
-                </article>
-              ))}
-            </div>
+                  Read More →
+                </a>
+              </article>
+            ))}
           </div>
-        </section>
-      </MainLayout>
+        </div>
+      </section>
     </>
   );
 }

@@ -1,8 +1,10 @@
 import { createDefine } from "fresh";
+import { UserType } from "@kinde-oss/kinde-typescript-sdk";
 
 // This specifies the type of "ctx.state" which is used to share
 // data among middlewares, layouts and routes.
 export interface State {
+  user: UserType;
   shared: string;
 }
 
@@ -21,6 +23,7 @@ export async function cachedFetch(
   }
   const response = await fetch(url, options);
   if (!response.ok) {
+    console.log(response);
     throw new Error(`Fetch failed: ${response.status}`);
   }
   const data = await response.json();

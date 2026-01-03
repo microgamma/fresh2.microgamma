@@ -58,6 +58,7 @@ export default function InteractiveBackground() {
   const particles = useRef<Particle[]>([]);
 
   useEffect(() => {
+    debugger;
     const canvas = canvasRef.current;
     if (!canvas) return;
 

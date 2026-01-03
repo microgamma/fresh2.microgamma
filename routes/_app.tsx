@@ -1,9 +1,11 @@
+import { Partial } from "fresh/runtime";
 import CountlyAnalytics from "../islands/CountlyAnalytics.tsx";
 import { define } from "../utils.ts";
+import MainLayout from "../components/MainLayout.tsx";
 
-
-export default define.page(function App({ Component }) {
-  const COUNTLY_APP_KEY = Deno.env.get('COUNTLY_APP_KEY');
+export default define.page(function App({ Component, state }) {
+  const COUNTLY_APP_KEY = Deno.env.get("COUNTLY_APP_KEY");
+  console.log({ COUNTLY_APP_KEY, state });
 
   return (
     <html>
@@ -59,8 +61,16 @@ export default define.page(function App({ Component }) {
         />
         <link rel="apple-touch-icon" href="/maskable_icon_x180.png" />
       </head>
-      <body>
-        <Component />
+      <body f-client-nav>
+
+      <MainLayout user={state.user}>
+
+        <Partial name="body">
+          <Component />
+        </Partial>
+      </MainLayout>
+        
+
         {COUNTLY_APP_KEY && <CountlyAnalytics appKey={COUNTLY_APP_KEY} />}
       </body>
     </html>
