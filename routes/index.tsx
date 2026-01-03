@@ -10,8 +10,8 @@ export default define.page(function Home(ctx) {
       </Head>
 
         {/* Hero Section */}
-        <section class="relative text-white min-h-screen flex items-center justify-center">
-          <div class="container mx-auto text-center">
+        <section class="relative text-white min-h-screen flex items-center justify-center overflow-hidden vaporwave-bg">
+          <div class="container mx-auto text-center z-50">
             <h1 class="text-6xl font-bold mb-4">Microgamma</h1>
             <p class="text-xl mb-8">A Brave New Audio Player</p>
             <a
@@ -199,6 +199,7 @@ export default define.page(function Home(ctx) {
             </div>
           </div>
         </section>
+
       <script
         dangerouslySetInnerHTML={{
           __html: `
