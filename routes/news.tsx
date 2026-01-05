@@ -41,40 +41,87 @@ export default function NewsPage() {
         <title>News - Microgamma</title>
       </Head>
 
-      <section class="bg-primary text-white py-20 px-4 min-h-screen">
-        <div class="container mx-auto">
-          <h1 class="text-5xl font-bold mb-8 text-pink-400 text-center">
-            News & Updates
-          </h1>
-          <p class="text-xl mb-12 max-w-2xl mx-auto text-center">
-            Stay updated with the latest news, technical articles, and release
-            notes for Microgamma.
-          </p>
+      {/* News Section */}
+      <section class="relative text-white min-h-screen overflow-hidden vaporwave-bg">
+        {/* Background overlay for better text readability */}
+        <div class="absolute inset-0 bg-black/40"></div>
 
-          <div class="space-y-8">
-            {newsItems.map((item, idx) => (
-              <article
-                key={idx}
-                class="bg-gray-900 p-6 rounded-lg border border-pink-400"
-              >
-                <div class="flex justify-between items-start mb-4">
-                  <h2 class="text-2xl font-semibold text-pink-400">
-                    {item.title}
-                  </h2>
-                  <span class="text-sm text-cyan-400 bg-cyan-900 px-2 py-1 rounded">
-                    {item.type}
-                  </span>
-                </div>
-                <p class="text-gray-300 mb-4">{item.date}</p>
-                <p class="text-white mb-4">{item.excerpt}</p>
-                <a
-                  href={`/news/${item.slug}`}
-                  class="text-pink-400 hover:text-pink-300 transition"
+        <div class="relative z-10 container mx-auto px-4 py-20">
+          {/* Hero Section */}
+          <div class="text-center mb-16">
+            <h1 class="text-6xl font-bold mb-6 text-white drop-shadow-lg">
+              News & <span class="gradient-text">Updates</span>
+            </h1>
+            <p class="text-xl mb-8 max-w-3xl mx-auto text-gray-200 drop-shadow">
+              Stay connected with the latest developments, technical insights,
+              and announcements from the <span class="text-primary-300">ownership revolution</span>.
+            </p>
+            <div class="w-24 h-1 bg-primary-400 mx-auto mb-12 rounded-full"></div>
+          </div>
+
+          {/* News Articles Grid */}
+          <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+              {newsItems.map((item, idx) => (
+                <article
+                  key={idx}
+                  class="card-glow p-8 rounded-xl bg-black/60 backdrop-blur-sm border border-primary-400/30 hover:border-primary-400/60 transition-all duration-300"
                 >
-                  Read More →
-                </a>
-              </article>
-            ))}
+                  <div class="flex justify-between items-start mb-6">
+                    <div class="flex-1">
+                      <h2 class="text-2xl font-bold text-primary-300 mb-2 leading-tight">
+                        {item.title}
+                      </h2>
+                      <div class="flex items-center space-x-4 text-sm text-gray-400">
+                        <span class="flex items-center">
+                          📅 {item.date}
+                        </span>
+                        <span class="text-primary-400 bg-primary-900/50 px-3 py-1 rounded-full text-xs font-medium">
+                          {item.type}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <p class="text-gray-300 mb-6 leading-relaxed">
+                    {item.excerpt}
+                  </p>
+
+                  <div class="flex items-center justify-between">
+                    <a
+                      href={`/news/${item.slug}`}
+                      class="inline-flex items-center space-x-2 text-primary-400 hover:text-primary-300 transition-all duration-200 font-medium group"
+                    >
+                      <span>Read More</span>
+                      <span class="group-hover:translate-x-1 transition-transform duration-200">→</span>
+                    </a>
+
+                    <div class="flex items-center space-x-1 text-gray-500 text-sm">
+                      <span>💡</span>
+                      <span>Technical</span>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            {/* Call to Action */}
+            <div class="text-center">
+              <div class="card-glow p-8 rounded-xl bg-accent-900/80 backdrop-blur-sm border border-primary-400/50 max-w-2xl mx-auto">
+                <h3 class="text-2xl font-bold mb-4 text-primary-300">
+                  Stay in the Loop
+                </h3>
+                <p class="text-gray-300 mb-6">
+                  Follow our journey as we build the future of music ownership.
+                  Every update brings us closer to a world where your music truly belongs to you.
+                </p>
+                <div class="flex justify-center space-x-2 text-primary-400">
+                  <span class="text-2xl">📰</span>
+                  <span class="text-lg font-semibold">Latest from the Revolution</span>
+                  <span class="text-2xl">📰</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
