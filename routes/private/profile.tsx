@@ -1,25 +1,13 @@
 import { Head } from "fresh/runtime";
 import { define } from "../../utils.ts";
-import { useSignal } from "@preact/signals";
-import { useEffect } from "preact/hooks";
 import { kindeClient } from "../../utils/auth.ts";
 import { sessionManager } from "../../utils/SessionManager.ts";
 
-export default define.page(function ProfilePage(ctx) {
+export default define.page(async function ProfilePage(ctx) {
   const user = ctx.state.user;
-  const permissions = useSignal<string[]|undefined>();
+  const permissions = await kindeClient.getPermissions(sessionManager);
 
-  kindeClient.getPermissions(sessionManager).then((p) => {
-    console.log({p});
 
-    permissions.value = p?.permissions;;
-  });
-
-  useEffect(() => {
-
-    console.log('Getting user role for', user.email);
-    
-  }, []);
 
 
 
@@ -89,8 +77,8 @@ export default define.page(function ProfilePage(ctx) {
                           <span class="text-white font-semibold">
                           {
 
-                            permissions?.value ? 
-                              permissions.value.map((permission) => permission)
+                            permissions?.permissions ? 
+                              permissions?.permissions.join(' ')
 
                               :
                               
