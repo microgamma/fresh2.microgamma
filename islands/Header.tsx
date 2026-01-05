@@ -8,7 +8,7 @@ interface HeaderProps {
 
 export default function Header({ user }: HeaderProps) {
   const scrolled = useSignal(false);
-  console.log({user});
+  console.log({ user });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,30 +61,39 @@ export default function Header({ user }: HeaderProps) {
             </a>
           </li>
           <li>
-            {user ? (
-              // If user is logged in, show avatar
-              <a href="/private/profile" class="hover:text-primary-400 transition flex items-center">
-                {user.picture ? (
-                  <img
-                    src={user.picture}
-                    alt="User profile"
-                    class="w-5 h-5 rounded-full object-cover border-2 border-primary-400"
-                  />
-                ) : (
-                  <span class="text-2xl" title={user.email || "User"}>👤</span>
-                )}
-              </a>
-            ) : (
-              // If user is not logged in, show login button
-              <a
-                href="/login"
-                f-client-nav={false}
-                class="flex items-center hover:text-primary-400 transition"
-              >
-                <span class="">🔐</span>
-                <span class="ml-1">Login</span>
-              </a>
-            )}
+            {user
+              ? (
+                // If user is logged in, show avatar
+                <a
+                  href="/private/profile"
+                  f-client-nav={false}
+                  class="hover:text-primary-400 transition flex items-center"
+                >
+                  {user.picture
+                    ? (
+                      <img
+                        src={user.picture}
+                        alt="User profile"
+                        class="w-5 h-5 rounded-full object-cover border-2 border-primary-400"
+                      />
+                    )
+                    : (
+                      <span class="text-2xl" title={user.email || "User"}>
+                        👤
+                      </span>
+                    )}
+                </a>
+              )
+              : (
+                // If user is not logged in, show login button
+                <a
+                  href="/login"
+                  f-client-nav={false}
+                  class="hover:text-primary-400 transition"
+                >
+                  Login
+                </a>
+              )}
           </li>
         </ul>
       </div>

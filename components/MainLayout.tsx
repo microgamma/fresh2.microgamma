@@ -10,8 +10,11 @@ interface LayoutProps {
 export default function MainLayout({ children, user }: LayoutProps) {
   return (
     <div class="min-h-screen bg-gray-900">
+      <a href="#main-content" class="skip-link">Skip to main content</a>
       <Header user={user} />
-      {children}
+      <main id="main-content">
+        {children}
+      </main>
       {/* Footer */}
       <footer class="bg-accent-800 text-white py-12 border-t border-primary-400">
         <div class="container mx-auto text-center">

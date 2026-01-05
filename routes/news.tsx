@@ -38,18 +38,19 @@ export default function NewsPage() {
   return (
     <>
       <Head>
-        <title>News - Microgamma</title>
+        <title>News & Updates - Microgamma</title>
+        <meta name="description" content="Stay updated with the latest Microgamma developments, technical insights, and announcements from the music ownership revolution." />
       </Head>
 
       {/* News Section */}
-      <section class="relative text-white min-h-screen overflow-hidden vaporwave-bg">
+      <section class="relative text-white min-h-[60vh] md:min-h-screen overflow-hidden vaporwave-bg">
         {/* Background overlay for better text readability */}
         <div class="absolute inset-0 bg-black/40"></div>
 
         <div class="relative z-10 container mx-auto px-4 py-20">
           {/* Hero Section */}
           <div class="text-center mb-16">
-            <h1 class="text-6xl font-bold mb-6 text-white drop-shadow-lg">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
               News & <span class="gradient-text">Updates</span>
             </h1>
             <p class="text-xl mb-8 max-w-3xl mx-auto text-gray-200 drop-shadow">

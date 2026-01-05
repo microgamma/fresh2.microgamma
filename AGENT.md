@@ -2,6 +2,12 @@
 
 This is the Deno Fresh (2) project for the Microgamma public website.
 
+## Agent Guidelines
+
+- **NEVER** run servers, tests, or scripts automatically
+- **NEVER** commit changes automatically - wait for explicit instruction
+- Only perform these actions when explicitly requested by the user
+
 ## Project Overview
 
 - **Framework**: Fresh 2 (Deno web framework)

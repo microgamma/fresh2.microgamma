@@ -7,14 +7,35 @@ export default define.page(function Home(ctx) {
   return (
     <>
       <Head>
-        <title>Microgamma - Brave New Audio Player</title>
+        <title>Microgamma - Own Your Music, Own Your Sound</title>
+        <meta name="description" content="Take ownership of your music collection with Microgamma. Stream your entire music library with complete control - no subscriptions, no compromises, no platform dictators." />
+        <meta name="keywords" content="music player, music streaming, music ownership, self-hosted music, audiophile, music library, digital music" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Microgamma",
+            "description": "An innovative music player for managing digital music collections with complete user ownership and self-hosted premium features.",
+            "applicationCategory": "MultimediaApplication",
+            "operatingSystem": "Windows, macOS, Linux",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "author": {
+              "@type": "Organization",
+              "name": "Microgamma"
+            }
+          })}
+        </script>
       </Head>
 
         {/* Hero Section */}
-        <section class="relative text-white min-h-screen flex items-center justify-center overflow-hidden vaporwave-bg">
+        <section class="relative text-white min-h-[50vh] md:min-h-screen flex items-center justify-center overflow-hidden vaporwave-bg">
           <div class="container mx-auto text-center z-50">
-            <h1 class="text-6xl font-bold mb-4">Microgamma</h1>
-            <p class="text-xl mb-4 text-primary-300 gradient-text">Own Your Music. Own Your Sound.</p>
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Microgamma</h1>
+            <p class="text-lg md:text-xl mb-4 text-primary-300 gradient-text">Own Your Music. Own Your Sound.</p>
             <p class="text-lg mb-8 text-gray-300">The underground music player that puts you in charge - no subscriptions, no compromises, no platform dictators.</p>
             <a
               href="/downloads"

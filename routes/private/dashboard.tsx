@@ -10,6 +10,7 @@ export default define.page(function DashboardPage(ctx) {
     <>
       <Head>
         <title>Dashboard - Microgamma</title>
+        <meta name="description" content="Access your Microgamma dashboard to manage your music collection, view statistics, and control your streaming settings." />
       </Head>
       <MainLayout>
         <div className="container mx-auto py-20 px-4">

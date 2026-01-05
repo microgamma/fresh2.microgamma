@@ -8,13 +8,15 @@ export default function ScreenshotsPage() {
       title: "Main Interface",
       description:
         "The clean, intuitive main interface showing your music library and playback controls.",
-      image: "/screenshots/main_wide.png",
+      image: "/screenshots/main_wide.webp",
+      fallback: "/screenshots/main_wide.png",
     },
     {
       title: "Music Library",
       description:
         "Browse your extensive music collection with smart search and filtering options.",
-      image: "/screenshots/music_library_wide.png",
+      image: "/screenshots/music_library_wide.webp",
+      fallback: "/screenshots/music_library_wide.png",
     },
     {
       title: "Streaming Setup",
@@ -45,18 +47,19 @@ export default function ScreenshotsPage() {
   return (
     <>
       <Head>
-        <title>Screenshots - Microgamma</title>
+        <title>Screenshots & Interface - Microgamma</title>
+        <meta name="description" content="Explore the Microgamma interface and features through screenshots. See how the underground music player puts you in control of your music collection." />
       </Head>
 
       {/* Screenshots Section */}
-      <section class="relative text-white min-h-screen overflow-hidden vaporwave-bg">
+      <section class="relative text-white min-h-[60vh] md:min-h-screen overflow-hidden vaporwave-bg">
         {/* Background overlay for better text readability */}
         <div class="absolute inset-0 bg-black/40"></div>
 
         <div class="relative z-10 container mx-auto px-4 py-20">
           {/* Hero Section */}
           <div class="text-center mb-16">
-            <h1 class="text-6xl font-bold mb-6 text-white drop-shadow-lg">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
               Screenshots & <span class="gradient-text">Interface</span>
             </h1>
             <p class="text-xl mb-8 max-w-3xl mx-auto text-gray-200 drop-shadow">
