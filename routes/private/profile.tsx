@@ -16,76 +16,77 @@ export default define.page(async function ProfilePage(ctx) {
       <Head>
         <title>Profile - Microgamma</title>
       </Head>
-      <div class="min-h-screen bg-gray-900 text-white grid-bg px-4 py-8">
-        <div class="max-w-7xl mx-auto">
-          <h1 class="text-5xl font-bold mb-12 text-primary-400 text-center">
-            User Profile
-          </h1>
+      <div class="min-h-screen bg-gray-100 text-gray-900 px-4 py-8">
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8 mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 text-center mb-2">
+              User Profile
+            </h1>
+            <p class="text-gray-600 text-center">Manage your account and preferences</p>
+          </div>
 
           {user
             ? (
-              <div class="space-y-12">
+              <div class="space-y-6">
                 {/* Profile Header */}
-                <div class="flex flex-col lg:flex-row items-center lg:items-start gap-8 py-12">
-                  {user.picture && (
-                    <img
-                      src={user.picture}
-                      alt="User profile"
-                      class="w-48 h-48 rounded-full object-cover border-4 border-primary-400 shadow-lg"
-                    />
-                  )}
-                  <div class="text-center lg:text-left flex-1">
-                    <h2 class="text-4xl font-bold text-white mb-4">
-                      {user.given_name} {user.family_name}
-                    </h2>
-                    <p class="text-2xl text-gray-300 mb-2">{user.email}</p>
-                    <p class="text-lg text-gray-400">User ID: {user.id}</p>
+                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+                  <div class="flex flex-col lg:flex-row items-center lg:items-start gap-6">
+                    {user.picture && (
+                      <img
+                        src={user.picture}
+                        alt="User profile"
+                        class="w-32 h-32 rounded-full object-cover border-2 border-gray-300"
+                      />
+                    )}
+                    <div class="text-center lg:text-left flex-1">
+                      <h2 class="text-2xl font-bold text-gray-900 mb-2">
+                        {user.given_name} {user.family_name}
+                      </h2>
+                      <p class="text-lg text-gray-600 mb-1">{user.email}</p>
+                      <p class="text-sm text-gray-500 font-mono">ID: {user.id}</p>
+                    </div>
                   </div>
                 </div>
 
                 {/* Account Information Section */}
-                <div class="py-12">
-                  <h3 class="text-3xl font-semibold text-primary-400 mb-8">
+                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+                  <h3 class="text-xl font-semibold text-gray-900 mb-6 pb-4 border-b border-gray-200">
                     Account Information
                   </h3>
                   <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div>
-                      <div class="space-y-4">
-                        <p class="text-xl">
-                          <span class="text-gray-400">Full Name:</span>{" "}
-                          <span class="text-white font-semibold">
-                            {user.given_name} {user.family_name}
-                          </span>
+                    <div class="space-y-4">
+                      <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                        <p class="text-gray-900 font-medium">
+                          {user.given_name} {user.family_name}
                         </p>
-                        <p class="text-xl">
-                          <span class="text-gray-400">Email:</span>{" "}
-                          <span class="text-white font-semibold">{user.email}</span>
-                        </p>
-                        <p class="text-xl">
-                          <span class="text-gray-400">User ID:</span>{" "}
-                          <span class="text-white font-mono">{user.id}</span>
-                        </p>
+                      </div>
+                      <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <p class="text-gray-900">{user.email}</p>
+                      </div>
+                      <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">User ID</label>
+                        <p class="text-gray-900 font-mono text-sm">{user.id}</p>
                       </div>
                     </div>
                     <div>
-                      <h4 class="text-2xl font-semibold text-primary-400 mb-4">
+                      <h4 class="text-lg font-semibold text-gray-900 mb-4">
                         Role & Permissions
                       </h4>
-                      <div class="">
-                        <p class="text-xl">
-                          <span class="text-gray-400">Roles:</span>{" "}
-                          <span class="text-white font-semibold">
-                          {
-
-                            permissions?.permissions ? 
-                              permissions?.permissions.join(' ')
-
-                              :
-                              
-                                'None'
+                      <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Permissions</label>
+                        <p class="text-gray-900">
+                          {permissions?.permissions ?
+                            permissions.permissions.join(', ') :
+                            'Standard user access'
                           }
-                          </span>
                         </p>
+                      </div>
+                      <div class="mt-4">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-100 text-primary-800">
+                          Active User
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -93,8 +94,12 @@ export default define.page(async function ProfilePage(ctx) {
               </div>
             )
             : (
-              <div class="text-center py-20">
-                <p class="text-2xl text-gray-300">Loading user information...</p>
+              <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8 text-center">
+                <div class="animate-pulse">
+                  <div class="h-8 bg-gray-200 rounded w-48 mx-auto mb-4"></div>
+                  <div class="h-4 bg-gray-200 rounded w-64 mx-auto"></div>
+                </div>
+                <p class="text-gray-600 mt-4">Loading your profile information...</p>
               </div>
             )}
         </div>
