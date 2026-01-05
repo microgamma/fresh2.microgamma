@@ -48,31 +48,71 @@ export default function ScreenshotsPage() {
         <title>Screenshots - Microgamma</title>
       </Head>
 
-      <section class="bg-primary text-white py-20 px-4 min-h-screen">
-        <div class="container mx-auto">
-          <h1 class="text-5xl font-bold mb-8 text-pink-400 text-center">
-            Screenshots
-          </h1>
-          <p class="text-xl mb-12 max-w-2xl mx-auto text-center">
-            Explore Microgamma's interface and features through our screenshot
-            gallery.
-          </p>
+      {/* Screenshots Section */}
+      <section class="relative text-white min-h-screen overflow-hidden vaporwave-bg">
+        {/* Background overlay for better text readability */}
+        <div class="absolute inset-0 bg-black/40"></div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {screenshots.map((screenshot, idx) => (
-              <div
-                key={idx}
-                class="bg-gray-900 rounded-lg overflow-hidden border border-pink-400"
-              >
-                <Thumbnail screenshot={screenshot}></Thumbnail>
-                <div class="p-6">
-                  <h3 class="text-xl font-semibold text-pink-400 mb-2">
-                    {screenshot.title}
-                  </h3>
-                  <p class="text-gray-300">{screenshot.description}</p>
+        <div class="relative z-10 container mx-auto px-4 py-20">
+          {/* Hero Section */}
+          <div class="text-center mb-16">
+            <h1 class="text-6xl font-bold mb-6 text-white drop-shadow-lg">
+              Screenshots & <span class="gradient-text">Interface</span>
+            </h1>
+            <p class="text-xl mb-8 max-w-3xl mx-auto text-gray-200 drop-shadow">
+              See the underground music player that puts you in control.
+              Explore every pixel of the ownership revolution.
+            </p>
+            <div class="w-24 h-1 bg-primary-400 mx-auto mb-12 rounded-full"></div>
+          </div>
+
+          {/* Screenshots Gallery */}
+          <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {screenshots.map((screenshot, idx) => (
+                <div
+                  key={idx}
+                  class="card-glow bg-black/60 backdrop-blur-sm rounded-xl overflow-hidden border border-primary-400/30 hover:border-primary-400/60 transition-all duration-300 group"
+                >
+                  <div class="relative overflow-hidden">
+                    <Thumbnail screenshot={screenshot}></Thumbnail>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                  <div class="p-6">
+                    <div class="flex items-start justify-between mb-4">
+                      <h3 class="text-xl font-bold text-primary-300 group-hover:text-primary-200 transition-colors">
+                        {screenshot.title}
+                      </h3>
+                      <div class="flex items-center text-primary-400 text-sm">
+                        <span class="text-lg mr-1">🖼️</span>
+                        <span>Preview</span>
+                      </div>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors">
+                      {screenshot.description}
+                    </p>
+                  </div>
                 </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Call to Action */}
+          <div class="text-center mt-16">
+            <div class="card-glow p-8 rounded-xl bg-accent-900/80 backdrop-blur-sm border border-primary-400/50 max-w-2xl mx-auto">
+              <h3 class="text-2xl font-bold mb-4 text-primary-300">
+                Experience the Revolution
+              </h3>
+              <p class="text-gray-300 mb-6">
+                Ready to see your music truly belong to you? Download Microgamma and
+                take control of your digital music destiny.
+              </p>
+              <div class="flex justify-center space-x-2 text-primary-400">
+                <span class="text-2xl">🎵</span>
+                <span class="text-lg font-semibold">Download Now</span>
+                <span class="text-2xl">🎵</span>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
