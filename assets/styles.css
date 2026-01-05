@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+:root {
+  --color-primary: #ec4899;
+  --color-primary-400: #f472b6;
+  --color-primary-500: #ec4899;
+  --color-primary-600: #db2777;
+  --color-accent: #9333ea;
+  --color-accent-400: #c084fc;
+  --color-accent-500: #9333ea;
+  --color-warn: #dc2626;
+  --color-warn-600: #dc2626;
+  --color-warn-700: #b91c1c;
+}
+
 body {
   font-family: "Fira Code", monospace;
 }
@@ -35,7 +48,7 @@ a[aria-current="true"] {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ec4899; /* pink-500 */
+  background: var(--color-primary);
   /* border-radius: 3px; */
 }
 
@@ -43,16 +56,43 @@ a[aria-current="true"] {
   background: #06b6d4; /* cyan-500 */
 }
 
-/* Scroll animations */
+/* Fade-in animations */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Glow Effects */
+.btn-glow {
+  box-shadow: 0 0 10px rgba(236, 72, 153, 0.5), 0 0 20px rgba(236, 72, 153, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.btn-glow:hover {
+  box-shadow: 0 0 15px rgba(236, 72, 153, 0.7), 0 0 30px rgba(236, 72, 153, 0.5);
+}
+
+.card-glow {
+  background: transparent;
+  border: 1px solid var(--color-primary-400);
+}
+
+.grid-bg {
+  background-image: linear-gradient(rgba(255, 0, 128, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 0, 128, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, var(--color-primary), var(--color-accent), var(--color-accent-400), var(--color-primary-400));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* Vaporwave Background Animation */

@@ -41,7 +41,7 @@ export default function NewsPage() {
         <title>News - Microgamma</title>
       </Head>
 
-      <section class="bg-black text-white py-20 px-4 min-h-screen">
+      <section class="bg-primary text-white py-20 px-4 min-h-screen">
         <div class="container mx-auto">
           <h1 class="text-5xl font-bold mb-8 text-pink-400 text-center">
             News & Updates

@@ -1,6 +1,7 @@
 import { useSignal } from "@preact/signals";
 import { useEffect } from "preact/hooks";
 import { State } from "../utils.ts";
+import NavLinks from "../components/NavLinks.tsx";
 
 interface HeaderProps {
   user?: State["user"];
@@ -31,7 +32,7 @@ export default function Header({ user }: HeaderProps) {
           <li>
             <a
               href="/"
-              class={`hover:text-pink-400 transition`}
+              class={`hover:text-primary-400 transition`}
             >
               Home
             </a>
@@ -39,7 +40,7 @@ export default function Header({ user }: HeaderProps) {
           <li>
             <a
               href="/downloads"
-              class={`hover:text-pink-400 transition`}
+              class={`hover:text-primary-400 transition`}
             >
               Downloads
             </a>
@@ -47,7 +48,7 @@ export default function Header({ user }: HeaderProps) {
           <li>
             <a
               href="/news"
-              class={`hover:text-pink-400 transition`}
+              class={`hover:text-primary-400 transition`}
             >
               News
             </a>
@@ -55,7 +56,7 @@ export default function Header({ user }: HeaderProps) {
           <li>
             <a
               href="/screenshots"
-              class={`hover:text-pink-400 transition`}
+              class={`hover:text-primary-400 transition`}
             >
               Screenshots
             </a>
@@ -63,12 +64,12 @@ export default function Header({ user }: HeaderProps) {
           <li>
             {user ? (
               // If user is logged in, show avatar
-              <a href="/private/profile" class="hover:text-pink-400 transition flex items-center">
+              <a href="/private/profile" class="hover:text-primary-400 transition flex items-center">
                 {user.picture ? (
                   <img
                     src={user.picture}
                     alt="User profile"
-                    class="w-8 h-8 rounded-full object-cover border-2 border-pink-400"
+                    class="w-5 h-5 rounded-full object-cover border-2 border-primary-400"
                   />
                 ) : (
                   <span class="text-2xl" title={user.email || "User"}>👤</span>
@@ -79,9 +80,9 @@ export default function Header({ user }: HeaderProps) {
               <a
                 href="/login"
                 f-client-nav={false}
-                class="flex items-center hover:text-pink-400 transition"
+                class="flex items-center hover:text-primary-400 transition"
               >
-                <span class="text-xl">🔐</span>
+                <span class="">🔐</span>
                 <span class="ml-1">Login</span>
               </a>
             )}

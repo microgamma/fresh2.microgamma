@@ -32,7 +32,7 @@ export default async function DownloadsPage() {
       </Head>
 
       {/* Downloads Section */}
-      <section class="bg-black text-white py-20 px-4 min-h-screen flex items-center">
+      <section class="bg-primary text-white py-20 px-4 min-h-screen flex items-center">
         <div class="container mx-auto text-center">
           <h1 class="text-5xl font-bold mb-8 text-pink-400">
             Download Microgamma

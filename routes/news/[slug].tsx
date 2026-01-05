@@ -40,7 +40,7 @@ export default function NewsArticlePage(
           <title>Article Not Found - Microgamma</title>
         </Head>
         <Layout>
-          <section class="bg-black text-white py-20 px-4 min-h-screen flex items-center">
+          <section class="bg-primary text-white py-20 px-4 min-h-screen flex items-center">
             <div class="container mx-auto text-center">
               <h1 class="text-5xl font-bold mb-8 text-pink-400">
                 Article Not Found
@@ -65,7 +65,7 @@ export default function NewsArticlePage(
       </Head>
 
       <Layout>
-        <section class="bg-black text-white py-20 px-4 min-h-screen">
+        <section class="bg-primary text-white py-20 px-4 min-h-screen">
           <div class="container mx-auto max-w-4xl">
             <article class="bg-gray-900 p-8 rounded-lg border border-pink-400">
               <div class="flex justify-between items-start mb-6">
