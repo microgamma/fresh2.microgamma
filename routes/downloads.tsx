@@ -28,34 +28,34 @@ export default async function DownloadsPage() {
   return (
     <>
       <Head>
-        <title>Download Microgamma - Brave New Audio Player</title>
+        <title>Download Microgamma - Own Your Music, Own Your Sound</title>
       </Head>
 
       {/* Downloads Section */}
-      <section class="bg-primary text-white py-20 px-4 min-h-screen flex items-center">
+      <section class="bg-gray-900 text-white py-20 px-4 min-h-screen flex items-center">
         <div class="container mx-auto text-center">
-          <h1 class="text-5xl font-bold mb-8 text-pink-400">
+          <h1 class="text-5xl font-bold mb-8 text-primary-400">
             Download Microgamma
           </h1>
           <p class="text-xl mb-12 max-w-2xl mx-auto">
-            Get started with Microgamma today. Choose your platform and begin
-            streaming your music library instantly without complex setup or
-            server hassles.
+            Take ownership of your music collection. Download Microgamma and start
+            streaming your personal library with complete control - no subscriptions,
+            no compromises, no platform decisions.
           </p>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {downloads.map((download, idx) => {
               return <DownloadCard key={idx} release={download} />;
             })}
           </div>
-          <div class="bg-yellow-900 p-4 rounded-lg mb-8">
-            <p class="text-yellow-200">
+          <div class="bg-accent-900 p-4 rounded-lg mb-8 border border-primary-400">
+            <p class="text-primary-200">
               Note: Windows and macOS executables are not code signed. You may
               need to allow them in your security settings.
             </p>
           </div>
-          <div class="bg-purple-900 p-8 rounded-lg">
-            <h3 class="text-2xl font-semibold mb-4 text-pink-400">
-              🚀 Quick Start
+          <div class="bg-accent-800 p-8 rounded-lg border border-primary-400">
+            <h3 class="text-2xl font-semibold mb-4 text-primary-400">
+              🚀 Take Ownership - Quick Start
             </h3>
             <ol class="text-left max-w-md mx-auto space-y-2">
               <li>1. Download the executable for your platform</li>

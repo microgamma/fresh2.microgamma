@@ -1,7 +1,6 @@
 import { useSignal } from "@preact/signals";
 import { useEffect } from "preact/hooks";
 import { State } from "../utils.ts";
-import NavLinks from "../components/NavLinks.tsx";
 
 interface HeaderProps {
   user?: State["user"];

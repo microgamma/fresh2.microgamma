@@ -2,11 +2,18 @@ import { Head } from "fresh/runtime";
 import { define } from "../../utils.ts";
 import { useSignal } from "@preact/signals";
 import { useEffect } from "preact/hooks";
+import { kindeClient } from "../../utils/auth.ts";
+import { sessionManager } from "../../utils/SessionManager.ts";
 
 export default define.page(function ProfilePage(ctx) {
   const user = ctx.state.user;
+  const permissions = useSignal<string[]|undefined>();
 
-  const roles = useSignal();
+  kindeClient.getPermissions(sessionManager).then((p) => {
+    console.log({p});
+
+    permissions.value = p?.permissions;;
+  });
 
   useEffect(() => {
 
@@ -78,11 +85,18 @@ export default define.page(function ProfilePage(ctx) {
                       </h4>
                       <div class="">
                         <p class="text-xl">
-                          <span class="text-gray-400">Role:</span>{" "}
-                          <span class="text-white font-semibold">User</span>
-                        </p>
-                        <p class="text-gray-300">
-                          Permissions: Access to personal music library, streaming controls, profile management.
+                          <span class="text-gray-400">Roles:</span>{" "}
+                          <span class="text-white font-semibold">
+                          {
+
+                            permissions?.value ? 
+                              permissions.value.map((permission) => permission)
+
+                              :
+                              
+                                'None'
+                          }
+                          </span>
                         </p>
                       </div>
                     </div>

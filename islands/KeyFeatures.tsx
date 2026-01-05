@@ -28,109 +28,98 @@ export default function KeyFeatures() {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div class="fade-in p-6 card-glow rounded-lg">
             <h3 class="text-2xl font-semibold mb-4 text-primary-400">
-              📡 Seamless Streaming
+              🎵 Own Your Sound
             </h3>
             <p>
-              Stream your music library instantly without interruptions or
-              buffering.
+              Stream your entire music library with complete ownership. Never lose access to what you've collected.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
             <h3 class="text-2xl font-semibold mb-4 text-primary-400">
-              🎵 High Fidelity Audio
+              📀 Audiophile Freedom
             </h3>
             <p>
-              Stream high-fidelity audio peer-to-peer using WebRTC with Opus
-              codec for optimal compression and quality.{" "}
+              High-fidelity audio streaming that respects your ears. Peer-to-peer quality without compromises.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
             <h3 class="text-2xl font-semibold mb-4 text-primary-400">
-              🔒 Secure & Private
+              🔒 Privacy by Design
             </h3>
             <p>
-              Your music stays on your device. Data is served peer-to-peer,
-              nothing passes through our servers. No data collection or ads.
+              Your music stays on your devices. No ads, no tracking, no platform surveillance. Just pure listening.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
             <h3 class="text-2xl font-semibold mb-4 text-primary-400">
-              ⚡ Quick and Easy Installation
+              ⚡ Zero-Setup Revolution
             </h3>
             <p>
-              Install Microgamma in seconds. Download the executable,
-              launch, select your music folder, and enjoy instant playback.
-              🎶
+              Download, launch, select your music folder. Instant streaming without the subscription hassle.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
             <h3 class="text-2xl font-semibold mb-4 text-primary-400">
-              🔍 Smart Search with Auto Suggestions
+              🔍 Your Search, Your Rules
             </h3>
             <p>
-              Quickly find any song, artist, or album using fuzzy search and
-              real-time suggestions. No exact match required.
+              Find any song, artist, or album instantly. Fuzzy search that understands how you think about music.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
             <h3 class="text-2xl font-semibold mb-4 text-primary-400">
-              📋 Album & Artist
+              📋 Curate Your Knowledge
             </h3>
             <p>
-              Our AI agent searches the web to find the most up-to-date
-              information about each album and artist.
+              Our AI discovers album and artist info for you. Build the ultimate music encyclopedia in your collection.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
             <h3 class="text-2xl font-semibold mb-4 text-primary-400">
-              🎤 Lyrics
+              🎤 Lyrics You Control
             </h3>
             <p>
-              Add synchronized lyrics in LRC format as part of your song metadata for karaoke-style display.
+              Add synchronized lyrics to your tracks. Perfect karaoke or just following along with your favorites.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
             <h3 class="text-2xl font-semibold mb-4 text-primary-400">
-              🎨 Cover Art
+              🎨 Your Covers, Your Choice
             </h3>
             <p>
-              Using Discogs, select community-brought cover art to
-              personalize your collection.
+              Never let anyone change what your favorite albums look like. Choose covers from Discogs or your own scans.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
             <h3 class="text-2xl font-semibold mb-4 text-primary-400">
-              🔧 Hackable Player
+              🔧 Hack Your Experience
             </h3>
             <p>
-              All metadata is stored in JSON files that can be opened using our open source libraries published under the "@microphi" handle.
+              JSON metadata you can manipulate with our open libraries. Customize everything to your liking.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
             <h3 class="text-2xl font-semibold mb-4 text-primary-400">
-              📱 Cross-Device Control
+              📱 Unified Control
             </h3>
             <p>
-              Control your music from your phone, tablet, or computer. Start
-              a playlist on your desktop and skip a track from your phone.
+              Control your music from any device. Start on desktop, continue on phone. Seamless everywhere.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
             <h3 class="text-2xl font-semibold mb-4 text-primary-400">
-              🔊 Multi-Device Output
+              🔊 Multi-Room Freedom
             </h3>
             <p>
-              Choose where your music plays. Stream to your home stereo,
-              your headphones, or both at the same time.
+              Stream to your home stereo, headphones, or both simultaneously. Your music, your spaces.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
             <h3 class="text-2xl font-semibold mb-4 text-primary-400">
-              🔄 Seamless Switching
+              🔄 Effortless Switching
             </h3>
             <p>
-              Switch between output devices without interrupting the music.
-              The transition is smooth and seamless.
+              Move between devices without missing a beat. Music flows where you want it, when you want it.
             </p>
           </div>
         </div>
