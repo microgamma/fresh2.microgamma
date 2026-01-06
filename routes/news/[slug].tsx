@@ -66,6 +66,8 @@ export default async function NewsArticlePage(
                         ? "text-green-400 bg-green-900/50"
                         : article.type === "Pre-release"
                         ? "text-yellow-400 bg-yellow-900/50"
+                        : article.type === "Dev.to Article"
+                        ? "text-purple-400 bg-purple-900/50"
                         : "text-gray-400 bg-gray-900/50"
                     }`}>
                       {article.type}
@@ -75,12 +77,28 @@ export default async function NewsArticlePage(
                         {article.tagName}
                       </span>
                     )}
+                    {article.readingTime && (
+                      <span class="text-sm text-primary-400 bg-primary-900/50 px-3 py-1 rounded-full">
+                        {article.readingTime}min read
+                      </span>
+                    )}
                     <span class="flex items-center text-gray-400 text-sm">
                       📅 {article.date}
                     </span>
                   </div>
                 </div>
               </div>
+
+              {/* Article tags for Dev.to articles */}
+              {article.articleTags && article.articleTags.length > 0 && (
+                <div class="flex flex-wrap gap-2 mb-6">
+                  {article.articleTags.map(tag => (
+                    <span class="px-3 py-1 bg-primary-900/30 text-primary-300 rounded text-sm border border-primary-400/20">
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              )}
 
               {/* Release Content */}
               <div class="prose prose-invert max-w-none mb-8">
@@ -89,7 +107,7 @@ export default async function NewsArticlePage(
                 </div>
               </div>
 
-              {/* GitHub Link */}
+              {/* Source Link */}
               {article.sourceUrl && (
                 <div class="mb-8 p-4 bg-primary-900/20 rounded-lg border border-primary-400/20">
                   <a
@@ -98,8 +116,8 @@ export default async function NewsArticlePage(
                     rel="noopener noreferrer"
                     class="inline-flex items-center space-x-2 text-primary-400 hover:text-primary-300 transition-all duration-200 font-medium group"
                   >
-                    <span>🐙</span>
-                    <span>View on GitHub</span>
+                    <span>{article.source === "github" ? "🐙" : "📝"}</span>
+                    <span>{article.source === "github" ? "View on GitHub" : "Read on Dev.to"}</span>
                     <span class="group-hover:translate-x-1 transition-transform duration-200">→</span>
                   </a>
                 </div>

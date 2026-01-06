@@ -4,14 +4,16 @@ export interface NewsItem {
   slug: string;
   date: string;
   title: string;
-  type: "GitHub Release" | "Pre-release" | "Draft Release";
+  type: "GitHub Release" | "Pre-release" | "Draft Release" | "Dev.to Article";
   excerpt: string;
   content: string;
-  source: "github";
+  source: "github" | "devto";
   sourceUrl: string;
   publishedAt: Date;
-  isPrerelease: boolean;
-  tagName: string;
+  isPrerelease?: boolean;
+  tagName?: string;
+  articleTags?: string[];
+  readingTime?: number; // in minutes
 }
 
 export interface GitHubRelease {
@@ -30,16 +32,35 @@ export interface GitHubRelease {
   }>;
 }
 
+export interface DevToArticle {
+  id: number;
+  title: string;
+  description: string;
+  readable_publish_date: string;
+  published_at: string;
+  url: string;
+  body_markdown: string;
+  tags: string[];
+  cover_image?: string;
+  canonical_url: string;
+}
+
 export class NewsService {
   private readonly githubToken: string;
   private readonly repoOwner: string;
   private readonly repoName: string;
   private readonly apiBaseUrl = "https://api.github.com";
+  private readonly devtoUsername: string;
+  private readonly devtoTagFilter: string;
+  private readonly devtoMaxArticles: number;
 
   constructor() {
     this.githubToken = Deno.env.get("GITHUB_ACCESS_TOKEN") || "";
     this.repoOwner = Deno.env.get("GITHUB_REPO_OWNER") || "microgamma";
     this.repoName = Deno.env.get("GITHUB_REPO_NAME") || "microgamma";
+    this.devtoUsername = Deno.env.get("DEVTO_USERNAME") || "davidecavaliere";
+    this.devtoTagFilter = Deno.env.get("DEVTO_TAG_FILTER") || "microgamma";
+    this.devtoMaxArticles = parseInt(Deno.env.get("DEVTO_MAX_ARTICLES") || "20");
 
     if (!this.githubToken) {
       console.warn("GITHUB_ACCESS_TOKEN not found. GitHub API calls will fail.");
@@ -48,11 +69,72 @@ export class NewsService {
 
   async getNews(): Promise<NewsItem[]> {
     try {
-      const releases = await this.fetchGitHubReleases();
-      return this.transformReleasesToNews(releases);
+      // Fetch from both sources in parallel
+      const [githubReleases, devtoArticles] = await Promise.allSettled([
+        this.fetchGitHubReleases(),
+        this.fetchDevToArticles()
+      ]);
+
+      const allNews: NewsItem[] = [];
+
+      // Process GitHub releases
+      if (githubReleases.status === 'fulfilled') {
+        const githubNews = this.transformReleasesToNews(githubReleases.value);
+        allNews.push(...githubNews);
+        console.log(`Fetched ${githubNews.length} GitHub releases`);
+      } else {
+        console.error("Failed to fetch GitHub releases:", githubReleases.reason);
+      }
+
+      // Process Dev.to articles
+      if (devtoArticles.status === 'fulfilled') {
+        const devtoNews = this.transformDevToArticles(devtoArticles.value);
+        allNews.push(...devtoNews);
+        console.log(`Fetched ${devtoNews.length} Dev.to articles`);
+      } else {
+        console.error("Failed to fetch Dev.to articles:", devtoArticles.reason);
+      }
+
+      // Sort by publication date (newest first) and deduplicate
+      const sorted = allNews
+        .sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
+
+      // Simple deduplication by title (add suffix if duplicate)
+      const seenTitles = new Map<string, number>();
+      for (const item of sorted) {
+        const count = seenTitles.get(item.title) || 0;
+        if (count > 0) {
+          item.title = `${item.title} (${count + 1})`;
+        }
+        seenTitles.set(item.title, count + 1);
+      }
+
+      return sorted;
     } catch (error) {
-      console.error("Failed to fetch GitHub releases:", error);
+      console.error("Failed to fetch news from any source:", error);
       return this.getFallbackNews();
+    }
+  }
+
+  private async fetchDevToArticles(): Promise<DevToArticle[]> {
+    const url = `https://dev.to/api/articles?username=${this.devtoUsername}&tag=${this.devtoTagFilter}&per_page=${this.devtoMaxArticles}`;
+
+    try {
+      const response = await fetch(url, {
+        headers: {
+          "Accept": "application/json",
+          "User-Agent": "Microgamma-News-Fetcher/1.0"
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error(`Dev.to API error: ${response.status} ${response.statusText}`);
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error("Error fetching from Dev.to API:", error);
+      throw error;
     }
   }
 
@@ -66,6 +148,8 @@ export class NewsService {
         "User-Agent": "Microgamma-News-Fetcher/1.0"
       }
     });
+
+
 
     if (!response.ok) {
       if (response.status === 401) {
@@ -138,6 +222,44 @@ export class NewsService {
 
     // Sort by publication date (newest first)
     return newsItems.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
+  }
+
+  private transformDevToArticles(articles: DevToArticle[]): NewsItem[] {
+    return articles.map(article => {
+      const slug = this.generateSlug(article.title);
+      const publishedAt = new Date(article.published_at);
+      const date = publishedAt.toISOString().split('T')[0];
+      const excerpt = article.description || this.createExcerpt(article.body_markdown);
+      const readingTime = this.calculateReadingTime(article.body_markdown);
+
+      return {
+        slug,
+        date,
+        title: article.title,
+        type: "Dev.to Article",
+        excerpt,
+        content: article.body_markdown,
+        source: "devto",
+        sourceUrl: article.url,
+        publishedAt,
+        articleTags: article.tags,
+        readingTime
+      };
+    });
+  }
+
+  private calculateReadingTime(content: string): number {
+    // Average reading speed: 200-250 words per minute
+    // Count words in the content (rough approximation)
+    const words = content
+      .replace(/[#*`]/g, '') // Remove markdown symbols
+      .split(/\s+/)
+      .filter(word => word.length > 0);
+
+    const wordCount = words.length;
+    const wordsPerMinute = 200; // Conservative estimate
+
+    return Math.max(1, Math.ceil(wordCount / wordsPerMinute));
   }
 
   private generateSlug(title: string): string {

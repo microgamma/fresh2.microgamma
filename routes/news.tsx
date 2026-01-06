@@ -51,6 +51,8 @@ export default async function NewsPage() {
                              ? "text-green-400 bg-green-900/50"
                              : item.type === "Pre-release"
                              ? "text-yellow-400 bg-yellow-900/50"
+                             : item.type === "Dev.to Article"
+                             ? "text-purple-400 bg-purple-900/50"
                              : "text-gray-400 bg-gray-900/50"
                          }`}>
                            {item.type}
@@ -59,9 +61,20 @@ export default async function NewsPage() {
                     </div>
                   </div>
 
-                  <p class="text-gray-300 mb-6 leading-relaxed">
+                  <p class="text-gray-300 mb-4 leading-relaxed">
                     {item.excerpt}
                   </p>
+
+                  {/* Article tags for Dev.to articles */}
+                  {item.articleTags && item.articleTags.length > 0 && (
+                    <div class="flex flex-wrap gap-2 mb-6">
+                      {item.articleTags.map(tag => (
+                        <span class="px-2 py-1 bg-primary-900/30 text-primary-300 rounded text-xs border border-primary-400/20">
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
 
                   <div class="flex items-center justify-between">
                     <a
@@ -74,7 +87,7 @@ export default async function NewsPage() {
 
                      <div class="flex items-center space-x-1 text-gray-500 text-sm">
                        <span>{item.source === "github" ? "🐙" : "📝"}</span>
-                       <span>{item.tagName || "Manual"}</span>
+                       <span>{item.source === "github" ? item.tagName || "Release" : `Dev.to • ${item.readingTime}min read`}</span>
                      </div>
                   </div>
                 </article>
