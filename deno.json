@@ -32,6 +32,7 @@
     "tailwindcss": "npm:tailwindcss@^4.1.18",
     "@tailwindcss/vite": "npm:@tailwindcss/vite@^4.1.18"
   },
+  "unstable": ["kv"],
   "compilerOptions": {
     "lib": [
       "dom",

@@ -32,7 +32,7 @@ export default define.page(function Home(ctx) {
       </Head>
 
         {/* Hero Section */}
-        <section class="relative text-white min-h-[50vh] md:min-h-screen flex items-center justify-center overflow-hidden vaporwave-bg">
+        <section class="relative text-white min-h-screen flex items-center justify-center overflow-hidden vaporwave-bg">
           <div class="container mx-auto text-center z-50">
             <h1 class="text-4xl md:text-6xl font-bold mb-4">Microgamma</h1>
             <p class="text-lg md:text-xl mb-4 text-primary-300 gradient-text">Own Your Music. Own Your Sound.</p>
