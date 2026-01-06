@@ -81,9 +81,11 @@ export default define.page(async function ProfilePage(ctx) {
                       <div>
                         <label class="block text-sm font-medium text-gray-400 mb-1">Permissions</label>
                         <p class="text-gray-300">
-                          {permissions?.permissions ?
-                            permissions.permissions.join(', ') :
-                            'Standard user access'
+                          {Array.isArray(permissions) ?
+                            permissions.length > 0 ? permissions.join(', ') : 'Standard user access' :
+                            permissions?.permissions ?
+                              permissions.permissions.join(', ') :
+                              'Standard user access'
                           }
                         </p>
                       </div>
