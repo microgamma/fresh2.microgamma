@@ -59,7 +59,7 @@ export class NewsService {
     this.repoOwner = Deno.env.get("GITHUB_REPO_OWNER") || "microgamma";
     this.repoName = Deno.env.get("GITHUB_REPO_NAME") || "microgamma";
     this.devtoUsername = Deno.env.get("DEVTO_USERNAME") || "davidecavaliere";
-    this.devtoTagFilter = Deno.env.get("DEVTO_TAG_FILTER") || "microgamma";
+    this.devtoTagFilter = Deno.env.get("DEVTO_TAG_FILTER") || "Microgamma";
     this.devtoMaxArticles = parseInt(Deno.env.get("DEVTO_MAX_ARTICLES") || "20");
 
     if (!this.githubToken) {
