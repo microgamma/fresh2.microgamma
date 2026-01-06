@@ -8,5 +8,4 @@ export default define.middleware((ctx) => {
   }
 
   return ctx.next();
-
 });

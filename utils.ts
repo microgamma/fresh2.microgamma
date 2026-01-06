@@ -16,7 +16,7 @@ export async function cachedFetch(
   url: string,
   options?: RequestInit,
 ): Promise<any> {
-  console.log('requesting url', url);
+  console.log("requesting url", url);
   const key = url + JSON.stringify(options || {});
   if (cache.has(key)) {
     return cache.get(key);

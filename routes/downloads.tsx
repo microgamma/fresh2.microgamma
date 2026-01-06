@@ -29,7 +29,10 @@ export default async function DownloadsPage() {
     <>
       <Head>
         <title>Download Microgamma - Own Your Music, Own Your Sound</title>
-        <meta name="description" content="Download Microgamma for Windows, macOS, and Linux. Take control of your music collection with self-hosted streaming, no subscriptions required." />
+        <meta
+          name="description"
+          content="Download Microgamma for Windows, macOS, and Linux. Take control of your music collection with self-hosted streaming, no subscriptions required."
+        />
       </Head>
 
       {/* Downloads Section */}
@@ -44,11 +47,12 @@ export default async function DownloadsPage() {
               Download <span class="gradient-text">Microgamma</span>
             </h1>
             <p class="text-xl mb-8 max-w-3xl mx-auto text-gray-200 drop-shadow">
-              Take ownership of your music collection. Join the underground revolution
-              where your music belongs to you - no subscriptions, no compromises,
-              no platform dictators.
+              Take ownership of your music collection. Join the underground
+              revolution where your music belongs to you - no subscriptions, no
+              compromises, no platform dictators.
             </p>
-            <div class="w-24 h-1 bg-primary-400 mx-auto mb-12 rounded-full"></div>
+            <div class="w-24 h-1 bg-primary-400 mx-auto mb-12 rounded-full">
+            </div>
           </div>
 
           {/* Download Cards Section */}
@@ -76,8 +80,8 @@ export default async function DownloadsPage() {
                     </h3>
                     <p class="text-gray-300 leading-relaxed">
                       Windows and macOS executables are not code signed. You may
-                      need to allow them in your security settings. This is normal
-                      for open-source software in active development.
+                      need to allow them in your security settings. This is
+                      normal for open-source software in active development.
                     </p>
                   </div>
                 </div>
@@ -110,7 +114,9 @@ export default async function DownloadsPage() {
                       </li>
                       <li class="flex items-start space-x-2">
                         <span class="text-primary-400 font-bold">5.</span>
-                        <span class="text-primary-300 font-semibold">Start streaming your owned music!</span>
+                        <span class="text-primary-300 font-semibold">
+                          Start streaming your owned music!
+                        </span>
                       </li>
                     </ol>
                   </div>
@@ -130,7 +136,9 @@ export default async function DownloadsPage() {
                 </p>
                 <div class="flex justify-center space-x-2 text-primary-400">
                   <span class="text-2xl">🎵</span>
-                  <span class="text-lg font-semibold">Welcome to the Ownership Movement</span>
+                  <span class="text-lg font-semibold">
+                    Welcome to the Ownership Movement
+                  </span>
                   <span class="text-2xl">🎵</span>
                 </div>
               </div>

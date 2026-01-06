@@ -60,10 +60,14 @@ export class NewsService {
     this.repoName = Deno.env.get("GITHUB_REPO_NAME") || "microgamma";
     this.devtoUsername = Deno.env.get("DEVTO_USERNAME") || "davidecavaliere";
     this.devtoTagFilter = Deno.env.get("DEVTO_TAG_FILTER") || "Microgamma";
-    this.devtoMaxArticles = parseInt(Deno.env.get("DEVTO_MAX_ARTICLES") || "20");
+    this.devtoMaxArticles = parseInt(
+      Deno.env.get("DEVTO_MAX_ARTICLES") || "20",
+    );
 
     if (!this.githubToken) {
-      console.warn("GITHUB_ACCESS_TOKEN not found. GitHub API calls will fail.");
+      console.warn(
+        "GITHUB_ACCESS_TOKEN not found. GitHub API calls will fail.",
+      );
     }
   }
 
@@ -72,22 +76,25 @@ export class NewsService {
       // Fetch from both sources in parallel
       const [githubReleases, devtoArticles] = await Promise.allSettled([
         this.fetchGitHubReleases(),
-        this.fetchDevToArticles()
+        this.fetchDevToArticles(),
       ]);
 
       const allNews: NewsItem[] = [];
 
       // Process GitHub releases
-      if (githubReleases.status === 'fulfilled') {
+      if (githubReleases.status === "fulfilled") {
         const githubNews = this.transformReleasesToNews(githubReleases.value);
         allNews.push(...githubNews);
         console.log(`Fetched ${githubNews.length} GitHub releases`);
       } else {
-        console.error("Failed to fetch GitHub releases:", githubReleases.reason);
+        console.error(
+          "Failed to fetch GitHub releases:",
+          githubReleases.reason,
+        );
       }
 
       // Process Dev.to articles
-      if (devtoArticles.status === 'fulfilled') {
+      if (devtoArticles.status === "fulfilled") {
         const devtoNews = this.transformDevToArticles(devtoArticles.value);
         allNews.push(...devtoNews);
         console.log(`Fetched ${devtoNews.length} Dev.to articles`);
@@ -117,18 +124,21 @@ export class NewsService {
   }
 
   private async fetchDevToArticles(): Promise<DevToArticle[]> {
-    const url = `https://dev.to/api/articles?username=${this.devtoUsername}&tag=${this.devtoTagFilter}&per_page=${this.devtoMaxArticles}`;
+    const url =
+      `https://dev.to/api/articles?username=${this.devtoUsername}&tag=${this.devtoTagFilter}&per_page=${this.devtoMaxArticles}`;
 
     try {
       const response = await fetch(url, {
         headers: {
           "Accept": "application/json",
-          "User-Agent": "Microgamma-News-Fetcher/1.0"
-        }
+          "User-Agent": "Microgamma-News-Fetcher/1.0",
+        },
       });
 
       if (!response.ok) {
-        throw new Error(`Dev.to API error: ${response.status} ${response.statusText}`);
+        throw new Error(
+          `Dev.to API error: ${response.status} ${response.statusText}`,
+        );
       }
 
       return await response.json();
@@ -139,29 +149,32 @@ export class NewsService {
   }
 
   private async fetchGitHubReleases(): Promise<GitHubRelease[]> {
-    const url = `${this.apiBaseUrl}/repos/${this.repoOwner}/${this.repoName}/releases`;
+    const url =
+      `${this.apiBaseUrl}/repos/${this.repoOwner}/${this.repoName}/releases`;
 
     const response = await fetch(url, {
       headers: {
         "Authorization": `token ${this.githubToken}`,
         "Accept": "application/vnd.github.v3+json",
-        "User-Agent": "Microgamma-News-Fetcher/1.0"
-      }
+        "User-Agent": "Microgamma-News-Fetcher/1.0",
+      },
     });
-
-
 
     if (!response.ok) {
       if (response.status === 401) {
         throw new Error("GitHub token is invalid or missing");
       }
       if (response.status === 403) {
-        throw new Error("GitHub API rate limit exceeded or insufficient permissions");
+        throw new Error(
+          "GitHub API rate limit exceeded or insufficient permissions",
+        );
       }
       if (response.status === 404) {
         throw new Error("GitHub repository not found or access denied");
       }
-      throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
+      throw new Error(
+        `GitHub API error: ${response.status} ${response.statusText}`,
+      );
     }
 
     return await response.json();
@@ -203,7 +216,7 @@ export class NewsService {
 
       // Format date
       const publishedAt = new Date(release.published_at);
-      const date = publishedAt.toISOString().split('T')[0];
+      const date = publishedAt.toISOString().split("T")[0];
 
       newsItems.push({
         slug,
@@ -216,20 +229,23 @@ export class NewsService {
         sourceUrl: release.html_url,
         publishedAt,
         isPrerelease: release.prerelease,
-        tagName: release.tag_name
+        tagName: release.tag_name,
       });
     }
 
     // Sort by publication date (newest first)
-    return newsItems.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
+    return newsItems.sort((a, b) =>
+      b.publishedAt.getTime() - a.publishedAt.getTime()
+    );
   }
 
   private transformDevToArticles(articles: DevToArticle[]): NewsItem[] {
-    return articles.map(article => {
+    return articles.map((article) => {
       const slug = this.generateSlug(article.title);
       const publishedAt = new Date(article.published_at);
-      const date = publishedAt.toISOString().split('T')[0];
-      const excerpt = article.description || this.createExcerpt(article.body_markdown);
+      const date = publishedAt.toISOString().split("T")[0];
+      const excerpt = article.description ||
+        this.createExcerpt(article.body_markdown);
       const readingTime = this.calculateReadingTime(article.body_markdown);
 
       return {
@@ -243,7 +259,7 @@ export class NewsService {
         sourceUrl: article.url,
         publishedAt,
         articleTags: article.tags,
-        readingTime
+        readingTime,
       };
     });
   }
@@ -252,9 +268,9 @@ export class NewsService {
     // Average reading speed: 200-250 words per minute
     // Count words in the content (rough approximation)
     const words = content
-      .replace(/[#*`]/g, '') // Remove markdown symbols
+      .replace(/[#*`]/g, "") // Remove markdown symbols
       .split(/\s+/)
-      .filter(word => word.length > 0);
+      .filter((word) => word.length > 0);
 
     const wordCount = words.length;
     const wordsPerMinute = 200; // Conservative estimate
@@ -265,22 +281,22 @@ export class NewsService {
   private generateSlug(title: string): string {
     return title
       .toLowerCase()
-      .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
-      .replace(/\s+/g, '-') // Replace spaces with hyphens
-      .replace(/-+/g, '-') // Replace multiple hyphens with single
+      .replace(/[^a-z0-9\s-]/g, "") // Remove special characters
+      .replace(/\s+/g, "-") // Replace spaces with hyphens
+      .replace(/-+/g, "-") // Replace multiple hyphens with single
       .trim()
-      .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+      .replace(/^-|-$/g, ""); // Remove leading/trailing hyphens
   }
 
   private createExcerpt(body: string): string {
     // Remove markdown headers, links, and clean up text
     const cleanBody = body
-      .replace(/^#+\s*.+$/gm, '') // Remove headers
-      .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // Remove links, keep text
-      .replace(/\*\*([^*]+)\*\*/g, '$1') // Remove bold
-      .replace(/\*([^*]+)\*/g, '$1') // Remove italic
-      .replace(/`([^`]+)`/g, '$1') // Remove inline code
-      .replace(/\n+/g, ' ') // Replace newlines with spaces
+      .replace(/^#+\s*.+$/gm, "") // Remove headers
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1") // Remove links, keep text
+      .replace(/\*\*([^*]+)\*\*/g, "$1") // Remove bold
+      .replace(/\*([^*]+)\*/g, "$1") // Remove italic
+      .replace(/`([^`]+)`/g, "$1") // Remove inline code
+      .replace(/\n+/g, " ") // Replace newlines with spaces
       .trim();
 
     // Take first 150 characters
@@ -290,13 +306,13 @@ export class NewsService {
 
     // Find last complete word within 150 characters
     const truncated = cleanBody.substring(0, 150);
-    const lastSpaceIndex = truncated.lastIndexOf(' ');
+    const lastSpaceIndex = truncated.lastIndexOf(" ");
 
     if (lastSpaceIndex > 0) {
-      return truncated.substring(0, lastSpaceIndex) + '...';
+      return truncated.substring(0, lastSpaceIndex) + "...";
     }
 
-    return truncated + '...';
+    return truncated + "...";
   }
 
   private getFallbackNews(): NewsItem[] {

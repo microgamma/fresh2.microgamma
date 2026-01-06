@@ -1,8 +1,8 @@
 import { useState } from "preact/hooks";
 import ImageOverlay from "../components/ImageOverlay.tsx";
 
-export default function Thumbnail({screenshot}: {
-  screenshot: {image: string; title: string; fallback?: string}
+export default function Thumbnail({ screenshot }: {
+  screenshot: { image: string; title: string; fallback?: string };
 }) {
   const [isOverlayOpen, setOverlayOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
@@ -19,7 +19,10 @@ export default function Thumbnail({screenshot}: {
   return (
     <>
       <div class="aspect-video bg-gray-800 flex items-center justify-center">
-        <button type="button" onClick={() => openOverlay(screenshot.fallback || screenshot.image)}>
+        <button
+          type="button"
+          onClick={() => openOverlay(screenshot.fallback || screenshot.image)}
+        >
           <picture>
             <source srcset={screenshot.image} type="image/webp" />
             <img

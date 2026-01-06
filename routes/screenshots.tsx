@@ -48,7 +48,10 @@ export default function ScreenshotsPage() {
     <>
       <Head>
         <title>Screenshots & Interface - Microgamma</title>
-        <meta name="description" content="Explore the Microgamma interface and features through screenshots. See how the underground music player puts you in control of your music collection." />
+        <meta
+          name="description"
+          content="Explore the Microgamma interface and features through screenshots. See how the underground music player puts you in control of your music collection."
+        />
       </Head>
 
       {/* Screenshots Section */}
@@ -63,10 +66,11 @@ export default function ScreenshotsPage() {
               Screenshots & <span class="gradient-text">Interface</span>
             </h1>
             <p class="text-xl mb-8 max-w-3xl mx-auto text-gray-200 drop-shadow">
-              See the underground music player that puts you in control.
-              Explore every pixel of the ownership revolution.
+              See the underground music player that puts you in control. Explore
+              every pixel of the ownership revolution.
             </p>
-            <div class="w-24 h-1 bg-primary-400 mx-auto mb-12 rounded-full"></div>
+            <div class="w-24 h-1 bg-primary-400 mx-auto mb-12 rounded-full">
+            </div>
           </div>
 
           {/* Screenshots Gallery */}
@@ -79,7 +83,8 @@ export default function ScreenshotsPage() {
                 >
                   <div class="relative overflow-hidden">
                     <Thumbnail screenshot={screenshot}></Thumbnail>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    </div>
                   </div>
                   <div class="p-6">
                     <div class="flex items-start justify-between mb-4">
@@ -107,8 +112,8 @@ export default function ScreenshotsPage() {
                 Experience the Revolution
               </h3>
               <p class="text-gray-300 mb-6">
-                Ready to see your music truly belong to you? Download Microgamma and
-                take control of your digital music destiny.
+                Ready to see your music truly belong to you? Download Microgamma
+                and take control of your digital music destiny.
               </p>
               <div class="flex justify-center space-x-2 text-primary-400">
                 <span class="text-2xl">🎵</span>

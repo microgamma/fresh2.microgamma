@@ -18,14 +18,15 @@ export function track(event: string, segmentation?: Record<string, unknown>) {
   });
 }
 
-export default function CountlyAnalytics({ appKey, url }: CountlyAnalyticsProps) {
-
+export default function CountlyAnalytics(
+  { appKey, url }: CountlyAnalyticsProps,
+) {
   useEffect(() => {
-    console.log({appKey, url});
+    console.log({ appKey, url });
 
     Countly.init({
-      app_key:  appKey,
-      url: url || 'https://master.count.ly',
+      app_key: appKey,
+      url: url || "https://master.count.ly",
       debug: true,
     });
 

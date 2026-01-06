@@ -1,5 +1,5 @@
 import { define } from "../utils.ts";
-import  kindeClient  from "../utils/auth.ts";
+import kindeClient from "../utils/auth.ts";
 
 export const handler = define.handlers({
   async GET(ctx) {

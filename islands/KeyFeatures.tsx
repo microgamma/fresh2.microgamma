@@ -10,7 +10,7 @@ export default function KeyFeatures() {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     const cards = document.querySelectorAll(".fade-in");
@@ -31,7 +31,8 @@ export default function KeyFeatures() {
               🎵 Own Your Sound
             </h3>
             <p>
-              Stream your entire music library with complete ownership. Never lose access to what you've collected.
+              Stream your entire music library with complete ownership. Never
+              lose access to what you've collected.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
@@ -39,7 +40,8 @@ export default function KeyFeatures() {
               📀 Audiophile Freedom
             </h3>
             <p>
-              High-fidelity audio streaming that respects your ears. Peer-to-peer quality without compromises.
+              High-fidelity audio streaming that respects your ears.
+              Peer-to-peer quality without compromises.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
@@ -47,7 +49,8 @@ export default function KeyFeatures() {
               🔒 Privacy by Design
             </h3>
             <p>
-              Your music stays on your devices. No ads, no tracking, no platform surveillance. Just pure listening.
+              Your music stays on your devices. No ads, no tracking, no platform
+              surveillance. Just pure listening.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
@@ -55,7 +58,8 @@ export default function KeyFeatures() {
               ⚡ Zero-Setup Revolution
             </h3>
             <p>
-              Download, launch, select your music folder. Instant streaming without the subscription hassle.
+              Download, launch, select your music folder. Instant streaming
+              without the subscription hassle.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
@@ -63,7 +67,8 @@ export default function KeyFeatures() {
               🔍 Your Search, Your Rules
             </h3>
             <p>
-              Find any song, artist, or album instantly. Fuzzy search that understands how you think about music.
+              Find any song, artist, or album instantly. Fuzzy search that
+              understands how you think about music.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
@@ -71,7 +76,8 @@ export default function KeyFeatures() {
               📋 Curate Your Knowledge
             </h3>
             <p>
-              Our AI discovers album and artist info for you. Build the ultimate music encyclopedia in your collection.
+              Our AI discovers album and artist info for you. Build the ultimate
+              music encyclopedia in your collection.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
@@ -79,7 +85,8 @@ export default function KeyFeatures() {
               🎤 Lyrics You Control
             </h3>
             <p>
-              Add synchronized lyrics to your tracks. Perfect karaoke or just following along with your favorites.
+              Add synchronized lyrics to your tracks. Perfect karaoke or just
+              following along with your favorites.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
@@ -87,7 +94,8 @@ export default function KeyFeatures() {
               🎨 Your Covers, Your Choice
             </h3>
             <p>
-              Never let anyone change what your favorite albums look like. Choose covers from Discogs or your own scans.
+              Never let anyone change what your favorite albums look like.
+              Choose covers from Discogs or your own scans.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
@@ -95,7 +103,8 @@ export default function KeyFeatures() {
               🔧 Hack Your Experience
             </h3>
             <p>
-              JSON metadata you can manipulate with our open libraries. Customize everything to your liking.
+              JSON metadata you can manipulate with our open libraries.
+              Customize everything to your liking.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
@@ -103,7 +112,8 @@ export default function KeyFeatures() {
               📱 Unified Control
             </h3>
             <p>
-              Control your music from any device. Start on desktop, continue on phone. Seamless everywhere.
+              Control your music from any device. Start on desktop, continue on
+              phone. Seamless everywhere.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
@@ -111,7 +121,8 @@ export default function KeyFeatures() {
               🔊 Multi-Room Freedom
             </h3>
             <p>
-              Stream to your home stereo, headphones, or both simultaneously. Your music, your spaces.
+              Stream to your home stereo, headphones, or both simultaneously.
+              Your music, your spaces.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
@@ -119,7 +130,8 @@ export default function KeyFeatures() {
               🔄 Effortless Switching
             </h3>
             <p>
-              Move between devices without missing a beat. Music flows where you want it, when you want it.
+              Move between devices without missing a beat. Music flows where you
+              want it, when you want it.
             </p>
           </div>
         </div>

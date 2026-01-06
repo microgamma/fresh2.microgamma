@@ -13,7 +13,10 @@ export default async function NewsArticlePage(
       <>
         <Head>
           <title>Article Not Found - Microgamma</title>
-          <meta name="description" content="The requested news article could not be found." />
+          <meta
+            name="description"
+            content="The requested news article could not be found."
+          />
         </Head>
         <div class="min-h-screen text-white px-4 py-8 relative overflow-hidden vaporwave-bg">
           {/* Background overlay for better text readability */}
@@ -32,7 +35,9 @@ export default async function NewsArticlePage(
                   class="inline-flex items-center space-x-2 text-primary-400 hover:text-primary-300 transition-all duration-200 font-medium group"
                 >
                   <span>← Back to News</span>
-                  <span class="group-hover:translate-x-1 transition-transform duration-200">→</span>
+                  <span class="group-hover:translate-x-1 transition-transform duration-200">
+                    →
+                  </span>
                 </a>
               </div>
             </div>
@@ -61,15 +66,17 @@ export default async function NewsArticlePage(
                     {article.title}
                   </h1>
                   <div class="flex flex-wrap items-center gap-4 mb-4">
-                    <span class={`px-3 py-1 rounded-full text-sm font-medium ${
-                      article.type === "GitHub Release"
-                        ? "text-green-400 bg-green-900/50"
-                        : article.type === "Pre-release"
-                        ? "text-yellow-400 bg-yellow-900/50"
-                        : article.type === "Dev.to Article"
-                        ? "text-purple-400 bg-purple-900/50"
-                        : "text-gray-400 bg-gray-900/50"
-                    }`}>
+                    <span
+                      class={`px-3 py-1 rounded-full text-sm font-medium ${
+                        article.type === "GitHub Release"
+                          ? "text-green-400 bg-green-900/50"
+                          : article.type === "Pre-release"
+                          ? "text-yellow-400 bg-yellow-900/50"
+                          : article.type === "Dev.to Article"
+                          ? "text-purple-400 bg-purple-900/50"
+                          : "text-gray-400 bg-gray-900/50"
+                      }`}
+                    >
                       {article.type}
                     </span>
                     {article.tagName && (
@@ -92,7 +99,7 @@ export default async function NewsArticlePage(
               {/* Article tags for Dev.to articles */}
               {article.articleTags && article.articleTags.length > 0 && (
                 <div class="flex flex-wrap gap-2 mb-6">
-                  {article.articleTags.map(tag => (
+                  {article.articleTags.map((tag) => (
                     <span class="px-3 py-1 bg-primary-900/30 text-primary-300 rounded text-sm border border-primary-400/20">
                       #{tag}
                     </span>
@@ -117,8 +124,14 @@ export default async function NewsArticlePage(
                     class="inline-flex items-center space-x-2 text-primary-400 hover:text-primary-300 transition-all duration-200 font-medium group"
                   >
                     <span>{article.source === "github" ? "🐙" : "📝"}</span>
-                    <span>{article.source === "github" ? "View on GitHub" : "Read on Dev.to"}</span>
-                    <span class="group-hover:translate-x-1 transition-transform duration-200">→</span>
+                    <span>
+                      {article.source === "github"
+                        ? "View on GitHub"
+                        : "Read on Dev.to"}
+                    </span>
+                    <span class="group-hover:translate-x-1 transition-transform duration-200">
+                      →
+                    </span>
                   </a>
                 </div>
               )}
@@ -130,7 +143,9 @@ export default async function NewsArticlePage(
                   class="inline-flex items-center space-x-2 text-primary-400 hover:text-primary-300 transition-all duration-200 font-medium group"
                 >
                   <span>← Back to News</span>
-                  <span class="group-hover:translate-x-1 transition-transform duration-200">→</span>
+                  <span class="group-hover:translate-x-1 transition-transform duration-200">
+                    →
+                  </span>
                 </a>
               </div>
             </article>
