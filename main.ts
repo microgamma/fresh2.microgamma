@@ -1,7 +1,6 @@
 import { App, cors, staticFiles } from "fresh";
 import { type State } from "./utils.ts";
-import { kindeClient } from "./utils/auth.ts";
-import { sessionManager } from "./utils/SessionManager.ts";
+import kindeClient from "./utils/auth.ts";
 import { getDebugger } from "@microphi/debug";
 
 const d = getDebugger('microgamma:www');
@@ -25,7 +24,7 @@ app.use(async (ctx) => {
 
   try {
 
-    const user = await kindeClient.getUser(sessionManager);
+    const user = await kindeClient.getUser();
     console.log('User is authenticated', user);
 
     ctx.state.user = user;

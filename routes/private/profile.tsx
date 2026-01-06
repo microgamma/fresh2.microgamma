@@ -1,11 +1,11 @@
 import { Head } from "fresh/runtime";
 import { define } from "../../utils.ts";
-import { kindeClient } from "../../utils/auth.ts";
+import kindeClient from "../../utils/auth.ts";
 import { sessionManager } from "../../utils/SessionManager.ts";
 
 export default define.page(async function ProfilePage(ctx) {
   const user = ctx.state.user;
-  const permissions = await kindeClient.getPermissions(sessionManager);
+  const permissions = await kindeClient.getPermissions();
 
 
 
