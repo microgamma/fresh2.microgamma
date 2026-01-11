@@ -66,9 +66,10 @@ export default define.page(function Home(ctx) {
             What is Microgamma?
           </h2>
           <p class="text-xl mb-6">
-            Microgamma is a music player on steroids. It combines the power of
-            modern streaming with complete ownership and control over your music
-            collection.
+            Microgamma is a modern music player that embraces simplicity and
+            performance. Take complete ownership of your music collection with
+            full remote control capabilities and the ability to stream
+            seamlessly to any device.
           </p>
           <p class="text-lg text-gray-300">
             Unlike traditional platforms, Microgamma lets you curate your

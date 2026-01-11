@@ -5,13 +5,14 @@ import { State } from "../utils.ts";
 interface LayoutProps {
   children?: ComponentChildren;
   user?: State["user"];
+  roles?: string[];
 }
 
-export default function MainLayout({ children, user }: LayoutProps) {
+export default function MainLayout({ children, user, roles }: LayoutProps) {
   return (
     <div class="min-h-screen bg-gray-900">
       <a href="#main-content" class="skip-link">Skip to main content</a>
-      <Header user={user} />
+      <Header user={user} roles={roles} />
       <main id="main-content">
         {children}
       </main>

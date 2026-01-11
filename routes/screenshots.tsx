@@ -2,7 +2,7 @@ import { Head } from "fresh/runtime";
 import MainLayout from "../components/MainLayout.tsx";
 import Thumbnail from "../islands/Thumbnail.tsx";
 
-export default function ScreenshotsPage() {
+export default function GalleryPage() {
   const screenshots = [
     {
       title: "Main Interface",
@@ -47,10 +47,10 @@ export default function ScreenshotsPage() {
   return (
     <>
       <Head>
-        <title>Screenshots & Interface - Microgamma</title>
+        <title>Gallery & Interface - Microgamma</title>
         <meta
           name="description"
-          content="Explore the Microgamma interface and features through screenshots. See how the underground music player puts you in control of your music collection."
+          content="Explore the Microgamma interface and features through our gallery. See how the music ownership player puts you in control of your digital collection."
         />
       </Head>
 
@@ -63,10 +63,10 @@ export default function ScreenshotsPage() {
           {/* Hero Section */}
           <div class="text-center mb-16">
             <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
-              Screenshots & <span class="gradient-text">Interface</span>
+              Gallery & <span class="gradient-text">Interface</span>
             </h1>
             <p class="text-xl mb-8 max-w-3xl mx-auto text-gray-200 drop-shadow">
-              See the underground music player that puts you in control. Explore
+              See the music ownership player that puts you in control. Explore
               every pixel of the ownership revolution.
             </p>
             <div class="w-24 h-1 bg-primary-400 mx-auto mb-12 rounded-full">
@@ -109,7 +109,7 @@ export default function ScreenshotsPage() {
           <div class="text-center mt-16">
             <div class="card-glow p-8 rounded-xl bg-accent-900/80 backdrop-blur-sm border border-primary-400/50 max-w-2xl mx-auto">
               <h3 class="text-2xl font-bold mb-4 text-primary-300">
-                Experience the Revolution
+                Experience the Ownership Revolution
               </h3>
               <p class="text-gray-300 mb-6">
                 Ready to see your music truly belong to you? Download Microgamma

@@ -45,11 +45,7 @@ class KindeClient {
       console.log("User is not authenticated! Cannot get permissions.");
     }
 
-    return [];
-  }
-
-  getRoles() {
-    return this.kindeClient.getUserOrganizations;
+    return { permissions: [] };
   }
 }
 

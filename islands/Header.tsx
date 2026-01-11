@@ -4,9 +4,10 @@ import { State } from "../utils.ts";
 
 interface HeaderProps {
   user?: State["user"];
+  roles?: string[];
 }
 
-export default function Header({ user }: HeaderProps) {
+export default function Header({ user, roles }: HeaderProps) {
   const scrolled = useSignal(false);
   console.log({ user });
 
@@ -52,12 +53,22 @@ export default function Header({ user }: HeaderProps) {
               News
             </a>
           </li>
+          {roles?.includes("admin") && (
+            <li>
+              <a
+                href="/private/dashboard"
+                class={`hover:text-primary-400 transition`}
+              >
+                Dashboard
+              </a>
+            </li>
+          )}
           <li>
             <a
               href="/screenshots"
               class={`hover:text-primary-400 transition`}
             >
-              Screenshots
+              Gallery
             </a>
           </li>
           <li>

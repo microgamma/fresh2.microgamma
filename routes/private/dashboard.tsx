@@ -1,5 +1,4 @@
 import { define } from "../../utils.ts";
-import MainLayout from "../../components/MainLayout.tsx";
 import { Head } from "fresh/runtime";
 
 export default define.page(function DashboardPage(ctx) {
@@ -9,79 +8,158 @@ export default define.page(function DashboardPage(ctx) {
   return (
     <>
       <Head>
-        <title>Dashboard - Microgamma</title>
+        <title>Subscription Dashboard - Microgamma</title>
         <meta
           name="description"
-          content="Access your Microgamma dashboard to manage your music collection, view statistics, and control your streaming settings."
+          content="Manage your Microgamma subscription, view premium features, and upgrade your account."
         />
       </Head>
-      <MainLayout>
-        <div className="container mx-auto py-20 px-4">
-          <div className="max-w-4xl mx-auto bg-gray-900 rounded-xl p-8 shadow-lg">
-            <h1 className="text-4xl font-bold mb-8 text-pink-400 text-center">
-              Dashboard
-            </h1>
+      <div class="min-h-screen text-white px-4 py-8 relative overflow-hidden vaporwave-bg">
+        {/* Background overlay for better text readability */}
+        <div class="absolute inset-0 bg-black/60"></div>
+        <div class="relative z-10">
+          <div class="max-w-4xl mx-auto">
+            <div class="card-glow bg-black/60 backdrop-blur-sm rounded-lg border border-primary-400/30 p-8 mb-8">
+              <h1 class="text-2xl md-3xl font-bold text-primary-400 text-center mb-2">
+                Subscription Dashboard
+              </h1>
+              <p class="text-gray-300 text-center">
+                Manage your subscription and unlock premium features
+              </p>
+            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-gray-800 p-6 rounded-lg text-center">
-                <h3 className="text-2xl font-semibold text-pink-400 mb-2">
-                  My Music
-                </h3>
-                <p className="text-3xl font-bold text-white">1,248</p>
-                <p className="text-gray-400">Songs</p>
-              </div>
-
-              <div className="bg-gray-800 p-6 rounded-lg text-center">
-                <h3 className="text-2xl font-semibold text-pink-400 mb-2">
-                  Playlists
-                </h3>
-                <p className="text-3xl font-bold text-white">24</p>
-                <p className="text-gray-400">Active</p>
-              </div>
-
-              <div className="bg-gray-800 p-6 rounded-lg text-center">
-                <h3 className="text-2xl font-semibold text-pink-400 mb-2">
-                  Listening Time
-                </h3>
-                <p className="text-3xl font-bold text-white">168</p>
-                <p className="text-gray-400">Hours this month</p>
+            {/* Current Plan Status */}
+            <div class="card-glow bg-black/60 backdrop-blur-sm rounded-lg border border-primary-400/30 p-8 mb-8">
+              <h3 class="text-xl font-semibold text-primary-400 mb-6 pb-4 border-b border-primary-400/20">
+                Current Plan
+              </h3>
+              <div class="flex items-center justify-between">
+                <div>
+                  <h4 class="text-lg font-medium text-white mb-1">Free Tier</h4>
+                  <p class="text-gray-300 text-sm">Basic features included</p>
+                </div>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-900/50 text-primary-300 border border-primary-400/30">
+                  Active
+                </span>
               </div>
             </div>
 
-            <div className="bg-gray-800 p-6 rounded-lg mb-8">
-              <h2 className="text-2xl font-semibold text-pink-400 mb-4">
-                Recent Activity
-              </h2>
-              <ul className="space-y-3">
-                <li className="flex items-center justify-between border-b border-gray-700 pb-3">
-                  <span className="text-white">
-                    Played "Bohemian Rhapsody" by Queen
-                  </span>
-                  <span className="text-gray-400">2 hours ago</span>
-                </li>
-                <li className="flex items-center justify-between border-b border-gray-700 pb-3">
-                  <span className="text-white">
-                    Added "Blinding Lights" to favorites
-                  </span>
-                  <span className="text-gray-400">Yesterday</span>
-                </li>
-                <li className="flex items-center justify-between">
-                  <span className="text-white">
-                    Created playlist "Chill Vibes"
-                  </span>
-                  <span className="text-gray-400">Jan 1, 2026</span>
-                </li>
-              </ul>
+            {/* Premium Features */}
+            <div class="card-glow bg-black/60 backdrop-blur-sm rounded-lg border border-primary-400/30 p-8 mb-8">
+              <h3 class="text-xl font-semibold text-primary-400 mb-6 pb-4 border-b border-primary-400/20">
+                Premium Features
+              </h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-gray-800/50 p-6 rounded-lg">
+                  <h4 class="text-lg font-semibold text-primary-300 mb-3">
+                    🤖 AI-Powered Discovery
+                  </h4>
+                  <p class="text-gray-300 text-sm mb-4">
+                    Smart recommendations and metadata enrichment using your own
+                    API keys.
+                  </p>
+                  <button
+                    type="button"
+                    class="bg-primary-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-400 transition"
+                  >
+                    Upgrade to Premium
+                  </button>
+                </div>
+                <div class="bg-gray-800/50 p-6 rounded-lg">
+                  <h4 class="text-lg font-semibold text-primary-300 mb-3">
+                    🖥️ Self-Hosted Freedom
+                  </h4>
+                  <p class="text-gray-300 text-sm mb-4">
+                    Run your own Microgamma server with complete control over
+                    your data.
+                  </p>
+                  <button
+                    type="button"
+                    class="bg-primary-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-400 transition"
+                  >
+                    Upgrade to Premium
+                  </button>
+                </div>
+                <div class="bg-gray-800/50 p-6 rounded-lg">
+                  <h4 class="text-lg font-semibold text-primary-300 mb-3">
+                    📱 Multi-Device Sync
+                  </h4>
+                  <p class="text-gray-300 text-sm mb-4">
+                    Seamless streaming across all your devices with premium
+                    sync.
+                  </p>
+                  <button
+                    type="button"
+                    class="bg-primary-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-400 transition"
+                  >
+                    Upgrade to Premium
+                  </button>
+                </div>
+                <div class="bg-gray-800/50 p-6 rounded-lg">
+                  <h4 class="text-lg font-semibold text-primary-300 mb-3">
+                    🌐 Cloud Storage Integration
+                  </h4>
+                  <p class="text-gray-300 text-sm mb-4">
+                    Upload and manage your music in any cloud provider with
+                    advanced tools.
+                  </p>
+                  <button
+                    type="button"
+                    class="bg-primary-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-400 transition"
+                  >
+                    Upgrade to Premium
+                  </button>
+                </div>
+              </div>
             </div>
 
-            <div className="text-center">
-              <button className="bg-pink-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-pink-600 transition">
-                Explore More
-              </button>
+            {/* Plan Comparison */}
+            <div class="card-glow bg-black/60 backdrop-blur-sm rounded-lg border border-primary-400/30 p-8 mb-8">
+              <h3 class="text-xl font-semibold text-primary-400 mb-6 pb-4 border-b border-primary-400/20">
+                Plan Comparison
+              </h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-gray-800/50 p-6 rounded-lg border border-gray-600">
+                  <h4 class="text-lg font-semibold text-white mb-3">
+                    Free Tier
+                  </h4>
+                  <ul class="text-gray-300 text-sm space-y-2 mb-4">
+                    <li>✓ Basic music streaming</li>
+                    <li>✓ Local music library</li>
+                    <li>✓ Manual metadata editing</li>
+                    <li>✗ AI features</li>
+                    <li>✗ Self-hosted options</li>
+                  </ul>
+                  <p class="text-primary-300 font-medium">$0/month</p>
+                </div>
+                <div class="bg-primary-900/20 p-6 rounded-lg border border-primary-400/50">
+                  <h4 class="text-lg font-semibold text-primary-300 mb-3">
+                    Premium
+                  </h4>
+                  <ul class="text-gray-300 text-sm space-y-2 mb-4">
+                    <li>✓ Everything in Free</li>
+                    <li>✓ AI-powered discovery</li>
+                    <li>✓ Self-hosted infrastructure</li>
+                    <li>✓ Multi-device premium sync</li>
+                    <li>✓ Priority support</li>
+                  </ul>
+                  <p class="text-primary-300 font-medium">$9.99/month</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Billing History */}
+            <div class="card-glow bg-black/60 backdrop-blur-sm rounded-lg border border-primary-400/30 p-8">
+              <h3 class="text-xl font-semibold text-primary-400 mb-6 pb-4 border-b border-primary-400/20">
+                Billing History
+              </h3>
+              <p class="text-gray-300 text-center">
+                No billing history available
+              </p>
             </div>
           </div>
         </div>
-      </MainLayout>
+      </div>
     </>
   );
 });

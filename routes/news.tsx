@@ -28,7 +28,7 @@ export default async function NewsPage() {
             <p class="text-xl mb-8 max-w-3xl mx-auto text-gray-200 drop-shadow">
               Stay connected with the latest developments, technical insights,
               and announcements from the{" "}
-              <span class="text-primary-300">ownership revolution</span>.
+              <span class="text-primary-300">music ownership revolution</span>.
             </p>
             <div class="w-24 h-1 bg-primary-400 mx-auto mb-12 rounded-full">
             </div>
@@ -121,7 +121,7 @@ export default async function NewsPage() {
                 <div class="flex justify-center space-x-2 text-primary-400">
                   <span class="text-2xl">📰</span>
                   <span class="text-lg font-semibold">
-                    Latest from the Revolution
+                    Latest from the Ownership Revolution
                   </span>
                   <span class="text-2xl">📰</span>
                 </div>

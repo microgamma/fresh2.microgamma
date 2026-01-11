@@ -47,7 +47,7 @@ export default async function DownloadsPage() {
               Download <span class="gradient-text">Microgamma</span>
             </h1>
             <p class="text-xl mb-8 max-w-3xl mx-auto text-gray-200 drop-shadow">
-              Take ownership of your music collection. Join the underground
+              Take ownership of your music collection. Join the ownership
               revolution where your music belongs to you - no subscriptions, no
               compromises, no platform dictators.
             </p>
@@ -131,8 +131,8 @@ export default async function DownloadsPage() {
                   Ready to Own Your Music?
                 </h3>
                 <p class="text-gray-300 mb-6">
-                  Join thousands of music enthusiasts who've taken back control.
-                  Your collection, your rules, your revolution.
+                  Join music enthusiasts who've taken back control. Your
+                  collection, your rules, your revolution.
                 </p>
                 <div class="flex justify-center space-x-2 text-primary-400">
                   <span class="text-2xl">🎵</span>

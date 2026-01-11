@@ -49,7 +49,7 @@ export default function KeyFeatures() {
               🔒 Privacy by Design
             </h3>
             <p>
-              Your music stays on your devices. No ads, no tracking, no platform
+              Your music stays on your device. No ads, no tracking, no platform
               surveillance. Just pure listening.
             </p>
           </div>
