@@ -1,39 +1,11 @@
 import { Head } from "fresh/runtime";
 import MainLayout from "../../components/MainLayout.tsx";
+import { newsService } from "../../utils/newsService.ts";
 
-  const newsItems = [
-    {
-      slug: "microgamma-v2-40-3-released",
-      date: "2025-09-20",
-      title: "Microgamma v2.40.3 Released",
-      type: "Release Notes",
-      excerpt: "New version with improved audio streaming and bug fixes. Download now from the downloads page.",
-      content:
-        "We are excited to announce the release of Microgamma v2.40.3! This update includes significant improvements to audio streaming performance, several bug fixes, and enhanced stability. Key features include better WebRTC connection handling and optimized memory usage. Download the latest version from our downloads page.",
-    },
-    {
-      slug: "technical-webrtc-audio-streaming",
-      date: "2025-09-15",
-      title: "Technical Deep Dive: WebRTC Audio Streaming",
-      type: "Technical Article",
-      excerpt: "Learn how Microgamma uses WebRTC for peer-to-peer audio streaming without server overhead.",
-      content:
-        "WebRTC (Web Real-Time Communication) is the backbone of Microgamma's audio streaming technology. Unlike traditional streaming services that route audio through centralized servers, Microgamma establishes direct peer-to-peer connections between your device and the player. This approach eliminates latency, reduces bandwidth costs, and ensures your music stays private. In this article, we explore the technical implementation and benefits of this innovative approach.",
-    },
-    {
-      slug: "important-update-code-signing",
-      date: "2025-09-10",
-      title: "Important Update: Code Signing",
-      type: "News Update",
-      excerpt: "Windows and macOS executables are not code signed. Please allow them in your security settings.",
-      content:
-        "Due to our commitment to open-source development and avoiding proprietary code signing certificates, Microgamma executables for Windows and macOS are not digitally signed. This may trigger security warnings on your system. Rest assured, Microgamma is safe to use - simply allow the application in your security settings when prompted. We are exploring options for code signing in future releases.",
-    },
-  ];
-
-export default function NewsArticlePage(
+export default async function NewsArticlePage(
   { params }: { params: { slug: string } },
 ) {
+  const newsItems = await newsService.getNews();
   const article = newsItems.find((item) => item.slug === params.slug);
 
   if (!article) {
@@ -41,22 +13,36 @@ export default function NewsArticlePage(
       <>
         <Head>
           <title>Article Not Found - Microgamma</title>
+          <meta
+            name="description"
+            content="The requested news article could not be found."
+          />
         </Head>
-        <MainLayout>
-          <section class="bg-primary text-white py-20 px-4 min-h-screen flex items-center">
-            <div class="container mx-auto text-center">
-              <h1 class="text-5xl font-bold mb-8 text-pink-400">
-                Article Not Found
-              </h1>
-              <p class="text-xl mb-8">
-                The requested article could not be found.
-              </p>
-              <a href="/news" class="text-pink-400 hover:text-pink-300">
-                ← Back to News
-              </a>
+        <div class="min-h-screen text-white px-4 py-8 relative overflow-hidden vaporwave-bg">
+          {/* Background overlay for better text readability */}
+          <div class="absolute inset-0 bg-black/60"></div>
+          <div class="relative z-10">
+            <div class="max-w-4xl mx-auto">
+              <div class="card-glow bg-black/60 backdrop-blur-sm rounded-lg border border-primary-400/30 p-8 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-8 text-primary-400">
+                  Article Not Found
+                </h1>
+                <p class="text-xl mb-8 text-gray-300">
+                  The requested news article could not be found.
+                </p>
+                <a
+                  href="/news"
+                  class="inline-flex items-center space-x-2 text-primary-400 hover:text-primary-300 transition-all duration-200 font-medium group"
+                >
+                  <span>← Back to News</span>
+                  <span class="group-hover:translate-x-1 transition-transform duration-200">
+                    →
+                  </span>
+                </a>
+              </div>
             </div>
-          </section>
-        </MainLayout>
+          </div>
+        </div>
       </>
     );
   }
@@ -68,36 +54,104 @@ export default function NewsArticlePage(
         <meta name="description" content={article.excerpt} />
       </Head>
 
-      <MainLayout>
-        <section class="bg-primary text-white py-20 px-4 min-h-screen">
-          <div class="container mx-auto max-w-4xl">
-            <article class="bg-gray-900 p-8 rounded-lg border border-pink-400">
+      <div class="min-h-screen text-white px-4 py-8 relative overflow-hidden vaporwave-bg">
+        {/* Background overlay for better text readability */}
+        <div class="absolute inset-0 bg-black/60"></div>
+        <div class="relative z-10">
+          <div class="max-w-4xl mx-auto py-20">
+            <article class="card-glow bg-black/60 backdrop-blur-sm p-8 rounded-lg border border-primary-400/30">
               <div class="flex justify-between items-start mb-6">
-                <h1 class="text-4xl font-bold text-pink-400">
-                  {article.title}
-                </h1>
-                <span class="text-sm text-cyan-400 bg-cyan-900 px-3 py-1 rounded">
-                  {article.type}
-                </span>
+                <div class="flex-1">
+                  <h1 class="text-3xl md:text-4xl font-bold text-primary-400 mb-4 leading-tight">
+                    {article.title}
+                  </h1>
+                  <div class="flex flex-wrap items-center gap-4 mb-4">
+                    <span
+                      class={`px-3 py-1 rounded-full text-sm font-medium ${
+                        article.type === "GitHub Release"
+                          ? "text-green-400 bg-green-900/50"
+                          : article.type === "Pre-release"
+                          ? "text-yellow-400 bg-yellow-900/50"
+                          : article.type === "Dev.to Article"
+                          ? "text-purple-400 bg-purple-900/50"
+                          : "text-gray-400 bg-gray-900/50"
+                      }`}
+                    >
+                      {article.type}
+                    </span>
+                    {article.tagName && (
+                      <span class="text-sm text-gray-400 bg-gray-800/50 px-3 py-1 rounded-full">
+                        {article.tagName}
+                      </span>
+                    )}
+                    {article.readingTime && (
+                      <span class="text-sm text-primary-400 bg-primary-900/50 px-3 py-1 rounded-full">
+                        {article.readingTime}min read
+                      </span>
+                    )}
+                    <span class="flex items-center text-gray-400 text-sm">
+                      📅 {article.date}
+                    </span>
+                  </div>
+                </div>
               </div>
-              <p class="text-gray-300 mb-8 text-lg">{article.date}</p>
-              <div class="prose prose-invert max-w-none">
-                <p class="text-white text-lg leading-relaxed">
+
+              {/* Article tags for Dev.to articles */}
+              {article.articleTags && article.articleTags.length > 0 && (
+                <div class="flex flex-wrap gap-2 mb-6">
+                  {article.articleTags.map((tag) => (
+                    <span class="px-3 py-1 bg-primary-900/30 text-primary-300 rounded text-sm border border-primary-400/20">
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {/* Release Content */}
+              <div class="prose prose-invert max-w-none mb-8">
+                <div class="text-gray-300 leading-relaxed whitespace-pre-wrap">
                   {article.content}
-                </p>
+                </div>
               </div>
-              <div class="mt-8 pt-6 border-t border-gray-700">
+
+              {/* Source Link */}
+              {article.sourceUrl && (
+                <div class="mb-8 p-4 bg-primary-900/20 rounded-lg border border-primary-400/20">
+                  <a
+                    href={article.sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center space-x-2 text-primary-400 hover:text-primary-300 transition-all duration-200 font-medium group"
+                  >
+                    <span>{article.source === "github" ? "🐙" : "📝"}</span>
+                    <span>
+                      {article.source === "github"
+                        ? "View on GitHub"
+                        : "Read on Dev.to"}
+                    </span>
+                    <span class="group-hover:translate-x-1 transition-transform duration-200">
+                      →
+                    </span>
+                  </a>
+                </div>
+              )}
+
+              {/* Navigation */}
+              <div class="pt-6 border-t border-primary-400/20">
                 <a
                   href="/news"
-                  class="text-pink-400 hover:text-pink-300 transition"
+                  class="inline-flex items-center space-x-2 text-primary-400 hover:text-primary-300 transition-all duration-200 font-medium group"
                 >
-                  ← Back to News
+                  <span>← Back to News</span>
+                  <span class="group-hover:translate-x-1 transition-transform duration-200">
+                    →
+                  </span>
                 </a>
               </div>
             </article>
           </div>
-        </section>
-      </MainLayout>
+        </div>
+      </div>
     </>
   );
 }

@@ -22,5 +22,5 @@ export const sessionManager: SessionManager = {
     for await (const entry of iter) {
       await kv.delete(entry.key);
     }
-  }
+  },
 };

@@ -66,7 +66,7 @@ export default define.page(function App({ Component, state, route }) {
       <body f-client-nav>
         {route?.startsWith("/private")
           ? (
-            <PrivateLayout>
+            <PrivateLayout roles={state.roles}>
               <Partial name="body">
                 <Component />
               </Partial>

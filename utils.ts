@@ -4,8 +4,13 @@ import { UserType } from "@kinde-oss/kinde-typescript-sdk";
 // This specifies the type of "ctx.state" which is used to share
 // data among middlewares, layouts and routes.
 export interface State {
+  roles: (
+    sessionManager:
+      import("file:///home/dcavaliere/dev/fresh2a.microgamma/$node_modules/.deno/@kinde-oss+kinde-typescript-sdk@2.13.0/$node_modules/@kinde-oss/kinde-typescript-sdk/dist/types/index").SessionManager,
+  ) => Promise<{ orgCodes: string[] }>;
   user: UserType;
   shared: string;
+  roles: string[];
 }
 
 export const define = createDefine<State>();
@@ -16,7 +21,7 @@ export async function cachedFetch(
   url: string,
   options?: RequestInit,
 ): Promise<any> {
-  console.log('requesting url', url);
+  console.log("requesting url", url);
   const key = url + JSON.stringify(options || {});
   if (cache.has(key)) {
     return cache.get(key);

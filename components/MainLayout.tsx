@@ -5,13 +5,14 @@ import { State } from "../utils.ts";
 interface LayoutProps {
   children?: ComponentChildren;
   user?: State["user"];
+  roles?: string[];
 }
 
-export default function MainLayout({ children, user }: LayoutProps) {
+export default function MainLayout({ children, user, roles }: LayoutProps) {
   return (
     <div class="min-h-screen bg-gray-900">
       <a href="#main-content" class="skip-link">Skip to main content</a>
-      <Header user={user} />
+      <Header user={user} roles={roles} />
       <main id="main-content">
         {children}
       </main>
@@ -21,7 +22,9 @@ export default function MainLayout({ children, user }: LayoutProps) {
           <div class="mb-6">
             <h3 class="text-2xl font-bold text-primary-400 mb-4">Microgamma</h3>
             <p class="text-gray-300">Own Your Music. Own Your Sound.</p>
-            <p class="text-primary-300 text-sm mt-2">Part of the music ownership resistance</p>
+            <p class="text-primary-300 text-sm mt-2">
+              Part of the music ownership resistance
+            </p>
           </div>
           <div class="flex justify-center space-x-8 mb-6">
             <a

@@ -1,45 +1,17 @@
 import { Head } from "fresh/runtime";
-import MainLayout from "../components/MainLayout.tsx";
+import { newsService } from "../utils/newsService.ts";
 
-export default function NewsPage() {
-  const newsItems = [
-    {
-      slug: "microgamma-v2-40-3-released",
-      date: "2025-09-20",
-      title: "Microgamma v2.40.3 Released",
-      type: "Release Notes",
-      excerpt:
-        "New version with improved audio streaming and bug fixes. Download now from the downloads page.",
-      content:
-        "We are excited to announce the release of Microgamma v2.40.3! This update includes significant improvements to audio streaming performance, several bug fixes, and enhanced stability. Key features include better WebRTC connection handling and optimized memory usage. Download the latest version from our downloads page.",
-    },
-    {
-      slug: "technical-webrtc-audio-streaming",
-      date: "2025-09-15",
-      title: "Technical Deep Dive: WebRTC Audio Streaming",
-      type: "Technical Article",
-      excerpt:
-        "Learn how Microgamma uses WebRTC for peer-to-peer audio streaming without server overhead.",
-      content:
-        "WebRTC (Web Real-Time Communication) is the backbone of Microgamma's audio streaming technology. Unlike traditional streaming services that route audio through centralized servers, Microgamma establishes direct peer-to-peer connections between your device and the player. This approach eliminates latency, reduces bandwidth costs, and ensures your music stays private. In this article, we explore the technical implementation and benefits of this innovative approach.",
-    },
-    {
-      slug: "important-update-code-signing",
-      date: "2025-09-10",
-      title: "Important Update: Code Signing",
-      type: "News Update",
-      excerpt:
-        "Windows and macOS executables are not code signed. Please allow them in your security settings.",
-      content:
-        "Due to our commitment to open-source development and avoiding proprietary code signing certificates, Microgamma executables for Windows and macOS are not digitally signed. This may trigger security warnings on your system. Rest assured, Microgamma is safe to use - simply allow the application in your security settings when prompted. We are exploring options for code signing in future releases.",
-    },
-  ];
+export default async function NewsPage() {
+  const newsItems = await newsService.getNews();
 
   return (
     <>
       <Head>
         <title>News & Updates - Microgamma</title>
-        <meta name="description" content="Stay updated with the latest Microgamma developments, technical insights, and announcements from the music ownership revolution." />
+        <meta
+          name="description"
+          content="Stay updated with the latest Microgamma developments, technical insights, and announcements from the music ownership revolution."
+        />
       </Head>
 
       {/* News Section */}
@@ -55,9 +27,11 @@ export default function NewsPage() {
             </h1>
             <p class="text-xl mb-8 max-w-3xl mx-auto text-gray-200 drop-shadow">
               Stay connected with the latest developments, technical insights,
-              and announcements from the <span class="text-primary-300">ownership revolution</span>.
+              and announcements from the{" "}
+              <span class="text-primary-300">music ownership revolution</span>.
             </p>
-            <div class="w-24 h-1 bg-primary-400 mx-auto mb-12 rounded-full"></div>
+            <div class="w-24 h-1 bg-primary-400 mx-auto mb-12 rounded-full">
+            </div>
           </div>
 
           {/* News Articles Grid */}
@@ -77,16 +51,37 @@ export default function NewsPage() {
                         <span class="flex items-center">
                           📅 {item.date}
                         </span>
-                        <span class="text-primary-400 bg-primary-900/50 px-3 py-1 rounded-full text-xs font-medium">
+                        <span
+                          class={`px-3 py-1 rounded-full text-xs font-medium ${
+                            item.type === "GitHub Release"
+                              ? "text-green-400 bg-green-900/50"
+                              : item.type === "Pre-release"
+                              ? "text-yellow-400 bg-yellow-900/50"
+                              : item.type === "Dev.to Article"
+                              ? "text-purple-400 bg-purple-900/50"
+                              : "text-gray-400 bg-gray-900/50"
+                          }`}
+                        >
                           {item.type}
                         </span>
                       </div>
                     </div>
                   </div>
 
-                  <p class="text-gray-300 mb-6 leading-relaxed">
+                  <p class="text-gray-300 mb-4 leading-relaxed">
                     {item.excerpt}
                   </p>
+
+                  {/* Article tags for Dev.to articles */}
+                  {item.articleTags && item.articleTags.length > 0 && (
+                    <div class="flex flex-wrap gap-2 mb-6">
+                      {item.articleTags.map((tag) => (
+                        <span class="px-2 py-1 bg-primary-900/30 text-primary-300 rounded text-xs border border-primary-400/20">
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
 
                   <div class="flex items-center justify-between">
                     <a
@@ -94,12 +89,18 @@ export default function NewsPage() {
                       class="inline-flex items-center space-x-2 text-primary-400 hover:text-primary-300 transition-all duration-200 font-medium group"
                     >
                       <span>Read More</span>
-                      <span class="group-hover:translate-x-1 transition-transform duration-200">→</span>
+                      <span class="group-hover:translate-x-1 transition-transform duration-200">
+                        →
+                      </span>
                     </a>
 
                     <div class="flex items-center space-x-1 text-gray-500 text-sm">
-                      <span>💡</span>
-                      <span>Technical</span>
+                      <span>{item.source === "github" ? "🐙" : "📝"}</span>
+                      <span>
+                        {item.source === "github"
+                          ? item.tagName || "Release"
+                          : `Dev.to • ${item.readingTime}min read`}
+                      </span>
                     </div>
                   </div>
                 </article>
@@ -114,11 +115,14 @@ export default function NewsPage() {
                 </h3>
                 <p class="text-gray-300 mb-6">
                   Follow our journey as we build the future of music ownership.
-                  Every update brings us closer to a world where your music truly belongs to you.
+                  Every update brings us closer to a world where your music
+                  truly belongs to you.
                 </p>
                 <div class="flex justify-center space-x-2 text-primary-400">
                   <span class="text-2xl">📰</span>
-                  <span class="text-lg font-semibold">Latest from the Revolution</span>
+                  <span class="text-lg font-semibold">
+                    Latest from the Ownership Revolution
+                  </span>
                   <span class="text-2xl">📰</span>
                 </div>
               </div>

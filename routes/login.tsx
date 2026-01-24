@@ -7,8 +7,7 @@ export const handler = define.handlers({
       const loginUrl = await kindeClient.login();
       return ctx.redirect(loginUrl.toString());
     } else {
-      return ctx.redirect('/');
+      return ctx.redirect("/");
     }
   },
 });
-
