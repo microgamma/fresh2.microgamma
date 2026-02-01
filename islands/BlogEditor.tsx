@@ -6,14 +6,6 @@ interface BlogEditorProps {
   initialContent?: string;
   initialTags?: string[];
   initialStatus?: "draft" | "published";
-  onSave?: (data: {
-    title: string;
-    content: string;
-    tags: string[];
-    status: "draft" | "published";
-  }) => void;
-  onCancel?: () => void;
-  isLoading?: boolean;
 }
 
 export default function BlogEditor({
@@ -21,9 +13,6 @@ export default function BlogEditor({
   initialContent = "",
   initialTags = [],
   initialStatus = "draft",
-  onSave,
-  onCancel,
-  isLoading = false,
 }: BlogEditorProps) {
   const [title, setTitle] = useState(initialTitle);
   const [content, setContent] = useState(initialContent);
@@ -64,20 +53,6 @@ export default function BlogEditor({
     }
   };
 
-  const handleSave = () => {
-    if (!title.trim() || !content.trim()) {
-      alert("Please provide both title and content");
-      return;
-    }
-
-    onSave?.({
-      title: title.trim(),
-      content: content.trim(),
-      tags,
-      status,
-    });
-  };
-
   return (
     <div class="space-y-6">
       {/* Title Input */}
@@ -87,46 +62,15 @@ export default function BlogEditor({
         </label>
         <input
           type="text"
+          name="title"
           value={title}
           onInput={(e) => setTitle((e.target as HTMLInputElement).value)}
           placeholder="Enter your blog post title..."
           class="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent"
-          disabled={isLoading}
+          required
         />
       </div>
 
-      {/* Status Toggle */}
-      <div>
-        <label class="block text-sm font-medium text-gray-300 mb-2">
-          Status
-        </label>
-        <div class="flex space-x-4">
-          <label class="flex items-center">
-            <input
-              type="radio"
-              name="status"
-              value="draft"
-              checked={status === "draft"}
-              onChange={() => setStatus("draft")}
-              class="mr-2 text-primary-400 focus:ring-primary-400"
-              disabled={isLoading}
-            />
-            <span class="text-gray-300">Draft</span>
-          </label>
-          <label class="flex items-center">
-            <input
-              type="radio"
-              name="status"
-              value="published"
-              checked={status === "published"}
-              onChange={() => setStatus("published")}
-              class="mr-2 text-primary-400 focus:ring-primary-400"
-              disabled={isLoading}
-            />
-            <span class="text-gray-300">Published</span>
-          </label>
-        </div>
-      </div>
 
       {/* Tags */}
       <div>
@@ -144,7 +88,6 @@ export default function BlogEditor({
                 type="button"
                 onClick={() => removeTag(tag)}
                 class="ml-2 text-primary-400 hover:text-primary-200"
-                disabled={isLoading}
               >
                 ×
               </button>
@@ -159,17 +102,21 @@ export default function BlogEditor({
             onKeyPress={handleTagKeyPress}
             placeholder="Add a tag..."
             class="flex-1 px-4 py-2 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent"
-            disabled={isLoading}
           />
           <button
             type="button"
             onClick={addTag}
             class="px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-400 transition"
-            disabled={isLoading}
           >
             Add
           </button>
         </div>
+        {/* Hidden input to store tags array */}
+        <input
+          type="hidden"
+          name="tags"
+          value={JSON.stringify(tags)}
+        />
       </div>
 
       {/* Content Editor */}
@@ -189,7 +136,6 @@ export default function BlogEditor({
                   ? "bg-primary-500 text-white"
                   : "bg-gray-700 text-gray-300 hover:bg-gray-600"
               }`}
-              disabled={isLoading}
             >
               {previewMode ? "Edit" : "Preview"}
             </button>
@@ -202,45 +148,41 @@ export default function BlogEditor({
           </div>
         ) : (
           <textarea
+            name="content"
             value={content}
             onInput={(e) => setContent((e.target as HTMLTextAreaElement).value)}
             placeholder="Write your blog post in markdown..."
             rows={20}
             class="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent font-mono text-sm"
-            disabled={isLoading}
+            required
           />
         )}
       </div>
 
       {/* Action Buttons */}
       <div class="flex justify-between pt-6 border-t border-gray-600">
-        <button
-          type="button"
-          onClick={onCancel}
-          class="px-6 py-3 bg-gray-700 text-gray-300 rounded-lg hover:bg-gray-600 transition"
-          disabled={isLoading}
+        <a
+          href="/private/blog"
+          class="px-6 py-3 bg-gray-700 text-gray-300 rounded-lg hover:bg-gray-600 transition inline-flex items-center"
         >
           Cancel
-        </button>
+        </a>
         <div class="flex space-x-3">
           <button
-            type="button"
-            onClick={() => {
-              setStatus("draft");
-              handleSave();
-            }}
+            type="submit"
+            name="action"
+            value="draft"
             class="px-6 py-3 bg-yellow-600 text-white rounded-lg hover:bg-yellow-500 transition"
-            disabled={isLoading}
           >
-            {isLoading ? "Saving..." : "Save as Draft"}
+            Save as Draft
           </button>
           <button
-            type="button"
-            onClick={handleSave}
+            type="submit"
+            name="action"
+            value="publish"
             class="px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-400 transition"
-            disabled={isLoading}
           >
-            {isLoading ? "Publishing..." : status === "published" ? "Publish" : "Save & Publish"}
+            {status === "published" ? "Publish" : "Save & Publish"}
           </button>
         </div>
       </div>

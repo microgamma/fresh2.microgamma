@@ -67,17 +67,6 @@ export default async function BlogPostPage(
                     {post.title}
                   </h1>
                   <div class="flex flex-wrap items-center gap-4 mb-4">
-                    <span
-                      class={`px-3 py-1 rounded-full text-sm font-medium ${
-                        post.type === "Blog Post"
-                          ? "text-purple-400 bg-purple-900/50"
-                          : post.type === "Internal Post"
-                          ? "text-blue-400 bg-blue-900/50"
-                          : "text-gray-400 bg-gray-900/50"
-                      }`}
-                    >
-                      {post.type}
-                    </span>
                     {post.readingTime && (
                       <span class="text-sm text-primary-400 bg-primary-900/50 px-3 py-1 rounded-full">
                         {post.readingTime}min read

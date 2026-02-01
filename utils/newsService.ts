@@ -7,16 +7,19 @@ export interface NewsItem {
   slug: string;
   date: string;
   title: string;
-  type: "GitHub Release" | "Pre-release" | "Draft Release" | "Dev.to Article" | "Blog Post" | "Internal Post";
+  type: "GitHub Release" | "Pre-release" | "Draft Release" | "Dev.to Article" | "Blog Post" | "Internal Post" | "X Post";
   excerpt: string;
   content: string;
-  source: "github" | "devto" | "internal";
+  source: "github" | "devto" | "internal" | "x";
   sourceUrl: string;
   publishedAt: Date;
   isPrerelease?: boolean;
   tagName?: string;
   articleTags?: string[];
   readingTime?: number; // in minutes
+  likes?: number;
+  retweets?: number;
+  images?: string[]; // URLs of attached images
 }
 
 export interface GitHubRelease {
@@ -48,6 +51,29 @@ export interface DevToArticle {
   canonical_url: string;
 }
 
+export interface XPost {
+  id: string;
+  text: string;
+  created_at: string;
+  public_metrics?: {
+    like_count: number;
+    retweet_count: number;
+  };
+  author_id?: string;
+  attachments?: {
+    media_keys?: string[];
+  };
+}
+
+export interface XMedia {
+  media_key: string;
+  type: "photo" | "video" | "animated_gif";
+  url?: string;
+  preview_image_url?: string;
+  width?: number;
+  height?: number;
+}
+
 export class NewsService {
   private readonly githubToken: string;
   private readonly repoOwner: string;
@@ -56,6 +82,10 @@ export class NewsService {
   private readonly devtoUsername: string;
   private readonly devtoTagFilter: string;
   private readonly devtoMaxArticles: number;
+  private readonly xBearerToken: string;
+  private readonly xUsername: string;
+  private readonly xMaxTweets: number;
+  private readonly xApiBaseUrl = "https://api.x.com/2";
 
   constructor() {
     this.githubToken = Deno.env.get("GITHUB_ACCESS_TOKEN") || "";
@@ -66,20 +96,29 @@ export class NewsService {
     this.devtoMaxArticles = parseInt(
       Deno.env.get("DEVTO_MAX_ARTICLES") || "20",
     );
+    this.xBearerToken = Deno.env.get("X_BEARER_TOKEN") || "";
+    this.xUsername = Deno.env.get("X_USERNAME") || "microgamma_io";
+    this.xMaxTweets = parseInt(Deno.env.get("X_MAX_TWEETS") || "10");
 
     if (!this.githubToken) {
       console.warn(
         "GITHUB_ACCESS_TOKEN not found. GitHub API calls will fail.",
       );
     }
+    if (!this.xBearerToken) {
+      console.warn(
+        "X_BEARER_TOKEN not found. X API calls will be skipped.",
+      );
+    }
   }
 
   async getNews(): Promise<NewsItem[]> {
     try {
-      // Fetch from both sources in parallel
-      const [githubReleases, devtoArticles] = await Promise.allSettled([
+      // Fetch from all sources in parallel
+      const [githubReleases, devtoArticles, xTweets] = await Promise.allSettled([
         this.fetchGitHubReleases(),
         this.fetchDevToArticles(),
+        this.xBearerToken ? this.fetchXTweets() : Promise.resolve({ tweets: [], media: [] }),
       ]);
 
       const allNews: NewsItem[] = [];
@@ -103,6 +142,15 @@ export class NewsService {
         console.log(`Fetched ${devtoNews.length} Dev.to articles`);
       } else {
         console.error("Failed to fetch Dev.to articles:", devtoArticles.reason);
+      }
+
+      // Process X posts
+      if (xTweets.status === "fulfilled") {
+        const xNews = this.transformXTweetsToNews(xTweets.value.tweets, xTweets.value.media);
+        allNews.push(...xNews);
+        console.log(`Fetched ${xNews.length} X posts`);
+      } else {
+        console.error("Failed to fetch X posts:", xTweets.reason);
       }
 
       // Sort by publication date (newest first) and deduplicate
@@ -237,6 +285,119 @@ export class NewsService {
     }
 
     return await response.json();
+  }
+
+  private async fetchXTweets(): Promise<{ tweets: XPost[]; media: XMedia[] }> {
+    if (!this.xBearerToken) {
+      return { tweets: [], media: [] };
+    }
+
+    try {
+      // First, get user ID by username
+      const userUrl = `${this.xApiBaseUrl}/users/by/username/${this.xUsername}`;
+      const userResponse = await fetch(userUrl, {
+        headers: {
+          "Authorization": `Bearer ${this.xBearerToken}`,
+          "Accept": "application/json",
+        },
+      });
+
+      if (!userResponse.ok) {
+        if (userResponse.status === 401) {
+          console.warn("X API bearer token is invalid");
+          return { tweets: [], media: [] };
+        }
+        if (userResponse.status === 429) {
+          console.warn("X API rate limit exceeded");
+          return { tweets: [], media: [] };
+        }
+        throw new Error(
+          `X API error: ${userResponse.status} ${userResponse.statusText}`,
+        );
+      }
+
+      const userData = await userResponse.json();
+      const userId = userData.data?.id;
+
+      if (!userId) {
+        console.warn(`X user ${this.xUsername} not found`);
+        return { tweets: [], media: [] };
+      }
+
+      // Then, fetch tweets from the user timeline with media expansions
+      const tweetsUrl = `${this.xApiBaseUrl}/users/${userId}/tweets?max_results=${this.xMaxTweets}&tweet.fields=created_at,public_metrics&exclude=replies,retweets&expansions=attachments.media_keys&media.fields=media_key,type,url,preview_image_url,width,height`;
+      const tweetsResponse = await fetch(tweetsUrl, {
+        headers: {
+          "Authorization": `Bearer ${this.xBearerToken}`,
+          "Accept": "application/json",
+        },
+      });
+
+      if (!tweetsResponse.ok) {
+        if (tweetsResponse.status === 429) {
+          console.warn("X API rate limit exceeded for tweets");
+          return { tweets: [], media: [] };
+        }
+        throw new Error(
+          `X API error: ${tweetsResponse.status} ${tweetsResponse.statusText}`,
+        );
+      }
+
+      const tweetsData = await tweetsResponse.json();
+      return {
+        tweets: tweetsData.data || [],
+        media: tweetsData.includes?.media || [],
+      };
+    } catch (error) {
+      console.error("Error fetching from X API:", error);
+      return { tweets: [], media: [] };
+    }
+  }
+
+  private transformXTweetsToNews(tweets: XPost[], media: XMedia[]): NewsItem[] {
+    // Create a lookup map for media by media_key
+    const mediaMap = new Map<string, XMedia>();
+    for (const m of media) {
+      mediaMap.set(m.media_key, m);
+    }
+
+    return tweets.map((tweet) => {
+      const publishedAt = new Date(tweet.created_at);
+      const date = publishedAt.toISOString().split("T")[0];
+      // Create excerpt from tweet text (first 150 chars)
+      const excerpt = tweet.text.length > 150 
+        ? tweet.text.substring(0, 150).trim() + "..."
+        : tweet.text;
+      
+      // Generate slug from tweet text
+      const slug = this.generateSlug(tweet.text.substring(0, 50));
+
+      // Extract image URLs from attachments
+      const images: string[] = [];
+      if (tweet.attachments?.media_keys) {
+        for (const mediaKey of tweet.attachments.media_keys) {
+          const mediaItem = mediaMap.get(mediaKey);
+          if (mediaItem && mediaItem.type === "photo" && mediaItem.url) {
+            images.push(mediaItem.url);
+          }
+        }
+      }
+
+      return {
+        slug: `x-${tweet.id}`,
+        date,
+        title: `X Post: ${date}`,
+        type: "X Post",
+        excerpt,
+        content: tweet.text,
+        source: "x",
+        sourceUrl: `https://x.com/${this.xUsername}/status/${tweet.id}`,
+        publishedAt,
+        likes: tweet.public_metrics?.like_count || 0,
+        retweets: tweet.public_metrics?.retweet_count || 0,
+        images,
+      };
+    });
   }
 
   private transformReleasesToNews(releases: GitHubRelease[]): NewsItem[] {

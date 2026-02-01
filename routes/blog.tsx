@@ -10,7 +10,7 @@ export default async function BlogPage() {
         <title>Blog - Microgamma</title>
         <meta
           name="description"
-          content="Read insightful articles and deep dives into the world of music ownership technology, blockchain innovation, and the future of digital rights."
+          content="Follow our blog for the latest insights on music ownership, digital rights, and the future of creative economy."
         />
       </Head>
 
@@ -25,22 +25,20 @@ export default async function BlogPage() {
             <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
               <span class="gradient-text">Blog</span>
             </h1>
-            <p class="text-xl mb-8 max-w-3xl mx-auto text-gray-200 drop-shadow">
-              Read insightful articles and deep dives into the world of music ownership technology,
-              blockchain innovation, and the future of{" "}
-              <span class="text-primary-300">digital rights</span>.
-            </p>
-            <div class="w-24 h-1 bg-primary-400 mx-auto mb-12 rounded-full">
-            </div>
+
           </div>
 
           {/* Blog Posts Grid */}
           <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+            <div class="flex flex-col gap-8 mb-16">
               {blogPosts.map((post, idx) => (
                 <article
                   key={idx}
-                  class="card-glow p-8 rounded-xl bg-black/60 backdrop-blur-sm border border-primary-400/30 hover:border-primary-400/60 transition-all duration-300"
+                  class={`card-glow p-8 rounded-xl backdrop-blur-sm border border-primary-400/30 hover:border-primary-400/60 transition-all duration-300 ${
+                    idx % 2 === 0 
+                      ? "bg-black/60" 
+                      : "bg-gray-900/40"
+                  }`}
                 >
                   <div class="flex justify-between items-start mb-6">
                     <div class="flex-1">
@@ -50,17 +48,6 @@ export default async function BlogPage() {
                       <div class="flex items-center space-x-4 text-sm text-gray-400">
                         <span class="flex items-center">
                           📅 {post.date}
-                        </span>
-                        <span
-                          class={`px-3 py-1 rounded-full text-xs font-medium ${
-                            post.type === "Blog Post"
-                              ? "text-purple-400 bg-purple-900/50"
-                              : post.type === "Internal Post"
-                              ? "text-blue-400 bg-blue-900/50"
-                              : "text-gray-400 bg-gray-900/50"
-                          }`}
-                        >
-                          {post.type}
                         </span>
                       </div>
                     </div>
@@ -122,27 +109,7 @@ export default async function BlogPage() {
               </div>
             )}
 
-            {/* Call to Action */}
-            {blogPosts.length > 0 && (
-              <div class="text-center">
-                <div class="card-glow p-8 rounded-xl bg-accent-900/80 backdrop-blur-sm border border-primary-400/50 max-w-2xl mx-auto">
-                  <h3 class="text-2xl font-bold mb-4 text-primary-300">
-                    Stay Informed
-                  </h3>
-                  <p class="text-gray-300 mb-6">
-                    Follow our blog for the latest insights on music ownership,
-                    digital rights, and the future of creative economy.
-                  </p>
-                  <div class="flex justify-center space-x-2 text-primary-400">
-                    <span class="text-2xl">📰</span>
-                    <span class="text-lg font-semibold">
-                      Latest from the Blog
-                    </span>
-                    <span class="text-2xl">📰</span>
-                  </div>
-                </div>
-              </div>
-            )}
+
           </div>
         </div>
       </section>

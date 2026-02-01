@@ -14,10 +14,14 @@ export const handler = define.handlers({
     }
 
     const formData = await ctx.req.formData();
+    console.log("Form data received:", Object.fromEntries(formData.entries()));
     const title = formData.get("title") as string;
     const content = formData.get("content") as string;
     const tags = JSON.parse(formData.get("tags") as string || "[]");
-    const status = formData.get("status") as "draft" | "published";
+    const action = formData.get("action") as "draft" | "publish";
+    const status = action === "publish" ? "published" : "draft";
+
+    console.log("Parsed data:", { title, content: content?.substring(0, 100), tags, action, status });
 
     if (!title?.trim() || !content?.trim()) {
       return new Response("Title and content are required", { status: 400 });
@@ -44,7 +48,6 @@ export const handler = define.handlers({
 });
 
 export default define.page(function NewBlogPostPage(ctx) {
-  const user = ctx.state.user;
   const roles = ctx.state.roles || [];
 
   // Check if user has admin role
@@ -95,51 +98,11 @@ export default define.page(function NewBlogPostPage(ctx) {
               </div>
             </div>
 
-            <div class="card-glow bg-black/60 backdrop-blur-sm rounded-lg border border-primary-400/30 p-8">
-              <form method="post">
-                <BlogEditor
-                  onSave={(data) => {
-                    // Create hidden inputs for form submission
-                    const form = document.querySelector('form');
-                    if (form) {
-                      // Clear existing hidden inputs
-                      form.querySelectorAll('input[type="hidden"]').forEach(el => el.remove());
-
-                      // Add new hidden inputs
-                      const titleInput = document.createElement('input');
-                      titleInput.type = 'hidden';
-                      titleInput.name = 'title';
-                      titleInput.value = data.title;
-                      form.appendChild(titleInput);
-
-                      const contentInput = document.createElement('input');
-                      contentInput.type = 'hidden';
-                      contentInput.name = 'content';
-                      contentInput.value = data.content;
-                      form.appendChild(contentInput);
-
-                      const tagsInput = document.createElement('input');
-                      tagsInput.type = 'hidden';
-                      tagsInput.name = 'tags';
-                      tagsInput.value = JSON.stringify(data.tags);
-                      form.appendChild(tagsInput);
-
-                      const statusInput = document.createElement('input');
-                      statusInput.type = 'hidden';
-                      statusInput.name = 'status';
-                      statusInput.value = data.status;
-                      form.appendChild(statusInput);
-
-                      // Submit the form
-                      form.submit();
-                    }
-                  }}
-                  onCancel={() => {
-                    window.location.href = '/private/blog';
-                  }}
-                />
-              </form>
-            </div>
+             <div class="card-glow bg-black/60 backdrop-blur-sm rounded-lg border border-primary-400/30 p-8">
+               <form method="post" f-client-nav={false}>
+                 <BlogEditor />
+               </form>
+             </div>
           </div>
         </div>
       </div>

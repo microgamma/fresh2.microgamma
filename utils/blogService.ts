@@ -76,7 +76,7 @@ export class BlogService {
   async createPost(
     authorId: string,
     authorName: string,
-    data: CreateBlogPostData
+    data: CreateBlogPostData,
   ): Promise<BlogPost> {
     const postId = this.generateId();
     const now = new Date();
@@ -157,7 +157,7 @@ export class BlogService {
   async updatePost(
     postId: string,
     authorId: string,
-    data: UpdateBlogPostData
+    data: UpdateBlogPostData,
   ): Promise<BlogPost | null> {
     const existingPost = await this.getPost(postId);
     if (!existingPost || existingPost.authorId !== authorId) {
