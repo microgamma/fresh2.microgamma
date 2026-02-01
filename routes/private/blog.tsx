@@ -45,13 +45,21 @@ export default define.page(async function BlogManagementPage(ctx) {
                     Create, edit, and manage your blog posts
                   </p>
                 </div>
-                <a
-                  href="/private/blog/new"
-                  class="bg-primary-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-400 transition flex items-center space-x-2"
-                >
-                  <span>✏️</span>
-                  <span>New Post</span>
-                </a>
+                <div class="flex space-x-4">
+                  <a
+                    href="/private/blog/posts"
+                    class="text-primary-400 hover:text-primary-300 transition"
+                  >
+                    View Posts
+                  </a>
+                  <a
+                    href="/private/blog/new"
+                    class="bg-primary-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-400 transition flex items-center space-x-2"
+                  >
+                    <span>✏️</span>
+                    <span>New Post</span>
+                  </a>
+                </div>
               </div>
 
               {/* Stats */}
