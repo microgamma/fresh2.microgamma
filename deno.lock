@@ -41,6 +41,7 @@
     "npm:esbuild-wasm@~0.25.11": "0.25.12",
     "npm:esbuild@0.25.7": "0.25.7",
     "npm:esbuild@~0.25.5": "0.25.7",
+    "npm:marked@^17.0.1": "17.0.1",
     "npm:preact-render-to-string@^6.6.3": "6.6.5_preact@10.28.1",
     "npm:preact@^10.27.0": "10.28.1",
     "npm:preact@^10.27.2": "10.28.1",
@@ -1575,6 +1576,10 @@
         "@jridgewell/sourcemap-codec"
       ]
     },
+    "marked@17.0.1": {
+      "integrity": "sha512-boeBdiS0ghpWcSwoNm/jJBwdpFaMnZWRzjA6SkUMYb40SVaN1x7mmfGKp0jvexGcx+7y2La5zRZsYFZI6Qpypg==",
+      "bin": true
+    },
     "minimatch@3.1.2": {
       "integrity": "sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==",
       "dependencies": [
@@ -1829,6 +1834,7 @@
       "npm:@preact/signals@^2.5.1",
       "npm:@tailwindcss/vite@^4.1.18",
       "npm:countly-sdk-web@^25.4.4",
+      "npm:marked@^17.0.1",
       "npm:preact@^10.28.1",
       "npm:tailwindcss@^4.1.18",
       "npm:vite@^7.3.0"

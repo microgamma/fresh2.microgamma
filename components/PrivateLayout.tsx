@@ -15,27 +15,37 @@ export default function PrivateLayout({ children, roles }: LayoutProps) {
           <h1 class="text-xl font-bold">
             <a href="/" f-client-nav={false}>Microgamma</a>
           </h1>
-          <ul class="flex flex-row space-x-3">
-            {roles?.includes("admin") &&
-              (
-                <li>
-                  <a
-                    href="/private/dashboard"
-                    class="hover:text-primary-400 transition"
-                  >
-                    Dashboard
-                  </a>
-                </li>
-              )}
-            <li>
-              <a
-                href="/private/profile"
-                class="hover:text-primary-400 transition"
-              >
-                Profile
-              </a>
-            </li>
-          </ul>
+           <ul class="flex flex-row space-x-3">
+             {roles?.includes("admin") &&
+               (
+               <>
+                 <li>
+                   <a
+                     href="/private/dashboard"
+                     class="hover:text-primary-400 transition"
+                   >
+                     Dashboard
+                   </a>
+                 </li>
+                 <li>
+                   <a
+                     href="/private/blog"
+                     class="hover:text-primary-400 transition"
+                   >
+                     Blog
+                   </a>
+                 </li>
+               </>
+               )}
+             <li>
+               <a
+                 href="/private/profile"
+                 class="hover:text-primary-400 transition"
+               >
+                 Profile
+               </a>
+             </li>
+           </ul>
         </div>
       </nav>
       <div class="min-h-screen bg-purple-800">

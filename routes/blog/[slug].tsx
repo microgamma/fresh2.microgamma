@@ -3,20 +3,20 @@ import MainLayout from "../../components/MainLayout.tsx";
 import { newsService } from "../../utils/newsService.ts";
 import { parseMarkdown } from "../../utils/markdown.ts";
 
-export default async function NewsArticlePage(
+export default async function BlogPostPage(
   { params }: { params: { slug: string } },
 ) {
-  const newsItems = await newsService.getNews();
-  const article = newsItems.find((item) => item.slug === params.slug);
+  const blogPosts = await newsService.getBlogPosts();
+  const post = blogPosts.find((item) => item.slug === params.slug);
 
-  if (!article) {
+  if (!post) {
     return (
       <>
         <Head>
-          <title>Article Not Found - Microgamma</title>
+          <title>Blog Post Not Found - Microgamma</title>
           <meta
             name="description"
-            content="The requested news article could not be found."
+            content="The requested blog post could not be found."
           />
         </Head>
         <div class="min-h-screen text-white px-4 py-8 relative overflow-hidden vaporwave-bg">
@@ -26,16 +26,16 @@ export default async function NewsArticlePage(
             <div class="max-w-4xl mx-auto">
               <div class="card-glow bg-black/60 backdrop-blur-sm rounded-lg border border-primary-400/30 p-8 text-center">
                 <h1 class="text-4xl md:text-5xl font-bold mb-8 text-primary-400">
-                  Article Not Found
+                  Blog Post Not Found
                 </h1>
                 <p class="text-xl mb-8 text-gray-300">
-                  The requested news article could not be found.
+                  The requested blog post could not be found.
                 </p>
                 <a
-                  href="/news"
+                  href="/blog"
                   class="inline-flex items-center space-x-2 text-primary-400 hover:text-primary-300 transition-all duration-200 font-medium group"
                 >
-                  <span>← Back to News</span>
+                  <span>← Back to Blog</span>
                   <span class="group-hover:translate-x-1 transition-transform duration-200">
                     →
                   </span>
@@ -51,8 +51,8 @@ export default async function NewsArticlePage(
   return (
     <>
       <Head>
-        <title>{article.title} - Microgamma</title>
-        <meta name="description" content={article.excerpt} />
+        <title>{post.title} - Microgamma Blog</title>
+        <meta name="description" content={post.excerpt} />
       </Head>
 
       <div class="min-h-screen text-white px-4 py-8 relative overflow-hidden vaporwave-bg">
@@ -64,43 +64,25 @@ export default async function NewsArticlePage(
               <div class="flex justify-between items-start mb-6">
                 <div class="flex-1">
                   <h1 class="text-3xl md:text-4xl font-bold text-primary-400 mb-4 leading-tight">
-                    {article.title}
+                    {post.title}
                   </h1>
                   <div class="flex flex-wrap items-center gap-4 mb-4">
-                    <span
-                      class={`px-3 py-1 rounded-full text-sm font-medium ${
-                        article.type === "GitHub Release"
-                          ? "text-green-400 bg-green-900/50"
-                          : article.type === "Pre-release"
-                          ? "text-yellow-400 bg-yellow-900/50"
-                          : article.type === "Dev.to Article"
-                          ? "text-purple-400 bg-purple-900/50"
-                          : "text-gray-400 bg-gray-900/50"
-                      }`}
-                    >
-                      {article.type}
-                    </span>
-                    {article.tagName && (
-                      <span class="text-sm text-gray-400 bg-gray-800/50 px-3 py-1 rounded-full">
-                        {article.tagName}
-                      </span>
-                    )}
-                    {article.readingTime && (
+                    {post.readingTime && (
                       <span class="text-sm text-primary-400 bg-primary-900/50 px-3 py-1 rounded-full">
-                        {article.readingTime}min read
+                        {post.readingTime}min read
                       </span>
                     )}
                     <span class="flex items-center text-gray-400 text-sm">
-                      📅 {article.date}
+                      📅 {post.date}
                     </span>
                   </div>
                 </div>
               </div>
 
-              {/* Article tags for Dev.to articles */}
-              {article.articleTags && article.articleTags.length > 0 && (
+              {/* Article tags for blog posts */}
+              {post.articleTags && post.articleTags.length > 0 && (
                 <div class="flex flex-wrap gap-2 mb-6">
-                  {article.articleTags.map((tag) => (
+                  {post.articleTags.map((tag) => (
                     <span class="px-3 py-1 bg-primary-900/30 text-primary-300 rounded text-sm border border-primary-400/20">
                       #{tag}
                     </span>
@@ -108,17 +90,17 @@ export default async function NewsArticlePage(
                 </div>
               )}
 
-              {/* Release Content */}
+              {/* Blog Content */}
               <div
                 class="prose prose-invert prose-headings:text-primary-300 prose-a:text-primary-400 hover:prose-a:text-primary-300 prose-strong:text-white prose-code:bg-gray-800 prose-code:text-primary-300 prose-code:px-1 prose-code:rounded max-w-none mb-8"
-                dangerouslySetInnerHTML={{ __html: parseMarkdown(article.content) }}
+                dangerouslySetInnerHTML={{ __html: parseMarkdown(post.content) }}
               />
 
-              {/* Source Link - Only show for Dev.to articles */}
-              {article.sourceUrl && article.source === "devto" && (
+              {/* Source Link */}
+              {post.sourceUrl && (
                 <div class="mb-8 p-4 bg-primary-900/20 rounded-lg border border-primary-400/20">
                   <a
-                    href={article.sourceUrl}
+                    href={post.sourceUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     class="inline-flex items-center space-x-2 text-primary-400 hover:text-primary-300 transition-all duration-200 font-medium group"
@@ -135,10 +117,10 @@ export default async function NewsArticlePage(
               {/* Navigation */}
               <div class="pt-6 border-t border-primary-400/20">
                 <a
-                  href="/news"
+                  href="/blog"
                   class="inline-flex items-center space-x-2 text-primary-400 hover:text-primary-300 transition-all duration-200 font-medium group"
                 >
-                  <span>← Back to News</span>
+                  <span>← Back to Blog</span>
                   <span class="group-hover:translate-x-1 transition-transform duration-200">
                     →
                   </span>

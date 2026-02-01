@@ -1,0 +1,102 @@
+name: PR Conventional Changelog Summary
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  changelog-summary:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout PR code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get PR commits
+        id: get_commits
+        run: |
+          COMMITS=$(git log origin/${{ github.base_ref }}..HEAD --pretty=format:"%s")
+          echo "commits<<EOF" >> $GITHUB_OUTPUT
+          echo "$COMMITS" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Generate changelog
+        id: changelog
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const rawCommits = `${{ steps.get_commits.outputs.commits }}`.split('\n');
+
+            const emojiMap = {
+              feat: '🚀 Features',
+              fix: '🐛 Fixes',
+              docs: '📝 Documentation',
+              style: '💄 Styling',
+              refactor: '♻️ Refactoring',
+              test: '✅ Tests',
+              chore: '🔧 Chores',
+              perf: '⚡ Performance',
+              build: '🏗️ Build System',
+              ci: '🤖 CI/CD',
+            };
+
+            const changelog = {};
+
+            for (const msg of rawCommits) {
+              const match = msg.match(/^(\w+)(\(([^)]+)\))?!?:\s(.+)/);
+              if (!match) continue;
+
+              const [_, type, , scope, description] = match;
+              const label = emojiMap[type] || `🔹 ${type}`;
+
+              if (!changelog[label]) changelog[label] = [];
+              changelog[label].push(scope ? `**${scope}**: ${description}` : description);
+            }
+
+            if (Object.keys(changelog).length === 0) {
+              core.setOutput('body', '❌ No valid conventional commits found in this PR.');
+            } else {
+              let body = '### 🧾 PR Changelog\n';
+              for (const label of Object.keys(changelog)) {
+                body += `\n#### ${label}\n`;
+                for (const entry of changelog[label]) {
+                  body += `- ${entry}\n`;
+                }
+              }
+              core.setOutput('body', body);
+            }
+
+      - name: Comment on PR with changelog
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = `${{ steps.changelog.outputs.body }}`;
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number
+            });
+
+            const existing = comments.find(c =>
+              c.user.login === 'github-actions[bot]' &&
+              c.body.startsWith('### 🧾 PR Changelog')
+            );
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body
+              });
+            }

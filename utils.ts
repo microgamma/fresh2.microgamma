@@ -4,10 +4,6 @@ import { UserType } from "@kinde-oss/kinde-typescript-sdk";
 // This specifies the type of "ctx.state" which is used to share
 // data among middlewares, layouts and routes.
 export interface State {
-  roles: (
-    sessionManager:
-      import("file:///home/dcavaliere/dev/fresh2a.microgamma/$node_modules/.deno/@kinde-oss+kinde-typescript-sdk@2.13.0/$node_modules/@kinde-oss/kinde-typescript-sdk/dist/types/index").SessionManager,
-  ) => Promise<{ orgCodes: string[] }>;
   user: UserType;
   shared: string;
   roles: string[];
