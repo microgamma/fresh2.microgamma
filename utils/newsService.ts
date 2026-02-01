@@ -1,13 +1,16 @@
 /// <reference lib="deno.unstable" />
 
+import { BlogPost } from "./blogTypes.ts";
+import { blogService } from "./blogService.ts";
+
 export interface NewsItem {
   slug: string;
   date: string;
   title: string;
-  type: "GitHub Release" | "Pre-release" | "Draft Release" | "Dev.to Article" | "Blog Post";
+  type: "GitHub Release" | "Pre-release" | "Draft Release" | "Dev.to Article" | "Blog Post" | "Internal Post";
   excerpt: string;
   content: string;
-  source: "github" | "devto";
+  source: "github" | "devto" | "internal";
   sourceUrl: string;
   publishedAt: Date;
   isPrerelease?: boolean;
@@ -125,19 +128,41 @@ export class NewsService {
 
   async getBlogPosts(): Promise<NewsItem[]> {
     try {
-      // Fetch Dev.to articles tagged "Microgamma" for blog
-      const devtoArticles = await this.fetchDevToArticles();
+      // Fetch both internal blog posts and Dev.to articles in parallel
+      const [internalPosts, devtoArticles] = await Promise.allSettled([
+        blogService.getPublishedPosts(),
+        this.fetchDevToArticles(),
+      ]);
 
-      // Transform to NewsItem format but mark as Blog Post type
-      const blogPosts = this.transformDevToArticles(devtoArticles);
+      const allBlogPosts: NewsItem[] = [];
 
-      // Change type to "Blog Post" for blog-specific display
-      blogPosts.forEach(post => {
-        post.type = "Blog Post";
-      });
+      // Process internal blog posts
+      if (internalPosts.status === "fulfilled") {
+        const internalNews = this.transformInternalPostsToNews(internalPosts.value);
+        allBlogPosts.push(...internalNews);
+        console.log(`Fetched ${internalNews.length} internal blog posts`);
+      } else {
+        console.error(
+          "Failed to fetch internal blog posts:",
+          internalPosts.reason,
+        );
+      }
+
+      // Process Dev.to articles
+      if (devtoArticles.status === "fulfilled") {
+        const devtoNews = this.transformDevToArticles(devtoArticles.value);
+        // Change type to distinguish from internal posts
+        devtoNews.forEach(post => {
+          post.type = "Blog Post";
+        });
+        allBlogPosts.push(...devtoNews);
+        console.log(`Fetched ${devtoNews.length} Dev.to blog articles`);
+      } else {
+        console.error("Failed to fetch Dev.to blog articles:", devtoArticles.reason);
+      }
 
       // Sort by publication date (newest first) and deduplicate
-      const sorted = blogPosts
+      const sorted = allBlogPosts
         .sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
 
       // Simple deduplication by title (add suffix if duplicate)
@@ -150,7 +175,6 @@ export class NewsService {
         seenTitles.set(item.title, count + 1);
       }
 
-      console.log(`Fetched ${sorted.length} blog posts`);
       return sorted;
     } catch (error) {
       console.error("Failed to fetch blog posts:", error);
@@ -295,6 +319,26 @@ export class NewsService {
         publishedAt,
         articleTags: article.tags,
         readingTime,
+      };
+    });
+  }
+
+  private transformInternalPostsToNews(posts: BlogPost[]): NewsItem[] {
+    return posts.map((post) => {
+      const date = post.publishedAt?.toISOString().split("T")[0] || post.createdAt.toISOString().split("T")[0];
+
+      return {
+        slug: post.slug,
+        date,
+        title: post.title,
+        type: "Internal Post", // Distinguish from Dev.to posts
+        excerpt: post.excerpt,
+        content: post.content,
+        source: "internal",
+        sourceUrl: "", // No external URL for internal posts
+        publishedAt: post.publishedAt || post.createdAt,
+        articleTags: post.tags,
+        readingTime: post.readingTime,
       };
     });
   }

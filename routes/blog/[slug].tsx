@@ -71,6 +71,8 @@ export default async function BlogPostPage(
                       class={`px-3 py-1 rounded-full text-sm font-medium ${
                         post.type === "Blog Post"
                           ? "text-purple-400 bg-purple-900/50"
+                          : post.type === "Internal Post"
+                          ? "text-blue-400 bg-blue-900/50"
                           : "text-gray-400 bg-gray-900/50"
                       }`}
                     >
