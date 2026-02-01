@@ -45,14 +45,22 @@ export default function Header({ user, roles }: HeaderProps) {
               Downloads
             </a>
           </li>
-          <li>
-            <a
-              href="/news"
-              class={`hover:text-primary-400 transition`}
-            >
-              News
-            </a>
-          </li>
+           <li>
+             <a
+               href="/news"
+               class={`hover:text-primary-400 transition`}
+             >
+               News
+             </a>
+           </li>
+           <li>
+             <a
+               href="/blog"
+               class={`hover:text-primary-400 transition`}
+             >
+               Blog
+             </a>
+           </li>
           {roles?.includes("admin") && (
             <li>
               <a

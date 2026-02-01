@@ -6,8 +6,6 @@ import PrivateLayout from "../components/PrivateLayout.tsx";
 
 export default define.page(function App({ Component, state, route }) {
   const COUNTLY_APP_KEY = Deno.env.get("COUNTLY_APP_KEY");
-  console.log({ COUNTLY_APP_KEY, state });
-  console.log({ route });
 
   return (
     <html>
@@ -15,6 +13,7 @@ export default define.page(function App({ Component, state, route }) {
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Microgamma</title>
+        
         <link
           href="https://fonts.googleapis.com/css2?family=Audiowide&family=Fira+Code:wght@300;400;500&display=swap"
           rel="stylesheet"

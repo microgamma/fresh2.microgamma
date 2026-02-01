@@ -4,7 +4,7 @@ export interface NewsItem {
   slug: string;
   date: string;
   title: string;
-  type: "GitHub Release" | "Pre-release" | "Draft Release" | "Dev.to Article";
+  type: "GitHub Release" | "Pre-release" | "Draft Release" | "Dev.to Article" | "Blog Post";
   excerpt: string;
   content: string;
   source: "github" | "devto";
@@ -120,6 +120,41 @@ export class NewsService {
     } catch (error) {
       console.error("Failed to fetch news from any source:", error);
       return this.getFallbackNews();
+    }
+  }
+
+  async getBlogPosts(): Promise<NewsItem[]> {
+    try {
+      // Fetch Dev.to articles tagged "Microgamma" for blog
+      const devtoArticles = await this.fetchDevToArticles();
+
+      // Transform to NewsItem format but mark as Blog Post type
+      const blogPosts = this.transformDevToArticles(devtoArticles);
+
+      // Change type to "Blog Post" for blog-specific display
+      blogPosts.forEach(post => {
+        post.type = "Blog Post";
+      });
+
+      // Sort by publication date (newest first) and deduplicate
+      const sorted = blogPosts
+        .sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
+
+      // Simple deduplication by title (add suffix if duplicate)
+      const seenTitles = new Map<string, number>();
+      for (const item of sorted) {
+        const count = seenTitles.get(item.title) || 0;
+        if (count > 0) {
+          item.title = `${item.title} (${count + 1})`;
+        }
+        seenTitles.set(item.title, count + 1);
+      }
+
+      console.log(`Fetched ${sorted.length} blog posts`);
+      return sorted;
+    } catch (error) {
+      console.error("Failed to fetch blog posts:", error);
+      return [];
     }
   }
 
