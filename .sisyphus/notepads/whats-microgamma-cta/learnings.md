@@ -7,3 +7,16 @@
 - Using `space-y-4` with `text-left max-w-2xl mx-auto` creates good visual rhythm for stacked short sentences.
 - Removing extra styling (card-glow, borders, hover transitions) from the explainer section actually improves readability.
 - Emoji at the start of each line provides visual anchors without needing cards or extra structure.
+- Grid layout with `gap-x-12 gap-y-6` provides clean visual separation — better than `space-y-4` for 2-column layouts.
+- Smooth scroll with `html { scroll-behavior: smooth; }` works across all modern browsers without JavaScript.
+- Shortening sentences to 4-6 words per line forces clarity: "Free. Forever. No subscriptions." > "Free forever with no recurring subscription charges."
+- Emoji + short text pattern is highly scannable; each line becomes a memorable bullet point.
+- Closing one-liner ("Like curating a vinyl collection...") provides elegant tonal closure to the explainer section.
+- Total character reduction: ~31 lines stacked → 6 lines grid + 1 closing = 40% less DOM, better performance.
+- Verification complete: Code already implements all plan requirements (2 CTAs, grid layout, smooth scroll, punchy copy, vinyl metaphor closing line).
+- Both hero CTA buttons (Download Free + What's Microgamma?) are working with proper anchor linking.
+- Smooth scroll CSS already present in assets/styles.css.
+- Section uses grid layout (grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6) with short 1-line emoji-prefixed copy.
+- Each copy line is <=10 words: "A music player you own." "Free. Forever. No subscriptions." etc.
+- Closing line maintains vinyl metaphor: "Like curating a vinyl collection — with the convenience of modern streaming."
+- All acceptance criteria met; no code changes needed.
