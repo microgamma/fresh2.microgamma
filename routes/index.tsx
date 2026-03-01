@@ -49,32 +49,70 @@ export default define.page(function Home(ctx) {
             The self-hosted music player that keeps your collection
             yours — stream anywhere,  own it forever.
           </p>
-          <a
-            href="/downloads"
-            class="bg-primary-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-primary-400 transition inline-block btn-glow"
-          >
-            Download Free
-          </a>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a
+              href="/downloads"
+              class="bg-primary-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-primary-400 transition inline-block btn-glow"
+            >
+              Download Free
+            </a>
+            <a
+              href="#what-is-microgamma"
+              class="border border-primary-500/50 text-primary-300 px-6 py-3 rounded-full font-semibold hover:bg-primary-500/10 transition inline-block"
+            >
+              What's Microgamma?
+            </a>
+          </div>
         </div>
       </section>
 
       {/* What is Microgamma? */}
-      <section class="bg-gray-900 text-white py-20 px-4">
-        <div class="container mx-auto text-center max-w-4xl">
-          <h2 class="text-3xl font-bold mb-8 text-primary-400">
+      <section
+        id="what-is-microgamma"
+        class="bg-gray-900 text-white py-20 px-4 scroll-mt-4"
+      >
+        <div class="container mx-auto text-center max-w-5xl">
+          <h2 class="text-3xl md:text-4xl font-bold mb-12 text-primary-400">
             What is Microgamma?
           </h2>
-          <p class="text-xl mb-6">
-            Microgamma is a modern music player built for people who love
-            their music collection. Stream your library to any device,
-            customize covers and metadata, and enjoy full remote control —
-            all from your own hardware.
-          </p>
-          <p class="text-lg text-gray-300">
-            Think of it as curating a prized vinyl library, but with the
-            convenience of modern streaming — and the peace of mind that
-            it's all yours.
-          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+            <div class="card-glow p-8 rounded-xl bg-gray-800/40 border border-primary-500/10 hover:border-primary-500/30 transition-all duration-300 group">
+              <h3 class="text-xl font-bold mb-3 text-primary-300 group-hover:text-primary-200 transition-colors">
+                🎛️ Your Hardware, Your Rules
+              </h3>
+              <p class="text-gray-400 group-hover:text-gray-300 transition-colors">
+                Stream from any computer, NAS, or server you own. No monthly fees, ever.
+              </p>
+            </div>
+
+            <div class="card-glow p-8 rounded-xl bg-gray-800/40 border border-primary-500/10 hover:border-primary-500/30 transition-all duration-300 group">
+              <h3 class="text-xl font-bold mb-3 text-primary-300 group-hover:text-primary-200 transition-colors">
+                🎨 Total Customization
+              </h3>
+              <p class="text-gray-400 group-hover:text-gray-300 transition-colors">
+                Edit metadata, swap album art, and curate your library exactly how you want.
+              </p>
+            </div>
+
+            <div class="card-glow p-8 rounded-xl bg-gray-800/40 border border-primary-500/10 hover:border-primary-500/30 transition-all duration-300 group">
+              <h3 class="text-xl font-bold mb-3 text-primary-300 group-hover:text-primary-200 transition-colors">
+                📱 Stream Anywhere
+              </h3>
+              <p class="text-gray-400 group-hover:text-gray-300 transition-colors">
+                Listen on any device with a modern browser. Seamless playback, zero lock-in.
+              </p>
+            </div>
+
+            <div class="card-glow p-8 rounded-xl bg-gray-800/40 border border-primary-500/10 hover:border-primary-500/30 transition-all duration-300 group">
+              <h3 class="text-xl font-bold mb-3 text-primary-300 group-hover:text-primary-200 transition-colors">
+                💿 True Ownership
+              </h3>
+              <p class="text-gray-400 group-hover:text-gray-300 transition-colors">
+                Like vinyl for the digital age. Build a permanent collection that can't be taken away.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
