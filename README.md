@@ -1,14 +1,13 @@
-# 🎵 Microgamma - Own Your Music, Own Your Sound
+# 🎵 Microgamma - Your Music, Your Way
 
 [![Deno](https://img.shields.io/badge/Deno-2.0+-000000?style=flat&logo=deno)](https://deno.land)
 [![Fresh](https://img.shields.io/badge/Fresh-2.0+-14b866?style=flat&logo=deno)](https://fresh.deno.dev)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.0+-06b6d4?style=flat&logo=tailwind-css)](https://tailwindcss.com)
 
-**Microgamma** is an innovative music player that puts you back in control of
-your digital music collection. Unlike traditional streaming services that lock
-away your music and demand monthly payments, Microgamma empowers you with
-complete ownership, self-hosted freedom, and a revolutionary approach to music
-streaming.
+**Microgamma** is a modern, self-hosted music player that gives you full
+ownership of your digital music collection. Stream your library from any device,
+customize every detail, and build a permanent collection that's truly yours — no
+subscriptions, no compromises.
 
 ## 🌟 Key Features
 
@@ -26,7 +25,7 @@ streaming.
 - **Unified device control** - Start on desktop, continue on mobile
 - **Cross-platform support** - Windows, macOS, and Linux
 
-### 🎨 Underground Revolution Design
+### 🎨 Designed for Music Lovers
 
 - **Vaporwave aesthetic** - Retro-futuristic visual experience
 - **Dark theme optimized** - Easy on the eyes for extended listening
@@ -106,7 +105,7 @@ deno task start
 
 ### Public Pages
 
-- **Homepage** - Ownership revolution messaging and feature showcase
+- **Homepage** - Music freedom messaging and feature showcase
 - **Downloads** - Platform-specific installers with security notes
 - **News** - Technical updates and development announcements
 - **Screenshots** - Interface previews and feature demonstrations
@@ -143,13 +142,11 @@ Microgamma uses [Kinde](https://kinde.com) for secure OAuth authentication:
 
 ## 🎯 Project Philosophy
 
-Microgamma represents a fundamental shift in how we think about music ownership
-in the digital age:
+Microgamma is built on the belief that the music you love should be yours to
+keep:
 
-- **Against Subscription Traps** - No recurring payments for access to your own
-  music
-- **For True Ownership** - Your music collection belongs to you, not a
-  corporation
+- **Permanent Collections** - Every album you buy stays yours forever
+- **True Ownership** - Your music collection belongs to you, not a corporation
 - **Self-Hosted Freedom** - Run on your own hardware or choose premium hosting
 - **Community Driven** - Open-source with transparent development
 
@@ -161,8 +158,8 @@ and privacy.
 
 ## 📄 License
 
-This project is licensed under the terms that protect user freedom and prevent
-corporate exploitation of personal music collections.
+This project is licensed under the terms that protect user freedom and music
+ownership rights.
 
 ## 📞 Contact & Community
 
@@ -172,4 +169,4 @@ corporate exploitation of personal music collections.
 
 ---
 
-**Own Your Music. Own Your Revolution.** 🎵⚡
+**Your Music. Your Way.** 🎵⚡
