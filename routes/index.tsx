@@ -66,38 +66,28 @@ export default define.page(function Home(ctx) {
         </div>
       </section>
 
-      {/* What is Microgamma? */}
-      <section
-        id="what-is-microgamma"
-        class="bg-gray-900 text-white py-20 px-4 scroll-mt-4"
-      >
-        <div class="container mx-auto text-center max-w-5xl">
-          <h2 class="text-3xl md:text-4xl font-bold mb-12 text-primary-400">
-            What is Microgamma?
-          </h2>
-
-           <div class="space-y-4 text-left max-w-2xl mx-auto">
-             <p class="text-lg text-gray-300">
-               🎛️ Stream from your own hardware—no monthly fees.
-             </p>
-             <p class="text-lg text-gray-300">
-               🎨 Customize album art, metadata, and playlists your way.
-             </p>
-             <p class="text-lg text-gray-300">
-               📱 Listen on any device with a browser, anywhere.
-             </p>
-             <p class="text-lg text-gray-300">
-               💿 Own your music collection permanently—like vinyl for the digital age.
-             </p>
-             <p class="text-lg text-gray-300">
-               🔒 Build a library that can't be taken away.
-             </p>
-             <p class="text-lg text-gray-300">
-               ✨ True ownership with modern streaming convenience.
-             </p>
+       {/* What is Microgamma? */}
+       <section
+         id="what-is-microgamma"
+         class="bg-gray-900 text-white py-20 px-4 scroll-mt-4"
+       >
+         <div class="container mx-auto text-center max-w-4xl">
+           <h2 class="text-3xl font-bold mb-12 text-primary-400">
+             What is Microgamma?
+           </h2>
+           <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 text-lg text-left max-w-3xl mx-auto">
+             <p>🎵 A music player you own.</p>
+             <p>🏠 Runs on your hardware.</p>
+             <p>📱 Stream to any device.</p>
+             <p>🎨 Customize everything — covers, metadata, playlists.</p>
+             <p>🌐 Remote control from anywhere.</p>
+             <p>💰 Free. Forever. No subscriptions.</p>
            </div>
-        </div>
-      </section>
+           <p class="text-primary-300 text-xl mt-12">
+             Like curating a vinyl collection — with the convenience of modern streaming.
+           </p>
+         </div>
+       </section>
 
       {/* Why Ownership Matters */}
       <section class="bg-black text-white py-20 px-4 grid-bg">
