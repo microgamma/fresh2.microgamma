@@ -58,7 +58,7 @@ export default define.page(function Home(ctx) {
             </a>
             <a
               href="#what-is-microgamma"
-              class="border border-primary-500/50 text-primary-300 px-6 py-3 rounded-full font-semibold hover:bg-primary-500/10 transition inline-block"
+              class="border border-primary-400/50 text-primary-300 px-6 py-3 rounded-full font-semibold hover:bg-primary-400/10 transition inline-block"
             >
               What's Microgamma?
             </a>
