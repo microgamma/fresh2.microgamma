@@ -76,43 +76,26 @@ export default define.page(function Home(ctx) {
             What is Microgamma?
           </h2>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-            <div class="card-glow p-8 rounded-xl bg-gray-800/40 border border-primary-500/10 hover:border-primary-500/30 transition-all duration-300 group">
-              <h3 class="text-xl font-bold mb-3 text-primary-300 group-hover:text-primary-200 transition-colors">
-                🎛️ Your Hardware, Your Rules
-              </h3>
-              <p class="text-gray-400 group-hover:text-gray-300 transition-colors">
-                Stream from any computer, NAS, or server you own. No monthly fees, ever.
-              </p>
-            </div>
-
-            <div class="card-glow p-8 rounded-xl bg-gray-800/40 border border-primary-500/10 hover:border-primary-500/30 transition-all duration-300 group">
-              <h3 class="text-xl font-bold mb-3 text-primary-300 group-hover:text-primary-200 transition-colors">
-                🎨 Total Customization
-              </h3>
-              <p class="text-gray-400 group-hover:text-gray-300 transition-colors">
-                Edit metadata, swap album art, and curate your library exactly how you want.
-              </p>
-            </div>
-
-            <div class="card-glow p-8 rounded-xl bg-gray-800/40 border border-primary-500/10 hover:border-primary-500/30 transition-all duration-300 group">
-              <h3 class="text-xl font-bold mb-3 text-primary-300 group-hover:text-primary-200 transition-colors">
-                📱 Stream Anywhere
-              </h3>
-              <p class="text-gray-400 group-hover:text-gray-300 transition-colors">
-                Listen on any device with a modern browser. Seamless playback, zero lock-in.
-              </p>
-            </div>
-
-            <div class="card-glow p-8 rounded-xl bg-gray-800/40 border border-primary-500/10 hover:border-primary-500/30 transition-all duration-300 group">
-              <h3 class="text-xl font-bold mb-3 text-primary-300 group-hover:text-primary-200 transition-colors">
-                💿 True Ownership
-              </h3>
-              <p class="text-gray-400 group-hover:text-gray-300 transition-colors">
-                Like vinyl for the digital age. Build a permanent collection that can't be taken away.
-              </p>
-            </div>
-          </div>
+           <div class="space-y-4 text-left max-w-2xl mx-auto">
+             <p class="text-lg text-gray-300">
+               🎛️ Stream from your own hardware—no monthly fees.
+             </p>
+             <p class="text-lg text-gray-300">
+               🎨 Customize album art, metadata, and playlists your way.
+             </p>
+             <p class="text-lg text-gray-300">
+               📱 Listen on any device with a browser, anywhere.
+             </p>
+             <p class="text-lg text-gray-300">
+               💿 Own your music collection permanently—like vinyl for the digital age.
+             </p>
+             <p class="text-lg text-gray-300">
+               🔒 Build a library that can't be taken away.
+             </p>
+             <p class="text-lg text-gray-300">
+               ✨ True ownership with modern streaming convenience.
+             </p>
+           </div>
         </div>
       </section>
 
