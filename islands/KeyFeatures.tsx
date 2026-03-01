@@ -28,110 +28,101 @@ export default function KeyFeatures() {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div class="fade-in p-6 card-glow rounded-lg">
             <h3 class="text-2xl font-semibold mb-4 text-primary-400">
-              🎵 Own Your Sound
+              🎵 Your Music, Always
             </h3>
             <p>
-              Stream your entire music library with complete ownership. Never
-              lose access to what you've collected.
+              Stream your entire library with full ownership. Every album
+              you add stays yours — no subscriptions, no expiration.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
             <h3 class="text-2xl font-semibold mb-4 text-primary-400">
-              📀 Audiophile Freedom
+              📀 High-Fidelity Streaming
             </h3>
             <p>
-              High-fidelity audio streaming that respects your ears.
-              Peer-to-peer quality without compromises.
+              Crystal-clear audio streamed peer-to-peer. Your music sounds
+              the way it was meant to — no compression, no compromise.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
             <h3 class="text-2xl font-semibold mb-4 text-primary-400">
-              🔒 Privacy by Design
+              🔒 Private by Default
             </h3>
             <p>
-              Your music stays on your device. No ads, no tracking, no platform
-              surveillance. Just pure listening.
+              Your music stays on your device. No ads, no tracking, no
+              data harvesting — just you and your music.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
             <h3 class="text-2xl font-semibold mb-4 text-primary-400">
-              ⚡ Zero-Setup Revolution
+              ⚡ Ready in Seconds
             </h3>
             <p>
-              Download, launch, select your music folder. Instant streaming
-              without the subscription hassle.
+              Download, launch, point to your music folder. You're streaming
+              in under a minute — no accounts, no setup wizards.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
             <h3 class="text-2xl font-semibold mb-4 text-primary-400">
-              🔍 Your Search, Your Rules
+              🔍 Instant Search
             </h3>
             <p>
-              Find any song, artist, or album instantly. Fuzzy search that
-              understands how you think about music.
+              Find any song, artist, or album in milliseconds. Fuzzy search
+              that understands what you're looking for, even with typos.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
             <h3 class="text-2xl font-semibold mb-4 text-primary-400">
-              📋 Curate Your Knowledge
+              🎤 Lyrics Built In
             </h3>
             <p>
-              Our AI discovers album and artist info for you. Build the ultimate
-              music encyclopedia in your collection.
+              Add synchronized lyrics to any track. Follow along with your
+              favorites or turn your living room into a karaoke stage.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
             <h3 class="text-2xl font-semibold mb-4 text-primary-400">
-              🎤 Lyrics You Control
+              🎨 Your Covers, Your Way
             </h3>
             <p>
-              Add synchronized lyrics to your tracks. Perfect karaoke or just
-              following along with your favorites.
+              Pick album art from Discogs, use your own scans, or design
+              something new. Your albums always look the way you want.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
             <h3 class="text-2xl font-semibold mb-4 text-primary-400">
-              🎨 Your Covers, Your Choice
+              🔧 Make It Yours
             </h3>
             <p>
-              Never let anyone change what your favorite albums look like.
-              Choose covers from Discogs or your own scans.
+              Open JSON metadata and extensible libraries let you tweak,
+              script, and automate anything in your collection.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
             <h3 class="text-2xl font-semibold mb-4 text-primary-400">
-              🔧 Hack Your Experience
+              📱 One Library, Every Device
             </h3>
             <p>
-              JSON metadata you can manipulate with our open libraries.
-              Customize everything to your liking.
+              Control your music from any device. Start on desktop, pick up
+              on your phone — it all stays in sync.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
             <h3 class="text-2xl font-semibold mb-4 text-primary-400">
-              📱 Unified Control
+              🔊 Play Everywhere
             </h3>
             <p>
-              Control your music from any device. Start on desktop, continue on
-              phone. Seamless everywhere.
+              Stream to your home stereo, headphones, or multiple rooms at
+              once. Your music fills every space you want.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
             <h3 class="text-2xl font-semibold mb-4 text-primary-400">
-              🔊 Multi-Room Freedom
+              🔄 Seamless Handoff
             </h3>
             <p>
-              Stream to your home stereo, headphones, or both simultaneously.
-              Your music, your spaces.
-            </p>
-          </div>
-          <div class="fade-in p-6 card-glow rounded-lg">
-            <h3 class="text-2xl font-semibold mb-4 text-primary-400">
-              🔄 Effortless Switching
-            </h3>
-            <p>
-              Move between devices without missing a beat. Music flows where you
-              want it, when you want it.
+              Switch between devices without missing a beat. Your music
+              follows you naturally, wherever you go.
             </p>
           </div>
         </div>
