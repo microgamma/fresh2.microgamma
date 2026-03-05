@@ -7,14 +7,17 @@ export default function SongShareDemo() {
     {
       title: "Blinding Lights",
       artist: "The Weeknd",
+      image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=1200&h=630&fit=crop",
     },
     {
       title: "Tainted Love",
       artist: "Soft Cell",
+      image: "https://images.unsplash.com/photo-1511379938547-c1f69b13d835?w=1200&h=630&fit=crop",
     },
     {
       title: "Retrograde",
       artist: "James Blake",
+      image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&h=630&fit=crop",
     },
   ];
 
@@ -48,9 +51,20 @@ export default function SongShareDemo() {
             {/* Song cards grid */}
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
               {exampleSongs.map((song) => (
-                <div class="card-glow bg-black/60 backdrop-blur-sm rounded-lg border border-primary-400/30 shadow-2xl hover:shadow-primary-400/50 transition-shadow p-6">
+                <div class="card-glow bg-black/60 backdrop-blur-sm rounded-lg border border-primary-400/30 shadow-2xl hover:shadow-primary-400/50 transition-shadow overflow-hidden">
+                  {/* Album art */}
+                  {song.image && (
+                    <div class="overflow-hidden rounded-t-lg">
+                      <img
+                        src={song.image}
+                        alt={song.title}
+                        class="w-full aspect-video object-cover"
+                      />
+                    </div>
+                  )}
+
                   {/* Content */}
-                  <div>
+                  <div class="p-6">
                     <h3 class="text-xl font-bold text-white mb-1">{song.title}</h3>
                     <p class="text-primary-400 font-semibold mb-4">{song.artist}</p>
 
@@ -59,6 +73,7 @@ export default function SongShareDemo() {
                       href={generateSongShareUrl({
                         title: song.title,
                         artist: song.artist,
+                        image: song.image,
                       })}
                       class="inline-flex items-center space-x-2 bg-primary-600 hover:bg-primary-500 text-white font-bold py-2 px-4 rounded-lg transition-all duration-200 transform hover:scale-105"
                     >

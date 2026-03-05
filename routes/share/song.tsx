@@ -12,7 +12,7 @@ function parseSongParams(url: URL): SongMetadata {
   return {
     title: url.searchParams.get("title") || "Unknown Song",
     artist: url.searchParams.get("artist") || "Unknown Artist",
-    image: "", // Will be generated later
+    image: url.searchParams.get("image") || "", // Comes from query params
     playUrl: "", // Will be generated from external service
   };
 }
@@ -64,6 +64,18 @@ export default function SongPreviewPage({ url }: PageProps) {
           <div class="max-w-2xl mx-auto">
             {/* Music player card */}
             <div class="card-glow bg-black/60 backdrop-blur-sm rounded-lg border border-primary-400/30 overflow-hidden shadow-2xl">
+              {/* Album art */}
+              {song.image && (
+                <div class="relative">
+                  <img
+                    src={song.image}
+                    alt={song.title}
+                    class="w-full aspect-square object-cover"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80"></div>
+                </div>
+              )}
+
               {/* Content */}
               <div class="p-8 md:p-12">
                 <div class="mb-6">

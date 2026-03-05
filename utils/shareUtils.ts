@@ -5,6 +5,7 @@
 export interface SongShareParams {
   title: string;
   artist: string;
+  image?: string;
 }
 
 /**
@@ -20,9 +21,15 @@ export function generateSongShareUrl(
   const url = new URL("/share/song", baseUrl);
 
   // Add required params (title and artist)
-  // Image and playUrl will be generated server-side
   url.searchParams.append("title", params.title);
   url.searchParams.append("artist", params.artist);
+
+  // Add optional image from query params
+  if (params.image) {
+    url.searchParams.append("image", params.image);
+  }
+
+  // playUrl will be generated from external service later
 
   // Return just the pathname and search on server, full URL on client
   if (typeof window === "undefined") {
