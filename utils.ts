@@ -7,6 +7,8 @@ export interface State {
   user: UserType;
   shared: string;
   roles: string[];
+  skipLayout?: boolean;
+  useShareLayout?: boolean;
 }
 
 export const define = createDefine<State>();

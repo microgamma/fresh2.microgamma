@@ -50,7 +50,7 @@ export default function GalleryPage() {
         <title>Gallery & Interface - Microgamma</title>
         <meta
           name="description"
-          content="Explore the Microgamma interface and features through our gallery. See how the music ownership player puts you in control of your digital collection."
+          content="Explore the Microgamma interface through our gallery. See how the self-hosted music player keeps your collection organized and accessible."
         />
       </Head>
 
@@ -66,8 +66,8 @@ export default function GalleryPage() {
               Gallery & <span class="gradient-text">Interface</span>
             </h1>
             <p class="text-xl mb-8 max-w-3xl mx-auto text-gray-200 drop-shadow">
-              See the music ownership player that puts you in control. Explore
-              every pixel of the ownership revolution.
+              Explore the music player built for your collection. Clean
+              design, powerful features, and everything where you'd expect it.
             </p>
             <div class="w-24 h-1 bg-primary-400 mx-auto mb-12 rounded-full">
             </div>
@@ -109,17 +109,17 @@ export default function GalleryPage() {
           <div class="text-center mt-16">
             <div class="card-glow p-8 rounded-xl bg-accent-900/80 backdrop-blur-sm border border-primary-400/50 max-w-2xl mx-auto">
               <h3 class="text-2xl font-bold mb-4 text-primary-300">
-                Experience the Ownership Revolution
+                Like What You See?
               </h3>
               <p class="text-gray-300 mb-6">
-                Ready to see your music truly belong to you? Download Microgamma
-                and take control of your digital music destiny.
+                Download Microgamma and start streaming your own music
+                library today — free and self-hosted.
               </p>
-              <div class="flex justify-center space-x-2 text-primary-400">
+              <a href="/downloads" class="flex justify-center space-x-2 text-primary-400 hover:text-primary-300 transition">
                 <span class="text-2xl">🎵</span>
-                <span class="text-lg font-semibold">Download Now</span>
+                <span class="text-lg font-semibold">Download Free</span>
                 <span class="text-2xl">🎵</span>
-              </div>
+              </a>
             </div>
           </div>
         </div>

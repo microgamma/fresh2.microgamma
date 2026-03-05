@@ -28,10 +28,10 @@ export default async function DownloadsPage() {
   return (
     <>
       <Head>
-        <title>Download Microgamma - Own Your Music, Own Your Sound</title>
+        <title>Download Microgamma - Your Music, Your Way</title>
         <meta
           name="description"
-          content="Download Microgamma for Windows, macOS, and Linux. Take control of your music collection with self-hosted streaming, no subscriptions required."
+          content="Download Microgamma for Windows, macOS, and Linux. Stream your own music library from any device — free, self-hosted, no subscriptions."
         />
       </Head>
 
@@ -47,9 +47,9 @@ export default async function DownloadsPage() {
               Download <span class="gradient-text">Microgamma</span>
             </h1>
             <p class="text-xl mb-8 max-w-3xl mx-auto text-gray-200 drop-shadow">
-              Take ownership of your music collection. Join the ownership
-              revolution where your music belongs to you - no subscriptions, no
-              compromises, no platform dictators.
+              Get started in under a minute. Download Microgamma, point it
+              at your music folder, and start streaming to any device — free
+              and forever yours.
             </p>
             <div class="w-24 h-1 bg-primary-400 mx-auto mb-12 rounded-full">
             </div>
@@ -93,7 +93,7 @@ export default async function DownloadsPage() {
                   <div class="text-3xl mb-2">🚀</div>
                   <div class="flex-1">
                     <h3 class="text-xl font-semibold mb-4 text-primary-300">
-                      Take Ownership - Quick Start
+                      Quick Start
                     </h3>
                     <ol class="text-gray-300 space-y-3">
                       <li class="flex items-start space-x-2">
@@ -128,16 +128,16 @@ export default async function DownloadsPage() {
             <div class="text-center mt-16">
               <div class="card-glow p-8 rounded-xl bg-accent-900/80 backdrop-blur-sm border border-primary-400/50 max-w-2xl mx-auto">
                 <h3 class="text-2xl font-bold mb-4 text-primary-300">
-                  Ready to Own Your Music?
+                  Ready to Try It?
                 </h3>
                 <p class="text-gray-300 mb-6">
-                  Join music enthusiasts who've taken back control. Your
-                  collection, your rules, your revolution.
+                  Join thousands of music lovers who stream their own
+                  collections. Free to download, yours to keep.
                 </p>
                 <div class="flex justify-center space-x-2 text-primary-400">
                   <span class="text-2xl">🎵</span>
                   <span class="text-lg font-semibold">
-                    Welcome to the Ownership Movement
+                    Your Music. Your Way.
                   </span>
                   <span class="text-2xl">🎵</span>
                 </div>

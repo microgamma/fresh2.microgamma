@@ -10,7 +10,7 @@ export default async function NewsPage() {
         <title>News & Updates - Microgamma</title>
         <meta
           name="description"
-          content="Stay updated with the latest Microgamma developments, technical insights, and announcements from the music ownership revolution."
+          content="Stay updated with the latest Microgamma developments, technical insights, and release announcements."
         />
       </Head>
 
@@ -26,9 +26,9 @@ export default async function NewsPage() {
               News & <span class="gradient-text">Updates</span>
             </h1>
             <p class="text-xl mb-8 max-w-3xl mx-auto text-gray-200 drop-shadow">
-              Stay connected with the latest developments, technical insights,
-              and announcements from the{" "}
-              <span class="text-primary-300">music ownership revolution</span>.
+              Follow along with the latest releases, technical deep dives,
+              and what's coming next for{" "}
+              <span class="text-primary-300">Microgamma</span>.
             </p>
             <div class="w-24 h-1 bg-primary-400 mx-auto mb-12 rounded-full">
             </div>
@@ -171,14 +171,13 @@ export default async function NewsPage() {
                   Stay in the Loop
                 </h3>
                 <p class="text-gray-300 mb-6">
-                  Follow our journey as we build the future of music ownership.
-                  Every update brings us closer to a world where your music
-                  truly belongs to you.
+                  Follow our progress as we build Microgamma. Every release
+                  brings new features for your self-hosted music library.
                 </p>
                 <div class="flex justify-center space-x-2 text-primary-400">
                   <span class="text-2xl">📰</span>
                   <span class="text-lg font-semibold">
-                    Latest from the Ownership Revolution
+                    Your Music. Your Way.
                   </span>
                   <span class="text-2xl">📰</span>
                 </div>
