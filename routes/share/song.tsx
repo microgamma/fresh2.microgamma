@@ -5,15 +5,18 @@ interface SongMetadata {
   title?: string;
   artist?: string;
   image?: string;
-  playUrl?: string;
+  links?: string[];
 }
 
 function parseSongParams(url: URL): SongMetadata {
+  const linksParam = url.searchParams.get("links") || "";
+  const links = linksParam ? linksParam.split(",").filter(link => link.trim()) : [];
+
   return {
     title: url.searchParams.get("title") || "Unknown Song",
     artist: url.searchParams.get("artist") || "Unknown Artist",
     image: url.searchParams.get("image") || "", // Comes from query params
-    playUrl: "", // Will be generated from external service
+    links: links, // Multiple music platform links
   };
 }
 
@@ -91,26 +94,55 @@ export default function SongPreviewPage({ url }: PageProps) {
                   <p class="text-2xl text-primary-300 font-semibold">{song.artist}</p>
                 </div>
 
+                {/* Music platform links */}
+                {song.links && song.links.length > 0 && (
+                  <div class="mb-8">
+                    <p class="text-sm text-gray-400 mb-3">Listen on:</p>
+                    <div class="flex flex-wrap gap-2">
+                      {song.links.map((link, idx) => {
+                        // Extract platform name from URL
+                        let platformName = "Listen";
+                        let platformEmoji = "🎵";
+
+                        if (link.includes("shazam")) {
+                          platformName = "Shazam";
+                          platformEmoji = "📱";
+                        } else if (link.includes("youtube") || link.includes("music.youtube")) {
+                          platformName = "YouTube Music";
+                          platformEmoji = "▶️";
+                        } else if (link.includes("rateyourmusic")) {
+                          platformName = "RateYourMusic";
+                          platformEmoji = "⭐";
+                        } else if (link.includes("israbox")) {
+                          platformName = "IsraBox";
+                          platformEmoji = "🎧";
+                        } else if (link.includes("spotify")) {
+                          platformName = "Spotify";
+                          platformEmoji = "🟢";
+                        } else if (link.includes("apple")) {
+                          platformName = "Apple Music";
+                          platformEmoji = "🍎";
+                        }
+
+                        return (
+                          <a
+                            key={idx}
+                            href={link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center space-x-1 bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-500 hover:to-primary-400 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 transform hover:scale-105 text-sm"
+                          >
+                            <span>{platformEmoji}</span>
+                            <span>{platformName}</span>
+                          </a>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
                 {/* Action buttons */}
                 <div class="flex flex-col sm:flex-row gap-4">
-                  {song.playUrl && (
-                    <a
-                      href={song.playUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="inline-flex items-center justify-center space-x-2 bg-green-500 hover:bg-green-600 text-black font-bold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105"
-                    >
-                      <span>🎵 Play Now</span>
-                    </a>
-                  )}
-
-                  {!song.playUrl && (
-                    <div class="inline-flex items-center justify-center space-x-2 bg-gray-600 text-gray-300 font-bold py-3 px-6 rounded-lg opacity-50 cursor-not-allowed">
-                      <span>🎵 Play Now</span>
-                      <span class="text-xs">(loading...)</span>
-                    </div>
-                  )}
-
                   <a
                     href="/downloads"
                     class="inline-flex items-center justify-center space-x-2 bg-primary-600 hover:bg-primary-500 text-white font-bold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105"
