@@ -141,11 +141,14 @@ export default function SongPreviewPage({ url }: PageProps) {
                   </div>
                 )}
 
-                {/* Action buttons */}
-                <div class="flex flex-col sm:flex-row gap-4">
+                {/* Call to action section */}
+                <div class="mt-12 pt-8 border-t border-primary-400/30 text-center">
+                  <p class="text-gray-300 mb-6 text-lg">
+                    Or download Microgamma and start building your music library
+                  </p>
                   <a
                     href="/downloads"
-                    class="inline-flex items-center justify-center space-x-2 bg-primary-600 hover:bg-primary-500 text-white font-bold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105"
+                    class="inline-flex items-center justify-center space-x-2 bg-primary-600 hover:bg-primary-500 text-white font-bold py-3 px-8 rounded-lg transition-all duration-200 transform hover:scale-105"
                   >
                     <span>📥 Download Microgamma</span>
                   </a>
