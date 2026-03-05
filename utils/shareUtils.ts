@@ -13,12 +13,12 @@ export interface SongShareParams {
 /**
  * Generates a shareable preview URL for a song
  * @param params - Song metadata
- * @param baseUrl - Base URL (defaults to current domain)
+ * @param baseUrl - Base URL (defaults to current domain or relative path on server)
  * @returns Complete shareable URL
  */
 export function generateSongShareUrl(
   params: SongShareParams,
-  baseUrl: string = typeof window !== "undefined" ? window.location.origin : "",
+  baseUrl: string = typeof window !== "undefined" ? window.location.origin : "http://localhost",
 ): string {
   const url = new URL("/share/song", baseUrl);
 
@@ -37,6 +37,10 @@ export function generateSongShareUrl(
     url.searchParams.append("description", params.description);
   }
 
+  // Return just the pathname and search on server, full URL on client
+  if (typeof window === "undefined") {
+    return url.pathname + url.search;
+  }
   return url.toString();
 }
 
