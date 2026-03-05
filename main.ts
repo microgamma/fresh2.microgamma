@@ -9,7 +9,7 @@ export const app = new App<State>();
 
 app.use(cors({
   origin: "*",
-  allowHeaders: ["X-Custom-Header", "Upgrade-Insecure-Requests"],
+  allowHeaders: ["X-Custom-Header", "Upgrade-Insecure-Requests", "Content-Type"],
   allowMethods: ["POST", "GET", "OPTIONS"],
   exposeHeaders: ["Content-Length", "X-Kuma-Revision"],
   maxAge: 600,
