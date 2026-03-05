@@ -3,6 +3,7 @@ import CountlyAnalytics from "../islands/CountlyAnalytics.tsx";
 import { define } from "../utils.ts";
 import MainLayout from "../components/MainLayout.tsx";
 import PrivateLayout from "../components/PrivateLayout.tsx";
+import ShareLayout from "../components/ShareLayout.tsx";
 
 export default define.page(function App({ Component, state, route }) {
   const COUNTLY_APP_KEY = Deno.env.get("COUNTLY_APP_KEY");
@@ -63,7 +64,21 @@ export default define.page(function App({ Component, state, route }) {
         <link rel="apple-touch-icon" href="/maskable_icon_x180.png" />
       </head>
       <body f-client-nav>
-        {route?.startsWith("/private")
+        {state.useShareLayout
+          ? (
+            <ShareLayout>
+              <Partial name="body">
+                <Component />
+              </Partial>
+            </ShareLayout>
+          )
+          : state.skipLayout
+          ? (
+            <Partial name="body">
+              <Component />
+            </Partial>
+          )
+          : route?.startsWith("/private")
           ? (
             <PrivateLayout roles={state.roles}>
               <Partial name="body">

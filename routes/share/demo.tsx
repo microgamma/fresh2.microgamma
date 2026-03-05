@@ -1,5 +1,4 @@
 import { Head } from "fresh/runtime";
-import SongShareButton from "../../islands/SongShareButton.tsx";
 import { generateSongShareUrl } from "../../utils/shareUtils.ts";
 
 export default function SongShareDemo() {
@@ -79,13 +78,19 @@ export default function SongShareDemo() {
 
                     {/* Share button */}
                     <div class="flex gap-2">
-                      <SongShareButton
-                        title={song.title}
-                        artist={song.artist}
-                        image={song.image}
-                        spotifyUrl={song.spotifyUrl}
-                        description={song.description}
-                      />
+                      <a
+                        href={generateSongShareUrl({
+                          title: song.title,
+                          artist: song.artist,
+                          image: song.image,
+                          spotifyUrl: song.spotifyUrl,
+                          description: song.description,
+                        })}
+                        class="inline-flex items-center space-x-2 bg-primary-600 hover:bg-primary-500 text-white font-bold py-2 px-4 rounded-lg transition-all duration-200 transform hover:scale-105"
+                      >
+                        <span>📤</span>
+                        <span>Preview</span>
+                      </a>
 
                       {song.spotifyUrl && (
                         <a

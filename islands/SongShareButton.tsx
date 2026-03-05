@@ -76,7 +76,7 @@ export default function SongShareButton({
 
       {/* Share menu */}
       {showMenu && (
-        <div class="absolute right-0 mt-2 w-64 bg-black/90 backdrop-blur-sm border border-primary-400/30 rounded-lg shadow-2xl z-50 overflow-hidden">
+        <div class="absolute right-0 mt-2 w-64 bg-black/90 backdrop-blur-sm border border-primary-400/30 rounded-lg shadow-2xl z-[9999] overflow-hidden" style={{ pointerEvents: "auto" }}>
           <div class="p-4 border-b border-primary-400/20">
             <p class="text-sm text-gray-300 mb-3">Share "{title}" by {artist}</p>
 
