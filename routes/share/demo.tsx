@@ -98,7 +98,7 @@ export default function SongShareDemo() {
                   </p>
                   <div class="bg-gray-900/50 rounded p-4 border border-primary-400/20 overflow-auto">
                     <code class="text-primary-300 text-sm">
-                      /share/song?title=TITLE&artist=ARTIST&image=IMAGE_URL&url=SPOTIFY_URL&description=DESCRIPTION
+                      /share/song?title=TITLE&artist=ARTIST&image=IMAGE_URL
                     </code>
                   </div>
                 </div>
@@ -121,16 +121,6 @@ export default function SongShareDemo() {
                         Album art URL (optional) - Used for OG tags and preview
                       </p>
                     </div>
-                    <div class="border-l-2 border-primary-400 pl-4">
-                      <p class="font-mono text-primary-300">url</p>
-                      <p class="text-sm text-gray-400">
-                        Spotify or music player URL (optional) - Shown as listen button
-                      </p>
-                    </div>
-                    <div class="border-l-2 border-primary-400 pl-4">
-                      <p class="font-mono text-primary-300">description</p>
-                      <p class="text-sm text-gray-400">Custom description (optional)</p>
-                    </div>
                   </div>
                 </div>
 
@@ -145,8 +135,6 @@ const song = {
   title: 'Blinding Lights',
   artist: 'The Weeknd',
   image: 'https://example.com/image.jpg',
-  spotifyUrl: 'https://spotify.com/track/...',
-  description: 'Amazing synthwave track'
 };
 
 // Generate share URL
@@ -171,8 +159,6 @@ export default function MyComponent() {
       title="Song Title"
       artist="Artist Name"
       image="https://example.com/image.jpg"
-      spotifyUrl="https://spotify.com/track/..."
-      description="Beautiful song"
     />
   );
 }`}
@@ -199,10 +185,6 @@ export default function MyComponent() {
                     <li class="flex items-start space-x-3">
                       <span class="text-primary-400 font-bold">✓</span>
                       <span>Responsive design works on mobile and desktop</span>
-                    </li>
-                    <li class="flex items-start space-x-3">
-                      <span class="text-primary-400 font-bold">✓</span>
-                      <span>Optional Spotify listen button</span>
                     </li>
                   </ul>
                 </div>

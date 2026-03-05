@@ -1,99 +1,115 @@
 import { Head } from "fresh/runtime";
-import { PageProps } from "fresh";
+import { define } from "../../utils.ts";
 
 interface LinkItem {
   link: string;
   text: string;
 }
 
-interface SongMetadata {
-  title?: string;
-  artist?: string;
-  image?: string;
+interface SongInfo {
+  info: string;
   links?: LinkItem[];
 }
 
-function parseSongParams(url: URL): SongMetadata {
-  const linksParam = url.searchParams.get("links") || "";
-  let links: LinkItem[] = [];
-
-  if (linksParam) {
-    try {
-      links = JSON.parse(linksParam);
-    } catch (error) {
-      console.error("Failed to parse links JSON:", error);
-      links = [];
-    }
-  }
-
-  return {
-    title: url.searchParams.get("title") || "Unknown Song",
-    artist: url.searchParams.get("artist") || "Unknown Artist",
-    image: url.searchParams.get("image") || "", // Comes from query params
-    links: links, // Multiple music platform links with custom text
-  };
+interface SongPageData {
+  title: string;
+  artist: string;
+  image: string;
+  description?: SongInfo;
 }
 
-export default function SongPreviewPage({ url }: PageProps) {
-  const song = parseSongParams(url);
+async function fetchSongInfo(
+  artist: string,
+  song: string,
+): Promise<SongInfo | undefined> {
+  try {
+    const response = await fetch("https://signaling.microgamma.io/info", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ artist, song }),
+    });
 
-  // Placeholder image - will be replaced with generated image later
-  const ogImage = song.image || "https://via.placeholder.com/1200x630?text=Now+Listening";
+    if (!response.ok) {
+      console.error("Failed to fetch song info:", response.status);
+      return undefined;
+    }
+
+    const data = await response.json();
+    return data.description;
+  } catch (error) {
+    console.error("Error fetching song info:", error);
+    return undefined;
+  }
+}
+
+export default define.page(async function SongPreviewPage(ctx) {
+  const url = ctx.url;
+
+  const title = url.searchParams.get("title") || "Unknown Song";
+  const artist = url.searchParams.get("artist") || "Unknown Artist";
+  const image = url.searchParams.get("image") || "";
+
+  const description = await fetchSongInfo(artist, title);
+
+  const ogImage = image ||
+    "https://via.placeholder.com/1200x630?text=Now+Listening";
   const pageUrl = url.toString();
-  const description = `${song.artist} is listening to "${song.title}" on Microgamma`;
+  const ogDescription = description?.info ||
+    `${artist} is listening to "${title}" on Microgamma`;
 
   return (
     <>
       <Head>
         <title>
-          {song.title} by {song.artist} - Now Listening on Microgamma
+          {title} by {artist} - Now Listening on Microgamma
         </title>
         <meta
           name="description"
-          content={description}
+          content={ogDescription}
         />
-        {/* Open Graph tags for social media preview */}
-        <meta property="og:title" content={`${song.title} by ${song.artist}`} />
+        <meta
+          property="og:title"
+          content={`${title} by ${artist}`}
+        />
         <meta
           property="og:description"
-          content={description}
+          content={ogDescription}
         />
         <meta property="og:image" content={ogImage} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:type" content="music.song" />
         <meta property="og:url" content={pageUrl} />
-        {/* Twitter Card tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${song.title} by ${song.artist}`} />
+        <meta
+          name="twitter:title"
+          content={`${title} by ${artist}`}
+        />
         <meta
           name="twitter:description"
-          content={description}
+          content={ogDescription}
         />
         <meta name="twitter:image" content={ogImage} />
       </Head>
 
       <div class="min-h-screen text-white px-4 py-8 relative overflow-hidden vaporwave-bg">
-        {/* Background overlay */}
         <div class="absolute inset-0 bg-black/60"></div>
 
         <div class="relative z-10">
           <div class="max-w-2xl mx-auto">
-            {/* Music player card */}
             <div class="card-glow bg-black/60 backdrop-blur-sm rounded-lg border border-primary-400/30 overflow-hidden shadow-2xl">
-              {/* Album art */}
-              {song.image && (
+              {image && (
                 <div class="relative">
                   <img
-                    src={song.image}
-                    alt={song.title}
+                    src={image}
+                    alt={title}
                     class="w-full aspect-square object-cover"
                   />
-                  <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80"></div>
+                  <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80">
+                  </div>
                 </div>
               )}
 
-              {/* Content */}
               <div class="p-8 md:p-12">
                 <div class="mb-6">
                   <span class="inline-block text-primary-400 text-sm font-semibold mb-2 bg-primary-900/50 px-3 py-1 rounded-full">
@@ -103,29 +119,37 @@ export default function SongPreviewPage({ url }: PageProps) {
 
                 <div class="mb-8">
                   <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
-                    {song.title}
+                    {title}
                   </h1>
-                  <p class="text-2xl text-primary-300 font-semibold">{song.artist}</p>
+                  <p class="text-2xl text-primary-300 font-semibold">
+                    {artist}
+                  </p>
                 </div>
 
-                {/* Music and resource links */}
-                {song.links && song.links.length > 0 && (
+                {description?.links && description.links.length > 0 && (
                   <div class="mb-8">
                     <p class="text-sm text-gray-400 mb-3">Find it on:</p>
                     <div class="flex flex-wrap gap-2">
-                      {song.links.map((linkItem, idx) => {
-                        // Get emoji based on link text or URL
+                      {description.links.map((linkItem, idx) => {
                         let emoji = "🔗";
                         const text = linkItem.text.toLowerCase();
-                        const url = linkItem.link.toLowerCase();
+                        const linkUrl = linkItem.link.toLowerCase();
 
-                        if (text.includes("spotify") || url.includes("spotify")) {
+                        if (
+                          text.includes("spotify") || linkUrl.includes("spotify")
+                        ) {
                           emoji = "🟢";
-                        } else if (text.includes("youtube") || url.includes("youtube")) {
+                        } else if (
+                          text.includes("youtube") || linkUrl.includes("youtube")
+                        ) {
                           emoji = "▶️";
-                        } else if (text.includes("apple") || url.includes("apple")) {
+                        } else if (
+                          text.includes("apple") || linkUrl.includes("apple")
+                        ) {
                           emoji = "🍎";
-                        } else if (text.includes("shazam") || url.includes("shazam")) {
+                        } else if (
+                          text.includes("shazam") || linkUrl.includes("shazam")
+                        ) {
                           emoji = "📱";
                         } else if (text.includes("wikipedia")) {
                           emoji = "📖";
@@ -154,7 +178,6 @@ export default function SongPreviewPage({ url }: PageProps) {
                   </div>
                 )}
 
-                {/* Call to action section */}
                 <div class="mt-12 pt-8 border-t border-primary-400/30 text-center">
                   <p class="text-gray-300 mb-6 text-lg">
                     Or download Microgamma and start building your music library
@@ -169,11 +192,10 @@ export default function SongPreviewPage({ url }: PageProps) {
               </div>
             </div>
 
-            {/* Info section */}
             <div class="mt-8 text-center">
               <p class="text-gray-400 text-sm">
-                Share this link on WhatsApp, Telegram, or any social media to show what you're
-                listening to! 🎶
+                Share this link on WhatsApp, Telegram, or any social media to
+                show what you're listening to! 🎶
               </p>
             </div>
           </div>
@@ -181,4 +203,4 @@ export default function SongPreviewPage({ url }: PageProps) {
       </div>
     </>
   );
-}
+});

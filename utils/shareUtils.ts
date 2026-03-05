@@ -2,20 +2,15 @@
  * Share utilities for generating shareable preview URLs
  */
 
-export interface LinkItem {
-  link: string;
-  text: string;
-}
-
 export interface SongShareParams {
   title: string;
   artist: string;
   image?: string;
-  links?: LinkItem[];
 }
 
 /**
- * Generates a shareable preview URL for a song
+ * Generates a shareable preview URL for a song.
+ * Only includes song identifiers — the share page fetches additional info (description, links) server-side.
  * @param params - Song metadata
  * @param baseUrl - Base URL (defaults to current domain or relative path on server)
  * @returns Complete shareable URL
@@ -33,11 +28,6 @@ export function generateSongShareUrl(
   // Add optional image from query params
   if (params.image) {
     url.searchParams.append("image", params.image);
-  }
-
-  // Add optional links as JSON
-  if (params.links && params.links.length > 0) {
-    url.searchParams.append("links", JSON.stringify(params.links));
   }
 
   // Return just the pathname and search on server, full URL on client
