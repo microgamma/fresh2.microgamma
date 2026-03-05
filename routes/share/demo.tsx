@@ -1,5 +1,6 @@
 import { Head } from "fresh/runtime";
 import SongShareButton from "../../islands/SongShareButton.tsx";
+import { generateSongShareUrl } from "../../utils/shareUtils.ts";
 
 export default function SongShareDemo() {
   // Example songs for demonstration
@@ -60,13 +61,15 @@ export default function SongShareDemo() {
             {/* Song cards grid */}
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
               {exampleSongs.map((song) => (
-                <div class="card-glow bg-black/60 backdrop-blur-sm rounded-lg border border-primary-400/30 overflow-hidden shadow-2xl hover:shadow-primary-400/50 transition-shadow">
+                <div class="card-glow bg-black/60 backdrop-blur-sm rounded-lg border border-primary-400/30 shadow-2xl hover:shadow-primary-400/50 transition-shadow overflow-visible">
                   {/* Album art */}
-                  <img
-                    src={song.image}
-                    alt={song.title}
-                    class="w-full aspect-video object-cover"
-                  />
+                  <div class="overflow-hidden rounded-t-lg">
+                    <img
+                      src={song.image}
+                      alt={song.title}
+                      class="w-full aspect-video object-cover"
+                    />
+                  </div>
 
                   {/* Content */}
                   <div class="p-6">
