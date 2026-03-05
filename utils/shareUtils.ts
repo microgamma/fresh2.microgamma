@@ -5,9 +5,6 @@
 export interface SongShareParams {
   title: string;
   artist: string;
-  image?: string;
-  spotifyUrl?: string;
-  description?: string;
 }
 
 /**
@@ -22,20 +19,10 @@ export function generateSongShareUrl(
 ): string {
   const url = new URL("/share/song", baseUrl);
 
-  // Add required params
+  // Add required params (title and artist)
+  // Image and playUrl will be generated server-side
   url.searchParams.append("title", params.title);
   url.searchParams.append("artist", params.artist);
-
-  // Add optional params
-  if (params.image) {
-    url.searchParams.append("image", params.image);
-  }
-  if (params.spotifyUrl) {
-    url.searchParams.append("url", params.spotifyUrl);
-  }
-  if (params.description) {
-    url.searchParams.append("description", params.description);
-  }
 
   // Return just the pathname and search on server, full URL on client
   if (typeof window === "undefined") {
@@ -71,8 +58,8 @@ export function generateShareText(
   generic: string;
 } {
   return {
-    whatsapp: `🎵 ${song.artist} - ${song.title}\n\nCheck it out on Microgamma:\n${url}`,
-    telegram: `🎵 ${song.artist} - ${song.title}\n\n👉 Check it out on Microgamma:\n${url}`,
+    whatsapp: `🎵 ${song.artist} - ${song.title}\n\nListen on Microgamma:\n${url}`,
+    telegram: `🎵 ${song.artist} - ${song.title}\n\n👉 Listen on Microgamma:\n${url}`,
     twitter: `🎵 Now listening to "${song.title}" by ${song.artist} on Microgamma 🎧\n\n${url}`,
     generic: `Check out what I'm listening to: ${song.artist} - ${song.title}\n${url}`,
   };
