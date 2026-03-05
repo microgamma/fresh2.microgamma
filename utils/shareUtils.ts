@@ -2,11 +2,16 @@
  * Share utilities for generating shareable preview URLs
  */
 
+export interface LinkItem {
+  link: string;
+  text: string;
+}
+
 export interface SongShareParams {
   title: string;
   artist: string;
   image?: string;
-  links?: string[];
+  links?: LinkItem[];
 }
 
 /**
@@ -30,9 +35,9 @@ export function generateSongShareUrl(
     url.searchParams.append("image", params.image);
   }
 
-  // Add optional links (comma-separated)
+  // Add optional links as JSON
   if (params.links && params.links.length > 0) {
-    url.searchParams.append("links", params.links.join(","));
+    url.searchParams.append("links", JSON.stringify(params.links));
   }
 
   // Return just the pathname and search on server, full URL on client

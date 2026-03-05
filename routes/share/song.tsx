@@ -1,22 +1,36 @@
 import { Head } from "fresh/runtime";
 import { PageProps } from "fresh";
 
+interface LinkItem {
+  link: string;
+  text: string;
+}
+
 interface SongMetadata {
   title?: string;
   artist?: string;
   image?: string;
-  links?: string[];
+  links?: LinkItem[];
 }
 
 function parseSongParams(url: URL): SongMetadata {
   const linksParam = url.searchParams.get("links") || "";
-  const links = linksParam ? linksParam.split(",").filter(link => link.trim()) : [];
+  let links: LinkItem[] = [];
+
+  if (linksParam) {
+    try {
+      links = JSON.parse(linksParam);
+    } catch (error) {
+      console.error("Failed to parse links JSON:", error);
+      links = [];
+    }
+  }
 
   return {
     title: url.searchParams.get("title") || "Unknown Song",
     artist: url.searchParams.get("artist") || "Unknown Artist",
     image: url.searchParams.get("image") || "", // Comes from query params
-    links: links, // Multiple music platform links
+    links: links, // Multiple music platform links with custom text
   };
 }
 
@@ -94,46 +108,45 @@ export default function SongPreviewPage({ url }: PageProps) {
                   <p class="text-2xl text-primary-300 font-semibold">{song.artist}</p>
                 </div>
 
-                {/* Music platform links */}
+                {/* Music and resource links */}
                 {song.links && song.links.length > 0 && (
                   <div class="mb-8">
-                    <p class="text-sm text-gray-400 mb-3">Listen on:</p>
+                    <p class="text-sm text-gray-400 mb-3">Find it on:</p>
                     <div class="flex flex-wrap gap-2">
-                      {song.links.map((link, idx) => {
-                        // Extract platform name from URL
-                        let platformName = "Listen";
-                        let platformEmoji = "🎵";
+                      {song.links.map((linkItem, idx) => {
+                        // Get emoji based on link text or URL
+                        let emoji = "🔗";
+                        const text = linkItem.text.toLowerCase();
+                        const url = linkItem.link.toLowerCase();
 
-                        if (link.includes("shazam")) {
-                          platformName = "Shazam";
-                          platformEmoji = "📱";
-                        } else if (link.includes("youtube") || link.includes("music.youtube")) {
-                          platformName = "YouTube Music";
-                          platformEmoji = "▶️";
-                        } else if (link.includes("rateyourmusic")) {
-                          platformName = "RateYourMusic";
-                          platformEmoji = "⭐";
-                        } else if (link.includes("israbox")) {
-                          platformName = "IsraBox";
-                          platformEmoji = "🎧";
-                        } else if (link.includes("spotify")) {
-                          platformName = "Spotify";
-                          platformEmoji = "🟢";
-                        } else if (link.includes("apple")) {
-                          platformName = "Apple Music";
-                          platformEmoji = "🍎";
+                        if (text.includes("spotify") || url.includes("spotify")) {
+                          emoji = "🟢";
+                        } else if (text.includes("youtube") || url.includes("youtube")) {
+                          emoji = "▶️";
+                        } else if (text.includes("apple") || url.includes("apple")) {
+                          emoji = "🍎";
+                        } else if (text.includes("shazam") || url.includes("shazam")) {
+                          emoji = "📱";
+                        } else if (text.includes("wikipedia")) {
+                          emoji = "📖";
+                        } else if (text.includes("rate")) {
+                          emoji = "⭐";
+                        } else if (text.includes("soundcloud")) {
+                          emoji = "☁️";
+                        } else if (text.includes("bandcamp")) {
+                          emoji = "🎵";
                         }
 
                         return (
                           <a
                             key={idx}
-                            href={link}
+                            href={linkItem.link}
                             target="_blank"
                             rel="noopener noreferrer"
                             class="inline-flex items-center space-x-1 bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-500 hover:to-primary-400 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 transform hover:scale-105 text-sm"
                           >
-                            <span>{platformEmoji}</span>
-                            <span>{platformName}</span>
+                            <span>{emoji}</span>
+                            <span>{linkItem.text}</span>
                           </a>
                         );
                       })}
