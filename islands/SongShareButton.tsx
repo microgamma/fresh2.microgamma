@@ -5,16 +5,12 @@ export interface SongShareButtonProps {
   title: string;
   artist: string;
   image?: string;
-  spotifyUrl?: string;
-  description?: string;
 }
 
 export default function SongShareButton({
   title,
   artist,
   image,
-  spotifyUrl,
-  description,
 }: SongShareButtonProps) {
   const [copied, setCopied] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
@@ -23,12 +19,10 @@ export default function SongShareButton({
     title,
     artist,
     image,
-    spotifyUrl,
-    description,
   });
 
   const shareTexts = generateShareText(
-    { title, artist, image, spotifyUrl, description },
+    { title, artist, image },
     shareUrl,
   );
 
