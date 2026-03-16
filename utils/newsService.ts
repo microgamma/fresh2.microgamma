@@ -230,6 +230,55 @@ export class NewsService {
     }
   }
 
+  async getGalleryMedia(): Promise<GalleryItem[]> {
+    if (!this.xBearerToken) {
+      console.warn("X_BEARER_TOKEN not set — gallery will be empty");
+      return [];
+    }
+
+    try {
+      const { tweets, media } = await this.fetchXTweets();
+
+      const mediaMap = new Map<string, XMedia>();
+      for (const m of media) {
+        mediaMap.set(m.media_key, m);
+      }
+
+      const items: GalleryItem[] = [];
+
+      for (const tweet of tweets) {
+        if (!tweet.attachments?.media_keys?.length) continue;
+
+        const images: GalleryItem["images"] = [];
+        for (const key of tweet.attachments.media_keys) {
+          const m = mediaMap.get(key);
+          if (m?.type === "photo" && m.url) {
+            images.push({ url: m.url, width: m.width, height: m.height });
+          }
+        }
+
+        if (images.length === 0) continue;
+
+        const publishedAt = new Date(tweet.created_at);
+
+        items.push({
+          id: tweet.id,
+          text: tweet.text,
+          date: publishedAt.toISOString().split("T")[0],
+          sourceUrl: `https://x.com/${this.xUsername}/status/${tweet.id}`,
+          likes: tweet.public_metrics?.like_count ?? 0,
+          retweets: tweet.public_metrics?.retweet_count ?? 0,
+          images,
+        });
+      }
+
+      return items;
+    } catch (error) {
+      console.error("Failed to fetch gallery media from X:", error);
+      return [];
+    }
+  }
+
   private async fetchDevToArticles(): Promise<DevToArticle[]> {
     const url =
       `https://dev.to/api/articles?username=${this.devtoUsername}&tag=${this.devtoTagFilter}&per_page=${this.devtoMaxArticles}`;
@@ -560,6 +609,20 @@ export class NewsService {
     console.warn("Using fallback news data due to GitHub API failure");
     return [];
   }
+}
+
+export interface GalleryItem {
+  id: string;
+  text: string;
+  date: string;
+  sourceUrl: string;
+  likes: number;
+  retweets: number;
+  images: Array<{
+    url: string;
+    width?: number;
+    height?: number;
+  }>;
 }
 
 // Export singleton instance
