@@ -61,24 +61,16 @@ export default function Header({ user, roles }: HeaderProps) {
                Blog
              </a>
            </li>
-          {roles?.includes("admin") && (
-            <li>
-              <a
-                href="/private/dashboard"
-                class={`hover:text-primary-400 transition`}
-              >
-                Dashboard
-              </a>
-            </li>
-          )}
-          <li>
-            <a
-              href="/screenshots"
-              class={`hover:text-primary-400 transition`}
-            >
-              Gallery
-            </a>
-          </li>
+           {roles?.includes("admin") && (
+             <li>
+               <a
+                 href="/private/dashboard"
+                 class={`hover:text-primary-400 transition`}
+               >
+                 Dashboard
+               </a>
+             </li>
+           )}
           <li>
             {user
               ? (
