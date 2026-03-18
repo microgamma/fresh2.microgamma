@@ -23,6 +23,7 @@
     "@/": "./",
     "@kinde-oss/kinde-typescript-sdk": "npm:@kinde-oss/kinde-typescript-sdk@^2.13.0",
     "@microphi/debug": "npm:@microphi/debug@^2.10.1",
+    "@tailwindcss/typography": "npm:@tailwindcss/typography@^0.5.19",
     "countly-sdk-web": "npm:countly-sdk-web@^25.4.4",
     "fresh": "jsr:@fresh/core@^2.2.0",
     "preact": "npm:preact@^10.28.1",
