@@ -46,9 +46,9 @@ export default async function BlogPage() {
                         {post.title}
                       </h2>
                       <div class="flex items-center space-x-4 text-sm text-gray-400">
-                        <span class="flex items-center">
-                          📅 {post.date}
-                        </span>
+                         <span class="flex items-center">
+                           📅 {(post.publishedAt || post.createdAt).toISOString().split("T")[0]}
+                         </span>
                       </div>
                     </div>
                   </div>
@@ -58,15 +58,15 @@ export default async function BlogPage() {
                   </p>
 
                   {/* Article tags for blog posts */}
-                  {post.articleTags && post.articleTags.length > 0 && (
-                    <div class="flex flex-wrap gap-2 mb-6">
-                      {post.articleTags.map((tag) => (
-                        <span class="px-2 py-1 bg-primary-900/30 text-primary-300 rounded text-xs border border-primary-400/20">
-                          #{tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
+                   {post.tags && post.tags.length > 0 && (
+                     <div class="flex flex-wrap gap-2 mb-6">
+                       {post.tags.map((tag) => (
+                         <span class="px-2 py-1 bg-primary-900/30 text-primary-300 rounded text-xs border border-primary-400/20">
+                           #{tag}
+                         </span>
+                       ))}
+                     </div>
+                   )}
 
                   <div class="flex items-center justify-between">
                     <a

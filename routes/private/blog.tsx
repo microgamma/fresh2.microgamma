@@ -11,13 +11,10 @@ export default define.page(async function BlogManagementPage(ctx) {
     return new Response("Access denied", { status: 403 });
   }
 
-  // Get user's posts and drafts
-  const [userPosts, userDrafts] = await Promise.all([
-    blogService.getUserPosts(user.id),
-    blogService.getUserDrafts(user.id),
-  ]);
+  const userPosts = await blogService.getUserPosts(user.id);
+  const userDrafts = userPosts.filter(p => p.status === "draft");
 
-  const allPosts = [...userPosts, ...userDrafts].sort(
+  const allPosts = userPosts.sort(
     (a, b) => b.updatedAt.getTime() - a.updatedAt.getTime()
   );
 

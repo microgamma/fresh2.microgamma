@@ -20,7 +20,6 @@ export default async function BlogPostPage(
           />
         </Head>
         <div class="min-h-screen text-white px-4 py-8 relative overflow-hidden vaporwave-bg">
-          {/* Background overlay for better text readability */}
           <div class="absolute inset-0 bg-black/60"></div>
           <div class="relative z-10">
             <div class="max-w-4xl mx-auto">
@@ -56,7 +55,6 @@ export default async function BlogPostPage(
       </Head>
 
       <div class="min-h-screen text-white px-4 py-8 relative overflow-hidden vaporwave-bg">
-        {/* Background overlay for better text readability */}
         <div class="absolute inset-0 bg-black/60"></div>
         <div class="relative z-10">
           <div class="max-w-4xl mx-auto py-20">
@@ -73,16 +71,15 @@ export default async function BlogPostPage(
                       </span>
                     )}
                     <span class="flex items-center text-gray-400 text-sm">
-                      📅 {post.date}
+                      📅 {(post.publishedAt || post.createdAt).toISOString().split("T")[0]}
                     </span>
                   </div>
                 </div>
               </div>
 
-              {/* Article tags for blog posts */}
-              {post.articleTags && post.articleTags.length > 0 && (
+              {post.tags && post.tags.length > 0 && (
                 <div class="flex flex-wrap gap-2 mb-6">
-                  {post.articleTags.map((tag) => (
+                  {post.tags.map((tag) => (
                     <span class="px-3 py-1 bg-primary-900/30 text-primary-300 rounded text-sm border border-primary-400/20">
                       #{tag}
                     </span>
@@ -90,31 +87,11 @@ export default async function BlogPostPage(
                 </div>
               )}
 
-              {/* Blog Content */}
               <div
                 class="prose prose-invert prose-headings:text-primary-300 prose-a:text-primary-400 hover:prose-a:text-primary-300 prose-strong:text-white prose-code:bg-gray-800 prose-code:text-primary-300 prose-code:px-1 prose-code:rounded max-w-none mb-8"
                 dangerouslySetInnerHTML={{ __html: parseMarkdown(post.content) }}
               />
 
-              {/* Source Link */}
-              {post.sourceUrl && (
-                <div class="mb-8 p-4 bg-primary-900/20 rounded-lg border border-primary-400/20">
-                  <a
-                    href={post.sourceUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="inline-flex items-center space-x-2 text-primary-400 hover:text-primary-300 transition-all duration-200 font-medium group"
-                  >
-                    <span>📝</span>
-                    <span>Read on Dev.to</span>
-                    <span class="group-hover:translate-x-1 transition-transform duration-200">
-                      →
-                    </span>
-                  </a>
-                </div>
-              )}
-
-              {/* Navigation */}
               <div class="pt-6 border-t border-primary-400/20">
                 <a
                   href="/blog"
