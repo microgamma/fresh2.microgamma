@@ -1,9 +1,7 @@
 import { Head } from "fresh/runtime";
-import { newsService } from "../utils/newsService.ts";
+import NewsContent from "../islands/NewsContent.tsx";
 
-export default async function NewsPage() {
-  const newsItems = await newsService.getNews();
-
+export default function NewsPage() {
   return (
     <>
       <Head>
@@ -39,99 +37,7 @@ export default async function NewsPage() {
           </div>
 
           <div class="max-w-6xl mx-auto">
-            {newsItems.length === 0
-              ? (
-                <div class="text-center py-20">
-                  <div class="card-glow p-8 rounded-xl bg-black/60 backdrop-blur-sm border border-primary-400/30 max-w-2xl mx-auto">
-                    <h3 class="text-2xl font-bold mb-4 text-primary-300">
-                      No Updates Yet
-                    </h3>
-                    <p class="text-gray-300 mb-6">
-                      Check back soon for the latest Microgamma news and updates
-                      on X.
-                    </p>
-                    <div class="flex justify-center space-x-2 text-primary-400">
-                      <span class="text-2xl">📰</span>
-                      <span class="text-lg font-semibold">
-                        Your Music. Your Way.
-                      </span>
-                      <span class="text-2xl">📰</span>
-                    </div>
-                  </div>
-                </div>
-              )
-              : (
-                <div class="flex flex-col gap-8 mb-16">
-                  {newsItems.map((item) => (
-                    <article
-                      key={item.slug}
-                      class="card-glow p-8 rounded-xl bg-black/60 backdrop-blur-sm border border-primary-400/30 hover:border-primary-400/60 transition-all duration-300"
-                    >
-                      <p class="text-gray-300 mb-4 leading-relaxed">
-                        {item.content}
-                      </p>
-
-                      {item.images && item.images.length > 0 && (
-                        <div class="flex flex-col gap-4 mb-6">
-                          {item.images.map((imageUrl, imgIdx) => (
-                            <a
-                              key={imgIdx}
-                              href={item.sourceUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              class="block w-full overflow-hidden rounded-lg transition-all hover:opacity-90"
-                            >
-                              <img
-                                src={imageUrl}
-                                alt={`Image ${imgIdx + 1} from X post`}
-                                class="w-full h-auto max-h-[500px] object-contain"
-                                loading="lazy"
-                              />
-                            </a>
-                          ))}
-                        </div>
-                      )}
-
-                      <div class="flex items-center justify-between">
-                        <a
-                          href={item.sourceUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          class="inline-flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-all duration-200 font-medium group"
-                        >
-                          <svg
-                            class="w-4 h-4"
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                            aria-hidden="true"
-                          >
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                          </svg>
-                          <span>View on X</span>
-                          <span class="group-hover:translate-x-1 transition-transform duration-200">
-                            →
-                          </span>
-                        </a>
-
-                        <div class="flex items-center space-x-3 text-gray-500 text-sm">
-                          <span class="flex items-center space-x-1">
-                            <span>❤️</span>
-                            <span>{item.likes || 0}</span>
-                          </span>
-                          <span class="flex items-center space-x-1">
-                            <span>🔄</span>
-                            <span>{item.retweets || 0}</span>
-                          </span>
-                          <span class="flex items-center space-x-1 ml-2">
-                            <span>📅</span>
-                            <span>{item.date}</span>
-                          </span>
-                        </div>
-                      </div>
-                    </article>
-                  ))}
-                </div>
-              )}
+            <NewsContent />
           </div>
 
           <div class="text-center mt-16">

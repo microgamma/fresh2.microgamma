@@ -1,30 +1,7 @@
 import { Head } from "fresh/runtime";
-import {
-  DownloadCard,
-  Platform,
-  Release,
-} from "../components/DownloadCard.tsx";
-import MainLayout from "../components/MainLayout.tsx";
-import { cachedFetch } from "../utils.ts";
+import DownloadsContent from "../islands/DownloadsContent.tsx";
 
-export default async function DownloadsPage() {
-  interface AppRealeases {
-    [platform: string]: Release[];
-  }
-
-  const releases = await cachedFetch(
-    "https://signaling.microgamma.io/releases/list",
-  ) as AppRealeases;
-
-  const downloads = Object.entries(releases).map(([platform, data]) => {
-    const lastRelease = data[0];
-
-    return {
-      platform: platform as Platform,
-      ...lastRelease,
-    };
-  });
-
+export default function DownloadsPage() {
   return (
     <>
       <Head>
@@ -55,17 +32,7 @@ export default async function DownloadsPage() {
             </div>
           </div>
 
-          {/* Download Cards Section */}
-          <div class="max-w-4xl mx-auto mb-16">
-            <h2 class="text-3xl font-bold text-center mb-12 text-primary-300">
-              Choose Your Platform
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {downloads.map((download, idx) => {
-                return <DownloadCard key={idx} release={download} />;
-              })}
-            </div>
-          </div>
+          <DownloadsContent />
 
           {/* Information Section */}
           <div class="max-w-5xl mx-auto">
