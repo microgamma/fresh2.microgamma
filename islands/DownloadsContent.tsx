@@ -17,10 +17,12 @@ export default function DownloadsContent() {
         return res.json();
       })
       .then((releases: Record<string, Release[]>) => {
-        downloads.value = Object.entries(releases).map(([platform, data]) => ({
-          platform: platform as Platform,
-          ...data[0],
-        }));
+        downloads.value = Object.entries(releases)
+          .filter(([platform]) => platform !== "darwin/arm64" && platform !== "win32/x64")
+          .map(([platform, data]) => ({
+            platform: platform as Platform,
+            ...data[0],
+          }));
       })
       .catch(() => {
         error.value = true;

@@ -37,23 +37,31 @@ export default function Header({ user, roles }: HeaderProps) {
               Home
             </a>
           </li>
-          <li>
-            <a
-              href="/downloads"
-              class={`hover:text-primary-400 transition`}
-            >
-              Downloads
-            </a>
-          </li>
            <li>
              <a
-               href="/news"
+               href="/downloads"
                class={`hover:text-primary-400 transition`}
              >
-               News
+               Downloads
              </a>
            </li>
-           <li>
+            <li>
+              <a
+                href="/news"
+                class={`hover:text-primary-400 transition`}
+              >
+                News
+              </a>
+            </li>
+            <li>
+              <a
+                href="/docs"
+                class={`hover:text-primary-400 transition`}
+              >
+                Docs
+              </a>
+            </li>
+            <li>
              <a
                href="/blog"
                class={`hover:text-primary-400 transition`}

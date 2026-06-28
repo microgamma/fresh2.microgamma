@@ -37,18 +37,21 @@ export default function DownloadsPage() {
           {/* Information Section */}
           <div class="max-w-5xl mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {/* Warning Note */}
+              {/* Linux Downloads */}
               <div class="card-glow p-8 rounded-xl bg-black/60 backdrop-blur-sm border border-primary-400/30">
                 <div class="flex items-start space-x-4">
-                  <div class="text-3xl mb-2">⚠️</div>
+                  <div class="text-3xl mb-2">🐧</div>
                   <div>
                     <h3 class="text-xl font-semibold mb-4 text-primary-300">
-                      Security Note
+                      Linux
                     </h3>
                     <p class="text-gray-300 leading-relaxed">
-                      Windows and macOS executables are not code signed. You may
-                      need to allow them in your security settings. This is
-                      normal for open-source software in active development.
+                      Download for Linux x64 and arm64. Run it on a desktop,
+                      a home server, or a Raspberry Pi.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed mt-3">
+                      On Windows or macOS? Run Microgamma in{" "}
+                      <a href="/docs" class="text-primary-400 hover:text-primary-300 underline">Docker</a>.
                     </p>
                   </div>
                 </div>
@@ -87,6 +90,34 @@ export default function DownloadsPage() {
                       </li>
                     </ol>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Headless / Docker Section */}
+            <div class="card-glow p-8 rounded-xl bg-black/60 backdrop-blur-sm border border-primary-400/30 mt-12">
+              <div class="flex items-start space-x-4">
+                <div class="text-3xl mb-2">🐳</div>
+                <div>
+                  <h3 class="text-xl font-semibold mb-4 text-primary-300">
+                    Headless Mode &amp; Docker
+                  </h3>
+                  <p class="text-gray-300 leading-relaxed mb-4">
+                    Microgamma can run without a desktop GUI — on a home server,
+                    a Raspberry Pi, or inside a Docker container. Start it from
+                    the command line, point it at your music folder, and stream
+                    from any device.
+                  </p>
+                  <div class="bg-gray-900/80 rounded-lg p-4 border border-primary-400/20 font-mono text-sm text-gray-300 space-y-2">
+                    <div class="text-primary-400 mb-1"># Authenticate (one-time)</div>
+                    <div>Microgamma --login</div>
+                    <div class="text-gray-500 mt-3 mb-1"># Start streaming</div>
+                    <div>Microgamma --token --config --device-name="My Server" --music-path="/music"</div>
+                  </div>
+                  <p class="text-gray-400 text-sm mt-4">
+                    See the <a href="/docs" class="text-primary-400 hover:text-primary-300 underline">documentation</a> for
+                    Docker setup and full CLI reference. No GUI required. No code signing concerns.
+                  </p>
                 </div>
               </div>
             </div>

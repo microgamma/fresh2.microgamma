@@ -1,8 +1,6 @@
 export type Platform =
-  | "darwin/arm64"
   | "linux/arm64"
-  | "linux/x64"
-  | "win32/x64";
+  | "linux/x64";
 
 export interface Release {
   // this is the path starting from the root of the s3 bucket
@@ -27,14 +25,6 @@ export function DownloadCard({ release }: { release: withPlatform<Release> }) {
       name: "🐧 Linux x86",
       description: "Supports Linux 64 bit.",
     },
-    "darwin/arm64": {
-      name: "🍎 macOS",
-      description: "Supports macOS 12+ on Apple Silicon.",
-    },
-    "win32/x64": {
-      name: "🪟 Windows",
-      description: "Supports Windows 10 and 11 (64-bit).",
-    },
   };
 
   const data = labels[release.platform];
@@ -58,18 +48,6 @@ export function DownloadCard({ release }: { release: withPlatform<Release> }) {
       text: "text-blue-400",
       bg: "bg-blue-500",
       hover: "hover:bg-blue-400",
-    },
-    "darwin/arm64": {
-      border: "border-purple-400",
-      text: "text-purple-400",
-      bg: "bg-purple-500",
-      hover: "hover:bg-purple-400",
-    },
-    "win32/x64": {
-      border: "border-cyan-400",
-      text: "text-cyan-400",
-      bg: "bg-cyan-500",
-      hover: "hover:bg-cyan-400",
     },
   };
 
