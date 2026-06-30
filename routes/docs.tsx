@@ -54,16 +54,18 @@ export default function DocsPage() {
               and connect from any device on the network.
             </p>
             <div class="bg-gray-900/80 rounded-lg p-4 border border-primary-400/20 font-mono text-sm text-gray-300 space-y-3">
-              <div class="text-gray-500"># Authenticate first (interactive container)</div>
-              <div>docker run -it --rm microgamma/microgamma-desktop --login</div>
-              <div class="text-gray-500 mt-4"># Start streaming</div>
+              <div class="text-gray-500"># Login to ECR</div>
+              <div>aws ecr get-login-password --region eu-west-2 | \</div>
+              <div>  docker login --username AWS --password-stdin 588144900153.dkr.ecr.eu-west-2.amazonaws.com</div>
+              <div class="text-gray-500 mt-4"># Pull and run (pick your architecture)</div>
               <div>docker run -d \</div>
               <div>  --name microgamma \</div>
               <div>  -v /path/to/music:/data/music \</div>
               <div>  -e MICROGAMMA_TOKEN=your-token \</div>
               <div>  -e DEVICE_NAME="Home Server" \</div>
-              <div>  microgamma/microgamma-desktop \</div>
-              <div>  --token --config --music-path=/data/music</div>
+              <div>  588144900153.dkr.ecr.eu-west-2.amazonaws.com/microgamma-desktop:latest-x64</div>
+              <div class="text-gray-500 mt-4"># Raspberry Pi / ARM</div>
+              <div>  588144900153.dkr.ecr.eu-west-2.amazonaws.com/microgamma-desktop:latest-arm64</div>
             </div>
           </section>
 
