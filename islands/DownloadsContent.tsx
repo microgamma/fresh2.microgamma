@@ -18,7 +18,6 @@ export default function DownloadsContent() {
       })
       .then((releases: Record<string, Release[]>) => {
         downloads.value = Object.entries(releases)
-          .filter(([platform]) => platform !== "darwin/arm64" && platform !== "win32/x64")
           .map(([platform, data]) => ({
             platform: platform as Platform,
             ...data[0],

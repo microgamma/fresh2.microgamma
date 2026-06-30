@@ -1,6 +1,8 @@
 export type Platform =
   | "linux/arm64"
-  | "linux/x64";
+  | "linux/x64"
+  | "darwin/arm64"
+  | "win32/x64";
 
 export interface Release {
   // this is the path starting from the root of the s3 bucket
@@ -25,9 +27,18 @@ export function DownloadCard({ release }: { release: withPlatform<Release> }) {
       name: "🐧 Linux x86",
       description: "Supports Linux 64 bit.",
     },
+    "darwin/arm64": {
+      name: "🍎 macOS",
+      description: "Apple Silicon (M1/M2/M3). Code signed and notarized.",
+    },
+    "win32/x64": {
+      name: "🪟 Windows x64",
+      description: "Windows 10/11 64 bit. Not code signed — SmartScreen may warn.",
+      notice: "Windows builds are not code signed. You may see a SmartScreen warning when running for the first time.",
+    },
   };
 
-  const data = labels[release.platform];
+  const release = labels[data.platform];
 
   const extractVersion = (filename: string): string => {
     const match = filename.match(/-(\d+\.\d+\.\d+)\.zip$/);
@@ -49,6 +60,18 @@ export function DownloadCard({ release }: { release: withPlatform<Release> }) {
       bg: "bg-blue-500",
       hover: "hover:bg-blue-400",
     },
+    "darwin/arm64": {
+      border: "border-gray-400",
+      text: "text-gray-300",
+      bg: "bg-gray-600",
+      hover: "hover:bg-gray-500",
+    },
+    "win32/x64": {
+      border: "border-cyan-400",
+      text: "text-cyan-400",
+      bg: "bg-cyan-600",
+      hover: "hover:bg-cyan-500",
+    },
   };
 
   const colors = colorVariants[release.platform];
@@ -59,8 +82,13 @@ export function DownloadCard({ release }: { release: withPlatform<Release> }) {
     <div
       class={`p-8 bg-gray-900 border ${colors.border} rounded-lg flex flex-col justify-between`}
     >
-      <h3 class={`text-2xl font-semibold mb-4 ${colors.text}`}>{data.name}</h3>
-      <p class="mb-4">{data.description}</p>
+      <h3 class={`text-2xl font-semibold mb-4 ${colors.text}`}>{release.name}</h3>
+      <p class="mb-4">{release.description}</p>
+      {release.notice && (
+        <div class="mb-4 p-3 bg-yellow-900/40 border border-yellow-600/40 rounded-lg text-sm text-yellow-300">
+          ⚠️ {release.notice}
+        </div>
+      )}
       <p class="text-sm text-gray-400 mb-6">Released on {releaseDate}</p>
       <a
         href={release.url}
