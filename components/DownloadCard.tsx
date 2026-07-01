@@ -18,7 +18,10 @@ export interface Release {
 type withPlatform<T> = T & { platform: Platform };
 
 export function DownloadCard({ release }: { release: withPlatform<Release> }) {
-  const labels = {
+  const labels: Record<
+    Platform,
+    { name: string; description: string; notice?: string }
+  > = {
     "linux/arm64": {
       name: "🐧 Linux Arm64",
       description: "Supports Linux on arm64 such as Raspberry PI 64 bit.",
@@ -40,7 +43,7 @@ export function DownloadCard({ release }: { release: withPlatform<Release> }) {
     },
   };
 
-  const release = labels[data.platform];
+  const data = labels[release.platform];
 
   const extractVersion = (filename: string): string => {
     const match = filename.match(/-(\d+\.\d+\.\d+)\.zip$/);
@@ -85,12 +88,12 @@ export function DownloadCard({ release }: { release: withPlatform<Release> }) {
       class={`p-8 bg-gray-900 border ${colors.border} rounded-lg flex flex-col justify-between`}
     >
       <h3 class={`text-2xl font-semibold mb-4 ${colors.text}`}>
-        {release.name}
+        {data.name}
       </h3>
-      <p class="mb-4">{release.description}</p>
-      {release.notice && (
+      <p class="mb-4">{data.description}</p>
+      {data.notice && (
         <div class="mb-4 p-3 bg-yellow-900/40 border border-yellow-600/40 rounded-lg text-sm text-yellow-300">
-          ⚠️ {release.notice}
+          ⚠️ {data.notice}
         </div>
       )}
       <p class="text-sm text-gray-400 mb-6">Released on {releaseDate}</p>
