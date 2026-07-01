@@ -62,7 +62,9 @@ export default define.page(async function EditBlogPostPage(ctx) {
         <div class="relative z-10 flex items-center justify-center min-h-screen">
           <div class="text-center">
             <h1 class="text-4xl font-bold text-red-400 mb-4">Access Denied</h1>
-            <p class="text-gray-300">You don't have permission to access this page.</p>
+            <p class="text-gray-300">
+              You don't have permission to access this page.
+            </p>
           </div>
         </div>
       </div>
@@ -79,7 +81,10 @@ export default define.page(async function EditBlogPostPage(ctx) {
         <div class="relative z-10 flex items-center justify-center min-h-screen">
           <div class="text-center">
             <h1 class="text-4xl font-bold text-red-400 mb-4">Post Not Found</h1>
-            <p class="text-gray-300">The requested post could not be found or you don't have permission to edit it.</p>
+            <p class="text-gray-300">
+              The requested post could not be found or you don't have permission
+              to edit it.
+            </p>
           </div>
         </div>
       </div>
@@ -119,16 +124,16 @@ export default define.page(async function EditBlogPostPage(ctx) {
               </div>
             </div>
 
-             <div class="card-glow bg-black/60 backdrop-blur-sm rounded-lg border border-primary-400/30 p-8">
-               <form method="post">
-                 <BlogEditor
-                   initialTitle={post.title}
-                   initialContent={post.content}
-                   initialTags={post.tags}
-                   initialStatus={post.status}
-                 />
-               </form>
-             </div>
+            <div class="card-glow bg-black/60 backdrop-blur-sm rounded-lg border border-primary-400/30 p-8">
+              <form method="post">
+                <BlogEditor
+                  initialTitle={post.title}
+                  initialContent={post.content}
+                  initialTags={post.tags}
+                  initialStatus={post.status}
+                />
+              </form>
+            </div>
           </div>
         </div>
       </div>

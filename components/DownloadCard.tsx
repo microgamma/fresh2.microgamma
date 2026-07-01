@@ -33,8 +33,10 @@ export function DownloadCard({ release }: { release: withPlatform<Release> }) {
     },
     "win32/x64": {
       name: "🪟 Windows x64",
-      description: "Windows 10/11 64 bit. Not code signed — SmartScreen may warn.",
-      notice: "Windows builds are not code signed. You may see a SmartScreen warning when running for the first time.",
+      description:
+        "Windows 10/11 64 bit. Not code signed — SmartScreen may warn.",
+      notice:
+        "Windows builds are not code signed. You may see a SmartScreen warning when running for the first time.",
     },
   };
 
@@ -82,7 +84,9 @@ export function DownloadCard({ release }: { release: withPlatform<Release> }) {
     <div
       class={`p-8 bg-gray-900 border ${colors.border} rounded-lg flex flex-col justify-between`}
     >
-      <h3 class={`text-2xl font-semibold mb-4 ${colors.text}`}>{release.name}</h3>
+      <h3 class={`text-2xl font-semibold mb-4 ${colors.text}`}>
+        {release.name}
+      </h3>
       <p class="mb-4">{release.description}</p>
       {release.notice && (
         <div class="mb-4 p-3 bg-yellow-900/40 border border-yellow-600/40 rounded-lg text-sm text-yellow-300">

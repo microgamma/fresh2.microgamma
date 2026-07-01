@@ -31,8 +31,8 @@ export default function KeyFeatures() {
               🎵 Your Music, Always
             </h3>
             <p>
-              Stream your entire library with full ownership. Every album
-              you add stays yours — no subscriptions, no expiration.
+              Stream your entire library with full ownership. Every album you
+              add stays yours — no subscriptions, no expiration.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
@@ -40,8 +40,8 @@ export default function KeyFeatures() {
               📀 High-Fidelity Streaming
             </h3>
             <p>
-              Crystal-clear audio streamed peer-to-peer. Your music sounds
-              the way it was meant to — no compression, no compromise.
+              Crystal-clear audio streamed peer-to-peer. Your music sounds the
+              way it was meant to — no compression, no compromise.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
@@ -49,8 +49,8 @@ export default function KeyFeatures() {
               🔒 Private by Default
             </h3>
             <p>
-              Your music stays on your device. No ads, no tracking, no
-              data harvesting — just you and your music.
+              Your music stays on your device. No ads, no tracking, no data
+              harvesting — just you and your music.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
@@ -58,8 +58,8 @@ export default function KeyFeatures() {
               ⚡ Ready in Seconds
             </h3>
             <p>
-              Download, launch, point to your music folder. You're streaming
-              in under a minute — no accounts, no setup wizards.
+              Download, launch, point to your music folder. You're streaming in
+              under a minute — no accounts, no setup wizards.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
@@ -67,8 +67,8 @@ export default function KeyFeatures() {
               🔍 Instant Search
             </h3>
             <p>
-              Find any song, artist, or album in milliseconds. Fuzzy search
-              that understands what you're looking for, even with typos.
+              Find any song, artist, or album in milliseconds. Fuzzy search that
+              understands what you're looking for, even with typos.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
@@ -94,8 +94,8 @@ export default function KeyFeatures() {
               🔧 Make It Yours
             </h3>
             <p>
-              Open JSON metadata and extensible libraries let you tweak,
-              script, and automate anything in your collection.
+              Open JSON metadata and extensible libraries let you tweak, script,
+              and automate anything in your collection.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
@@ -103,8 +103,8 @@ export default function KeyFeatures() {
               📱 One Library, Every Device
             </h3>
             <p>
-              Control your music from any device. Start on desktop, pick up
-              on your phone — it all stays in sync.
+              Control your music from any device. Start on desktop, pick up on
+              your phone — it all stays in sync.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
@@ -112,8 +112,8 @@ export default function KeyFeatures() {
               🔊 Play Everywhere
             </h3>
             <p>
-              Stream to your home stereo, headphones, or multiple rooms at
-              once. Your music fills every space you want.
+              Stream to your home stereo, headphones, or multiple rooms at once.
+              Your music fills every space you want.
             </p>
           </div>
           <div class="fade-in p-6 card-glow rounded-lg">
@@ -121,8 +121,8 @@ export default function KeyFeatures() {
               🔄 Seamless Handoff
             </h3>
             <p>
-              Switch between devices without missing a beat. Your music
-              follows you naturally, wherever you go.
+              Switch between devices without missing a beat. Your music follows
+              you naturally, wherever you go.
             </p>
           </div>
         </div>

@@ -123,7 +123,8 @@ export class NewsService {
         return { tweets: [], media: [] };
       }
 
-      const tweetsUrl = `${this.xApiBaseUrl}/users/${userId}/tweets?max_results=${this.xMaxTweets}&tweet.fields=created_at,public_metrics&exclude=replies,retweets&expansions=attachments.media_keys&media.fields=media_key,type,url,preview_image_url,width,height`;
+      const tweetsUrl =
+        `${this.xApiBaseUrl}/users/${userId}/tweets?max_results=${this.xMaxTweets}&tweet.fields=created_at,public_metrics&exclude=replies,retweets&expansions=attachments.media_keys&media.fields=media_key,type,url,preview_image_url,width,height`;
       const tweetsResponse = await fetch(tweetsUrl, {
         headers: {
           "Authorization": `Bearer ${this.xBearerToken}`,

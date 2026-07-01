@@ -30,7 +30,8 @@ async function generateShortId(artist: string, title: string): Promise<string> {
   const hashBuffer = await crypto.subtle.digest("SHA-256", data);
   const hashArray = new Uint8Array(hashBuffer);
 
-  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const chars =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   let id = "";
   for (let i = 0; i < 8; i++) {
     id += chars[hashArray[i] % chars.length];
@@ -65,7 +66,9 @@ export const handler = define.handlers({
           createdAt: Date.now(),
         };
 
-        await kv.set(["share", id], record, { expireIn: 2 * 24 * 60 * 60 * 1000 });
+        await kv.set(["share", id], record, {
+          expireIn: 2 * 24 * 60 * 60 * 1000,
+        });
       }
 
       return new Response(

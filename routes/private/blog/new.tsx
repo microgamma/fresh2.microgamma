@@ -21,19 +21,31 @@ export const handler = define.handlers({
     const action = formData.get("action") as "draft" | "publish";
     const status = action === "publish" ? "published" : "draft";
 
-    console.log("Parsed data:", { title, content: content?.substring(0, 100), tags, action, status });
+    console.log("Parsed data:", {
+      title,
+      content: content?.substring(0, 100),
+      tags,
+      action,
+      status,
+    });
 
     if (!title?.trim() || !content?.trim()) {
       return new Response("Title and content are required", { status: 400 });
     }
 
     try {
-      await blogService.createPost(user.id, user.given_name ? `${user.given_name} ${user.family_name || ''}`.trim() : user.email || "Unknown", {
-        title,
-        content,
-        tags,
-        status,
-      });
+      await blogService.createPost(
+        user.id,
+        user.given_name
+          ? `${user.given_name} ${user.family_name || ""}`.trim()
+          : user.email || "Unknown",
+        {
+          title,
+          content,
+          tags,
+          status,
+        },
+      );
 
       // Redirect to blog management
       return new Response(null, {
@@ -58,7 +70,9 @@ export default define.page(function NewBlogPostPage(ctx) {
         <div class="relative z-10 flex items-center justify-center min-h-screen">
           <div class="text-center">
             <h1 class="text-4xl font-bold text-red-400 mb-4">Access Denied</h1>
-            <p class="text-gray-300">You don't have permission to access this page.</p>
+            <p class="text-gray-300">
+              You don't have permission to access this page.
+            </p>
           </div>
         </div>
       </div>
@@ -98,11 +112,11 @@ export default define.page(function NewBlogPostPage(ctx) {
               </div>
             </div>
 
-             <div class="card-glow bg-black/60 backdrop-blur-sm rounded-lg border border-primary-400/30 p-8">
-               <form method="post" f-client-nav={false}>
-                 <BlogEditor />
-               </form>
-             </div>
+            <div class="card-glow bg-black/60 backdrop-blur-sm rounded-lg border border-primary-400/30 p-8">
+              <form method="post" f-client-nav={false}>
+                <BlogEditor />
+              </form>
+            </div>
           </div>
         </div>
       </div>

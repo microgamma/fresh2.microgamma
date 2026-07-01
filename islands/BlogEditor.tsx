@@ -1,4 +1,4 @@
-import { useState, useEffect } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import { parseMarkdown } from "../utils/markdown.ts";
 
 interface BlogEditorProps {
@@ -43,7 +43,7 @@ export default function BlogEditor({
   };
 
   const removeTag = (tagToRemove: string) => {
-    setTags(tags.filter(tag => tag !== tagToRemove));
+    setTags(tags.filter((tag) => tag !== tagToRemove));
   };
 
   const handleTagKeyPress = (e: KeyboardEvent) => {
@@ -70,7 +70,6 @@ export default function BlogEditor({
           required
         />
       </div>
-
 
       {/* Tags */}
       <div>
@@ -142,21 +141,26 @@ export default function BlogEditor({
           </div>
         </div>
 
-        {previewMode ? (
-          <div class="min-h-[400px] p-4 bg-gray-800/30 border border-gray-600 rounded-lg prose prose-invert prose-headings:text-primary-300 prose-a:text-primary-400 prose-strong:text-white prose-code:bg-gray-800 prose-code:text-primary-300 prose-code:px-1 prose-code:rounded max-w-none">
-            <div dangerouslySetInnerHTML={{ __html: parseMarkdown(content) }} />
-          </div>
-        ) : (
-          <textarea
-            name="content"
-            value={content}
-            onInput={(e) => setContent((e.target as HTMLTextAreaElement).value)}
-            placeholder="Write your blog post in markdown..."
-            rows={20}
-            class="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent font-mono text-sm"
-            required
-          />
-        )}
+        {previewMode
+          ? (
+            <div class="min-h-[400px] p-4 bg-gray-800/30 border border-gray-600 rounded-lg prose prose-invert prose-headings:text-primary-300 prose-a:text-primary-400 prose-strong:text-white prose-code:bg-gray-800 prose-code:text-primary-300 prose-code:px-1 prose-code:rounded max-w-none">
+              <div
+                dangerouslySetInnerHTML={{ __html: parseMarkdown(content) }}
+              />
+            </div>
+          )
+          : (
+            <textarea
+              name="content"
+              value={content}
+              onInput={(e) =>
+                setContent((e.target as HTMLTextAreaElement).value)}
+              placeholder="Write your blog post in markdown..."
+              rows={20}
+              class="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent font-mono text-sm"
+              required
+            />
+          )}
       </div>
 
       {/* Action Buttons */}

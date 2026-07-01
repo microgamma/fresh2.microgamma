@@ -1,5 +1,9 @@
 import { useState } from "preact/hooks";
-import { generateSongShareUrl, copyToClipboard, generateShareText } from "../utils/shareUtils.ts";
+import {
+  copyToClipboard,
+  generateShareText,
+  generateSongShareUrl,
+} from "../utils/shareUtils.ts";
 
 export interface SongShareButtonProps {
   title: string;
@@ -45,7 +49,9 @@ export default function SongShareButton({
         url = `https://wa.me/?text=${text}`;
         break;
       case "telegram":
-        url = `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareTexts.telegram)}`;
+        url = `https://t.me/share/url?url=${
+          encodeURIComponent(shareUrl)
+        }&text=${encodeURIComponent(shareTexts.telegram)}`;
         break;
       case "twitter":
         url = `https://twitter.com/intent/tweet?text=${text}`;
@@ -70,9 +76,14 @@ export default function SongShareButton({
 
       {/* Share menu */}
       {showMenu && (
-        <div class="absolute right-0 mt-2 w-64 bg-black/90 backdrop-blur-sm border border-primary-400/30 rounded-lg shadow-2xl z-[9999] overflow-hidden" style={{ pointerEvents: "auto" }}>
+        <div
+          class="absolute right-0 mt-2 w-64 bg-black/90 backdrop-blur-sm border border-primary-400/30 rounded-lg shadow-2xl z-[9999] overflow-hidden"
+          style={{ pointerEvents: "auto" }}
+        >
           <div class="p-4 border-b border-primary-400/20">
-            <p class="text-sm text-gray-300 mb-3">Share "{title}" by {artist}</p>
+            <p class="text-sm text-gray-300 mb-3">
+              Share "{title}" by {artist}
+            </p>
 
             {/* Social share buttons */}
             <div class="flex flex-col gap-2 mb-4">

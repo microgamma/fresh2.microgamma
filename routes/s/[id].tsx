@@ -42,7 +42,9 @@ export default define.page(async function SharePage(ctx) {
         <div class="absolute inset-0 bg-black/60"></div>
         <div class="relative z-10 text-center">
           <h1 class="text-4xl font-bold text-primary-400 mb-4">Not Found</h1>
-          <p class="text-gray-300 mb-8">This share link doesn't exist or has expired.</p>
+          <p class="text-gray-300 mb-8">
+            This share link doesn't exist or has expired.
+          </p>
           <a
             href="/"
             class="inline-flex items-center space-x-2 bg-primary-600 hover:bg-primary-500 text-white font-bold py-3 px-8 rounded-lg transition-all duration-200"
@@ -56,9 +58,11 @@ export default define.page(async function SharePage(ctx) {
 
   const { title, artist, image, info, links } = result.value;
 
-  const ogImage = image || "https://via.placeholder.com/1200x630?text=Now+Listening";
+  const ogImage = image ||
+    "https://via.placeholder.com/1200x630?text=Now+Listening";
   const pageUrl = ctx.url.toString();
-  const ogDescription = info || `Listen to "${title}" by ${artist} on Microgamma`;
+  const ogDescription = info ||
+    `Listen to "${title}" by ${artist} on Microgamma`;
 
   return (
     <>
@@ -91,7 +95,8 @@ export default define.page(async function SharePage(ctx) {
                     alt={title}
                     class="w-full aspect-square object-cover"
                   />
-                  <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80"></div>
+                  <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/80">
+                  </div>
                 </div>
               )}
 
@@ -106,7 +111,9 @@ export default define.page(async function SharePage(ctx) {
                   <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
                     {title}
                   </h1>
-                  <p class="text-2xl text-primary-300 font-semibold">{artist}</p>
+                  <p class="text-2xl text-primary-300 font-semibold">
+                    {artist}
+                  </p>
                 </div>
 
                 {info && (
@@ -127,7 +134,9 @@ export default define.page(async function SharePage(ctx) {
                           rel="noopener noreferrer"
                           class="inline-flex items-center space-x-1 bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-500 hover:to-primary-400 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 transform hover:scale-105 text-sm"
                         >
-                          <span>{getLinkEmoji(linkItem.text, linkItem.link)}</span>
+                          <span>
+                            {getLinkEmoji(linkItem.text, linkItem.link)}
+                          </span>
                           <span>{linkItem.text}</span>
                         </a>
                       ))}
@@ -151,7 +160,8 @@ export default define.page(async function SharePage(ctx) {
 
             <div class="mt-8 text-center">
               <p class="text-gray-400 text-sm">
-                Share this link on WhatsApp, Telegram, or any social media to show what you're listening to! 🎶
+                Share this link on WhatsApp, Telegram, or any social media to
+                show what you're listening to! 🎶
               </p>
             </div>
           </div>

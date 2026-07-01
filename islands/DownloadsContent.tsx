@@ -1,6 +1,10 @@
 import { useSignal } from "@preact/signals";
 import { useEffect } from "preact/hooks";
-import { DownloadCard, Platform, Release } from "../components/DownloadCard.tsx";
+import {
+  DownloadCard,
+  Platform,
+  Release,
+} from "../components/DownloadCard.tsx";
 
 interface DownloadItem extends Release {
   platform: Platform;
@@ -31,7 +35,9 @@ export default function DownloadsContent() {
   if (error.value) {
     return (
       <div class="text-center py-12">
-        <p class="text-gray-400">Failed to load downloads. Please try again later.</p>
+        <p class="text-gray-400">
+          Failed to load downloads. Please try again later.
+        </p>
       </div>
     );
   }

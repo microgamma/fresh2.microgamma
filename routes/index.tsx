@@ -46,8 +46,8 @@ export default define.page(function Home(ctx) {
             Your Music. Your Way.
           </p>
           <p class="text-lg mb-8 text-gray-300">
-            The self-hosted music player that keeps your collection
-            yours — stream anywhere,  own it forever.
+            The self-hosted music player that keeps your collection yours —
+            stream anywhere, own it forever.
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
@@ -67,28 +67,29 @@ export default define.page(function Home(ctx) {
         </div>
       </section>
 
-       {/* What is Microgamma? */}
-       <section
-         id="what-is-microgamma"
-         class="bg-gray-900 text-white py-20 px-4 scroll-mt-4"
-       >
-         <div class="container mx-auto text-center max-w-4xl">
-           <h2 class="text-3xl font-bold mb-12 text-primary-400">
-             What is Microgamma?
-           </h2>
-           <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 text-lg text-left max-w-3xl mx-auto">
-             <p>🎵 A music player you own.</p>
-             <p>🏠 Runs on your hardware.</p>
-             <p>📱 Stream to any device.</p>
-             <p>🎨 Customize everything — covers, metadata, playlists.</p>
-             <p>🌐 Remote control from anywhere.</p>
-             <p>💰 Free. Forever. No subscriptions.</p>
-           </div>
-           <p class="text-primary-300 text-xl mt-12">
-             Like curating a vinyl collection — with the convenience of modern streaming.
-           </p>
-         </div>
-       </section>
+      {/* What is Microgamma? */}
+      <section
+        id="what-is-microgamma"
+        class="bg-gray-900 text-white py-20 px-4 scroll-mt-4"
+      >
+        <div class="container mx-auto text-center max-w-4xl">
+          <h2 class="text-3xl font-bold mb-12 text-primary-400">
+            What is Microgamma?
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 text-lg text-left max-w-3xl mx-auto">
+            <p>🎵 A music player you own.</p>
+            <p>🏠 Runs on your hardware.</p>
+            <p>📱 Stream to any device.</p>
+            <p>🎨 Customize everything — covers, metadata, playlists.</p>
+            <p>🌐 Remote control from anywhere.</p>
+            <p>💰 Free. Forever. No subscriptions.</p>
+          </div>
+          <p class="text-primary-300 text-xl mt-12">
+            Like curating a vinyl collection — with the convenience of modern
+            streaming.
+          </p>
+        </div>
+      </section>
 
       {/* Why Ownership Matters */}
       <section class="bg-black text-white py-20 px-4 grid-bg">
@@ -99,29 +100,27 @@ export default define.page(function Home(ctx) {
           <div class="space-y-8">
             <div class="text-center">
               <p class="text-xl mb-6">
-                Have you ever wanted to set your own album covers, or keep
-                your carefully curated playlists forever?
+                Have you ever wanted to set your own album covers, or keep your
+                carefully curated playlists forever?
               </p>
               <p class="text-lg text-gray-300 mb-6">
-                With streaming services, your collection only exists while
-                you keep paying. Cancel a subscription, and years of
-                curation vanish overnight.
+                With streaming services, your collection only exists while you
+                keep paying. Cancel a subscription, and years of curation vanish
+                overnight.
               </p>
               <p class="text-lg text-gray-300">
-                What if your music purchases built something permanent
-                instead?
+                What if your music purchases built something permanent instead?
               </p>
               <p class="text-lg text-gray-300 mb-6">
                 With Microgamma, every album you add is yours to keep,
-                customize, and stream on your terms — no monthly fee
-                required.
+                customize, and stream on your terms — no monthly fee required.
               </p>
             </div>
             <div class="border-t border-primary-400/20 pt-8">
               <p class="text-xl text-primary-300">
-                Microgamma is for music lovers who want a permanent home
-                for their collection. Like curating vinyl, but with modern
-                streaming convenience.
+                Microgamma is for music lovers who want a permanent home for
+                their collection. Like curating vinyl, but with modern streaming
+                convenience.
               </p>
             </div>
           </div>
@@ -137,18 +136,20 @@ export default define.page(function Home(ctx) {
           <div class="space-y-8">
             <div class="text-center">
               <p class="text-xl mb-6">
-                What if every dollar you spent on music built something permanent?
+                What if every dollar you spent on music built something
+                permanent?
               </p>
               <p class="text-lg text-gray-300 mb-6">
-                Streaming is convenient, but it's a rental. Over time, those monthly
-                payments add up — and you don't keep anything when you stop.
+                Streaming is convenient, but it's a rental. Over time, those
+                monthly payments add up — and you don't keep anything when you
+                stop.
               </p>
               <p class="text-lg text-gray-300 mb-6">
-                With Microgamma, you invest in albums that stay with you. Music you
-                can stream anywhere, customize freely.
+                With Microgamma, you invest in albums that stay with you. Music
+                you can stream anywhere, customize freely.
               </p>
             </div>
-            
+
             {/* Comparison Table */}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
               <div class="card-glow p-6 rounded-lg bg-red-900/20 border border-red-400/30">
@@ -178,7 +179,7 @@ export default define.page(function Home(ctx) {
                   </li>
                 </ul>
               </div>
-              
+
               <div class="card-glow p-6 rounded-lg bg-green-900/20 border border-green-400/30">
                 <h3 class="text-2xl font-semibold mb-4 text-green-400">
                   🎵 Microgamma Ownership
@@ -207,14 +208,15 @@ export default define.page(function Home(ctx) {
                 </ul>
               </div>
             </div>
-            
+
             <div class="border-t border-primary-400/20 pt-8">
               <p class="text-xl text-primary-300">
                 Start building a music collection that grows with you.
               </p>
               <p class="text-lg text-gray-300 mt-4">
-                With Microgamma, every album you add becomes part of your permanent
-                library. No subscriptions, no expiration dates — just music that's yours.
+                With Microgamma, every album you add becomes part of your
+                permanent library. No subscriptions, no expiration dates — just
+                music that's yours.
               </p>
             </div>
           </div>
@@ -233,14 +235,15 @@ export default define.page(function Home(ctx) {
             Coming Soon
           </div>
           <p class="text-xl mb-6 max-w-3xl mx-auto">
-            Microgamma is free to use — forever. If you have the hardware,
-            you have everything you need. If you'd rather not deal with
+            Microgamma is free to use — forever. If you have the hardware, you
+            have everything you need. If you'd rather not deal with
             infrastructure, we've got you covered for a fraction of what
             streaming services charge.
           </p>
           <p class="text-lg text-gray-400 mb-8">
-            <span class="text-yellow-400">Beta update:</span> We're providing TURN/STUN
-            servers for remote streaming completely free while in beta.
+            <span class="text-yellow-400">Beta update:</span>{" "}
+            We're providing TURN/STUN servers for remote streaming completely
+            free while in beta.
           </p>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
@@ -256,29 +259,30 @@ export default define.page(function Home(ctx) {
                 <li class="flex items-start">
                   <span class="text-primary-400 mr-2">✓</span>
                   <span>
-                    <strong>Your hardware</strong> — any computer, NAS, or
-                    server you already own
+                    <strong>Your hardware</strong>{" "}
+                    — any computer, NAS, or server you already own
                   </span>
                 </li>
                 <li class="flex items-start">
                   <span class="text-primary-400 mr-2">✓</span>
                   <span>
-                    <strong>Your AI keys</strong> — bring your own
-                    OpenAI/Anthropic API key for smart discovery
+                    <strong>Your AI keys</strong>{" "}
+                    — bring your own OpenAI/Anthropic API key for smart
+                    discovery
                   </span>
                 </li>
                 <li class="flex items-start">
                   <span class="text-primary-400 mr-2">✓</span>
                   <span>
-                    <strong>Your TURN/STUN servers</strong> — or use ours free
-                    while in beta
+                    <strong>Your TURN/STUN servers</strong>{" "}
+                    — or use ours free while in beta
                   </span>
                 </li>
                 <li class="flex items-start">
                   <span class="text-primary-400 mr-2">✓</span>
                   <span>
-                    <strong>Your storage</strong> — any folder, drive, or NAS
-                    you connect
+                    <strong>Your storage</strong>{" "}
+                    — any folder, drive, or NAS you connect
                   </span>
                 </li>
               </ul>
@@ -299,29 +303,29 @@ export default define.page(function Home(ctx) {
                 <li class="flex items-start">
                   <span class="text-green-400 mr-2">✓</span>
                   <span>
-                    <strong>Hosted server</strong> — we run Microgamma in our
-                    cloud, you just stream
+                    <strong>Hosted server</strong>{" "}
+                    — we run Microgamma in our cloud, you just stream
                   </span>
                 </li>
                 <li class="flex items-start">
                   <span class="text-green-400 mr-2">✓</span>
                   <span>
-                    <strong>AI included</strong> — smart discovery without
-                    bringing your own keys
+                    <strong>AI included</strong>{" "}
+                    — smart discovery without bringing your own keys
                   </span>
                 </li>
                 <li class="flex items-start">
                   <span class="text-green-400 mr-2">✓</span>
                   <span>
-                    <strong>Global TURN relay</strong> — stream from
-                    anywhere, through any firewall
+                    <strong>Global TURN relay</strong>{" "}
+                    — stream from anywhere, through any firewall
                   </span>
                 </li>
                 <li class="flex items-start">
                   <span class="text-green-400 mr-2">✓</span>
                   <span>
-                    <strong>Storage included</strong> — your library lives in
-                    our cloud
+                    <strong>Storage included</strong>{" "}
+                    — your library lives in our cloud
                   </span>
                 </li>
               </ul>
@@ -333,8 +337,8 @@ export default define.page(function Home(ctx) {
 
           <div class="border-t border-primary-400/20 pt-8 mt-12">
             <p class="text-xl text-primary-300">
-              Mix and match however you like. Start free, add services when
-              you need them.
+              Mix and match however you like. Start free, add services when you
+              need them.
             </p>
             <p class="text-lg text-gray-300 mt-4">
               No lock-in. No surprise fees. Your music, your infrastructure
@@ -342,7 +346,6 @@ export default define.page(function Home(ctx) {
             </p>
           </div>
         </div>
-
       </section>
 
       {/* Get Started */}
@@ -357,9 +360,9 @@ export default define.page(function Home(ctx) {
               self-hosted music streaming.
             </p>
             <p class="text-lg text-gray-300 mb-6">
-              It's already great for daily listening, and there's much more
-              on the way. Download it today and start building your
-              permanent collection.
+              It's already great for daily listening, and there's much more on
+              the way. Download it today and start building your permanent
+              collection.
             </p>
             <p class="text-lg text-primary-300">
               Your music deserves a permanent home.

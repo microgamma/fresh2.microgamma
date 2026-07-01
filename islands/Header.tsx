@@ -37,48 +37,48 @@ export default function Header({ user, roles }: HeaderProps) {
               Home
             </a>
           </li>
-           <li>
-             <a
-               href="/downloads"
-               class={`hover:text-primary-400 transition`}
-             >
-               Downloads
-             </a>
-           </li>
+          <li>
+            <a
+              href="/downloads"
+              class={`hover:text-primary-400 transition`}
+            >
+              Downloads
+            </a>
+          </li>
+          <li>
+            <a
+              href="/news"
+              class={`hover:text-primary-400 transition`}
+            >
+              News
+            </a>
+          </li>
+          <li>
+            <a
+              href="/docs"
+              class={`hover:text-primary-400 transition`}
+            >
+              Docs
+            </a>
+          </li>
+          <li>
+            <a
+              href="/blog"
+              class={`hover:text-primary-400 transition`}
+            >
+              Blog
+            </a>
+          </li>
+          {roles?.includes("admin") && (
             <li>
               <a
-                href="/news"
+                href="/private/dashboard"
                 class={`hover:text-primary-400 transition`}
               >
-                News
+                Dashboard
               </a>
             </li>
-            <li>
-              <a
-                href="/docs"
-                class={`hover:text-primary-400 transition`}
-              >
-                Docs
-              </a>
-            </li>
-            <li>
-             <a
-               href="/blog"
-               class={`hover:text-primary-400 transition`}
-             >
-               Blog
-             </a>
-           </li>
-           {roles?.includes("admin") && (
-             <li>
-               <a
-                 href="/private/dashboard"
-                 class={`hover:text-primary-400 transition`}
-               >
-                 Dashboard
-               </a>
-             </li>
-           )}
+          )}
           <li>
             {user
               ? (

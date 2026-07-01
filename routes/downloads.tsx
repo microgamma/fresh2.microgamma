@@ -24,9 +24,9 @@ export default function DownloadsPage() {
               Download <span class="gradient-text">Microgamma</span>
             </h1>
             <p class="text-xl mb-8 max-w-3xl mx-auto text-gray-200 drop-shadow">
-              Get started in under a minute. Download Microgamma, point it
-              at your music folder, and start streaming to any device — free
-              and forever yours.
+              Get started in under a minute. Download Microgamma, point it at
+              your music folder, and start streaming to any device — free and
+              forever yours.
             </p>
             <div class="w-24 h-1 bg-primary-400 mx-auto mb-12 rounded-full">
             </div>
@@ -46,12 +46,17 @@ export default function DownloadsPage() {
                       Linux
                     </h3>
                     <p class="text-gray-300 leading-relaxed">
-                      Download for Linux x64 and arm64. Run it on a desktop,
-                      a home server, or a Raspberry Pi.
+                      Download for Linux x64 and arm64. Run it on a desktop, a
+                      home server, or a Raspberry Pi.
                     </p>
                     <p class="text-gray-300 leading-relaxed mt-3">
                       On Windows or macOS? Run Microgamma in{" "}
-                      <a href="/docs" class="text-primary-400 hover:text-primary-300 underline">Docker</a>.
+                      <a
+                        href="/docs"
+                        class="text-primary-400 hover:text-primary-300 underline"
+                      >
+                        Docker
+                      </a>.
                     </p>
                   </div>
                 </div>
@@ -109,14 +114,26 @@ export default function DownloadsPage() {
                     from any device.
                   </p>
                   <div class="bg-gray-900/80 rounded-lg p-4 border border-primary-400/20 font-mono text-sm text-gray-300 space-y-2">
-                    <div class="text-primary-400 mb-1"># Authenticate (one-time)</div>
+                    <div class="text-primary-400 mb-1">
+                      # Authenticate (one-time)
+                    </div>
                     <div>Microgamma --login</div>
                     <div class="text-gray-500 mt-3 mb-1"># Start streaming</div>
-                    <div>Microgamma --token --config --device-name="My Server" --music-path="/music"</div>
+                    <div>
+                      Microgamma --token --config --device-name="My Server"
+                      --music-path="/music"
+                    </div>
                   </div>
                   <p class="text-gray-400 text-sm mt-4">
-                    See the <a href="/docs" class="text-primary-400 hover:text-primary-300 underline">documentation</a> for
-                    Docker setup and full CLI reference. No GUI required. No code signing concerns.
+                    See the{" "}
+                    <a
+                      href="/docs"
+                      class="text-primary-400 hover:text-primary-300 underline"
+                    >
+                      documentation
+                    </a>{" "}
+                    for Docker setup and full CLI reference. No GUI required. No
+                    code signing concerns.
                   </p>
                 </div>
               </div>

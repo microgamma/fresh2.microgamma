@@ -17,7 +17,9 @@ export interface SongShareParams {
  */
 export function generateSongShareUrl(
   params: SongShareParams,
-  baseUrl: string = typeof window !== "undefined" ? window.location.origin : "http://localhost",
+  baseUrl: string = typeof window !== "undefined"
+    ? window.location.origin
+    : "http://localhost",
 ): string {
   const url = new URL("/share/song", baseUrl);
 
@@ -64,9 +66,13 @@ export function generateShareText(
   generic: string;
 } {
   return {
-    whatsapp: `🎵 ${song.artist} - ${song.title}\n\nListen on Microgamma:\n${url}`,
-    telegram: `🎵 ${song.artist} - ${song.title}\n\n👉 Listen on Microgamma:\n${url}`,
-    twitter: `🎵 Now listening to "${song.title}" by ${song.artist} on Microgamma 🎧\n\n${url}`,
-    generic: `Check out what I'm listening to: ${song.artist} - ${song.title}\n${url}`,
+    whatsapp:
+      `🎵 ${song.artist} - ${song.title}\n\nListen on Microgamma:\n${url}`,
+    telegram:
+      `🎵 ${song.artist} - ${song.title}\n\n👉 Listen on Microgamma:\n${url}`,
+    twitter:
+      `🎵 Now listening to "${song.title}" by ${song.artist} on Microgamma 🎧\n\n${url}`,
+    generic:
+      `Check out what I'm listening to: ${song.artist} - ${song.title}\n${url}`,
   };
 }

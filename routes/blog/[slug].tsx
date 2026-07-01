@@ -71,7 +71,10 @@ export default async function BlogPostPage(
                       </span>
                     )}
                     <span class="flex items-center text-gray-400 text-sm">
-                      📅 {(post.publishedAt || post.createdAt).toISOString().split("T")[0]}
+                      📅{" "}
+                      {(post.publishedAt || post.createdAt).toISOString().split(
+                        "T",
+                      )[0]}
                     </span>
                   </div>
                 </div>
@@ -89,7 +92,9 @@ export default async function BlogPostPage(
 
               <div
                 class="prose prose-invert prose-headings:text-primary-300 prose-a:text-primary-400 hover:prose-a:text-primary-300 prose-strong:text-white prose-code:bg-gray-800 prose-code:text-primary-300 prose-code:px-1 prose-code:rounded max-w-none mb-8"
-                dangerouslySetInnerHTML={{ __html: parseMarkdown(post.content) }}
+                dangerouslySetInnerHTML={{
+                  __html: parseMarkdown(post.content),
+                }}
               />
 
               <div class="pt-6 border-t border-primary-400/20">

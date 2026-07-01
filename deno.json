@@ -8,26 +8,17 @@
     "start": "deno serve -A _fresh/server.js",
     "update": "deno run -A -r jsr:@fresh/update ."
   },
-  "lint": {
-    "rules": {
-      "tags": [
-        "fresh",
-        "recommended"
-      ]
-    }
-  },
-  "exclude": [
-    "**/_fresh/*"
-  ],
+  "lint": { "rules": { "tags": ["fresh", "recommended"] } },
+  "exclude": ["**/_fresh/*"],
   "imports": {
     "@/": "./",
     "@kinde-oss/kinde-typescript-sdk": "npm:@kinde-oss/kinde-typescript-sdk@^2.13.0",
     "@microphi/debug": "npm:@microphi/debug@^2.10.1",
     "@tailwindcss/typography": "npm:@tailwindcss/typography@^0.5.19",
     "countly-sdk-web": "npm:countly-sdk-web@^25.4.4",
-    "fresh": "jsr:@fresh/core@^2.2.0",
-    "preact": "npm:preact@^10.28.1",
-    "@preact/signals": "npm:@preact/signals@^2.5.1",
+    "fresh": "jsr:@fresh/core@^2.3.3",
+    "preact": "npm:preact@^10.29.1",
+    "@preact/signals": "npm:@preact/signals@^2.9.0",
     "@fresh/plugin-vite": "jsr:@fresh/plugin-vite@^1.0.8",
     "marked": "npm:marked@^17.0.1",
     "vite": "npm:vite@^7.3.0",
@@ -36,12 +27,7 @@
   },
   "unstable": ["kv"],
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.asynciterable",
-      "dom.iterable",
-      "deno.ns"
-    ],
+    "lib": ["dom", "dom.asynciterable", "dom.iterable", "deno.ns"],
     "jsx": "precompile",
     "jsxImportSource": "preact",
     "jsxPrecompileSkipElements": [
@@ -60,8 +46,6 @@
       "noscript",
       "template"
     ],
-    "types": [
-      "vite/client"
-    ]
+    "types": ["vite/client"]
   }
 }

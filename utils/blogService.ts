@@ -1,6 +1,11 @@
 /// <reference lib="deno.unstable" />
 
-import { BlogPost, CreateBlogPostData, UpdateBlogPostData, KV_KEYS } from "./blogTypes.ts";
+import {
+  BlogPost,
+  CreateBlogPostData,
+  KV_KEYS,
+  UpdateBlogPostData,
+} from "./blogTypes.ts";
 
 const kv = await Deno.openKv();
 
@@ -140,7 +145,10 @@ export class BlogService {
     const publishedPosts = await this.getPublishedPosts();
     const allUserPosts = await this.getAllUserPosts();
 
-    const allPosts = [...publishedPosts, ...allUserPosts.flatMap(([_, posts]) => posts)];
+    const allPosts = [
+      ...publishedPosts,
+      ...allUserPosts.flatMap(([_, posts]) => posts),
+    ];
 
     for (const post of allPosts) {
       if (post.slug === slug) {
@@ -271,7 +279,9 @@ export class BlogService {
       }
     }
 
-    return posts.sort((a, b) => (b.publishedAt?.getTime() || 0) - (a.publishedAt?.getTime() || 0));
+    return posts.sort((a, b) =>
+      (b.publishedAt?.getTime() || 0) - (a.publishedAt?.getTime() || 0)
+    );
   }
 
   /**
@@ -340,7 +350,7 @@ export class BlogService {
   private async removeFromPublishedIndex(postId: string): Promise<void> {
     const result = await kv.get(KV_KEYS.publishedPosts);
     const postIds = (result.value as string[]) || [];
-    const filtered = postIds.filter(id => id !== postId);
+    const filtered = postIds.filter((id) => id !== postId);
     await kv.set(KV_KEYS.publishedPosts, filtered);
   }
 
@@ -353,10 +363,13 @@ export class BlogService {
     }
   }
 
-  private async removeFromUserPosts(userId: string, postId: string): Promise<void> {
+  private async removeFromUserPosts(
+    userId: string,
+    postId: string,
+  ): Promise<void> {
     const result = await kv.get(KV_KEYS.userPosts(userId));
     const postIds = (result.value as string[]) || [];
-    const filtered = postIds.filter(id => id !== postId);
+    const filtered = postIds.filter((id) => id !== postId);
     await kv.set(KV_KEYS.userPosts(userId), filtered);
   }
 
@@ -369,10 +382,13 @@ export class BlogService {
     }
   }
 
-  private async removeFromUserDrafts(userId: string, postId: string): Promise<void> {
+  private async removeFromUserDrafts(
+    userId: string,
+    postId: string,
+  ): Promise<void> {
     const result = await kv.get(KV_KEYS.userDrafts(userId));
     const postIds = (result.value as string[]) || [];
-    const filtered = postIds.filter(id => id !== postId);
+    const filtered = postIds.filter((id) => id !== postId);
     await kv.set(KV_KEYS.userDrafts(userId), filtered);
   }
 
@@ -388,7 +404,7 @@ export class BlogService {
   private async removeFromTagIndex(tag: string, postId: string): Promise<void> {
     const result = await kv.get(KV_KEYS.postsByTag(tag));
     const postIds = (result.value as string[]) || [];
-    const filtered = postIds.filter(id => id !== postId);
+    const filtered = postIds.filter((id) => id !== postId);
     await kv.set(KV_KEYS.postsByTag(tag), filtered);
   }
 }

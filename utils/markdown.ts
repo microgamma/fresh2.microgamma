@@ -12,7 +12,7 @@ const marked = new Marked({
  */
 export function parseMarkdown(markdown: string): string {
   if (!markdown) return "";
-  
+
   try {
     const html = marked.parse(markdown) as string;
     return html;
