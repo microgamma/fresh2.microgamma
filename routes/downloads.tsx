@@ -115,14 +115,11 @@ export default function DownloadsPage() {
                   </p>
                   <div class="bg-gray-900/80 rounded-lg p-4 border border-primary-400/20 font-mono text-sm text-gray-300 space-y-2">
                     <div class="text-primary-400 mb-1">
-                      # Authenticate (one-time)
+                      # Set up (one-time): name, music, login, scan
                     </div>
-                    <div>Microgamma --login</div>
+                    <div>mg setup</div>
                     <div class="text-gray-500 mt-3 mb-1"># Start streaming</div>
-                    <div>
-                      Microgamma --token --config --device-name="My Server"
-                      --music-path="/music"
-                    </div>
+                    <div>Microgamma --headless</div>
                   </div>
                   <p class="text-gray-400 text-sm mt-4">
                     See the{" "}

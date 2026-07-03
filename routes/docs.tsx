@@ -7,7 +7,7 @@ export default function DocsPage() {
         <title>Docs — Microgamma Headless & Docker</title>
         <meta
           name="description"
-          content="Run Microgamma headless: CLI auth, Docker setup, and headless streaming configuration."
+          content="Run Microgamma headless: the mg CLI (setup, login, scan), Docker setup, and headless streaming."
         />
       </Head>
 
@@ -22,36 +22,64 @@ export default function DocsPage() {
             on a Raspberry Pi. The GUI is optional.
           </p>
 
-          {/* Auth */}
+          <p class="text-gray-300 mb-12">
+            There are two commands:{" "}
+            <code class="bg-gray-800 text-primary-300 px-1 rounded">
+              Microgamma
+            </code>{" "}
+            launches the app, and{" "}
+            <code class="bg-gray-800 text-primary-300 px-1 rounded">mg</code>{" "}
+            is the CLI you use to configure it — <code class="bg-gray-800 text-primary-300 px-1 rounded">mg setup</code>,{" "}
+            <code class="bg-gray-800 text-primary-300 px-1 rounded">mg login</code>,{" "}
+            <code class="bg-gray-800 text-primary-300 px-1 rounded">mg scan</code>, and more.
+            Config is saved locally (in{" "}
+            <code class="bg-gray-800 text-primary-300 px-1 rounded">
+              ~/.microgamma
+            </code>) and reused on every run.
+          </p>
+
+          {/* Setup */}
           <section class="card-glow bg-black/60 backdrop-blur-sm p-8 rounded-xl border border-primary-400/30 mb-8">
             <h2 class="text-2xl font-bold text-primary-300 mb-4">
-              1. Authenticate
+              1. Set up
             </h2>
             <p class="text-gray-300 mb-4">
-              Run the login command once to associate this device with your
-              Microgamma account. A browser window opens for the OAuth flow. The
-              token is saved locally and reused on subsequent starts.
+              Run the interactive wizard once. It asks for a device name and your
+              music library location, logs you in, and scans your library into
+              the database. Login uses the device-code flow: it prints a URL and
+              code — open it on any device (phone, laptop) to authorize.
             </p>
             <div class="bg-gray-900/80 rounded-lg p-4 border border-primary-400/20 font-mono text-sm text-gray-300">
-              Microgamma --login
+              mg setup
             </div>
+            <p class="text-gray-400 text-sm mt-4">
+              Prefer to do it piecemeal? Run{" "}
+              <code class="bg-gray-800 text-primary-300 px-1 rounded">
+                mg login
+              </code>,{" "}
+              <code class="bg-gray-800 text-primary-300 px-1 rounded">
+                mg config
+              </code>{" "}
+              and{" "}
+              <code class="bg-gray-800 text-primary-300 px-1 rounded">
+                mg scan
+              </code>{" "}
+              individually — see the reference below.
+            </p>
           </section>
 
-          {/* Start streaming */}
+          {/* Run */}
           <section class="card-glow bg-black/60 backdrop-blur-sm p-8 rounded-xl border border-primary-400/30 mb-8">
             <h2 class="text-2xl font-bold text-primary-300 mb-4">
-              2. Start Streaming
+              2. Run headless
             </h2>
-            <div class="bg-gray-900/80 rounded-lg p-4 border border-primary-400/20 font-mono text-sm text-gray-300 space-y-3">
-              <div class="text-primary-400"># Minimal start</div>
-              <div>Microgamma --token</div>
-              <div class="text-gray-500 mt-4">
-                # With persistent device config
-              </div>
-              <div>
-                Microgamma --token --config --device-name="Living Room"
-                --music-path="/data/music"
-              </div>
+            <p class="text-gray-300 mb-4">
+              Launch the app with no visible window. It reads the config and
+              library you set up above and starts streaming to any device on your
+              network.
+            </p>
+            <div class="bg-gray-900/80 rounded-lg p-4 border border-primary-400/20 font-mono text-sm text-gray-300">
+              Microgamma --headless
             </div>
           </section>
 
@@ -59,32 +87,54 @@ export default function DocsPage() {
           <section class="card-glow bg-black/60 backdrop-blur-sm p-8 rounded-xl border border-primary-400/30 mb-8">
             <h2 class="text-2xl font-bold text-primary-300 mb-4">3. Docker</h2>
             <p class="text-gray-300 mb-4">
-              Run Microgamma in a container. Mount your music folder, pass your
-              token, and connect from any device on the network.
+              In the container, prefix any CLI command with{" "}
+              <code class="bg-gray-800 text-primary-300 px-1 rounded">mg</code>;
+              running with no command launches the app headless. Keep your config
+              in a named volume so it survives restarts, and mount your music at{" "}
+              <code class="bg-gray-800 text-primary-300 px-1 rounded">/music</code>.
             </p>
             <div class="bg-gray-900/80 rounded-lg p-4 border border-primary-400/20 font-mono text-sm text-gray-300 space-y-3">
               <div class="text-gray-500"># Login to ECR</div>
-              <div>aws ecr get-login-password --region eu-west-2 | \</div>
+              <div>aws ecr get-login-password --region eu-central-1 | \</div>
               <div>
                 docker login --username AWS --password-stdin
-                588144900153.dkr.ecr.eu-west-2.amazonaws.com
+                588144900153.dkr.ecr.eu-central-1.amazonaws.com
               </div>
+
               <div class="text-gray-500 mt-4">
-                # Pull and run (pick your architecture)
+                # First-run setup (interactive: device name, music, login, scan)
+              </div>
+              <div>docker run -it --rm \</div>
+              <div>-v mg-config:/root/.microgamma \</div>
+              <div>-v /path/to/music:/music \</div>
+              <div>
+                588144900153.dkr.ecr.eu-central-1.amazonaws.com/microgamma-desktop:latest-x64
+                {" "}mg setup
+              </div>
+
+              <div class="text-gray-500 mt-4">
+                # Run headless (reuses the mg-config volume)
               </div>
               <div>docker run -d \</div>
               <div>--name microgamma \</div>
-              <div>-v /path/to/music:/data/music \</div>
-              <div>-e MICROGAMMA_TOKEN=your-token \</div>
-              <div>-e DEVICE_NAME="Home Server" \</div>
+              <div>-v mg-config:/root/.microgamma \</div>
+              <div>-v /path/to/music:/music \</div>
               <div>
-                588144900153.dkr.ecr.eu-west-2.amazonaws.com/microgamma-desktop:latest-x64
+                588144900153.dkr.ecr.eu-central-1.amazonaws.com/microgamma-desktop:latest-x64
               </div>
+
               <div class="text-gray-500 mt-4"># Raspberry Pi / ARM</div>
               <div>
-                588144900153.dkr.ecr.eu-west-2.amazonaws.com/microgamma-desktop:latest-arm64
+                588144900153.dkr.ecr.eu-central-1.amazonaws.com/microgamma-desktop:latest-arm64
               </div>
             </div>
+            <p class="text-gray-400 text-sm mt-4">
+              Setup needs an interactive terminal (<code class="bg-gray-800 text-primary-300 px-1 rounded">-it</code>).
+              You can re-run any command later the same way, e.g.{" "}
+              <code class="bg-gray-800 text-primary-300 px-1 rounded">
+                docker run --rm -v mg-config:/root/.microgamma … mg scan --reset
+              </code>.
+            </p>
           </section>
 
           {/* CLI Reference */}
@@ -92,76 +142,92 @@ export default function DocsPage() {
             <h2 class="text-2xl font-bold text-primary-300 mb-4">
               CLI Reference
             </h2>
+            <p class="text-gray-300 mb-4">
+              <code class="bg-gray-800 text-primary-300 px-1 rounded">mg</code>{" "}
+              commands (run <code class="bg-gray-800 text-primary-300 px-1 rounded">mg --help</code>{" "}
+              for full usage):
+            </p>
             <div class="overflow-x-auto">
               <table class="w-full text-sm text-gray-300">
                 <thead>
                   <tr class="border-b border-primary-400/20 text-left">
-                    <th class="py-2 pr-4 text-primary-300">Flag</th>
+                    <th class="py-2 pr-4 text-primary-300">Command</th>
                     <th class="py-2 text-primary-300">Description</th>
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-700/50">
                   <tr>
                     <td class="py-2 pr-4 font-mono text-primary-400 whitespace-nowrap">
-                      --login
+                      mg setup
                     </td>
                     <td class="py-2">
-                      Open browser for OAuth device authorization. Saves token
-                      locally.
+                      Interactive first-run setup: device name, music location,
+                      login and library scan.
                     </td>
                   </tr>
                   <tr>
                     <td class="py-2 pr-4 font-mono text-primary-400 whitespace-nowrap">
-                      --token
+                      mg login
                     </td>
                     <td class="py-2">
-                      Read saved token from local storage. Skips login if
-                      already authenticated.
+                      Log in via the device-code flow. Prints a URL to authorize
+                      on any device; saves the token locally.
                     </td>
                   </tr>
                   <tr>
                     <td class="py-2 pr-4 font-mono text-primary-400 whitespace-nowrap">
-                      --logout
+                      mg logout
                     </td>
-                    <td class="py-2">Clear saved token.</td>
+                    <td class="py-2">Remove the saved token.</td>
                   </tr>
                   <tr>
                     <td class="py-2 pr-4 font-mono text-primary-400 whitespace-nowrap">
-                      --config
+                      mg scan [path] [--reset]
                     </td>
                     <td class="py-2">
-                      Save device configuration (name, music path) to local
-                      storage.
+                      Scan the music library into the database. Defaults to the
+                      configured path; <code class="bg-gray-800 text-primary-300 px-1 rounded">--reset</code>{" "}
+                      rebuilds from scratch.
                     </td>
                   </tr>
                   <tr>
                     <td class="py-2 pr-4 font-mono text-primary-400 whitespace-nowrap">
-                      --device-name
+                      mg config
                     </td>
                     <td class="py-2">
-                      Set a human-readable name for this device. Appears in the
-                      peer list.
+                      Show config, or set it with{" "}
+                      <code class="bg-gray-800 text-primary-300 px-1 rounded">
+                        --device-name
+                      </code>{" "}
+                      /{" "}
+                      <code class="bg-gray-800 text-primary-300 px-1 rounded">
+                        --music-path
+                      </code>.
                     </td>
                   </tr>
                   <tr>
                     <td class="py-2 pr-4 font-mono text-primary-400 whitespace-nowrap">
-                      --music-path
+                      Microgamma [--headless]
                     </td>
-                    <td class="py-2">Absolute path to your music folder.</td>
+                    <td class="py-2">
+                      Launch the app. <code class="bg-gray-800 text-primary-300 px-1 rounded">--headless</code>{" "}
+                      runs it without a visible window.
+                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <p class="text-gray-400 text-sm mt-4">
-              You can also set{" "}
+              Config lives in{" "}
               <code class="bg-gray-800 text-primary-300 px-1 rounded">
-                MICROGAMMA_TOKEN
+                ~/.microgamma
               </code>{" "}
-              as an environment variable to skip the{" "}
+              (override with the{" "}
               <code class="bg-gray-800 text-primary-300 px-1 rounded">
-                --token
+                MG_BASE_PATH
               </code>{" "}
-              flag.
+              environment variable). In Docker, mount a volume there to keep it
+              across runs.
             </p>
           </section>
         </div>
