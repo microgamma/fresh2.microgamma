@@ -1,56 +1,54 @@
 # Getting Started
 
-Microgamma runs anywhere — including machines with no screen. Run it on a home server, inside Docker, or on a Raspberry Pi, and stream your library to every device on your network. The desktop GUI is optional.
+Microgamma turns your own music library into a private streaming server — your music, on every device, with no subscription. There are two ways to run it.
 
-There are two executables:
+## As a desktop app
 
-- **`Microgamma`** — launches the app, with or without a window.
-- **`mg`** — the command-line tool you use to configure it: `mg setup`, `mg login`, `mg scan`, and more.
+The simplest path — everything happens in the app window, no terminal needed:
 
-Your configuration is stored locally in `~/.microgamma` and reused on every run, so you only set things up once.
+1. **Download** the build for your platform from the [Downloads](/downloads) page.
+2. **Run** Microgamma.
+3. **Log in** with your Microgamma account.
+4. **Configure** — give the device a name and choose your music folder; Microgamma scans your library.
+5. **Ready to play.**
 
-## Install
+Per-platform install steps (macOS Gatekeeper, Windows SmartScreen, Linux) are on the [Desktop App](/docs/desktop) page.
 
-Grab a build for your platform from the [Downloads](/downloads) page, or pull the Docker image — see [Docker](/docs/docker).
+## Headless (server, NAS, Raspberry Pi, or Docker)
 
-## Making `mg` available
+Run it with no window and drive it from the command line — ideal for an always-on machine:
 
-In the **Docker image**, `mg` is already on your `PATH` — just run `mg <command>`.
+```bash
+mg setup               # log in, name the device, pick the music folder, scan
+Microgamma --headless  # start streaming, no window
+```
 
-In a **local install**, `mg` ships inside the app's resources folder:
+Run it directly — see [Headless Mode](/docs/headless) — or in a container — see [Docker](/docs/docker).
+
+## The two executables
+
+- **`Microgamma`** — the app itself, with or without a window (`--headless`).
+- **`mg`** — the CLI that configures it: `setup`, `login`, `logout`, `scan`, `config`.
+
+Your configuration is stored in `~/.microgamma` (override with `$MG_BASE_PATH`) and reused on every run, so you set things up once.
+
+### Running `mg` locally
+
+`mg` is already on your `PATH` in the Docker image. In a local install it ships inside the app's resources folder:
 
 - **Linux** — `<extracted-folder>/resources/mg`
 - **macOS** — `Microgamma.app/Contents/Resources/mg`
 - **Windows** — `<folder>\resources\mg.cmd`
 
-You can call it by that full path, e.g. `./resources/mg setup`. For convenience,
-add it to your `PATH` once by symlinking it into a directory that's already
-there (macOS/Linux):
+Call it by full path (`./resources/mg setup`), or symlink it onto your `PATH` once (macOS/Linux):
 
 ```bash
 sudo ln -s "/full/path/to/Microgamma/resources/mg" /usr/local/bin/mg
 ```
 
-After that, the bare `mg <command>` examples throughout these docs work from anywhere.
-
-## Quick start
-
-Run the interactive setup wizard once. It asks for a device name and your music library location, logs you in, and scans your library into the database:
-
-```bash
-mg setup
-```
-
-Then start streaming with no visible window:
-
-```bash
-Microgamma --headless
-```
-
-That's it — Microgamma is now serving your library to any device on your network.
-
 ## Next steps
 
+- [Desktop App](/docs/desktop) — install and run it as a normal app on macOS, Windows, or Linux.
 - [Headless Mode](/docs/headless) — run without a GUI and keep your config across restarts.
 - [Docker](/docs/docker) — run Microgamma in a container.
 - [CLI Reference](/docs/cli-reference) — every `mg` command.
