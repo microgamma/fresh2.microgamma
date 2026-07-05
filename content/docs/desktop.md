@@ -6,11 +6,7 @@ Microgamma is a regular desktop application — download it, open it, and point 
 
 1. Download the macOS build (`Microgamma-darwin-arm64-*.zip`) from [Downloads](/downloads).
 2. Double-click the zip to unpack `Microgamma.app`, then drag it into your **Applications** folder.
-3. Open it. The build isn't notarized yet, so Gatekeeper blocks the first launch — **right-click the app → Open → Open**, or clear the quarantine flag from a terminal:
-
-   ```bash
-   xattr -dr com.apple.quarantine /Applications/Microgamma.app
-   ```
+3. Open it. The build is signed and notarized, so it launches normally.
 
 ## Windows
 

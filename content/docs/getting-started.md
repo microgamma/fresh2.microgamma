@@ -12,7 +12,7 @@ The simplest path — everything happens in the app window, no terminal needed:
 4. **Configure** — give the device a name and choose your music folder; Microgamma scans your library.
 5. **Ready to play.**
 
-Per-platform install steps (macOS Gatekeeper, Windows SmartScreen, Linux) are on the [Desktop App](/docs/desktop) page.
+Per-platform install steps are on the [Desktop App](/docs/desktop) page.
 
 ## Headless (server, NAS, Raspberry Pi, or Docker)
 
