@@ -38,9 +38,12 @@ docker run -d \
   588144900153.dkr.ecr.eu-central-1.amazonaws.com/microgamma-desktop:latest-x64
 ```
 
-## Raspberry Pi / ARM
+## Choosing an architecture
 
-On ARM hardware, use the `latest-arm64` tag instead:
+The examples above use `latest-x64`. Pick the tag that matches your host:
+
+- **`latest-x64`** — Intel / AMD machines (most Linux servers, Intel Macs).
+- **`latest-arm64`** — ARM machines: Raspberry Pi and other ARM Linux boards, **and Apple Silicon Macs** (Docker Desktop runs `linux/arm64` natively, no emulation).
 
 ```
 588144900153.dkr.ecr.eu-central-1.amazonaws.com/microgamma-desktop:latest-arm64
