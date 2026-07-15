@@ -1,5 +1,7 @@
 import { Head } from "fresh/runtime";
 import DownloadsContent from "../islands/DownloadsContent.tsx";
+import CopyCommand from "../islands/CopyCommand.tsx";
+import Kicker from "../components/Kicker.tsx";
 
 export default function DownloadsPage() {
   return (
@@ -8,7 +10,7 @@ export default function DownloadsPage() {
         <title>Download Microgamma - Your Music, Your Way</title>
         <meta
           name="description"
-          content="Download Microgamma for Windows, macOS, and Linux. Stream your own music library from any device — free, self-hosted, no subscriptions."
+          content="Download Microgamma for Windows, macOS, and Linux. A self-hosted music player that's free to run on your own hardware."
         />
       </Head>
 
@@ -20,16 +22,16 @@ export default function DownloadsPage() {
         <div class="relative z-10 container mx-auto px-4 py-20">
           {/* Hero Section */}
           <div class="text-center mb-16">
+            <Kicker class="justify-center mb-5" label="// TERMINAL.DOWNLOAD" />
             <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
               Download <span class="gradient-text">Microgamma</span>
             </h1>
-            <p class="text-xl mb-8 max-w-3xl mx-auto text-gray-200 drop-shadow">
+            <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-accent-300 [text-shadow:0_2px_14px_rgba(8,3,15,0.9)]">
               Get started in under a minute. Download Microgamma, point it at
-              your music folder, and start streaming to any device — free and
-              forever yours.
+              your music folder, and start playing your library — free to run,
+              and forever yours.
             </p>
-            <div class="w-24 h-1 bg-primary-400 mx-auto mb-12 rounded-full">
-            </div>
+            <hr class="hr-neon max-w-xs mx-auto mb-12" />
           </div>
 
           <DownloadsContent />
@@ -99,41 +101,54 @@ export default function DownloadsPage() {
               </div>
             </div>
 
-            {/* Headless / Docker Section */}
-            <div class="card-glow p-8 rounded-xl bg-black/60 backdrop-blur-sm border border-primary-400/30 mt-12">
-              <div class="flex items-start space-x-4">
-                <div class="text-3xl mb-2">🐳</div>
+            {/* Docker / self-host Section */}
+            <div class="hud-card rounded-xl p-8 mt-12">
+              <div class="flex items-start gap-4 mb-6">
+                <div class="text-3xl">🐳</div>
                 <div>
-                  <h3 class="text-xl font-semibold mb-4 text-primary-300">
-                    Headless Mode &amp; Docker
+                  <h3 class="font-head text-xl text-primary-300 mb-2">
+                    Run it yourself — Docker
                   </h3>
-                  <p class="text-gray-300 leading-relaxed mb-4">
-                    Microgamma can run without a desktop GUI — on a home server,
-                    a Raspberry Pi, or inside a Docker container. Start it from
-                    the command line, point it at your music folder, and stream
-                    from any device.
-                  </p>
-                  <div class="bg-gray-900/80 rounded-lg p-4 border border-primary-400/20 font-mono text-sm text-gray-300 space-y-2">
-                    <div class="text-primary-400 mb-1">
-                      # Set up (one-time): name, music, login, scan
-                    </div>
-                    <div>mg setup</div>
-                    <div class="text-gray-500 mt-3 mb-1"># Start streaming</div>
-                    <div>Microgamma --headless</div>
-                  </div>
-                  <p class="text-gray-400 text-sm mt-4">
-                    See the{" "}
-                    <a
-                      href="/docs"
-                      class="text-primary-400 hover:text-primary-300 underline"
-                    >
-                      documentation
-                    </a>{" "}
-                    for Docker setup and full CLI reference. No GUI required. No
-                    code signing concerns.
+                  <p class="text-accent-300 leading-relaxed">
+                    Prefer to self-host? Microgamma ships as a public,
+                    multi-architecture Docker image — run it headless on a home
+                    server, a NAS, or a Raspberry Pi. Pull the image and Docker
+                    automatically picks the right build for your machine (Intel
+                    or Apple Silicon / ARM).
                   </p>
                 </div>
               </div>
+
+              {/* Availability caveat */}
+              <div class="flex items-start gap-3 rounded-sm border border-sun/40 bg-sun/10 px-4 py-3 mb-6 text-sm text-sun font-mono-tech">
+                <span aria-hidden="true">⚠</span>
+                <span>
+                  Heads up: the image goes live after the next release, once the
+                  GHCR package is switched to public. Until then the command
+                  below will return a 404.
+                </span>
+              </div>
+
+              <CopyCommand command="docker pull ghcr.io/microgamma/microgamma-desktop:latest" />
+
+              <p class="text-accent-300/70 text-sm mt-6">
+                Pin a specific version with a tag like{" "}
+                <code class="text-cyber">:v2.94.3</code>. See the{" "}
+                <a
+                  href="/docs/docker"
+                  class="text-cyber hover:text-cyber-300 underline"
+                >
+                  Docker guide
+                </a>{" "}
+                for first-run setup and running headless — or the{" "}
+                <a
+                  href="/docs/headless"
+                  class="text-cyber hover:text-cyber-300 underline"
+                >
+                  Headless Mode
+                </a>{" "}
+                docs to run it without a container.
+              </p>
             </div>
 
             {/* Call to Action */}

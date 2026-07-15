@@ -1,203 +1,523 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-:root {
-  --color-primary: #ec4899;
-  --color-primary-400: #f472b6;
-  --color-primary-500: #ec4899;
-  --color-primary-600: #db2777;
-  --color-accent: #9333ea;
-  --color-accent-400: #c084fc;
-  --color-accent-500: #9333ea;
-  --color-warn: #dc2626;
-  --color-warn-600: #dc2626;
-  --color-warn-700: #b91c1c;
+/* =========================================================================
+   MICROGAMMA — "OUTRUN RESISTANCE"
+   Retro-futuristic vaporwave / cyberpunk design system.
+   Deep-violet void · neon magenta + electric cyan · CRT scanlines · HUD frames
+   ========================================================================= */
+
+@theme {
+  /* Neon primary (magenta/pink) — repoints the existing primary-* tokens so
+     every `text-primary-400` / `bg-primary-500` in the app recolors for free. */
+  --color-primary: #ff2d95;
+  --color-primary-200: #ffd0ec;
+  --color-primary-300: #ff9ad6;
+  --color-primary-400: #ff5fbf;
+  --color-primary-500: #ff2d95;
+  --color-primary-600: #e0157a;
+  --color-primary-900: #3a0a24;
+
+  /* Accent (vaporwave lilac / deep violet voids used for surfaces) */
+  --color-accent: #b14bff;
+  --color-accent-300: #d0a3ff;
+  --color-accent-400: #c77dff;
+  --color-accent-500: #b14bff;
+  --color-accent-800: #1c0a3a;
+  --color-accent-900: #120627;
+
+  /* Electric cyan — the co-lead neon */
+  --color-cyber: #05d9e8;
+  --color-cyber-300: #7bf5ff;
+  --color-cyber-400: #33e6f2;
+  --color-cyber-500: #05d9e8;
+
+  /* Sunset amber accent */
+  --color-sun: #ffb703;
+
+  --color-warn: #ff3b6b;
+  --color-warn-600: #ff3b6b;
+  --color-warn-700: #d61f4d;
+
+  /* Fonts */
+  --font-display: "Monoton", cursive;
+  --font-head: "Audiowide", sans-serif;
+  --font-body: "Chakra Petch", sans-serif;
+  --font-mono: "Share Tech Mono", monospace;
 }
 
+/* -------------------------------------------------------------------------
+   Base
+   ------------------------------------------------------------------------- */
 html {
   scroll-behavior: smooth;
+  background: #08030f;
 }
 
 body {
-  font-family: "Fira Code", monospace;
-}
-/* text-pink-400 border-b-2 border-pink-400 */
-/* Give links pointing to the current page a green color */
-a[aria-current="page"] {
-  @apply text-pink-400 border-b-2 border-pink-400;
-}
-
-/* Color all ancestor links of the current page */
-a[aria-current="true"] {
-  color: peachpuff;
+  font-family: var(--font-body);
+  background:
+    radial-gradient(120% 90% at 50% -10%, #2a0b4d 0%, #12052b 45%, #08030f
+    100%);
+  color: #e7dcff;
+  letter-spacing: 0.01em;
 }
 
-.fresh-gradient {
-  background-color: rgb(255, 0, 255);
-  background-image: linear-gradient(
-    to right bottom,
-    rgb(255, 0, 255),
-    rgb(0, 255, 255),
-    rgb(128, 0, 128)
+/* Global CRT scanline + vignette overlay — sits above everything, ignores
+   pointer events. Kept subtle so text stays readable. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  background:
+    repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0.18) 3px,
+    rgba(0, 0, 0, 0) 4px
   );
+  mix-blend-mode: multiply;
+  opacity: 0.5;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-head);
+  letter-spacing: 0.02em;
 }
 
-::-webkit-scrollbar-track {
-  background: rgba(147, 51, 234, 0.1); /* purple-600 with low opacity */
-}
-
-::-webkit-scrollbar-thumb {
+::selection {
   background: var(--color-primary);
-  /* border-radius: 3px; */
+  color: #08030f;
 }
 
+/* Current-page link accent */
+a[aria-current="page"] {
+  @apply text-primary-400;
+}
+
+/* -------------------------------------------------------------------------
+   Scrollbar
+   ------------------------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0d0522;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--color-primary), var(--color-accent));
+  border: 2px solid #0d0522;
+}
 ::-webkit-scrollbar-thumb:hover {
-  background: #06b6d4; /* cyan-500 */
+  background: linear-gradient(var(--color-cyber), var(--color-primary));
 }
 
-/* Fade-in animations */
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Accessibility - Focus styles */
-button:focus,
-a:focus,
-input:focus,
-textarea:focus,
-select:focus {
-  outline: 2px solid var(--color-primary);
+/* -------------------------------------------------------------------------
+   Accessibility
+   ------------------------------------------------------------------------- */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-cyber);
   outline-offset: 2px;
 }
 
-/* Skip link for screen readers */
 .skip-link {
   position: absolute;
-  top: -40px;
+  top: -48px;
   left: 6px;
   background: var(--color-primary);
-  color: white;
-  padding: 8px;
+  color: #08030f;
+  padding: 10px 14px;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   text-decoration: none;
-  z-index: 100;
+  z-index: 10000;
 }
-
 .skip-link:focus {
   top: 6px;
 }
 
-/* Glow Effects */
-.btn-glow {
-  box-shadow:
-    0 0 10px rgba(236, 72, 153, 0.5),
-    0 0 20px rgba(236, 72, 153, 0.3);
-  transition: box-shadow 0.3s ease;
+/* -------------------------------------------------------------------------
+   Typography helpers
+   ------------------------------------------------------------------------- */
+.font-display {
+  font-family: var(--font-display);
+}
+.font-head {
+  font-family: var(--font-head);
+}
+.font-mono-tech {
+  font-family: var(--font-mono);
 }
 
-.btn-glow:hover {
-  box-shadow:
-    0 0 15px rgba(236, 72, 153, 0.7),
-    0 0 30px rgba(236, 72, 153, 0.5);
+/* Monospace machine label, e.g.  // SIGNAL.ACQUIRED */
+.kicker {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  font-size: 0.75rem;
+  color: var(--color-cyber);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+}
+.kicker::before {
+  content: "";
+  width: 1.75rem;
+  height: 1px;
+  background: var(--color-cyber);
+  box-shadow: 0 0 8px var(--color-cyber);
 }
 
-.card-glow {
-  background: transparent;
-  border: 1px solid var(--color-primary-400);
+/* Neon text glow */
+.neon {
+  color: #fff;
+  text-shadow:
+    0 0 4px var(--color-primary),
+    0 0 12px var(--color-primary),
+    0 0 32px var(--color-primary-600);
 }
-
-.grid-bg {
-  background-image:
-    linear-gradient(rgba(255, 0, 128, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 0, 128, 0.05) 1px, transparent 1px);
-  background-size: 20px 20px;
+.neon-cyan {
+  color: #eafeff;
+  text-shadow:
+    0 0 4px var(--color-cyber),
+    0 0 14px var(--color-cyber),
+    0 0 34px var(--color-cyber-500);
 }
 
 .gradient-text {
   background: linear-gradient(
-    45deg,
-    var(--color-primary),
-    var(--color-accent),
-    var(--color-accent-400),
-    var(--color-primary-400)
+    100deg,
+    var(--color-cyber) 0%,
+    var(--color-primary-400) 45%,
+    var(--color-accent-400) 75%,
+    var(--color-sun) 100%
   );
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
-/* Vaporwave Background Animation */
-.vaporwave-bg {
-  background: linear-gradient(
-    45deg,
-    rgba(255, 0, 128, 0.6),
-    rgba(255, 0, 255, 0.6),
-    rgba(128, 0, 255, 0.6),
-    rgba(0, 128, 255, 0.6),
-    rgba(0, 255, 255, 0.6),
-    rgba(255, 0, 128, 0.6)
-  );
-  background-size: 400% 400%;
-  animation: vaporwave-shift 10s ease-in-out infinite;
+/* Chromatic-aberration glitch title. Set data-text="…" equal to the text. */
+.glitch {
+  position: relative;
+  color: #fff;
+  text-shadow: 0 0 18px rgba(255, 45, 149, 0.55);
 }
-
-@keyframes vaporwave-shift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  clip-path: inset(0);
+}
+.glitch::before {
+  color: var(--color-cyber);
+  transform: translate(-2px, 0);
+  mix-blend-mode: screen;
+  animation: glitch-x 3.2s infinite steps(2, end);
+}
+.glitch::after {
+  color: var(--color-primary);
+  transform: translate(2px, 0);
+  mix-blend-mode: screen;
+  animation: glitch-x 2.4s infinite reverse steps(2, end);
+}
+@keyframes glitch-x {
+  0%,
+  92%,
   100% {
-    background-position: 0% 50%;
+    transform: translate(0, 0);
+    clip-path: inset(0 0 0 0);
+  }
+  93% {
+    transform: translate(-3px, 1px);
+    clip-path: inset(20% 0 55% 0);
+  }
+  95% {
+    transform: translate(3px, -1px);
+    clip-path: inset(60% 0 10% 0);
+  }
+  97% {
+    transform: translate(-2px, 0);
+    clip-path: inset(35% 0 40% 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .glitch::before,
+  .glitch::after {
+    animation: none;
   }
 }
 
+/* -------------------------------------------------------------------------
+   Buttons
+   ------------------------------------------------------------------------- */
+.btn-neon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--font-head);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #08030f;
+  background: linear-gradient(120deg, var(--color-cyber), var(--color-primary));
+  box-shadow:
+    0 0 14px rgba(255, 45, 149, 0.55),
+    0 0 28px rgba(5, 217, 232, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.25s ease;
+}
+.btn-neon:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 20px rgba(255, 45, 149, 0.8),
+    0 0 44px rgba(5, 217, 232, 0.6);
+}
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--font-head);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-cyber-300);
+  border: 1px solid rgba(5, 217, 232, 0.5);
+  background: rgba(5, 217, 232, 0.05);
+  transition: background 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+.btn-ghost:hover {
+  color: #eafeff;
+  background: rgba(5, 217, 232, 0.12);
+  box-shadow: 0 0 18px rgba(5, 217, 232, 0.4);
+}
+
+/* Legacy alias kept for any stray usages */
+.btn-glow {
+  box-shadow:
+    0 0 12px rgba(255, 45, 149, 0.5),
+    0 0 26px rgba(255, 45, 149, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+.btn-glow:hover {
+  box-shadow:
+    0 0 18px rgba(255, 45, 149, 0.75),
+    0 0 40px rgba(255, 45, 149, 0.5);
+}
+
+/* -------------------------------------------------------------------------
+   HUD card frame — the signature surface. Glassy violet panel with a neon
+   hairline border, glow, and cut corner brackets.
+   ------------------------------------------------------------------------- */
+.hud-card {
+  position: relative;
+  background:
+    linear-gradient(160deg, rgba(40, 12, 74, 0.55), rgba(10, 4, 26, 0.75));
+  border: 1px solid rgba(255, 95, 191, 0.28);
+  box-shadow:
+    inset 0 0 24px rgba(177, 75, 255, 0.08),
+    0 0 22px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.hud-card:hover {
+  border-color: rgba(5, 217, 232, 0.6);
+  box-shadow:
+    inset 0 0 24px rgba(5, 217, 232, 0.08),
+    0 0 30px rgba(5, 217, 232, 0.25);
+}
+/* Corner brackets */
+.hud-card::before,
+.hud-card::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+}
+.hud-card::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid var(--color-cyber);
+  border-left: 2px solid var(--color-cyber);
+}
+.hud-card::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid var(--color-primary);
+  border-right: 2px solid var(--color-primary);
+}
+
+/* Legacy alias — several islands still use .card-glow */
+.card-glow {
+  position: relative;
+  background:
+    linear-gradient(160deg, rgba(40, 12, 74, 0.5), rgba(10, 4, 26, 0.72));
+  border: 1px solid rgba(255, 95, 191, 0.28);
+  box-shadow: inset 0 0 24px rgba(177, 75, 255, 0.06);
+  backdrop-filter: blur(6px);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.card-glow:hover {
+  border-color: rgba(5, 217, 232, 0.55);
+  box-shadow: 0 0 26px rgba(5, 217, 232, 0.2);
+}
+
+/* -------------------------------------------------------------------------
+   Backgrounds
+   ------------------------------------------------------------------------- */
+
+/* Fine neon grid overlay for section backgrounds */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(5, 217, 232, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 45, 149, 0.06) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+/* Vaporwave animated sky — reused on downloads / news / blog heroes */
+.vaporwave-bg {
+  background:
+    radial-gradient(90% 120% at 50% 0%, #ff2d95 0%, #7b1fa2 30%, #1a0740 62%,
+    #08030f 100%);
+  position: relative;
+}
 .vaporwave-bg::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image:
-    radial-gradient(
-      circle at 20% 80%,
-      rgba(120, 119, 198, 0.3) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-    circle at 80% 20%,
-    rgba(255, 119, 198, 0.3) 0%,
-    transparent 50%
-  ),
-    radial-gradient(
-    circle at 40% 40%,
-    rgba(120, 255, 198, 0.3) 0%,
-    transparent 50%
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 8%, rgba(255, 183, 3, 0.55) 0%, rgba(255, 45,
+    149, 0.25) 12%, transparent 30%),
+    repeating-linear-gradient(
+    to bottom,
+    transparent 0 22px,
+    rgba(8, 3, 15, 0.55) 22px 26px
   );
-  animation: vaporwave-float 15s ease-in-out infinite;
+  pointer-events: none;
+  mask-image: radial-gradient(circle at 50% 8%, #000 0%, #000 26%, transparent
+    42%);
+  -webkit-mask-image: radial-gradient(circle at 50% 8%, #000 0%, #000 26%,
+    transparent 42%);
 }
 
-@keyframes vaporwave-float {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
+/* The outrun scene: retro sun + receding perspective grid floor.
+   Layout: place `.outrun` as an absolutely-positioned backdrop layer. */
+.outrun {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, #08030f 0%, #1a0740 45%, #3a0b52 62%, #12052b 100%);
+}
+/* Sun */
+.outrun-sun {
+  position: absolute;
+  left: 50%;
+  bottom: 44%;
+  width: 300px;
+  height: 300px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: linear-gradient(180deg, #ffde59 0%, #ff8a3c 45%, #ff2d95 100%);
+  box-shadow: 0 0 90px rgba(255, 100, 60, 0.55), 0 0 180px rgba(255, 45, 149,
+    0.35);
+}
+/* Horizontal bands cutting across the lower half of the sun */
+.outrun-sun::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0 14px,
+    #1a0740 14px 22px
+  );
+  -webkit-mask-image: linear-gradient(to bottom, transparent 46%, #000 46%);
+  mask-image: linear-gradient(to bottom, transparent 46%, #000 46%);
+}
+/* Perspective grid floor */
+.outrun-grid {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 240%;
+  height: 46%;
+  transform: translateX(-50%) perspective(320px) rotateX(70deg);
+  transform-origin: bottom center;
+  background-image:
+    linear-gradient(rgba(5, 217, 232, 0.55) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 45, 149, 0.55) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: grid-run 7s linear infinite;
+  will-change: background-position;
+  mask-image: linear-gradient(to top, #000 30%, transparent 92%);
+  -webkit-mask-image: linear-gradient(to top, #000 30%, transparent 92%);
+}
+@keyframes grid-run {
+  to {
+    background-position: 0 60px;
   }
-  33% {
-    transform: translateY(-20px) rotate(120deg);
+}
+/* Fade the horizon into the sky */
+.outrun::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 46%;
+  height: 90px;
+  background: linear-gradient(to top, transparent, #12052b 70%);
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .outrun-grid {
+    animation: none;
   }
-  66% {
-    transform: translateY(10px) rotate(240deg);
-  }
+}
+
+/* -------------------------------------------------------------------------
+   Reveal-on-scroll (progressive enhancement).
+   Cards are visible by default; the .reveal class only applies the animated
+   entrance when JS has tagged the document, so no-JS / screenshots still show
+   content.
+   ------------------------------------------------------------------------- */
+.fade-in {
+  opacity: 1;
+  transform: none;
+}
+[data-anim] .fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+[data-anim] .fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Divider with a neon node in the middle */
+.hr-neon {
+  height: 1px;
+  border: 0;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 45, 149, 0.5),
+    rgba(5, 217, 232, 0.5),
+    transparent
+  );
 }

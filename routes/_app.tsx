@@ -15,8 +15,14 @@ export default define.page(function App({ Component, state, route }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Microgamma</title>
 
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Audiowide&family=Fira+Code:wght@300;400;500&display=swap"
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Audiowide&family=Chakra+Petch:wght@300;400;500;600;700&family=Monoton&family=Share+Tech+Mono&family=VT323&display=swap"
           rel="stylesheet"
         />
         <link
@@ -94,7 +100,13 @@ export default define.page(function App({ Component, state, route }) {
             </MainLayout>
           )}
 
-        {COUNTLY_APP_KEY && <CountlyAnalytics appKey={COUNTLY_APP_KEY} />}
+        {
+          /* Analytics only in the production build — never under `deno task dev`
+            (Vite dev server), where import.meta.env.DEV is true. */
+        }
+        {!import.meta.env.DEV && COUNTLY_APP_KEY && (
+          <CountlyAnalytics appKey={COUNTLY_APP_KEY} />
+        )}
       </body>
     </html>
   );

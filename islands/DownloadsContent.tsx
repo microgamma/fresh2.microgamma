@@ -45,19 +45,19 @@ export default function DownloadsContent() {
   if (!downloads.value) {
     return (
       <div class="max-w-4xl mx-auto mb-16">
-        <h2 class="text-3xl font-bold text-center mb-12 text-primary-300">
+        <h2 class="font-head text-2xl md:text-3xl text-center mb-12 text-cyber-300 tracking-wide">
           Choose Your Platform
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           {[0, 1, 2, 3].map((i) => (
             <div
               key={i}
-              class="p-8 bg-gray-900 border border-gray-700 rounded-lg animate-pulse"
+              class="hud-card rounded-sm p-8 animate-pulse"
             >
-              <div class="h-8 bg-gray-700 rounded w-40 mb-4" />
-              <div class="h-4 bg-gray-700 rounded w-64 mb-4" />
-              <div class="h-4 bg-gray-700 rounded w-32 mb-6" />
-              <div class="h-12 bg-gray-700 rounded-full w-40" />
+              <div class="h-7 bg-accent-500/20 rounded w-40 mb-4" />
+              <div class="h-4 bg-accent-500/15 rounded w-64 mb-4" />
+              <div class="h-4 bg-accent-500/15 rounded w-32 mb-6" />
+              <div class="h-11 bg-accent-500/20 rounded-sm w-40" />
             </div>
           ))}
         </div>
@@ -67,7 +67,7 @@ export default function DownloadsContent() {
 
   return (
     <div class="max-w-4xl mx-auto mb-16">
-      <h2 class="text-3xl font-bold text-center mb-12 text-primary-300">
+      <h2 class="font-head text-2xl md:text-3xl text-center mb-12 text-cyber-300 tracking-wide">
         Choose Your Platform
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">

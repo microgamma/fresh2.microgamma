@@ -1,5 +1,6 @@
 import { Head } from "fresh/runtime";
 import BlogContent from "../islands/BlogContent.tsx";
+import Kicker from "../components/Kicker.tsx";
 
 export default function BlogPage() {
   return (
@@ -20,9 +21,14 @@ export default function BlogPage() {
         <div class="relative z-10 container mx-auto px-4 py-20">
           {/* Hero Section */}
           <div class="text-center mb-16">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
+            <Kicker class="justify-center mb-5" label="// TRANSMISSION.LOG" />
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white drop-shadow-lg">
               <span class="gradient-text">Blog</span>
             </h1>
+            <p class="text-lg md:text-xl max-w-2xl mx-auto text-accent-300 [text-shadow:0_2px_14px_rgba(8,3,15,0.9)]">
+              Dispatches on music ownership, self-hosting, and building a
+              collection that outlives your subscription.
+            </p>
           </div>
 
           {/* Blog Posts - Client-side fetched */}
