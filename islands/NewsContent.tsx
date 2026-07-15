@@ -51,12 +51,12 @@ export default function NewsContent() {
             key={i}
             class="card-glow p-8 rounded-xl bg-black/60 backdrop-blur-sm border border-primary-400/30 animate-pulse"
           >
-            <div class="h-4 bg-gray-700 rounded w-full mb-3" />
-            <div class="h-4 bg-gray-700 rounded w-5/6 mb-3" />
-            <div class="h-4 bg-gray-700 rounded w-3/4 mb-6" />
+            <div class="h-4 bg-accent-500/15 rounded w-full mb-3" />
+            <div class="h-4 bg-accent-500/15 rounded w-5/6 mb-3" />
+            <div class="h-4 bg-accent-500/15 rounded w-3/4 mb-6" />
             <div class="flex justify-between">
-              <div class="h-4 bg-gray-700 rounded w-24" />
-              <div class="h-4 bg-gray-700 rounded w-32" />
+              <div class="h-4 bg-accent-500/15 rounded w-24" />
+              <div class="h-4 bg-accent-500/15 rounded w-32" />
             </div>
           </div>
         ))}

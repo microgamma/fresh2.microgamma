@@ -1,5 +1,6 @@
 import { Head } from "fresh/runtime";
 import NewsContent from "../islands/NewsContent.tsx";
+import Kicker from "../components/Kicker.tsx";
 
 export default function NewsPage() {
   return (
@@ -17,23 +18,23 @@ export default function NewsPage() {
 
         <div class="relative z-10 container mx-auto px-4 py-20">
           <div class="text-center mb-16">
+            <Kicker class="justify-center mb-5" label="// LIVE.FEED" />
             <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
               News & <span class="gradient-text">Updates</span>
             </h1>
-            <p class="text-xl mb-8 max-w-3xl mx-auto text-gray-200 drop-shadow">
+            <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-accent-300 [text-shadow:0_2px_14px_rgba(8,3,15,0.9)]">
               Follow along with the latest from{" "}
               <a
                 href="https://x.com/microgamma_io"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-primary-300 hover:text-primary-200 transition"
+                class="text-cyber hover:text-cyber-300 transition"
               >
                 @microgamma_io
               </a>{" "}
               on X.
             </p>
-            <div class="w-24 h-1 bg-primary-400 mx-auto mb-12 rounded-full">
-            </div>
+            <hr class="hr-neon max-w-xs mx-auto mb-12" />
           </div>
 
           <div class="max-w-6xl mx-auto">

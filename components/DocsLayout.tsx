@@ -1,5 +1,6 @@
 import { ComponentChildren } from "preact";
-import { DocMeta, docHref, docsNav } from "../utils/docs.ts";
+import { docHref, DocMeta, docsNav } from "../utils/docs.ts";
+import Kicker from "./Kicker.tsx";
 
 interface DocsLayoutProps {
   current: string;
@@ -39,13 +40,12 @@ export default function DocsLayout(
 ) {
   return (
     <div class="relative min-h-screen text-white bg-gray-900">
-      <div class="absolute inset-0 grid-bg opacity-40 pointer-events-none"></div>
+      <div class="absolute inset-0 grid-bg opacity-40 pointer-events-none">
+      </div>
 
       <div class="relative z-10 container mx-auto px-4 pt-28 pb-20">
         <header class="mb-10">
-          <p class="text-primary-400 text-sm font-semibold uppercase tracking-widest mb-2">
-            Documentation
-          </p>
+          <Kicker class="mb-3" label="// DOCUMENTATION" />
           <h1 class="text-4xl md:text-5xl font-bold">
             <span class="gradient-text">{title}</span>
           </h1>
@@ -73,8 +73,7 @@ export default function DocsLayout(
           </aside>
 
           <div class="min-w-0 flex-1">
-            <article
-              class="prose prose-invert max-w-none
+            <article class="prose prose-invert max-w-none
                 prose-headings:text-primary-400 prose-headings:font-bold
                 prose-a:text-primary-400 prose-a:no-underline hover:prose-a:underline
                 prose-strong:text-white
@@ -82,8 +81,7 @@ export default function DocsLayout(
                 prose-code:before:content-none prose-code:after:content-none
                 prose-pre:bg-gray-900/80 prose-pre:border prose-pre:border-primary-400/20 prose-pre:rounded-lg
                 prose-table:text-sm prose-th:text-primary-400
-                prose-hr:border-white/10"
-            >
+                prose-hr:border-white/10">
               {children}
             </article>
 

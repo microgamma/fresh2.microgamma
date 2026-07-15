@@ -84,24 +84,24 @@ export function DownloadCard({ release }: { release: withPlatform<Release> }) {
   const releaseDate = new Date(release.lastModified).toLocaleDateString();
 
   return (
-    <div
-      class={`p-8 bg-gray-900 border ${colors.border} rounded-lg flex flex-col justify-between`}
-    >
-      <h3 class={`text-2xl font-semibold mb-4 ${colors.text}`}>
+    <div class="hud-card rounded-sm p-8 flex flex-col justify-between">
+      <h3 class={`font-head text-xl mb-4 ${colors.text}`}>
         {data.name}
       </h3>
-      <p class="mb-4">{data.description}</p>
+      <p class="text-accent-300 mb-4">{data.description}</p>
       {data.notice && (
-        <div class="mb-4 p-3 bg-yellow-900/40 border border-yellow-600/40 rounded-lg text-sm text-yellow-300">
+        <div class="mb-4 p-3 bg-sun/10 border border-sun/40 rounded-sm text-sm text-sun font-mono-tech">
           ⚠️ {data.notice}
         </div>
       )}
-      <p class="text-sm text-gray-400 mb-6">Released on {releaseDate}</p>
+      <p class="text-xs text-accent-300/60 font-mono-tech uppercase tracking-widest mb-6">
+        Released {releaseDate}
+      </p>
       <a
         href={release.url}
-        class={`${colors.bg} text-white px-6 py-3 rounded-full font-semibold ${colors.hover} transition inline-block`}
+        class={`${colors.bg} text-white px-6 py-3 rounded-sm font-head text-sm uppercase tracking-widest ${colors.hover} transition inline-block text-center`}
       >
-        Download v{version}
+        ▸ Download v{version}
       </a>
     </div>
   );
