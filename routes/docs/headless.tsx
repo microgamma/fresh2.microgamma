@@ -8,7 +8,11 @@ export default function HeadlessPage() {
         Microgamma can run without a graphical window — ideal for a home server,
         a NAS, or a Raspberry Pi. In headless mode the app runs hidden but its
         streaming servers stay up, so you can still reach your library from any
-        device. You handle setup, login, and scanning from the command line.
+        device. You handle setup, login, and scanning from the command line —
+        every command is listed in the{" "}
+        <a href="/docs/cli-reference">
+          CLI Reference
+        </a>.
       </p>
 
       <h2>Two executables</h2>

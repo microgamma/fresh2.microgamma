@@ -25,6 +25,12 @@ export const docsNav: DocMeta[] = [
     description:
       "Run Microgamma headless in a container from the public GHCR image.",
   },
+  {
+    slug: "cli-reference",
+    title: "CLI Reference",
+    description:
+      "Every mg command and flag, plus configuration paths and environment variables.",
+  },
 ];
 
 /** Canonical URL for a doc page. The first page lives at /docs. */
