@@ -15,14 +15,6 @@ export default function DockerPage() {
         mount your music library at <code>/music</code>.
       </p>
 
-      <div class="not-prose flex items-start gap-3 rounded-sm border border-sun/40 bg-sun/10 px-4 py-3 my-6 text-sm text-sun font-mono-tech">
-        <span aria-hidden="true">⚠</span>
-        <span>
-          The image goes live after the next release, once the GHCR package is
-          switched to public. Until then these commands will return a 404.
-        </span>
-      </div>
-
       <h2>1. Pull the image</h2>
       <p>
         The image is public, so no registry login is needed. Pull the plain{" "}

@@ -119,16 +119,6 @@ export default function DownloadsPage() {
                 </div>
               </div>
 
-              {/* Availability caveat */}
-              <div class="flex items-start gap-3 rounded-sm border border-sun/40 bg-sun/10 px-4 py-3 mb-6 text-sm text-sun font-mono-tech">
-                <span aria-hidden="true">⚠</span>
-                <span>
-                  Heads up: the image goes live after the next release, once the
-                  GHCR package is switched to public. Until then the command
-                  below will return a 404.
-                </span>
-              </div>
-
               <CopyCommand command="docker pull ghcr.io/microgamma/microgamma-desktop:latest" />
 
               <p class="text-accent-300/70 text-sm mt-6">
