@@ -1,4 +1,5 @@
 import DocPage from "../../components/DocPage.tsx";
+import CodeBlock from "../../islands/CodeBlock.tsx";
 
 export default function DockerPage() {
   return (
@@ -29,11 +30,15 @@ export default function DockerPage() {
         tag and Docker automatically selects the right build for your
         architecture (Intel or Apple Silicon / ARM):
       </p>
-      <pre><code>{`docker pull ghcr.io/microgamma/microgamma-desktop:latest`}</code></pre>
+      <CodeBlock
+        code={`docker pull ghcr.io/microgamma/microgamma-desktop:latest`}
+      />
       <p>
         Pin a specific version with a versioned tag instead:
       </p>
-      <pre><code>{`docker pull ghcr.io/microgamma/microgamma-desktop:v2.94.3`}</code></pre>
+      <CodeBlock
+        code={`docker pull ghcr.io/microgamma/microgamma-desktop:v2.94.3`}
+      />
       <p>
         Per-architecture tags (<code>latest-x64</code>,{" "}
         <code>latest-arm64</code>,{" "}
@@ -46,33 +51,39 @@ export default function DockerPage() {
         Run the interactive wizard once — device name, music location, login,
         and scan. It needs an interactive terminal, so pass <code>-it</code>:
       </p>
-      <pre><code>{`docker run -it --rm \\
+      <CodeBlock
+        code={`docker run -it --rm \\
   -v mg-config:/home/node/.microgamma \\
   -v /path/to/music:/music \\
   ghcr.io/microgamma/microgamma-desktop:latest \\
-  mg setup`}</code></pre>
+  mg setup`}
+      />
 
       <h2>3. Run headless</h2>
       <p>
         Start the app in the background, reusing the <code>mg-config</code>{" "}
         volume from setup:
       </p>
-      <pre><code>{`docker run -d \\
+      <CodeBlock
+        code={`docker run -d \\
   --name microgamma \\
   -v mg-config:/home/node/.microgamma \\
   -v /path/to/music:/music \\
-  ghcr.io/microgamma/microgamma-desktop:latest`}</code></pre>
+  ghcr.io/microgamma/microgamma-desktop:latest`}
+      />
 
       <h2>Running other commands</h2>
       <p>
         You can run any <code>mg</code>{" "}
         command the same way. For example, to rebuild the library index:
       </p>
-      <pre><code>{`docker run --rm \\
+      <CodeBlock
+        code={`docker run --rm \\
   -v mg-config:/home/node/.microgamma \\
   -v /path/to/music:/music \\
   ghcr.io/microgamma/microgamma-desktop:latest \\
-  mg scan --reset`}</code></pre>
+  mg scan --reset`}
+      />
 
       <h2>Ports</h2>
       <p>

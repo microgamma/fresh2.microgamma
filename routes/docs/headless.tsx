@@ -1,4 +1,5 @@
 import DocPage from "../../components/DocPage.tsx";
+import CodeBlock from "../../islands/CodeBlock.tsx";
 
 export default function HeadlessPage() {
   return (
@@ -33,13 +34,13 @@ export default function HeadlessPage() {
         The quickest path is the interactive setup, which walks through device
         name, music folder, login, and an initial scan in one go:
       </p>
-      <pre><code>{`mg setup`}</code></pre>
+      <CodeBlock code={`mg setup`} />
       <p>
         Prefer to do it step by step? The individual commands are below.
       </p>
 
       <h3>Log in</h3>
-      <pre><code>{`mg login`}</code></pre>
+      <CodeBlock code={`mg login`} />
       <p>
         This starts a device-code login: it prints a URL and a short code. Open
         the URL in any browser, enter the code, and approve. The access token is
@@ -48,7 +49,9 @@ export default function HeadlessPage() {
       </p>
 
       <h3>Configure</h3>
-      <pre><code>{`mg config --device-name "Living Room" --music-path /home/user/Music`}</code></pre>
+      <CodeBlock
+        code={`mg config --device-name "Living Room" --music-path /home/user/Music`}
+      />
       <p>
         The device name is how this machine shows up when you connect from
         another device; the music path is the folder Microgamma reads your music
@@ -59,7 +62,7 @@ export default function HeadlessPage() {
       </p>
 
       <h3>Scan your library</h3>
-      <pre><code>{`mg scan`}</code></pre>
+      <CodeBlock code={`mg scan`} />
       <p>
         Scans the configured music folder into the library. Pass a path to scan
         somewhere else, or <code>--reset</code> (<code>-r</code>){" "}
@@ -71,14 +74,14 @@ export default function HeadlessPage() {
       </p>
 
       <h2>2. Run headless</h2>
-      <pre><code>{`Microgamma --headless`}</code></pre>
+      <CodeBlock code={`Microgamma --headless`} />
       <p>
         Same application, window hidden — the streaming servers start as usual.
         On Linux (and inside containers) Chromium still needs a display even
         when the window is hidden, so run it under a virtual framebuffer and
         disable the sandbox:
       </p>
-      <pre><code>{`xvfb-run -a Microgamma --no-sandbox --headless`}</code></pre>
+      <CodeBlock code={`xvfb-run -a Microgamma --no-sandbox --headless`} />
       <p>
         Leave it running under whatever supervisor you like — a{" "}
         <code>systemd</code> service,{" "}
@@ -107,7 +110,7 @@ export default function HeadlessPage() {
         {" "}
         environment variable:
       </p>
-      <pre><code>{`MG_BASE_PATH=/srv/microgamma mg config`}</code></pre>
+      <CodeBlock code={`MG_BASE_PATH=/srv/microgamma mg config`} />
       <p>
         An absolute path is used as-is; a relative value is treated as a folder
         name under your home directory. Set the same value for both{" "}
