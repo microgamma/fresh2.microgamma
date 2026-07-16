@@ -7,7 +7,7 @@ export default function DownloadsPage() {
   return (
     <>
       <Head>
-        <title>Download Microgamma - Your Music, Your Way</title>
+        <title>Download Microgamma — Own Your Sound</title>
         <meta
           name="description"
           content="Download Microgamma for Windows, macOS, and Linux. A self-hosted music player that's free to run on your own hardware."
@@ -147,17 +147,10 @@ export default function DownloadsPage() {
                 <h3 class="text-2xl font-bold mb-4 text-primary-300">
                   Ready to Try It?
                 </h3>
-                <p class="text-gray-300 mb-6">
-                  Join thousands of music lovers who stream their own
-                  collections. Free to download, yours to keep.
+                <p class="text-gray-300">
+                  Stream your own collection, on your own terms — free to
+                  download, yours to keep.
                 </p>
-                <div class="flex justify-center space-x-2 text-primary-400">
-                  <span class="text-2xl">🎵</span>
-                  <span class="text-lg font-semibold">
-                    Your Music. Your Way.
-                  </span>
-                  <span class="text-2xl">🎵</span>
-                </div>
               </div>
             </div>
           </div>

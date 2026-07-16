@@ -73,15 +73,10 @@ export default function BlogContent() {
           <h3 class="text-2xl font-bold mb-4 text-primary-300">
             No Blog Posts Yet
           </h3>
-          <p class="text-gray-300 mb-6">
-            We're working on our first blog posts. Check back soon for insights
-            into music ownership technology and blockchain innovation.
+          <p class="text-gray-300">
+            We're working on our first posts. Check back soon for writing on
+            music ownership, self-hosting, and building a collection that lasts.
           </p>
-          <div class="flex justify-center space-x-2 text-primary-400">
-            <span class="text-2xl">📝</span>
-            <span class="text-lg font-semibold">Coming Soon</span>
-            <span class="text-2xl">📝</span>
-          </div>
         </div>
       </div>
     );

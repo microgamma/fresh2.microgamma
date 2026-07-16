@@ -46,17 +46,10 @@ export default function NewsPage() {
               <h3 class="text-2xl font-bold mb-4 text-primary-300">
                 Stay in the Loop
               </h3>
-              <p class="text-gray-300 mb-6">
+              <p class="text-gray-300">
                 Follow our progress as we build Microgamma. Every update brings
                 new features for your self-hosted music library.
               </p>
-              <div class="flex justify-center space-x-2 text-primary-400">
-                <span class="text-2xl">📰</span>
-                <span class="text-lg font-semibold">
-                  Your Music. Your Way.
-                </span>
-                <span class="text-2xl">📰</span>
-              </div>
             </div>
           </div>
         </div>

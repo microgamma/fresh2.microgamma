@@ -17,8 +17,7 @@ export default function DockerPage() {
 
       <h2>1. Pull the image</h2>
       <p>
-        The image is public, so no registry login is needed. Pull the plain{" "}
-        <code>:latest</code>{" "}
+        Pull the plain <code>:latest</code>{" "}
         tag and Docker automatically selects the right build for your
         architecture (Intel or Apple Silicon / ARM):
       </p>

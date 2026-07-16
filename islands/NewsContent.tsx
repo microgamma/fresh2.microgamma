@@ -71,14 +71,9 @@ export default function NewsContent() {
           <h3 class="text-2xl font-bold mb-4 text-primary-300">
             No Updates Yet
           </h3>
-          <p class="text-gray-300 mb-6">
+          <p class="text-gray-300">
             Check back soon for the latest Microgamma news and updates on X.
           </p>
-          <div class="flex justify-center space-x-2 text-primary-400">
-            <span class="text-2xl">📰</span>
-            <span class="text-lg font-semibold">Your Music. Your Way.</span>
-            <span class="text-2xl">📰</span>
-          </div>
         </div>
       </div>
     );
