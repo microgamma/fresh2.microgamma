@@ -87,6 +87,12 @@ export default function HeadlessPage() {
       </p>
       <CodeBlock code={`xvfb-run -a Microgamma --no-sandbox --headless`} />
       <p>
+        On a server without a GPU, also pass{" "}
+        <code>--disable-gpu --disable-dev-shm-usage</code>{" "}
+        to avoid a Chromium GPU-process crash. (The Docker image already applies
+        these for you.)
+      </p>
+      <p>
         Leave it running under whatever supervisor you like — a{" "}
         <code>systemd</code> service,{" "}
         <code>tmux</code>, or a container. For the container route, see the{" "}
@@ -125,11 +131,10 @@ export default function HeadlessPage() {
       <h2>Ports</h2>
       <p>
         Headless Microgamma listens on <code>3333</code>{" "}
-        (the song file server) and <code>9998</code>{" "}
-        (peer connections). These are fixed. On a machine behind a home router
-        you generally don't need to open them — remote access is brokered by the
-        signaling service — but keep them free if you run other services on the
-        same host.
+        (the song file server). On a machine behind a home router you generally
+        don't need to open it — peer and remote access are brokered by the
+        signaling service over WebRTC, with no fixed inbound port — but keep{" "}
+        <code>3333</code> free if you run other services on the same host.
       </p>
     </DocPage>
   );

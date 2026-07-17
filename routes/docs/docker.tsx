@@ -84,9 +84,8 @@ export default function DockerPage() {
           play.microgamma.io
         </a>{" "}
         is brokered by Microgamma's signaling service. If you want to reach the
-        container directly on your LAN, publish the song server on{" "}
-        <code>3333</code> and peer connections on <code>9998</code>{" "}
-        yourself (<code>-p 3333:3333 -p 9998:9998</code>).
+        song server directly on your LAN, publish port <code>3333</code>{" "}
+        yourself (<code>-p 3333:3333</code>).
       </p>
     </DocPage>
   );
