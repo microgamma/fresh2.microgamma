@@ -297,17 +297,16 @@ export default define.page(function Home() {
           </a>
 
           <div class="mt-20 pt-12 border-t border-primary-500/20">
-            <Kicker
-              class="justify-center mb-8"
-              label="// INCOMING_TRANSMISSIONS"
-            />
+            <Kicker class="justify-center mb-4" label="// ROADMAP" />
+            <h3 class="font-head text-2xl md:text-3xl text-white mb-3">
+              On the Roadmap
+            </h3>
+            <p class="text-accent-300 mb-10 max-w-2xl mx-auto">
+              These aren't available yet — here's what we're planning for future
+              releases.
+            </p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
               {[
-                [
-                  "🖥️",
-                  "Infrastructure Freedom",
-                  "Run the streamer on your own hardware, or let us host it — your call.",
-                ],
                 [
                   "🤖",
                   "Smart Discovery",
@@ -330,10 +329,15 @@ export default define.page(function Home() {
                 ],
               ].map(([icon, title, body]) => (
                 <div class="hud-card rounded-sm p-6">
-                  <div class="text-2xl mb-3">{icon}</div>
-                  <h3 class="font-head text-lg mb-2 text-primary-400">
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="text-2xl">{icon}</span>
+                    <span class="text-[10px] font-mono-tech uppercase tracking-widest text-sun border border-sun/40 rounded-sm px-2 py-0.5">
+                      Planned
+                    </span>
+                  </div>
+                  <h4 class="font-head text-lg mb-2 text-primary-400">
                     {title}
-                  </h3>
+                  </h4>
                   <p class="text-accent-300 text-sm leading-relaxed">{body}</p>
                 </div>
               ))}
