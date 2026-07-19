@@ -6,6 +6,7 @@ import {
   KV_KEYS,
   UpdateBlogPostData,
 } from "./blogTypes.ts";
+import { devtoService } from "./devtoService.ts";
 
 const kv = await Deno.openKv();
 
@@ -125,7 +126,39 @@ export class BlogService {
       await this.addToTagIndex(tag, postId);
     }
 
+    // Cross-post to dev.to if published on creation
+    if (post.status === "published") {
+      return await this.syncToDevto(post);
+    }
+
     return post;
+  }
+
+  /**
+   * Cross-post a published post to dev.to exactly once, persisting the
+   * returned id/url so it isn't posted again. Failures are logged but never
+   * block publishing.
+   */
+  async syncToDevto(post: BlogPost): Promise<BlogPost> {
+    if (post.status !== "published" || post.devtoUrl) return post;
+    if (!devtoService.isConfigured()) return post;
+
+    try {
+      const result = await devtoService.crossPost(post);
+      if (!result) return post;
+
+      const updated: BlogPost = {
+        ...post,
+        devtoId: result.id,
+        devtoUrl: result.url,
+      };
+      await kv.set(KV_KEYS.post(post.id), updated);
+      console.log(`Cross-posted "${post.title}" to dev.to: ${result.url}`);
+      return updated;
+    } catch (error) {
+      console.error(`Failed to cross-post "${post.title}" to dev.to:`, error);
+      return post;
+    }
   }
 
   /**
@@ -231,6 +264,12 @@ export class BlogService {
 
     // Save updated post
     await kv.set(KV_KEYS.post(postId), updatedPost);
+
+    // Cross-post to dev.to only on the first draft → published transition,
+    // so editing an already-published post never creates a duplicate article.
+    if (oldStatus === "draft" && newStatus === "published") {
+      return await this.syncToDevto(updatedPost);
+    }
 
     return updatedPost;
   }

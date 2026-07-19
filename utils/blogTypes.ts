@@ -14,6 +14,9 @@ export interface BlogPost {
   updatedAt: Date;
   publishedAt?: Date;
   readingTime?: number;
+  // Set once the post has been cross-posted to dev.to.
+  devtoId?: number;
+  devtoUrl?: string;
 }
 
 export interface CreateBlogPostData {

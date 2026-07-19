@@ -12,6 +12,7 @@ interface BlogPost {
   updatedAt: string;
   publishedAt?: string;
   readingTime?: number;
+  devtoUrl?: string;
 }
 
 export default function BlogContent() {
@@ -129,9 +130,18 @@ export default function BlogContent() {
                 </span>
               </a>
 
-              <div class="flex items-center space-x-1 text-gray-500 text-sm">
-                <span>📝</span>
-                <span>Dev.to • {post.readingTime}min read</span>
+              <div class="flex items-center space-x-3 text-gray-500 text-sm">
+                {post.devtoUrl && (
+                  <a
+                    href={post.devtoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-cyber hover:text-cyber-300 transition"
+                  >
+                    Also on Dev.to ↗
+                  </a>
+                )}
+                <span>{post.readingTime} min read</span>
               </div>
             </div>
           </article>
