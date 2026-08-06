@@ -20,11 +20,11 @@ export default function DownloadsContent() {
         if (!res.ok) throw new Error("Failed to fetch");
         return res.json();
       })
-      .then((releases: Record<string, Release[]>) => {
+      .then((releases: Record<string, Release>) => {
         downloads.value = Object.entries(releases)
           .map(([platform, data]) => ({
             platform: platform as Platform,
-            ...data[0],
+            ...data,
           }));
       })
       .catch(() => {

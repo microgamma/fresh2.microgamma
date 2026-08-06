@@ -1,12 +1,10 @@
 import { define } from "../../utils.ts";
-import { cachedFetch } from "../../utils.ts";
+import { getReleases } from "../../utils/releases.ts";
 
 export const handler = define.handlers({
   async GET(_ctx) {
     try {
-      const releases = await cachedFetch(
-        "https://signaling.microgamma.io/releases/list",
-      );
+      const releases = await getReleases();
       return new Response(JSON.stringify(releases), {
         headers: { "Content-Type": "application/json" },
       });

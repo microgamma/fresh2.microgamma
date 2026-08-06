@@ -12,6 +12,7 @@
   "exclude": ["**/_fresh/*"],
   "imports": {
     "@/": "./",
+    "@aws-sdk/client-s3": "npm:@aws-sdk/client-s3@^3",
     "@kinde-oss/kinde-typescript-sdk": "npm:@kinde-oss/kinde-typescript-sdk@^2.13.0",
     "@microphi/debug": "npm:@microphi/debug@^2.10.1",
     "@tailwindcss/typography": "npm:@tailwindcss/typography@^0.5.19",
