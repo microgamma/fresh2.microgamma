@@ -31,6 +31,24 @@ export const docsNav: DocMeta[] = [
     description:
       "Every mg command and flag, plus configuration paths and environment variables.",
   },
+  {
+    slug: "discogs-token",
+    title: "Discogs API Token",
+    description:
+      "Get a free Discogs token so the free tier can fetch album and artist cover art.",
+  },
+  {
+    slug: "deepseek-token",
+    title: "DeepSeek AI Token",
+    description:
+      "Add your own DeepSeek API key to unlock Musicbox's AI features on the free tier.",
+  },
+  {
+    slug: "ice-servers",
+    title: "STUN / TURN Servers",
+    description:
+      "Bring your own STUN/TURN (ICE) servers so your devices can connect on the free tier.",
+  },
 ];
 
 /** Canonical URL for a doc page. The first page lives at /docs. */
