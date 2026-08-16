@@ -13,6 +13,11 @@ const FEATURES: [string, string, string][] = [
     "Crystal-clear audio streamed peer-to-peer. Your music sounds the way it was meant to — no compression, no compromise.",
   ],
   [
+    "🎚️",
+    "Consistent Volume",
+    "No more reaching for the dial between songs. Microgamma measures each track's loudness (ReplayGain / EBU R128) and levels playback so everything hits at the same perceived volume.",
+  ],
+  [
     "🔒",
     "Private by Default",
     "Your music stays on your device. No ads, no tracking, no data harvesting — just you and your music.",
