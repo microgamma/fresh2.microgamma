@@ -72,6 +72,24 @@ export default define.page(function Home() {
               What's Microgamma?
             </a>
           </div>
+
+          {/* Beta / pricing leverage — the clearest statement of the model. */}
+          <div class="mt-10 max-w-xl mx-auto hud-card rounded-sm p-5 border border-sun/40 bg-sun/5">
+            <div class="flex items-center justify-center gap-2 mb-2">
+              <span class="text-[10px] font-mono-tech uppercase tracking-widest text-sun border border-sun/40 rounded-sm px-2 py-0.5">
+                Beta
+              </span>
+              <span class="font-head text-white">
+                Premium is free for everyone right now
+              </span>
+            </div>
+            <p class="text-accent-300 text-sm leading-relaxed">
+              Cover art, AI, and device streaming can run on your own keys and
+              servers — free, if you like setting things up. Prefer we handle it?
+              That's Premium — and while we're in beta, it's on us. No card, no
+              setup.
+            </p>
+          </div>
         </div>
 
         {/* Scroll cue */}

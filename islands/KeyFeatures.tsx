@@ -13,6 +13,11 @@ const FEATURES: [string, string, string][] = [
     "Crystal-clear audio streamed peer-to-peer. Your music sounds the way it was meant to — no compression, no compromise.",
   ],
   [
+    "🔗",
+    "Gapless Playback",
+    "No silence between tracks. Live albums, DJ sets, and classical suites play exactly as recorded — one continuous, unbroken flow.",
+  ],
+  [
     "🔒",
     "Private by Default",
     "Your music stays on your device. No ads, no tracking, no data harvesting — just you and your music.",
