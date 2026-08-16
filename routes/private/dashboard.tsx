@@ -1,10 +1,7 @@
 import { define } from "../../utils.ts";
 import { Head } from "fresh/runtime";
 
-export default define.page(function DashboardPage(ctx) {
-  const user = ctx.state.user;
-  console.log({ user });
-
+export default define.page(function DashboardPage() {
   return (
     <>
       <Head>
@@ -28,6 +25,24 @@ export default define.page(function DashboardPage(ctx) {
               </p>
             </div>
 
+            {/* Beta notice — the headline: everyone is on Premium, free. */}
+            <div class="card-glow bg-sun/10 backdrop-blur-sm rounded-lg border border-sun/40 p-6 mb-8">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="text-[10px] font-mono-tech uppercase tracking-widest text-sun border border-sun/40 rounded-sm px-2 py-0.5">
+                  Beta
+                </span>
+                <h3 class="text-lg font-semibold text-white">
+                  You're on Premium — free while we're in beta
+                </h3>
+              </div>
+              <p class="text-gray-300 text-sm">
+                Every account gets the full managed experience right now — cover
+                art, AI, and connectivity, with nothing to set up. No card
+                required. You can always run any of it yourself on your own keys
+                and servers instead; that stays free too.
+              </p>
+            </div>
+
             {/* Current Plan Status */}
             <div class="card-glow bg-black/60 backdrop-blur-sm rounded-lg border border-primary-400/30 p-8 mb-8">
               <h3 class="text-xl font-semibold text-primary-400 mb-6 pb-4 border-b border-primary-400/20">
@@ -35,8 +50,12 @@ export default define.page(function DashboardPage(ctx) {
               </h3>
               <div class="flex items-center justify-between">
                 <div>
-                  <h4 class="text-lg font-medium text-white mb-1">Free Tier</h4>
-                  <p class="text-gray-300 text-sm">Basic features included</p>
+                  <h4 class="text-lg font-medium text-white mb-1">
+                    Premium — free during beta
+                  </h4>
+                  <p class="text-gray-300 text-sm">
+                    All managed features included at no cost
+                  </p>
                 </div>
                 <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-900/50 text-primary-300 border border-primary-400/30">
                   Active
@@ -49,66 +68,72 @@ export default define.page(function DashboardPage(ctx) {
               <h3 class="text-xl font-semibold text-primary-400 mb-6 pb-4 border-b border-primary-400/20">
                 Premium Features
               </h3>
+              <p class="text-gray-400 text-sm mb-6">
+                Every feature below works on the free tier if you bring your own
+                service credentials. Premium runs them for you — nothing to sign
+                up for, no keys or servers to manage.
+              </p>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-gray-800/50 p-6 rounded-lg">
                   <h4 class="text-lg font-semibold text-primary-300 mb-3">
-                    🤖 AI-Powered Discovery
+                    🎨 Managed cover art
                   </h4>
                   <p class="text-gray-300 text-sm mb-4">
-                    Smart recommendations and metadata enrichment using your own
-                    API keys.
+                    Automatic album &amp; artist artwork — no Discogs token to
+                    set up. Free tier: bring your own Discogs token.
                   </p>
-                  <button
-                    type="button"
-                    class="bg-primary-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-400 transition"
-                  >
-                    Upgrade to Premium
-                  </button>
+                  <span class="inline-flex items-center gap-2 text-sm font-medium text-sun">
+                    ✓ Active during beta
+                  </span>
                 </div>
                 <div class="bg-gray-800/50 p-6 rounded-lg">
                   <h4 class="text-lg font-semibold text-primary-300 mb-3">
-                    🖥️ Self-Hosted Freedom
+                    🤖 Managed AI discovery
                   </h4>
                   <p class="text-gray-300 text-sm mb-4">
-                    Run your own Microgamma server with complete control over
-                    your data.
+                    Smart recommendations and metadata enrichment — no API key
+                    required. Free tier: bring your own DeepSeek key.
                   </p>
-                  <button
-                    type="button"
-                    class="bg-primary-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-400 transition"
-                  >
-                    Upgrade to Premium
-                  </button>
+                  <span class="inline-flex items-center gap-2 text-sm font-medium text-sun">
+                    ✓ Active during beta
+                  </span>
                 </div>
                 <div class="bg-gray-800/50 p-6 rounded-lg">
                   <h4 class="text-lg font-semibold text-primary-300 mb-3">
-                    📱 Multi-Device Sync
+                    🌐 Managed connectivity
                   </h4>
                   <p class="text-gray-300 text-sm mb-4">
-                    Seamless streaming across all your devices with premium
-                    sync.
+                    Our STUN/TURN relay keeps your devices connected from
+                    anywhere — nothing to configure. Free tier: supply your own
+                    ICE servers.
                   </p>
-                  <button
-                    type="button"
-                    class="bg-primary-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-400 transition"
-                  >
-                    Upgrade to Premium
-                  </button>
+                  <span class="inline-flex items-center gap-2 text-sm font-medium text-sun">
+                    ✓ Active during beta
+                  </span>
                 </div>
                 <div class="bg-gray-800/50 p-6 rounded-lg">
                   <h4 class="text-lg font-semibold text-primary-300 mb-3">
-                    🌐 Cloud Storage Integration
+                    🔗 Gapless playback
                   </h4>
                   <p class="text-gray-300 text-sm mb-4">
-                    Upload and manage your music in any cloud provider with
-                    advanced tools.
+                    No silence between tracks — live albums, DJ sets and classical
+                    suites play as one continuous flow. A premium-only perk.
                   </p>
-                  <button
-                    type="button"
-                    class="bg-primary-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-400 transition"
-                  >
-                    Upgrade to Premium
-                  </button>
+                  <span class="inline-flex items-center gap-2 text-sm font-medium text-sun">
+                    ✓ Active during beta
+                  </span>
+                </div>
+                <div class="bg-gray-800/50 p-6 rounded-lg">
+                  <h4 class="text-lg font-semibold text-primary-300 mb-3">
+                    🛟 Priority support
+                  </h4>
+                  <p class="text-gray-300 text-sm mb-4">
+                    Direct help when you need it, straight from the team building
+                    Microgamma.
+                  </p>
+                  <span class="inline-flex items-center gap-2 text-sm font-medium text-sun">
+                    ✓ Active during beta
+                  </span>
                 </div>
               </div>
             </div>
@@ -124,11 +149,11 @@ export default define.page(function DashboardPage(ctx) {
                     Free Tier
                   </h4>
                   <ul class="text-gray-300 text-sm space-y-2 mb-4">
-                    <li>✓ Basic music streaming</li>
-                    <li>✓ Local music library</li>
-                    <li>✓ Manual metadata editing</li>
-                    <li>✗ AI features</li>
-                    <li>✗ Self-hosted options</li>
+                    <li>✓ Full local library &amp; offline playback</li>
+                    <li>✓ Own your collection forever</li>
+                    <li>✓ Cover art — with your own Discogs token</li>
+                    <li>✓ AI features — with your own DeepSeek key</li>
+                    <li>✓ Streaming — with your own STUN/TURN servers</li>
                   </ul>
                   <p class="text-primary-300 font-medium">$0/month</p>
                 </div>
@@ -138,12 +163,16 @@ export default define.page(function DashboardPage(ctx) {
                   </h4>
                   <ul class="text-gray-300 text-sm space-y-2 mb-4">
                     <li>✓ Everything in Free</li>
-                    <li>✓ AI-powered discovery</li>
-                    <li>✓ Self-hosted infrastructure</li>
-                    <li>✓ Multi-device premium sync</li>
+                    <li>✓ Cover art — managed, no token needed</li>
+                    <li>✓ AI discovery — managed, no key needed</li>
+                    <li>✓ Streaming — our STUN/TURN relay</li>
+                    <li>✓ Gapless playback</li>
                     <li>✓ Priority support</li>
                   </ul>
-                  <p class="text-primary-300 font-medium">$9.99/month</p>
+                  <p class="text-primary-300 font-medium">
+                    Free during beta
+                    <span class="text-gray-400 font-normal">· $9.99/month after</span>
+                  </p>
                 </div>
               </div>
             </div>
