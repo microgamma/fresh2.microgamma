@@ -9,13 +9,8 @@ const FEATURES: [string, string, string][] = [
   ],
   [
     "📱",
-    "The Phone Is the Remote",
-    "Open play.microgamma.io on your phone — no app store, no pairing. Add it to the home screen and it behaves like any native app. The box wired to your amp does the playing; the phone in your hand does the choosing.",
-  ],
-  [
-    "🔊",
-    "Every Room at Once",
-    "Start the record and it plays through every connected device — laptop, phone, the box by the stereo. The same music in every room, give or take a heartbeat.",
+    "Every Device Is the Same Player",
+    "Open play.microgamma.io on your laptop, your phone, the box wired to your amp — it's one player, seen from wherever you are. Put a record on and it plays through every connected device at once, each with its own volume, driven from whichever screen is in your hand — no pairing, no limit. Add it to your phone's home screen and it behaves like a native app.",
   ],
   [
     "🎯",

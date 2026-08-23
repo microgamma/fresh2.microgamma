@@ -114,7 +114,7 @@ export default define.page(function Home() {
               [
                 "📱",
                 "The Streamer",
-                "Leave it running on the box wired to your amplifier and drive it from your phone. Same library, whichever room you're standing in.",
+                "Leave it running on the box wired to your amplifier and drive it from your phone. Same library, same player, whichever device you pick up.",
               ],
               [
                 "🖥️",
