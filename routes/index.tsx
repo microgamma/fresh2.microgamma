@@ -330,7 +330,7 @@ export default define.page(function Home() {
               What Comes Next
             </h3>
             <p class="text-accent-300 mb-10 max-w-2xl mx-auto">
-              None of these exist yet — here's what we're building towards.
+              Lyrics are being built right now; the rest is where we're headed.
             </p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
               {[
@@ -352,13 +352,19 @@ export default define.page(function Home() {
                   "Separate profiles for a household sharing one library.",
                   "Planned",
                 ],
+                [
+                  "🎤",
+                  "Lyrics",
+                  "Synchronized lyrics you can follow along to, track by track.",
+                  "In progress",
+                ],
               ].map(([icon, title, body, status]) => (
                 <div class="hud-card rounded-sm p-6">
                   <div class="flex items-center justify-between mb-3">
                     <span class="text-2xl">{icon}</span>
                     <span
                       class={`text-[10px] font-mono-tech uppercase tracking-widest rounded-sm px-2 py-0.5 border ${
-                        status === "Rolling out"
+                        status === "In progress"
                           ? "text-cyber border-cyber/40"
                           : "text-sun border-sun/40"
                       }`}

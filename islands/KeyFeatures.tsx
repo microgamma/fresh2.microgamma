@@ -53,9 +53,9 @@ const FEATURES: [string, string, string][] = [
     "Match a record to its precise Discogs release — format, label, year, the pressing sitting on your shelf — and pull in the community's scans, credits and notes. Swap in alternate covers or your own photos of the sleeve, zoom the art full-screen, and jump straight to similar records in your library.",
   ],
   [
-    "🎤",
-    "Lyrics Built In",
-    "Add synchronized lyrics to any track. Follow along, or turn your living room into a karaoke stage.",
+    "📺",
+    "Retro Visualizers",
+    "Six of them — Synthwave, Tunnel, Spectrum 3D, Waveform, Circles and Bars — moving to whatever's playing. Throw one on the big screen and let the room do the rest.",
   ],
 ];
 
