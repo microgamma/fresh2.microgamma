@@ -14,6 +14,12 @@ export const docsNav: DocMeta[] = [
       "Install the desktop app, play your local library, and reach it from anywhere with play.microgamma.io.",
   },
   {
+    slug: "playback-and-albums",
+    title: "Playback & Album Pages",
+    description:
+      "Gapless and overlapping playback, track vs album loudness levelling, full-screen artwork, release details, and similar records.",
+  },
+  {
     slug: "headless",
     title: "Headless Mode",
     description:

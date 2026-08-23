@@ -15,7 +15,12 @@ const FEATURES: [string, string, string][] = [
   [
     "🎚️",
     "Consistent Volume",
-    "No more reaching for the dial between songs. Microgamma measures each track's loudness (ReplayGain / EBU R128) and levels playback so everything hits at the same perceived volume.",
+    "No more reaching for the dial between songs. Microgamma measures each track's loudness (ReplayGain / EBU R128) and levels playback — per track, or in album mode that keeps a record's quiet-to-loud dynamics intact.",
+  ],
+  [
+    "⏭️",
+    "Gapless Playback",
+    "Albums play the way they were mastered. The next track is preloaded and handed over the instant the last one ends — no silence, no stutter, even on live sets and continuous mixes.",
   ],
   [
     "🔒",
@@ -41,6 +46,11 @@ const FEATURES: [string, string, string][] = [
     "🎨",
     "Your Covers, Your Way",
     "Pull art from Discogs, use your own scans, or design something new. Your albums always look the way you want.",
+  ],
+  [
+    "💿",
+    "Rich Album Pages",
+    "Zoom cover art full-screen, see the exact pressing you own — format, label, year from Discogs — swap in alternate covers, and jump to similar records in your own library.",
   ],
   [
     "🔧",
