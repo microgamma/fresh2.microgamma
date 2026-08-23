@@ -53,11 +53,6 @@ const FEATURES: [string, string, string][] = [
     "Match a record to its precise Discogs release — format, label, year, the pressing sitting on your shelf — and pull in the community's scans, credits and notes. Swap in alternate covers or your own photos of the sleeve, zoom the art full-screen, and jump straight to similar records in your library.",
   ],
   [
-    "🔧",
-    "Make It Yours",
-    "Open JSON metadata and extensible libraries let you tweak, script, and automate anything in your collection.",
-  ],
-  [
     "🎤",
     "Lyrics Built In",
     "Add synchronized lyrics to any track. Follow along, or turn your living room into a karaoke stage.",
