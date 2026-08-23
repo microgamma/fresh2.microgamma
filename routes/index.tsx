@@ -224,7 +224,7 @@ export default define.page(function Home() {
             at no cost — there is nothing to buy yet, and nothing held back.
           </p>
           <p class="text-sun text-sm font-mono-tech uppercase tracking-widest mb-14">
-            ⚡ Beta: remote streaming runs on our relays, free while we build
+            ⚡ Beta: remote streaming runs on our servers, free while we build
           </p>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
@@ -246,7 +246,7 @@ export default define.page(function Home() {
                   ["Your network", "play it on every device in the house"],
                   [
                     "Beyond it too",
-                    "reach your library from outside, on our relays",
+                    "reach your library from outside, through our servers",
                   ],
                 ].map(([k, v]) => (
                   <li class="flex items-start gap-3">
