@@ -31,7 +31,7 @@ export default function MainLayout({ children, user, roles }: LayoutProps) {
             OWN YOUR MUSIC · OWN YOUR SOUND
           </p>
           <p class="text-accent-300 text-xs font-mono-tech uppercase tracking-[0.3em] mb-8">
-            Part of the music-ownership resistance
+            For the music you already own
           </p>
 
           <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-8 font-mono-tech uppercase tracking-widest text-sm">

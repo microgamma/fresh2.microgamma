@@ -45,20 +45,23 @@ export default function DownloadsPage() {
                   <div class="text-3xl mb-2">🐧</div>
                   <div>
                     <h3 class="text-xl font-semibold mb-4 text-primary-300">
-                      Linux
+                      Where It Runs
                     </h3>
                     <p class="text-gray-300 leading-relaxed">
-                      Download for Linux x64 and arm64. Run it on a desktop, a
-                      home server, or a Raspberry Pi.
+                      The machine that holds your music runs Microgamma: a
+                      laptop you already use, a home server, a NAS, or a
+                      Raspberry Pi tucked behind the amplifier.
                     </p>
                     <p class="text-gray-300 leading-relaxed mt-3">
-                      On Windows or macOS? Run Microgamma in{" "}
+                      Everything else — phones, tablets, other computers — just
+                      opens{" "}
                       <a
-                        href="/docs"
+                        href="https://play.microgamma.io"
                         class="text-primary-400 hover:text-primary-300 underline"
                       >
-                        Docker
-                      </a>.
+                        play.microgamma.io
+                      </a>{" "}
+                      and connects to it. Nothing to install on those.
                     </p>
                   </div>
                 </div>
@@ -122,8 +125,10 @@ export default function DownloadsPage() {
               <CopyCommand command="docker pull ghcr.io/microgamma/microgamma-desktop:latest" />
 
               <p class="text-accent-300/70 text-sm mt-6">
-                Pin a specific version with a tag like{" "}
-                <code class="text-cyber">:v2.94.3</code>. See the{" "}
+                <code class="text-cyber">:latest</code>{" "}
+                always points at the current release; every release is also
+                published under its own version tag if you'd rather pin one. See
+                the{" "}
                 <a
                   href="/docs/docker"
                   class="text-cyber hover:text-cyber-300 underline"
