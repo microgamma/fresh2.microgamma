@@ -50,12 +50,7 @@ const FEATURES: [string, string, string][] = [
   [
     "💿",
     "The Exact Release You Own",
-    "Match a record to its precise Discogs release — the pressing sitting on your shelf, not a generic entry — and pull in the community's cover scans, credits and notes. Or use your own photos of the sleeve.",
-  ],
-  [
-    "💿",
-    "Rich Album Pages",
-    "Zoom cover art full-screen, see the exact pressing you own — format, label, year from Discogs — swap in alternate covers, and jump to similar records in your own library.",
+    "Match a record to its precise Discogs release — format, label, year, the pressing sitting on your shelf — and pull in the community's scans, credits and notes. Swap in alternate covers or your own photos of the sleeve, zoom the art full-screen, and jump straight to similar records in your library.",
   ],
   [
     "🔧",
