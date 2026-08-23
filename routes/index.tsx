@@ -10,11 +10,11 @@ export default define.page(function Home() {
         <title>Microgamma — Own Your Music. Own Your Sound.</title>
         <meta
           name="description"
-          content="Stream your entire music library with full ownership. Microgamma is the self-hosted music player that keeps your collection yours — free to run on your own hardware."
+          content="Microgamma gives the music you already own one home — and plays it anywhere: your machine, the box wired to your amp, or your phone across town. No dedicated hardware, no port forwarding. Free while in beta."
         />
         <meta
           name="keywords"
-          content="music player, music streaming, music ownership, self-hosted music, audiophile, music library, digital music"
+          content="music player, music server, music streaming, music ownership, self-hosted music, remote control, discogs, audiophile, music library, digital music"
         />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -22,7 +22,7 @@ export default define.page(function Home() {
             "@type": "SoftwareApplication",
             "name": "Microgamma",
             "description":
-              "A modern, self-hosted music player for managing digital music collections with complete user ownership and premium streaming features.",
+              "A music player, streamer and headless music server in one. Microgamma plays the collection you already own, on the machine you already use, and streams it to every device in the house — or to your phone outside it, with no router configuration.",
             "applicationCategory": "MultimediaApplication",
             "operatingSystem": "Windows, macOS, Linux",
             "offers": {
@@ -53,9 +53,14 @@ export default define.page(function Home() {
           <p class="font-head text-lg md:text-2xl tracking-[0.25em] uppercase gradient-text mb-6">
             Own Your Music · Own Your Sound
           </p>
-          <p class="max-w-xl mx-auto text-accent-300 text-base md:text-lg mb-10 leading-relaxed [text-shadow:0_2px_16px_rgba(8,3,15,0.95)]">
-            The self-hosted music player that keeps your collection yours. Free
-            forever on your own hardware — or let us host the heavy lifting.
+          <p class="max-w-xl mx-auto text-accent-300 text-base md:text-lg mb-4 leading-relaxed [text-shadow:0_2px_16px_rgba(8,3,15,0.95)]">
+            You already own the music — the download codes from the sleeve, the
+            lossless files you paid for, the rips scattered across folders.
+            Microgamma gives it one home, and plays it anywhere: this machine,
+            the box wired to your amp, or your phone across town.
+          </p>
+          <p class="max-w-xl mx-auto text-cyber-300 font-mono-tech text-xs md:text-sm uppercase tracking-[0.2em] mb-10 [text-shadow:0_2px_16px_rgba(8,3,15,0.95)]">
+            Install it · point it at your folder · press play
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
@@ -69,7 +74,7 @@ export default define.page(function Home() {
               f-client-nav={false}
               class="btn-ghost px-8 py-4 rounded-sm text-sm"
             >
-              What's Microgamma?
+              See How It Works
             </a>
           </div>
         </div>
@@ -92,21 +97,37 @@ export default define.page(function Home() {
       >
         <div class="container mx-auto max-w-4xl text-center">
           <Kicker class="justify-center mb-4" label="[ 01 ] // MANIFEST" />
-          <h2 class="font-head text-3xl md:text-5xl mb-14 text-white">
+          <h2 class="font-head text-3xl md:text-5xl mb-4 text-white">
             What is <span class="gradient-text">Microgamma</span>?
           </h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+          <p class="text-accent-300 text-lg mb-14 max-w-2xl mx-auto leading-relaxed">
+            One program, three jobs. Run the one you need today — or all three
+            at once.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
             {[
-              ["🎵", "A music player you truly own."],
-              ["🏠", "Runs on your own hardware."],
-              ["📱", "Streams to any device you have."],
-              ["🎨", "Customize everything — covers, metadata, playlists."],
-              ["🌐", "Remote control from anywhere on Earth."],
-              ["💰", "Free forever on your own hardware."],
-            ].map(([icon, text]) => (
-              <div class="hud-card rounded-sm p-5 flex items-center gap-4">
-                <span class="text-2xl">{icon}</span>
-                <span class="text-accent-300">{text}</span>
+              [
+                "🎧",
+                "The Player",
+                "Install it, point it at your music folder, press play. No account, no cloud, no setup wizard — just your collection, on your machine.",
+              ],
+              [
+                "📱",
+                "The Streamer",
+                "Leave it running on the box wired to your amplifier and drive it from your phone. Same library, whichever room you're standing in.",
+              ],
+              [
+                "🖥️",
+                "The Server",
+                "Run it headless on a NAS or a spare machine. Everyone at home connects for free — and you can reach it from outside without touching a router.",
+              ],
+            ].map(([icon, title, body]) => (
+              <div class="hud-card rounded-sm p-6">
+                <span class="text-3xl">{icon}</span>
+                <h3 class="font-head text-lg mt-4 mb-2 text-primary-400">
+                  {title}
+                </h3>
+                <p class="text-accent-300 text-sm leading-relaxed">{body}</p>
               </div>
             ))}
           </div>
@@ -123,32 +144,33 @@ export default define.page(function Home() {
           <div class="text-center mb-14">
             <Kicker
               class="justify-center mb-4"
-              label="[ 02 ] // THE REBELLION"
+              label="[ 02 ] // WHAT_YOU_KEEP"
             />
             <h2 class="font-head text-3xl md:text-5xl mb-6 text-white">
-              Ownership vs. <span class="text-warn">The Rental</span>
+              What Vanishes, <span class="gradient-text">What Stays</span>
             </h2>
             <p class="text-accent-300 text-lg max-w-3xl mx-auto leading-relaxed">
-              With streaming services, your collection only exists while you
-              keep paying. Cancel, and years of curation vanish overnight. What
-              if every dollar you spent on music built something permanent
-              instead?
+              Microgamma doesn't sell you music — you already buy it, from the
+              record shop, from the download code in the sleeve, from wherever
+              you get your lossless. What it does is make sure everything you
+              build on top of it stays yours too: the playlists, the likes, the
+              years of listening.
             </p>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Streaming */}
+            {/* Rented */}
             <div class="hud-card rounded-sm p-8 bg-warn-700/10">
               <h3 class="font-head text-xl mb-6 text-warn flex items-center gap-3">
-                <span class="text-2xl">🎭</span> Streaming Subscriptions
+                <span class="text-2xl">⏳</span> When You Rent
               </h3>
               <ul class="space-y-4 text-accent-300">
                 {[
-                  "Monthly fees for temporary access",
-                  "Collection disappears when you cancel",
-                  "The platform decides your experience",
-                  "No lasting value from your spending",
-                  "Renting access you never truly hold",
+                  "Your playlists live in someone else's account",
+                  "Stop paying and the curation goes with the catalogue",
+                  "Albums disappear when a licence expires",
+                  "The app decides how your library looks and behaves",
+                  "Nothing on your disk to back up",
                 ].map((t) => (
                   <li class="flex items-start gap-3">
                     <span class="text-warn font-mono-tech mt-0.5">✗</span>
@@ -158,18 +180,18 @@ export default define.page(function Home() {
               </ul>
             </div>
 
-            {/* Microgamma */}
+            {/* Owned */}
             <div class="hud-card rounded-sm p-8 bg-cyber-500/5">
               <h3 class="font-head text-xl mb-6 text-cyber flex items-center gap-3">
-                <span class="text-2xl">🎵</span> Microgamma Ownership
+                <span class="text-2xl">💾</span> When You Own
               </h3>
               <ul class="space-y-4 text-accent-300">
                 {[
-                  "Buy albums once, keep them forever",
-                  "Build a permanent, portable library",
-                  "Customize everything, your way",
-                  "Every purchase invests in your taste",
-                  "True ownership with modern streaming power",
+                  "Your files stay exactly where you put them",
+                  "Playlists, likes and play history live on your disk",
+                  "Backed up with everything else you own",
+                  "Nothing expires, nothing gets delisted",
+                  "Covers, metadata, order — all of it yours to edit",
                 ].map((t) => (
                   <li class="flex items-start gap-3">
                     <span class="text-cyber font-mono-tech mt-0.5">✓</span>
@@ -181,8 +203,8 @@ export default define.page(function Home() {
           </div>
 
           <p class="text-center text-cyber-300 font-head tracking-wide text-lg mt-12">
-            Start building a music collection that grows with you — not one that
-            expires with your credit card.
+            Twenty years from now it still plays — no account, no licence check,
+            no renewal.
           </p>
         </div>
       </section>
@@ -193,38 +215,39 @@ export default define.page(function Home() {
       {/* ======================== DEPLOY ======================== */}
       <section class="relative bg-[#08030f] py-24 px-4 grid-bg">
         <div class="container mx-auto max-w-5xl text-center">
-          <Kicker class="justify-center mb-4" label="[ 04 ] // DEPLOYMENT" />
+          <Kicker class="justify-center mb-4" label="[ 04 ] // WHAT_IT_COSTS" />
           <h2 class="font-head text-3xl md:text-5xl mb-6 text-white">
-            Your Infrastructure, <span class="gradient-text">Your Rules</span>
+            Right Now, <span class="gradient-text">Nothing</span>
           </h2>
           <p class="text-accent-300 text-lg max-w-3xl mx-auto mb-4 leading-relaxed">
-            The player is free, forever. Bring your own infrastructure —
-            hardware, storage, relays — and the whole thing stays free. Don't
-            want to run it yourself? We host the pieces you need for a fraction
-            of what streaming services charge.
+            Microgamma is in beta. Every feature is switched on, for everyone,
+            at no cost — there is nothing to buy yet, and nothing held back.
           </p>
           <p class="text-sun text-sm font-mono-tech uppercase tracking-widest mb-14">
-            ⚡ Beta: free TURN/STUN relays for remote streaming while we build
+            ⚡ Beta: remote streaming runs on our relays, free while we build
           </p>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
             <div class="hud-card rounded-sm p-8">
               <h3 class="font-head text-xl mb-4 text-primary-400 flex items-center gap-3">
-                <span class="text-2xl">🏠</span> Bring Your Own
+                <span class="text-2xl">🎧</span> Today
               </h3>
               <p class="text-accent-300 mb-6">
-                Run Microgamma entirely on hardware you already own — completely
-                free, no strings attached.
+                Install it and use it. No account to create, no tier to pick,
+                nothing to bring but the music you already have.
               </p>
               <ul class="space-y-3 text-accent-300">
                 {[
-                  ["Your hardware", "any computer, NAS, or server you own"],
-                  ["Your AI keys", "bring your own OpenAI/Anthropic key"],
+                  ["Everything on", "the full feature set, free during beta"],
                   [
-                    "Your relays",
-                    "self-host TURN/STUN, or use ours free in beta",
+                    "Your disk",
+                    "your library stays on the machine you install it on",
                   ],
-                  ["Your storage", "any folder, drive, or NAS you connect"],
+                  ["Your network", "play it on every device in the house"],
+                  [
+                    "Beyond it too",
+                    "reach your library from outside, on our relays",
+                  ],
                 ].map(([k, v]) => (
                   <li class="flex items-start gap-3">
                     <span class="text-primary-400 font-mono-tech mt-0.5">
@@ -237,27 +260,32 @@ export default define.page(function Home() {
                 ))}
               </ul>
               <p class="font-head text-cyber mt-6 tracking-wide">
-                Pay nothing. Own everything.
+                Nothing to pay. Nothing to configure.
               </p>
             </div>
 
             <div class="hud-card rounded-sm p-8">
               <h3 class="font-head text-xl mb-4 text-cyber flex items-center gap-3">
-                <span class="text-2xl">☁️</span> We Handle It
+                <span class="text-2xl">🗺️</span> Later
               </h3>
               <p class="text-accent-300 mb-6">
-                Let us host your Microgamma server — for a fraction of what
-                you'd pay a streaming service.
+                One day we do have to charge for something. When that happens,
+                the split is simple — and you get to pick which side you're on.
               </p>
               <ul class="space-y-3 text-accent-300">
                 {[
-                  ["Hosted server", "we run it in our cloud, you just stream"],
-                  ["AI included", "smart discovery, no keys to bring"],
                   [
-                    "Global relay",
-                    "stream from anywhere, through any firewall",
+                    "Run it yourself",
+                    "your hardware, your API keys — free, and staying that way",
                   ],
-                  ["Storage included", "your library lives in our cloud"],
+                  [
+                    "Or let us run it",
+                    "planned: a hosted instance, our services, no setup",
+                  ],
+                  [
+                    "Never a hostage",
+                    "your files and playlists are on your disk either way",
+                  ],
                 ].map(([k, v]) => (
                   <li class="flex items-start gap-3">
                     <span class="text-cyber font-mono-tech mt-0.5">✓</span>
@@ -268,14 +296,15 @@ export default define.page(function Home() {
                 ))}
               </ul>
               <p class="font-head text-primary-400 mt-6 tracking-wide">
-                A fraction of Spotify or Apple Music.
+                We'll sell convenience, not access.
               </p>
             </div>
           </div>
 
           <p class="text-accent-300 mt-12 max-w-2xl mx-auto">
-            Mix and match however you like. Start free, add services when you
-            need them. No lock-in. No surprise fees.
+            Microgamma itself isn't open source — that's what pays for building
+            it. But if you know how to run the pieces yourself, they're yours to
+            run. Paying us will only ever mean you'd rather not.
           </p>
         </div>
       </section>
@@ -285,54 +314,56 @@ export default define.page(function Home() {
         <div class="container mx-auto max-w-5xl text-center">
           <Kicker class="justify-center mb-4" label="[ 05 ] // JACK_IN" />
           <h2 class="font-head text-3xl md:text-5xl mb-6 text-white">
-            Ready to <span class="gradient-text">Get Started?</span>
+            Point It at <span class="gradient-text">Your Folder</span>
           </h2>
           <p class="text-accent-300 text-lg max-w-3xl mx-auto mb-10 leading-relaxed">
-            Microgamma is evolving fast. It's already great for daily listening,
-            and there's much more on the way. Download it today and start
-            building your permanent collection.
+            Microgamma is in beta and moving quickly. It's already good for
+            daily listening — download it, open your collection, and see.
           </p>
           <a href="/downloads" class="btn-neon px-10 py-4 rounded-sm text-sm">
             ▸ Download Free
           </a>
 
           <div class="mt-20 pt-12 border-t border-primary-500/20">
-            <Kicker class="justify-center mb-4" label="// ROADMAP" />
+            <Kicker class="justify-center mb-4" label="// WHAT_COMES_NEXT" />
             <h3 class="font-head text-2xl md:text-3xl text-white mb-3">
-              On the Roadmap
+              What Comes Next
             </h3>
             <p class="text-accent-300 mb-10 max-w-2xl mx-auto">
-              These aren't available yet — here's what we're planning for future
-              releases.
+              None of these exist yet — here's what we're building towards.
             </p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
               {[
                 [
-                  "🤖",
-                  "Smart Discovery",
-                  "AI features with your own API keys for full privacy, or our premium service.",
-                ],
-                [
-                  "🌐",
-                  "Flexible Storage",
-                  "Upload to any cloud provider and keep full ownership, or host it all yourself.",
+                  "☁️",
+                  "Hosted Instance",
+                  "Would rather not run it yourself? We'll run Microgamma for you.",
+                  "Planned",
                 ],
                 [
                   "🔄",
                   "Smart Queues",
-                  "Playlists that learn what you love — self-hosted or our premium engine.",
+                  "Playlists that learn what you actually keep coming back to.",
+                  "Planned",
                 ],
                 [
                   "👥",
                   "Family & Friends",
-                  "Multi-profile support for shared households, self-run or premium.",
+                  "Separate profiles for a household sharing one library.",
+                  "Planned",
                 ],
-              ].map(([icon, title, body]) => (
+              ].map(([icon, title, body, status]) => (
                 <div class="hud-card rounded-sm p-6">
                   <div class="flex items-center justify-between mb-3">
                     <span class="text-2xl">{icon}</span>
-                    <span class="text-[10px] font-mono-tech uppercase tracking-widest text-sun border border-sun/40 rounded-sm px-2 py-0.5">
-                      Planned
+                    <span
+                      class={`text-[10px] font-mono-tech uppercase tracking-widest rounded-sm px-2 py-0.5 border ${
+                        status === "Rolling out"
+                          ? "text-cyber border-cyber/40"
+                          : "text-sun border-sun/40"
+                      }`}
+                    >
+                      {status}
                     </span>
                   </div>
                   <h4 class="font-head text-lg mb-2 text-primary-400">
@@ -341,14 +372,6 @@ export default define.page(function Home() {
                   <p class="text-accent-300 text-sm leading-relaxed">{body}</p>
                 </div>
               ))}
-              <div class="hud-card rounded-sm p-6 flex flex-col items-center justify-center text-center bg-sun/5">
-                <span class="text-xs font-mono-tech uppercase tracking-widest text-sun">
-                  status
-                </span>
-                <span class="font-head text-cyber text-lg mt-2">
-                  More on the way
-                </span>
-              </div>
             </div>
           </div>
         </div>

@@ -3,14 +3,34 @@ import Kicker from "../components/Kicker.tsx";
 
 const FEATURES: [string, string, string][] = [
   [
-    "🎵",
-    "Your Music, Always",
-    "Stream your entire library with full ownership. Every album you add stays yours — no subscriptions, no expiration.",
+    "🧩",
+    "No Box, No Port Forwarding",
+    "It's an app, not an appliance: install it on the machine you already use, with no dedicated device to flash. And reaching your library from outside the house takes no port forwarding, no VPN, no argument with your router.",
+  ],
+  [
+    "📱",
+    "The Phone Is the Remote",
+    "Open play.microgamma.io on your phone — no app store, no pairing. Add it to the home screen and it behaves like any native app. The box wired to your amp does the playing; the phone in your hand does the choosing.",
+  ],
+  [
+    "🔊",
+    "Every Room at Once",
+    "Start the record and it plays through every connected device — laptop, phone, the box by the stereo. The same music in every room, give or take a heartbeat.",
+  ],
+  [
+    "🎯",
+    "Only Your Music",
+    "No streaming tab, no web radio, no podcast section. Microgamma plays the collection you own and nothing else — which is exactly why it stays fast and stays out of the way.",
+  ],
+  [
+    "🎧",
+    "What to Play Next",
+    "Out of the box, suggestions come from your own library: same genre, same feel as the song that's playing — as good as your metadata is. Add your own DeepSeek key and they get properly smart, and anything you don't own yet comes with a pointer to it on Discogs.",
   ],
   [
     "📀",
     "High-Fidelity Streaming",
-    "Crystal-clear audio streamed peer-to-peer. Your music sounds the way it was meant to — no compression, no compromise.",
+    "Your files streamed peer-to-peer, straight from the machine that holds them. No re-encoding — the file you own is the file you hear.",
   ],
   [
     "🎚️",
@@ -28,24 +48,9 @@ const FEATURES: [string, string, string][] = [
     "Your music stays on your device. No ads, no tracking, no data harvesting — just you and your music.",
   ],
   [
-    "⚡",
-    "Ready in Seconds",
-    "Download, launch, point to your music folder. You're streaming in under a minute — no accounts, no setup wizards.",
-  ],
-  [
-    "🔍",
-    "Instant Search",
-    "Find any song, artist, or album in milliseconds. Fuzzy search that understands you, even with typos.",
-  ],
-  [
-    "🎤",
-    "Lyrics Built In",
-    "Add synchronized lyrics to any track. Follow along, or turn your living room into a karaoke stage.",
-  ],
-  [
-    "🎨",
-    "Your Covers, Your Way",
-    "Pull art from Discogs, use your own scans, or design something new. Your albums always look the way you want.",
+    "💿",
+    "The Exact Release You Own",
+    "Match a record to its precise Discogs release — the pressing sitting on your shelf, not a generic entry — and pull in the community's cover scans, credits and notes. Or use your own photos of the sleeve.",
   ],
   [
     "💿",
@@ -58,19 +63,9 @@ const FEATURES: [string, string, string][] = [
     "Open JSON metadata and extensible libraries let you tweak, script, and automate anything in your collection.",
   ],
   [
-    "📱",
-    "One Library, Every Device",
-    "Control your music from any device. Start on desktop, pick up on your phone — it all stays in sync.",
-  ],
-  [
-    "🔊",
-    "Play Everywhere",
-    "Stream to your home stereo, headphones, or multiple rooms at once. Your music fills every space you want.",
-  ],
-  [
-    "🔄",
-    "Seamless Handoff",
-    "Switch between devices without missing a beat. Your music follows you naturally, wherever you go.",
+    "🎤",
+    "Lyrics Built In",
+    "Add synchronized lyrics to any track. Follow along, or turn your living room into a karaoke stage.",
   ],
 ];
 
