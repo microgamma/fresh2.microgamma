@@ -3,6 +3,11 @@ import Kicker from "../components/Kicker.tsx";
 
 const FEATURES: [string, string, string][] = [
   [
+    "🔒",
+    "Private by Default",
+    "Your music stays on your device. No ads, no tracking, no data harvesting — just you and your music.",
+  ],
+  [
     "🧩",
     "No Box, No Port Forwarding",
     "It's an app, not an appliance: install it on the machine you already use, with no dedicated device to flash. And reaching your library from outside the house takes no port forwarding, no VPN, no argument with your router.",
@@ -18,14 +23,9 @@ const FEATURES: [string, string, string][] = [
     "No streaming tab, no web radio, no podcast section. Microgamma plays the collection you own and nothing else — which is exactly why it stays fast and stays out of the way.",
   ],
   [
-    "🎧",
-    "What to Play Next",
-    "Out of the box, suggestions come from your own library: same genre, same feel as the song that's playing — as good as your metadata is. Add your own DeepSeek key and they get properly smart, and anything you don't own yet comes with a pointer to it on Discogs.",
-  ],
-  [
-    "📀",
-    "High-Fidelity Streaming",
-    "Your files streamed peer-to-peer, straight from the machine that holds them. No re-encoding — the file you own is the file you hear.",
+    "⏭️",
+    "Gapless Playback",
+    "Albums play the way they were mastered. The next track is preloaded and handed over the instant the last one ends — no silence, no stutter, even on live sets and continuous mixes.",
   ],
   [
     "🎚️",
@@ -33,19 +33,19 @@ const FEATURES: [string, string, string][] = [
     "No more reaching for the dial between songs. Microgamma measures each track's loudness (ReplayGain / EBU R128) and levels playback — per track, or in album mode that keeps a record's quiet-to-loud dynamics intact.",
   ],
   [
-    "⏭️",
-    "Gapless Playback",
-    "Albums play the way they were mastered. The next track is preloaded and handed over the instant the last one ends — no silence, no stutter, even on live sets and continuous mixes.",
-  ],
-  [
-    "🔒",
-    "Private by Default",
-    "Your music stays on your device. No ads, no tracking, no data harvesting — just you and your music.",
+    "📀",
+    "High-Fidelity Streaming",
+    "Your files streamed peer-to-peer, straight from the machine that holds them. No re-encoding — the file you own is the file you hear.",
   ],
   [
     "💿",
     "The Exact Release You Own",
     "Match a record to its precise Discogs release — format, label, year, the pressing sitting on your shelf — and pull in the community's scans, credits and notes. Swap in alternate covers or your own photos of the sleeve, zoom the art full-screen, and jump straight to similar records in your library.",
+  ],
+  [
+    "🎧",
+    "What to Play Next",
+    "Out of the box, suggestions come from your own library: same genre, same feel as the song that's playing — as good as your metadata is. Add your own DeepSeek key and they get properly smart, and anything you don't own yet comes with a pointer to it on Discogs.",
   ],
   [
     "📺",
