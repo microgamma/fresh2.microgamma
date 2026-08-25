@@ -109,7 +109,7 @@ export default define.page(function Home() {
               [
                 "🎧",
                 "The Player",
-                "Install it, point it at your music folder, press play. No account, no cloud, no setup wizard — just your collection, on your machine.",
+                "Install it, point it at your music folder, press play. No cloud to upload to, no setup wizard to sit through — just your collection, on your machine.",
               ],
               [
                 "📱",
@@ -203,8 +203,8 @@ export default define.page(function Home() {
           </div>
 
           <p class="text-center text-cyber-300 font-head tracking-wide text-lg mt-12">
-            Twenty years from now it still plays — no account, no licence check,
-            no renewal.
+            Twenty years from now it still plays — no licence check, no renewal,
+            no permission to ask for.
           </p>
         </div>
       </section>
@@ -233,8 +233,8 @@ export default define.page(function Home() {
                 <span class="text-2xl">🎧</span> Today
               </h3>
               <p class="text-accent-300 mb-6">
-                Install it and use it. No account to create, no tier to pick,
-                nothing to bring but the music you already have.
+                Install it and use it. No tier to pick, nothing to bring but the
+                music you already have.
               </p>
               <ul class="space-y-3 text-accent-300">
                 {[
