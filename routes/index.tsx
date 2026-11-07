@@ -10,7 +10,7 @@ export default define.page(function Home() {
         <title>Microgamma — Own Your Music. Own Your Sound.</title>
         <meta
           name="description"
-          content="Microgamma gives the music you already own one home — and plays it anywhere: your machine, the box wired to your amp, or your phone across town. No dedicated hardware, no port forwarding. Free while in beta."
+          content="Microgamma gives the music you already own one home — and plays it anywhere: your machine, the box wired to your amp, or your phone across town. No dedicated hardware, no port forwarding."
         />
         <meta
           name="keywords"
@@ -24,12 +24,7 @@ export default define.page(function Home() {
             "description":
               "A music player, streamer and headless music server in one. Microgamma plays the collection you already own, on the machine you already use, and streams it to every device in the house — or to your phone outside it, with no router configuration.",
             "applicationCategory": "MultimediaApplication",
-            "operatingSystem": "Windows, macOS, Linux",
-            "offers": {
-              "@type": "Offer",
-              "price": "0",
-              "priceCurrency": "USD",
-            },
+            "operatingSystem": "Windows, macOS, Linux, Android",
             "author": { "@type": "Organization", "name": "Microgamma" },
           })}
         </script>
@@ -67,7 +62,7 @@ export default define.page(function Home() {
               href="/downloads"
               class="btn-neon px-8 py-4 rounded-sm text-sm"
             >
-              ▸ Download Free
+              ▸ Download
             </a>
             <a
               href="#manifest"
@@ -119,7 +114,7 @@ export default define.page(function Home() {
               [
                 "🖥️",
                 "The Server",
-                "Run it headless on a NAS or a spare machine. Everyone at home connects for free — and you can reach it from outside without touching a router.",
+                "Run it headless on a NAS or a spare machine. Everyone at home connects — and you can reach it from outside without touching a router.",
               ],
             ].map(([icon, title, body]) => (
               <div class="hud-card rounded-sm p-6">
@@ -217,36 +212,40 @@ export default define.page(function Home() {
         <div class="container mx-auto max-w-5xl text-center">
           <Kicker class="justify-center mb-4" label="[ 04 ] // WHAT_IT_COSTS" />
           <h2 class="font-head text-3xl md:text-5xl mb-6 text-white">
-            Right Now, <span class="gradient-text">Nothing</span>
+            Basic Features, <span class="gradient-text">Always</span>
           </h2>
           <p class="text-accent-300 text-lg max-w-3xl mx-auto mb-4 leading-relaxed">
-            Microgamma is in beta. Every feature is switched on, for everyone,
-            at no cost — there is nothing to buy yet, and nothing held back.
+            The basic features work on hardware you run yourself, and they keep
+            working. A small paid option only adds convenience — for example, us
+            handling the hosting.
           </p>
           <p class="text-sun text-sm font-mono-tech uppercase tracking-widest mb-14">
-            ⚡ Beta: remote streaming runs on our servers, free while we build
+            ⚡ You run the basics. Hosting is the part you can hand to us
           </p>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
             <div class="hud-card rounded-sm p-8">
               <h3 class="font-head text-xl mb-4 text-primary-400 flex items-center gap-3">
-                <span class="text-2xl">🎧</span> Today
+                <span class="text-2xl">🎧</span> You Run It
               </h3>
               <p class="text-accent-300 mb-6">
-                Install it and use it. No tier to pick, nothing to bring but the
+                Install it and use the basic features. Nothing to bring but the
                 music you already have.
               </p>
               <ul class="space-y-3 text-accent-300">
                 {[
-                  ["Everything on", "the full feature set, free during beta"],
+                  [
+                    "The basics",
+                    "playback and your library, on hardware you run",
+                  ],
                   [
                     "Your disk",
                     "your library stays on the machine you install it on",
                   ],
                   ["Your network", "play it on every device in the house"],
                   [
-                    "Beyond it too",
-                    "reach your library from outside, through our servers",
+                    "Beyond the house",
+                    "reach it from outside with premium relays, or servers you supply",
                   ],
                 ].map(([k, v]) => (
                   <li class="flex items-start gap-3">
@@ -260,23 +259,23 @@ export default define.page(function Home() {
                 ))}
               </ul>
               <p class="font-head text-cyber mt-6 tracking-wide">
-                Nothing to pay. Nothing to configure.
+                Point it at your folder and press play.
               </p>
             </div>
 
             <div class="hud-card rounded-sm p-8">
               <h3 class="font-head text-xl mb-4 text-cyber flex items-center gap-3">
-                <span class="text-2xl">🗺️</span> Later
+                <span class="text-2xl">🗺️</span> When You'd Rather Not
               </h3>
               <p class="text-accent-300 mb-6">
-                One day we do have to charge for something. When that happens,
-                the split is simple — and you get to pick which side you're on.
+                A paid option only adds convenience. The basic features keep
+                working on hardware you run.
               </p>
               <ul class="space-y-3 text-accent-300">
                 {[
                   [
                     "Run it yourself",
-                    "your hardware, your API keys — free, and staying that way",
+                    "your hardware, your API keys — the basic features",
                   ],
                   [
                     "Or let us run it",
@@ -321,7 +320,7 @@ export default define.page(function Home() {
             daily listening — download it, open your collection, and see.
           </p>
           <a href="/downloads" class="btn-neon px-10 py-4 rounded-sm text-sm">
-            ▸ Download Free
+            ▸ Download
           </a>
 
           <div class="mt-20 pt-12 border-t border-primary-500/20">

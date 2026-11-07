@@ -78,9 +78,21 @@ export default function GettingStartedPage() {
         </li>
       </ul>
       <p>
-        While Microgamma is in beta, we provide free TURN/STUN relays so remote
-        streaming works even through home routers and firewalls — no network
-        setup on your end.
+        Remote streaming goes through TURN/STUN relays, so it works through home
+        routers and firewalls with no port forwarding. Premium accounts get
+        relays out of the box; with the basic features you can supply your own.
+        See <a href="/docs/ice-servers">STUN / TURN Servers</a>.
+      </p>
+
+      <h2>Android</h2>
+      <p>
+        The Android app — phone, tablet, and Android Auto — is on the{" "}
+        <a href="/downloads">Downloads</a>{" "}
+        page. It pairs with a desktop or headless machine that holds the
+        library; it does not scan a folder on the phone. In the car, Android
+        Auto browses the library, playlists included, and can like or dislike
+        the track that is playing. Playback pauses when headphones or a
+        Bluetooth device disconnect.
       </p>
 
       <hr />

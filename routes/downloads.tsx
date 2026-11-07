@@ -10,7 +10,7 @@ export default function DownloadsPage() {
         <title>Download Microgamma — Own Your Sound</title>
         <meta
           name="description"
-          content="Download Microgamma for Windows, macOS, and Linux. A self-hosted music player that's free to run on your own hardware."
+          content="Download Microgamma for Windows, macOS, Linux, and Android. A self-hosted music player. The basic features run on your own hardware."
         />
       </Head>
 
@@ -28,8 +28,8 @@ export default function DownloadsPage() {
             </h1>
             <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-accent-300 [text-shadow:0_2px_14px_rgba(8,3,15,0.9)]">
               Get started in under a minute. Download Microgamma, point it at
-              your music folder, and start playing your library — free to run,
-              and forever yours.
+              your music folder, and start playing your library. The Android app
+              pairs with a machine that holds that library.
             </p>
             <hr class="hr-neon max-w-xs mx-auto mb-12" />
           </div>
@@ -153,8 +153,7 @@ export default function DownloadsPage() {
                   Ready to Try It?
                 </h3>
                 <p class="text-gray-300">
-                  Stream your own collection, on your own terms — free to
-                  download, yours to keep.
+                  Stream your own collection, on your own terms.
                 </p>
               </div>
             </div>

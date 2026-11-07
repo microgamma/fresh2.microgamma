@@ -5,24 +5,23 @@ export default function IceServersPage() {
   return (
     <DocPage slug="ice-servers">
       <p>
-        Musicbox streams between your devices over a direct peer-to-peer
-        connection. To set that up, WebRTC needs <strong>ICE servers</strong>:
+        Microgamma streams between your devices over a direct peer-to-peer
+        connection. To set that up, WebRTC needs <strong>ICE servers</strong>: a
         {" "}
-        a <strong>STUN</strong>{" "}
+        <strong>STUN</strong>{" "}
         server helps each device discover how it looks from the public internet,
         and a <strong>TURN</strong>{" "}
         server relays the audio in the rarer case where a direct link can't be
-        made. Premium accounts get these out of the box; on the free tier you
-        can supply your own.
+        made. Premium accounts get these out of the box; with the basic features
+        you can supply your own. Servers you paste are used first.
       </p>
 
       <h2>STUN — free and enough for most setups</h2>
       <p>
         STUN servers are lightweight and there are well-known free ones you can
         use immediately. For most home and mobile networks, STUN alone is all
-        Musicbox needs to connect. Paste a list like this into{" "}
-        <strong>Settings → Integrations → ICE servers</strong>{" "}
-        as JSON:
+        Microgamma needs to connect. Paste a list like this into{" "}
+        <strong>Settings → Integrations → ICE servers</strong> as JSON:
       </p>
       <CodeBlock
         code={`[
@@ -44,9 +43,12 @@ export default function IceServersPage() {
           list below.
         </li>
         <li>
-          <strong>Self-host</strong>{" "}
-          — running{" "}
-          <a href="https://github.com/coturn/coturn" target="_blank" rel="noopener">
+          <strong>Self-host</strong> — running{" "}
+          <a
+            href="https://github.com/coturn/coturn"
+            target="_blank"
+            rel="noopener"
+          >
             coturn
           </a>{" "}
           on a small VPS gives you your own TURN server for the cost of the
@@ -70,10 +72,9 @@ export default function IceServersPage() {
       <h2>Good to know</h2>
       <ul>
         <li>
-          The field takes a JSON array of{" "}
-          <code>RTCIceServer</code>{" "}
-          objects — the same shape shown above. If the JSON is invalid, Musicbox
-          falls back to a public STUN server so playback still works.
+          The field takes a JSON array of <code>RTCIceServer</code>{" "}
+          objects — the same shape shown above. If the JSON is invalid,
+          Microgamma falls back to a public STUN server so playback still works.
         </li>
         <li>
           Start with just STUN. Only add TURN if two of your devices refuse to

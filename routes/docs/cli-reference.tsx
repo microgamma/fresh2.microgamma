@@ -25,12 +25,16 @@ export default function CliReferencePage() {
       <p>
         Starts a device-code login. Prints a URL and a short code — open the URL
         in any browser, enter the code, and approve. The access token is saved
-        to your config directory and reused on every launch.
+        to your config directory, refreshed on its own, and reused on every
+        launch.
       </p>
       <CodeBlock code={`mg login`} />
 
       <h2>mg logout</h2>
-      <p>Removes the stored access token.</p>
+      <p>
+        Revokes the device token and removes the stored copy. A later launch has
+        to log in again.
+      </p>
       <CodeBlock code={`mg logout`} />
 
       <h2>mg config</h2>
@@ -58,7 +62,9 @@ export default function CliReferencePage() {
         Scans your music folder into the library. Uses the configured music path
         unless you pass a <code>path</code>{" "}
         argument. While the app is running it also watches the folder and picks
-        up added or removed tracks automatically.
+        up added or removed tracks automatically. Optional polling covers a
+        library on a network mount, where a normal file watch often misses
+        changes.
       </p>
       <CodeBlock code={`mg scan`} />
       <ul>

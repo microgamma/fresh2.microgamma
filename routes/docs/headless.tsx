@@ -48,8 +48,9 @@ export default function HeadlessPage() {
       <p>
         This starts a device-code login: it prints a URL and a short code. Open
         the URL in any browser, enter the code, and approve. The access token is
-        saved to your config directory and reused on every launch.{" "}
-        <code>mg logout</code> removes it.
+        saved to your config directory, refreshed on its own, and reused on
+        every launch. <code>mg logout</code>{" "}
+        revokes it and removes the stored copy.
       </p>
 
       <h3>Configure</h3>
@@ -74,7 +75,8 @@ export default function HeadlessPage() {
         watches the folder and picks up added or removed tracks automatically (
         {" "}
         <code>mp3</code>, <code>flac</code>, <code>ogg</code>,{" "}
-        <code>wav</code>).
+        <code>wav</code>). Optional polling is there for a library on a network
+        mount, where a normal file watch often misses changes.
       </p>
 
       <h2>2. Run headless</h2>
@@ -130,11 +132,14 @@ export default function HeadlessPage() {
 
       <h2>Ports</h2>
       <p>
-        Headless Microgamma listens on <code>3333</code>{" "}
-        (the song file server). On a machine behind a home router you generally
-        don't need to open it — peer and remote access are brokered by the
-        signaling service over WebRTC, with no fixed inbound port — but keep{" "}
-        <code>3333</code> free if you run other services on the same host.
+        The song file server binds to an unused port when Microgamma starts and
+        tells connected clients which one it picked. Remote playback through
+        {" "}
+        <a href="https://play.microgamma.io" target="_blank" rel="noopener">
+          play.microgamma.io
+        </a>{" "}
+        is brokered by the signaling service over WebRTC, so you do not open
+        that port on your router.
       </p>
     </DocPage>
   );
