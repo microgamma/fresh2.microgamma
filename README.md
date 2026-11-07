@@ -6,15 +6,15 @@
 
 **Microgamma** is a modern, self-hosted music player that gives you full
 ownership of your digital music collection. Stream your library from any device,
-customize every detail, and build a permanent collection that's truly yours — no
-subscriptions, no compromises.
+customize every detail, and build a permanent collection that's truly yours.
 
 ## 🌟 Key Features
 
 ### 🎼 Complete Music Ownership
 
 - **Self-hosted streaming** - Run your own music server on any hardware
-- **No subscriptions** - Pay once or host yourself, keep forever
+- **Basic features** - They work on hardware you run. A paid option only adds
+  convenience, such as us handling hosting.
 - **Full control** - Your music library stays on your devices
 - **Custom metadata** - Edit album covers, lyrics, and track information
 

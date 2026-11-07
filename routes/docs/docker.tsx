@@ -78,14 +78,13 @@ export default function DockerPage() {
 
       <h2>Ports</h2>
       <p>
-        The image doesn't publish any ports, and it usually doesn't need to —
-        remote access through{" "}
+        The image doesn't publish any ports, and it doesn't need to. The song
+        file server binds to an unused port and tells the web client which one.
+        Remote access through{" "}
         <a href="https://play.microgamma.io" target="_blank" rel="noopener">
           play.microgamma.io
         </a>{" "}
-        is brokered by Microgamma's signaling service. If you want to reach the
-        song server directly on your LAN, publish port <code>3333</code>{" "}
-        yourself (<code>-p 3333:3333</code>).
+        is brokered by Microgamma's signaling service.
       </p>
     </DocPage>
   );

@@ -35,7 +35,9 @@ export default define.page(function DashboardPage(ctx) {
               </h3>
               <div class="flex items-center justify-between">
                 <div>
-                  <h4 class="text-lg font-medium text-white mb-1">Free Tier</h4>
+                  <h4 class="text-lg font-medium text-white mb-1">
+                    Basic plan
+                  </h4>
                   <p class="text-gray-300 text-sm">Basic features included</p>
                 </div>
                 <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-900/50 text-primary-300 border border-primary-400/30">
@@ -121,7 +123,7 @@ export default define.page(function DashboardPage(ctx) {
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-gray-800/50 p-6 rounded-lg border border-gray-600">
                   <h4 class="text-lg font-semibold text-white mb-3">
-                    Free Tier
+                    Basic plan
                   </h4>
                   <ul class="text-gray-300 text-sm space-y-2 mb-4">
                     <li>✓ Basic music streaming</li>
@@ -130,14 +132,14 @@ export default define.page(function DashboardPage(ctx) {
                     <li>✗ AI features</li>
                     <li>✗ Self-hosted options</li>
                   </ul>
-                  <p class="text-primary-300 font-medium">$0/month</p>
+                  <p class="text-primary-300 font-medium">The basic features</p>
                 </div>
                 <div class="bg-primary-900/20 p-6 rounded-lg border border-primary-400/50">
                   <h4 class="text-lg font-semibold text-primary-300 mb-3">
                     Premium
                   </h4>
                   <ul class="text-gray-300 text-sm space-y-2 mb-4">
-                    <li>✓ Everything in Free</li>
+                    <li>✓ Everything on the basic plan</li>
                     <li>✓ AI-powered discovery</li>
                     <li>✓ Self-hosted infrastructure</li>
                     <li>✓ Multi-device premium sync</li>
