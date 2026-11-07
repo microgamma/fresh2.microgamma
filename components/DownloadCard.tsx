@@ -2,7 +2,8 @@ export type Platform =
   | "linux/arm64"
   | "linux/x64"
   | "darwin/arm64"
-  | "win32/x64";
+  | "win32/x64"
+  | "android/universal";
 
 export interface Release {
   // this is the path starting from the root of the s3 bucket
@@ -41,12 +42,19 @@ export function DownloadCard({ release }: { release: withPlatform<Release> }) {
       notice:
         "Windows builds are not code signed. You may see a SmartScreen warning when running for the first time.",
     },
+    "android/universal": {
+      name: "🤖 Android",
+      description:
+        "Phone, tablet and Android Auto. One APK for every device; pairs with a desktop running your library.",
+      notice:
+        "Not on Google Play yet, so Android asks you to allow installing from your browser, and Play Protect may warn before it installs.",
+    },
   };
 
   const data = labels[release.platform];
 
   const extractVersion = (filename: string): string => {
-    const match = filename.match(/-(\d+\.\d+\.\d+)\.zip$/);
+    const match = filename.match(/-(\d+\.\d+\.\d+)\.(zip|apk)$/);
     return match ? match[1] : "unknown";
   };
 
@@ -76,6 +84,12 @@ export function DownloadCard({ release }: { release: withPlatform<Release> }) {
       text: "text-cyan-400",
       bg: "bg-cyan-600",
       hover: "hover:bg-cyan-500",
+    },
+    "android/universal": {
+      border: "border-emerald-400",
+      text: "text-emerald-400",
+      bg: "bg-emerald-600",
+      hover: "hover:bg-emerald-500",
     },
   };
 

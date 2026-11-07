@@ -1,5 +1,6 @@
 import { Head } from "fresh/runtime";
 import { define } from "../../utils.ts";
+import { buildProviderLinks } from "../../utils/providerLinks.ts";
 
 interface LinkItem {
   link: string;
@@ -57,6 +58,22 @@ export default define.page(async function SharePage(ctx) {
   }
 
   const { title, artist, image, info, links } = result.value;
+
+  // The same "Find on…" row the app shows in Song Info: search links on the
+  // major platforms, built from artist + title, so a shared page always offers
+  // a way to hear the record even when the share carried no links of its own.
+  // Whatever the share did carry (Wikipedia, RYM, a direct Bandcamp page…)
+  // follows, minus anything pointing at a platform already covered.
+  const providerLinks = buildProviderLinks(`${artist} ${title}`);
+  const providerHosts = providerLinks.map((p) => new URL(p.url).hostname.replace(/^(www|open|music)\./, ""));
+  const extraLinks = (links ?? []).filter((l: LinkItem) => {
+    try {
+      const host = new URL(l.link).hostname.replace(/^(www|open|music)\./, "");
+      return !providerHosts.includes(host);
+    } catch {
+      return true;
+    }
+  });
 
   const ogImage = image ||
     "https://via.placeholder.com/1200x630?text=Now+Listening";
@@ -122,11 +139,29 @@ export default define.page(async function SharePage(ctx) {
                   </div>
                 )}
 
-                {links && links.length > 0 && (
+                <div class="mb-8">
+                  <p class="text-sm text-gray-400 mb-3">Find it on:</p>
+                  <div class="flex flex-wrap gap-2">
+                    {providerLinks.map((p) => (
+                      <a
+                        key={p.name}
+                        href={p.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center space-x-1 bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-500 hover:to-primary-400 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 transform hover:scale-105 text-sm"
+                      >
+                        <span>{p.emoji}</span>
+                        <span>{p.name}</span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+
+                {extraLinks.length > 0 && (
                   <div class="mb-8">
-                    <p class="text-sm text-gray-400 mb-3">Find it on:</p>
+                    <p class="text-sm text-gray-400 mb-3">More about it:</p>
                     <div class="flex flex-wrap gap-2">
-                      {links.map((linkItem: LinkItem, idx: number) => (
+                      {extraLinks.map((linkItem: LinkItem, idx: number) => (
                         <a
                           key={idx}
                           href={linkItem.link}

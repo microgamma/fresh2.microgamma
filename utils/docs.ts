@@ -11,7 +11,13 @@ export const docsNav: DocMeta[] = [
     slug: "getting-started",
     title: "Getting Started",
     description:
-      "Install the desktop app, play your local library, and reach it from anywhere with play.microgamma.io.",
+      "Install the desktop app, play your local library, and reach it from a browser or the Android app.",
+  },
+  {
+    slug: "playback-and-albums",
+    title: "Playback & Album Pages",
+    description:
+      "Gapless playback and optional crossfade, track vs album loudness, stations, full-screen artwork, release details, and similar records.",
   },
   {
     slug: "headless",
@@ -35,19 +41,19 @@ export const docsNav: DocMeta[] = [
     slug: "discogs-token",
     title: "Discogs API Token",
     description:
-      "Get a free Discogs token so the free tier can fetch album and artist cover art.",
+      "Get a free Discogs token so the basic features can fetch album and artist cover art.",
   },
   {
     slug: "deepseek-token",
     title: "DeepSeek AI Token",
     description:
-      "Add your own DeepSeek API key to unlock Musicbox's AI features on the free tier.",
+      "Add your own DeepSeek API key to unlock Microgamma's AI features on the basic plan.",
   },
   {
     slug: "ice-servers",
     title: "STUN / TURN Servers",
     description:
-      "Bring your own STUN/TURN (ICE) servers so your devices can connect on the free tier.",
+      "Bring your own STUN/TURN (ICE) servers so your devices can connect with the basic features.",
   },
 ];
 

@@ -26,7 +26,9 @@ interface S3File {
 export async function getReleases(): Promise<{ [k: string]: S3File }> {
   const objects = await listAllObjects(bucket);
   const files: S3File[] = objects
-    .filter(({ Key }) => Key.endsWith("zip"))
+    // Desktop builds are zips, the Android build is an apk. Both are keyed
+    // <prefix>/<os>/<arch>/<file>, which is what the platform split below reads.
+    .filter(({ Key }) => Key.endsWith("zip") || Key.endsWith("apk"))
     .map((obj) => {
       return {
         key: obj.Key,

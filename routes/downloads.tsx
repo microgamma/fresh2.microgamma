@@ -10,7 +10,7 @@ export default function DownloadsPage() {
         <title>Download Microgamma — Own Your Sound</title>
         <meta
           name="description"
-          content="Download Microgamma for Windows, macOS, and Linux. A self-hosted music player that's free to run on your own hardware."
+          content="Download Microgamma for Windows, macOS, Linux, and Android. A self-hosted music player. The basic features run on your own hardware."
         />
       </Head>
 
@@ -28,8 +28,8 @@ export default function DownloadsPage() {
             </h1>
             <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-accent-300 [text-shadow:0_2px_14px_rgba(8,3,15,0.9)]">
               Get started in under a minute. Download Microgamma, point it at
-              your music folder, and start playing your library — free to run,
-              and forever yours.
+              your music folder, and start playing your library. The Android app
+              pairs with a machine that holds that library.
             </p>
             <hr class="hr-neon max-w-xs mx-auto mb-12" />
           </div>
@@ -45,20 +45,23 @@ export default function DownloadsPage() {
                   <div class="text-3xl mb-2">🐧</div>
                   <div>
                     <h3 class="text-xl font-semibold mb-4 text-primary-300">
-                      Linux
+                      Where It Runs
                     </h3>
                     <p class="text-gray-300 leading-relaxed">
-                      Download for Linux x64 and arm64. Run it on a desktop, a
-                      home server, or a Raspberry Pi.
+                      The machine that holds your music runs Microgamma: a
+                      laptop you already use, a home server, a NAS, or a
+                      Raspberry Pi tucked behind the amplifier.
                     </p>
                     <p class="text-gray-300 leading-relaxed mt-3">
-                      On Windows or macOS? Run Microgamma in{" "}
+                      Everything else — phones, tablets, other computers — just
+                      opens{" "}
                       <a
-                        href="/docs"
+                        href="https://play.microgamma.io"
                         class="text-primary-400 hover:text-primary-300 underline"
                       >
-                        Docker
-                      </a>.
+                        play.microgamma.io
+                      </a>{" "}
+                      and connects to it. Nothing to install on those.
                     </p>
                   </div>
                 </div>
@@ -122,8 +125,10 @@ export default function DownloadsPage() {
               <CopyCommand command="docker pull ghcr.io/microgamma/microgamma-desktop:latest" />
 
               <p class="text-accent-300/70 text-sm mt-6">
-                Pin a specific version with a tag like{" "}
-                <code class="text-cyber">:v2.94.3</code>. See the{" "}
+                <code class="text-cyber">:latest</code>{" "}
+                always points at the current release; every release is also
+                published under its own version tag if you'd rather pin one. See
+                the{" "}
                 <a
                   href="/docs/docker"
                   class="text-cyber hover:text-cyber-300 underline"
@@ -148,8 +153,7 @@ export default function DownloadsPage() {
                   Ready to Try It?
                 </h3>
                 <p class="text-gray-300">
-                  Stream your own collection, on your own terms — free to
-                  download, yours to keep.
+                  Stream your own collection, on your own terms.
                 </p>
               </div>
             </div>
