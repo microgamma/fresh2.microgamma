@@ -58,6 +58,20 @@ export default function DeepSeekTokenPage() {
           the DeepSeek console.
         </li>
         <li>
+          The <strong>Similar songs</strong>{" "}
+          section on the queue asks the AI for suggestions every time the track
+          changes. If you'd rather not spend on that, switch it off with the
+          toggle beside its title — the choice is remembered per device.
+        </li>
+        <li>
+          The web search that grounds artist, album and song write-ups runs on
+          the same key, so one DeepSeek balance covers the whole request.
+        </li>
+        <li>
+          What the AI remembers about your taste is kept on your own machine.
+          Each request carries a copy, and nothing of it is stored on our side.
+        </li>
+        <li>
           The token must be a DeepSeek key specifically — keys from other AI
           providers won't work here.
         </li>
