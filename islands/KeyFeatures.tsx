@@ -24,8 +24,8 @@ const FEATURES: [string, string, string][] = [
   ],
   [
     "⏭️",
-    "Gapless Playback",
-    "Albums play the way they were mastered. The next track is preloaded and handed over the instant the last one ends — no silence, no stutter, even on live sets and continuous mixes.",
+    "Gapless or Crossfaded",
+    "Albums play the way they were mastered. The next track is preloaded and handed over the instant the last one ends — no silence, no stutter, even on live sets and continuous mixes. Prefer a DJ-style blend? Flip on crossfade and songs overlap and sweep across the stereo field — while a manual skip still cuts straight to the next track.",
   ],
   [
     "🎚️",
@@ -45,12 +45,22 @@ const FEATURES: [string, string, string][] = [
   [
     "🎧",
     "What to Play Next",
-    "Out of the box, suggestions come from your own library: same genre, same feel as the song that's playing — as good as your metadata is. Add your own DeepSeek key and they get properly smart, and anything you don't own yet comes with a pointer to it on Discogs.",
+    "Out of the box, suggestions come from your own library: same genre, same feel as the song that's playing — as good as your metadata is. Add your own DeepSeek key and they get properly smart, and anything you don't own yet comes with links to find it on Bandcamp, Spotify, YouTube Music or Amazon Music.",
+  ],
+  [
+    "📻",
+    "Stations From Any Song",
+    "Hit the wand on whatever's playing, or start a station from any song, and Microgamma keeps the queue filled from your own library. Give it a theme — “same era”, “disco only”, anything you can say in words — and it steers every pick. With your DeepSeek key it remembers what you like, so stations get better the more you listen.",
+  ],
+  [
+    "🚗",
+    "In Your Pocket and in Your Car",
+    "A native Android app with lock-screen and notification controls that keep playing in the background. Plug into Android Auto and your library is on the dashboard — recently added, forgotten favourites, suggested albums and artists, your playlists, and search — with every album and playlist ready to play or shuffle, streamed from the machine back home.",
   ],
   [
     "📺",
     "Retro Visualizers",
-    "Six of them — Synthwave, Tunnel, Spectrum 3D, Waveform, Circles and Bars — moving to whatever's playing. Throw one on the big screen and let the room do the rest.",
+    "Seven of them — Bars, Scope, Terrain, Tunnel, Nebula, Eye and scrolling Lyrics — moving to whatever's playing. Throw one on the big screen and let the room do the rest.",
   ],
 ];
 
