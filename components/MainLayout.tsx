@@ -48,6 +48,13 @@ export default function MainLayout({ children, user, roles }: LayoutProps) {
             >
               ▸ Twitter
             </a>
+            <a
+              href="https://t.me/microgamma"
+              target="_blank"
+              class="text-accent-300 hover:text-primary-400 transition"
+            >
+              ▸ Telegram
+            </a>
           </div>
 
           <hr class="hr-neon max-w-md mx-auto mb-6" />
