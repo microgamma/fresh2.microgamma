@@ -51,6 +51,12 @@ export default function PlaybackAndAlbumsPage() {
         intro and the loud finale keep their intended relationship to each
         other. Leave it on when you listen to albums front-to-back.
       </p>
+      <p>
+        With normalization on, you don't have to remember to analyse anything. A
+        track that has never been measured is queued for measurement the first
+        time it plays — or its whole album, in album mode — and is levelled from
+        its next play on.
+      </p>
 
       <h2>Stations</h2>
       <p>
