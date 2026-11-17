@@ -1,12 +1,12 @@
 import { Head } from "fresh/runtime";
 import MainLayout from "../../components/MainLayout.tsx";
-import { newsService } from "../../utils/newsService.ts";
+import { blogService } from "../../utils/blogService.ts";
 import { parseMarkdown } from "../../utils/markdown.ts";
 
 export default async function BlogPostPage(
   { params }: { params: { slug: string } },
 ) {
-  const blogPosts = await newsService.getBlogPosts();
+  const blogPosts = await blogService.getPublishedPosts();
   const post = blogPosts.find((item) => item.slug === params.slug);
 
   if (!post) {

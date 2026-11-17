@@ -91,13 +91,12 @@ when files change.
 
 ### Environment variables
 
-| Variable                                       | Purpose                                                                                                                          |
-| ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `KINDE__*`                                     | Kinde auth (domain, client id/secret, redirect URLs).                                                                            |
-| `COUNTLY_APP_KEY`                              | Countly analytics key (analytics only load in production).                                                                       |
-| `X_BEARER_TOKEN`, `X_USERNAME`, `X_MAX_TWEETS` | X/Twitter feed for the News page.                                                                                                |
-| `DEV_TO_API_KEY`                               | dev.to API key — published blog posts are cross-posted to dev.to. Without it, cross-posting is skipped (publishing still works). |
-| `SITE_URL`                                     | Public origin used for dev.to `canonical_url` (default `https://www.microgamma.io`).                                             |
+| Variable          | Purpose                                                                                                                          |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `KINDE__*`        | Kinde auth (domain, client id/secret, redirect URLs).                                                                            |
+| `COUNTLY_APP_KEY` | Countly analytics key (analytics only load in production).                                                                       |
+| `DEV_TO_API_KEY`  | dev.to API key — published blog posts are cross-posted to dev.to. Without it, cross-posting is skipped (publishing still works). |
+| `SITE_URL`        | Public origin used for dev.to `canonical_url` (default `https://www.microgamma.io`).                                             |
 
 ### Build for Production
 

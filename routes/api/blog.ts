@@ -1,10 +1,10 @@
 import { define } from "../../utils.ts";
-import { newsService } from "../../utils/newsService.ts";
+import { blogService } from "../../utils/blogService.ts";
 
 export const handler = define.handlers({
   async GET(_ctx) {
     try {
-      const posts = await newsService.getBlogPosts();
+      const posts = await blogService.getPublishedPosts();
       return new Response(JSON.stringify(posts), {
         headers: { "Content-Type": "application/json" },
       });
