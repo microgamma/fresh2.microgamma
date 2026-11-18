@@ -25,7 +25,7 @@ const FEATURES: [string, string, string][] = [
   [
     "⏭️",
     "Gapless or Crossfaded",
-    "Albums play the way they were mastered. The next track is preloaded and handed over the instant the last one ends — no silence, no stutter, even on live sets and continuous mixes. Prefer a DJ-style blend? Flip on crossfade and songs overlap and sweep across the stereo field — while a manual skip still cuts straight to the next track.",
+    "Albums play the way they were mastered. The next track is preloaded and handed over the instant the last one ends — no silence, no stutter, even on live sets and continuous mixes. Prefer a DJ-style blend? Flip on crossfade and songs overlap and sweep across the stereo field — while a manual skip still cuts straight to the next track. Keep albums intact, under Crossfade, plays straight through between tracks of the same album, so a record stays gapless as mastered while unrelated songs still blend.",
   ],
   [
     "🎚️",
@@ -50,7 +50,7 @@ const FEATURES: [string, string, string][] = [
   [
     "📻",
     "Stations From Any Song",
-    "Hit the wand on whatever's playing, or start a station from any song, and Microgamma keeps the queue filled from your own library. Give it a theme — “same era”, “disco only”, anything you can say in words — and it steers every pick. With your DeepSeek key it remembers what you like, so stations get better the more you listen.",
+    "The AI-guided mode of Auto-Queue. Hit the wand on whatever's playing, or start a station from any song, and Microgamma keeps the queue filled from your own library. Give it a theme — “same era”, “disco only”, anything you can say in words — and it steers every pick. A theme you type needs your own DeepSeek key. The AI needs Premium, or that key, and it remembers what you like.",
   ],
   [
     "🚗",
@@ -88,7 +88,7 @@ export default function KeyFeatures() {
     <section class="relative bg-accent-900 py-24 px-4 grid-bg">
       <div class="container mx-auto max-w-6xl">
         <div class="text-center mb-14">
-          <Kicker class="justify-center mb-4" label="[ 03 ] // CAPABILITIES" />
+          <Kicker class="justify-center mb-4" label="[ 04 ] // CAPABILITIES" />
           <h2 class="font-head text-3xl md:text-5xl text-white">
             Key <span class="gradient-text">Features</span>
           </h2>

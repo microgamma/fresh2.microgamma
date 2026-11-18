@@ -28,6 +28,13 @@ export default function PlaybackAndAlbumsPage() {
         hand cuts straight to the next track. Clients connected to a streamer
         hear the same output the streamer produces.
       </p>
+      <p>
+        Under Crossfade, <strong>Keep albums intact</strong>{" "}
+        — “Play straight through between tracks of the same album” — turns that
+        overlap off between consecutive songs from the same album. Those tracks
+        play gapless, the way the record was mastered. Crossfade still blends
+        songs that are not part of that album.
+      </p>
 
       <h2>Consistent volume: track vs album gain</h2>
       <p>
@@ -58,16 +65,39 @@ export default function PlaybackAndAlbumsPage() {
         its next play on.
       </p>
 
+      <h2>Auto-Queue</h2>
+      <p>
+        When you are not playing an album straight through,{" "}
+        <a href="/docs/auto-queue">Auto-Queue</a>{" "}
+        chooses what comes next from the music you own. Add a new album and it
+        is shuffled into what you are already listening to. A no-repeat window
+        means you hear each song once before anything repeats.
+      </p>
+      <p>
+        Under <strong>Settings → Playback → Auto-Queue sources</strong>{" "}
+        you set how much liked songs, recently added music, and the whole
+        library each feed the queue. The weights are relative, and 0 turns a
+        source off. The window slider, in days, defines “recently added” and how
+        long a played song waits before it can play again. The{" "}
+        <a href="/docs/auto-queue">Auto-Queue</a>{" "}
+        page covers the sliders, what happens when a source runs out, and
+        stations.
+      </p>
+
       <h2>Stations</h2>
       <p>
-        A station keeps picking what to play next. Start one from a song, or
-        with the wand. Themed stations take a prompt you type, or a preset.
-        Songs you had already queued stay in place when the station starts.
+        A station is the AI-guided mode of that same queue. Start one from a
+        song, or with the wand. Themed stations take a prompt you type, or a
+        preset. Songs you had already queued stay in place and play first.
       </p>
       <p>
         Stations use the same AI features as the{" "}
-        <a href="/docs/deepseek-token">DeepSeek token</a>. Recommendations
-        remember earlier turns on your account.
+        <a href="/docs/deepseek-token">DeepSeek token</a>. Premium accounts get
+        them out of the box; with the basic features, bring your own DeepSeek
+        key. A theme you type in your own words needs that key. Recommendations
+        remember earlier turns on your account. If the AI finds nothing you own,
+        Microgamma turns the station off, tells you it is switching to your
+        library mix, and falls back to the weighted sources.
       </p>
 
       <h2>Full-screen artwork</h2>

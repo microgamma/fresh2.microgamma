@@ -17,7 +17,13 @@ export const docsNav: DocMeta[] = [
     slug: "playback-and-albums",
     title: "Playback & Album Pages",
     description:
-      "Gapless playback and optional crossfade, track vs album loudness, stations, full-screen artwork, release details, and similar records.",
+      "Gapless playback and optional crossfade, track vs album loudness, full-screen artwork, release details, and similar records.",
+  },
+  {
+    slug: "auto-queue",
+    title: "Auto-Queue",
+    description:
+      "The weighted random queue: liked songs, recently added, and the whole library, the no-repeat window, and stations.",
   },
   {
     slug: "headless",

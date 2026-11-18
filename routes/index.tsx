@@ -10,11 +10,11 @@ export default define.page(function Home() {
         <title>Microgamma — Own Your Music. Own Your Sound.</title>
         <meta
           name="description"
-          content="Microgamma gives the music you already own one home — and plays it anywhere: your machine, the box wired to your amp, or your phone across town. No dedicated hardware, no port forwarding."
+          content="Microgamma gives the music you already own one home — and plays it anywhere: your machine, the box wired to your amp, or your phone across town. Auto-Queue shuffles a new album into what you're already hearing, and a no-repeat window means you hear each song once."
         />
         <meta
           name="keywords"
-          content="music player, music server, music streaming, music ownership, self-hosted music, remote control, discogs, audiophile, music library, digital music"
+          content="music player, music server, music streaming, music ownership, self-hosted music, auto-queue, remote control, discogs, audiophile, music library, digital music"
         />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -204,13 +204,111 @@ export default define.page(function Home() {
         </div>
       </section>
 
+      {/* ====================== AUTO-QUEUE ======================= */}
+      <section
+        id="auto-queue"
+        class="relative bg-[#08030f] py-24 px-4 overflow-hidden scroll-mt-24"
+      >
+        <div
+          class="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 w-[42rem] h-[24rem] rounded-full bg-primary-500/15 blur-3xl"
+          aria-hidden="true"
+        >
+        </div>
+        <div
+          class="pointer-events-none absolute -bottom-24 right-0 w-[28rem] h-[20rem] rounded-full bg-cyber/10 blur-3xl"
+          aria-hidden="true"
+        >
+        </div>
+
+        <div class="container mx-auto max-w-6xl relative">
+          <div class="text-center mb-12">
+            <Kicker class="justify-center mb-4" label="[ 03 ] // AUTO_QUEUE" />
+            <h2 class="font-head text-4xl md:text-6xl mb-6 text-white leading-tight">
+              Hear the album <span class="gradient-text">you just added.</span>
+            </h2>
+            <p class="text-accent-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+              Add a new album and Auto-Queue shuffles it into what you're
+              already listening to. The no-repeat window means you hear each
+              song once before anything repeats. No same ten songs on loop.
+            </p>
+          </div>
+
+          <div class="feature-billboard rounded-sm p-6 md:p-12">
+            <p class="font-mono-tech text-xs uppercase tracking-[0.28em] text-cyber mb-8">
+              A weighted roll, then a truly random song
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+              {[
+                [
+                  "01",
+                  "You set the mix",
+                  "Liked songs, recently added, and the whole library each have a weight. Turn one up and it feeds the queue more often. Set it to zero and that source stays out.",
+                ],
+                [
+                  "02",
+                  "Random inside the source",
+                  "The weights only choose which pile to draw from. Inside that pile, every song has the same chance.",
+                ],
+                [
+                  "03",
+                  "Dislikes stay gone",
+                  "A song you dislike never comes back into the mix.",
+                ],
+                [
+                  "04",
+                  "Always a few ahead",
+                  "The queue stays a few songs deep, and draws the next one as you listen.",
+                ],
+              ].map(([n, title, body]) => (
+                <div class="flex gap-4">
+                  <span class="font-mono-tech text-cyber text-sm tracking-widest pt-1">
+                    {n}
+                  </span>
+                  <div>
+                    <h3 class="font-head text-lg text-white mb-2">{title}</h3>
+                    <p class="text-accent-300 text-sm leading-relaxed">
+                      {body}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div class="mt-10 pt-8 border-t border-cyber/25">
+              <h3 class="font-head text-xl text-primary-400 mb-3">
+                Stations — the same queue, with a guide
+              </h3>
+              <p class="text-accent-300 leading-relaxed max-w-3xl">
+                Stations are the AI-guided mode of Auto-Queue. Start from any
+                song, or hit the wand, and optionally steer it with a theme in
+                plain words — “same era”, “disco only”, anything you can say. A
+                theme you type needs your own{" "}
+                <a
+                  href="/docs/deepseek-token"
+                  class="text-cyber hover:text-cyber-300 underline decoration-cyber/40 underline-offset-4"
+                >
+                  DeepSeek key
+                </a>
+                . The AI needs Premium, or that key.
+              </p>
+              <a
+                href="/docs/auto-queue"
+                class="btn-ghost mt-6 px-6 py-3 rounded-sm text-xs"
+              >
+                How the sliders work
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ====================== KEY FEATURES ====================== */}
       <KeyFeatures />
 
       {/* ======================== DEPLOY ======================== */}
       <section class="relative bg-[#08030f] py-24 px-4 grid-bg">
         <div class="container mx-auto max-w-5xl text-center">
-          <Kicker class="justify-center mb-4" label="[ 04 ] // WHAT_IT_COSTS" />
+          <Kicker class="justify-center mb-4" label="[ 05 ] // WHAT_IT_COSTS" />
           <h2 class="font-head text-3xl md:text-5xl mb-6 text-white">
             Basic Features, <span class="gradient-text">Always</span>
           </h2>
@@ -311,7 +409,7 @@ export default define.page(function Home() {
       {/* ====================== GET STARTED ====================== */}
       <section class="relative bg-accent-900 py-24 px-4 overflow-hidden">
         <div class="container mx-auto max-w-5xl text-center">
-          <Kicker class="justify-center mb-4" label="[ 05 ] // JACK_IN" />
+          <Kicker class="justify-center mb-4" label="[ 06 ] // JACK_IN" />
           <h2 class="font-head text-3xl md:text-5xl mb-6 text-white">
             Point It at <span class="gradient-text">Your Folder</span>
           </h2>
