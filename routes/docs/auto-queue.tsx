@@ -48,18 +48,18 @@ export default function AutoQueuePage() {
         inside the no-repeat window.
       </p>
 
-      <figure>
+      <figure class="not-prose mx-auto my-10 w-full max-w-[360px]">
         <img
-          src="/screenshots/auto-queue-settings.png"
-          alt="Settings, Playback tab. Auto-Queue sources lists Liked songs, Recently added, and Whole library weight sliders, then a Recently-added / no-repeat window slider in days."
-          width={902}
-          height={868}
-          class="rounded-lg border border-primary-400/30"
+          src="/screenshots/auto-queue-settings.webp"
+          alt="Phone screen of Settings, Playback. Auto-Queue sources shows Liked songs, Recently added, and Whole library weights, then the Recently-added / no-repeat window in days."
+          width={720}
+          height={1615}
+          class="block w-full h-auto rounded-2xl border border-white/10 shadow-[0_0_32px_rgba(5,217,232,0.18)]"
         />
-        <figcaption>
-          Settings → Playback, with Auto-Queue sources at the top. The weights
-          in the picture are one mix you might choose; they start at 3, 4 and 3,
-          and the window starts at 7 days.
+        <figcaption class="mt-3 text-center text-sm text-accent-300">
+          Settings → Playback on a phone, with Auto-Queue sources at the top.
+          The weights in the picture are one mix you might choose; they start at
+          3, 4 and 3, and the window starts at 7 days.
         </figcaption>
       </figure>
 
