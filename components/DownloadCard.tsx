@@ -54,7 +54,7 @@ export function DownloadCard({ release }: { release: withPlatform<Release> }) {
   const data = labels[release.platform];
 
   const extractVersion = (filename: string): string => {
-    const match = filename.match(/-(\d+\.\d+\.\d+)\.(zip|apk)$/);
+    const match = filename.match(/-v?(\d+\.\d+\.\d+)\.(zip|apk)$/);
     return match ? match[1] : "unknown";
   };
 
