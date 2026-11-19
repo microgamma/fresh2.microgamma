@@ -126,7 +126,12 @@ export default define.page(function Home() {
               </div>
             ))}
           </div>
-          <p class="text-cyber-300 font-head tracking-wide text-lg md:text-xl mt-14">
+          <p class="text-accent-300 text-lg mt-14 max-w-2xl mx-auto leading-relaxed">
+            No streaming tab, no web radio, no podcast section. Microgamma plays
+            the collection you own and nothing else — which is exactly why it
+            stays fast and stays out of the way.
+          </p>
+          <p class="text-cyber-300 font-head tracking-wide text-lg md:text-xl mt-6">
             Like curating a vinyl collection — with the convenience of modern
             streaming.
           </p>
@@ -187,6 +192,7 @@ export default define.page(function Home() {
                   "Backed up with everything else you own",
                   "Nothing expires, nothing gets delisted",
                   "Covers, metadata, order — all of it yours to edit",
+                  "No ads, no tracking, no data harvesting",
                 ].map((t) => (
                   <li class="flex items-start gap-3">
                     <span class="text-cyber font-mono-tech mt-0.5">✓</span>
@@ -203,6 +209,9 @@ export default define.page(function Home() {
           </p>
         </div>
       </section>
+
+      {/* ====================== KEY FEATURES ====================== */}
+      <KeyFeatures />
 
       {/* ====================== AUTO-QUEUE ======================= */}
       <section
@@ -222,7 +231,7 @@ export default define.page(function Home() {
 
         <div class="container mx-auto max-w-6xl relative">
           <div class="text-center mb-12">
-            <Kicker class="justify-center mb-4" label="[ 03 ] // AUTO_QUEUE" />
+            <Kicker class="justify-center mb-4" label="[ 04 ] // AUTO_QUEUE" />
             <h2 class="font-head text-4xl md:text-6xl mb-6 text-white leading-tight">
               Hear the album <span class="gradient-text">you just added.</span>
             </h2>
@@ -273,37 +282,37 @@ export default define.page(function Home() {
                 </div>
               ))}
             </div>
+            <a
+              href="/docs/auto-queue"
+              class="btn-ghost mt-10 px-6 py-3 rounded-sm text-xs"
+            >
+              How the sliders work
+            </a>
 
             <div class="mt-10 pt-8 border-t border-cyber/25">
               <h3 class="font-head text-xl text-primary-400 mb-3">
                 Stations — the same queue, with a guide
               </h3>
               <p class="text-accent-300 leading-relaxed max-w-3xl">
-                Stations are the AI-guided mode of Auto-Queue. Start from any
-                song, or hit the wand, and optionally steer it with a theme in
-                plain words — “same era”, “disco only”, anything you can say. A
-                theme you type needs your own{" "}
+                Stations are the AI-guided mode of Auto-Queue. Hit the wand on
+                whatever's playing, or start a station from any song, and
+                Microgamma keeps the queue filled from your own library. Pick a
+                preset or give it a theme in plain words — “same era”, “disco
+                only”, anything you can say — and it steers every pick. A theme
+                you type needs your own{" "}
                 <a
                   href="/docs/deepseek-token"
                   class="text-cyber hover:text-cyber-300 underline decoration-cyber/40 underline-offset-4"
                 >
                   DeepSeek key
                 </a>
-                . The AI needs Premium, or that key.
+                . The AI needs Premium, or that key, and it remembers what you
+                like.
               </p>
-              <a
-                href="/docs/auto-queue"
-                class="btn-ghost mt-6 px-6 py-3 rounded-sm text-xs"
-              >
-                How the sliders work
-              </a>
             </div>
           </div>
         </div>
       </section>
-
-      {/* ====================== KEY FEATURES ====================== */}
-      <KeyFeatures />
 
       {/* ======================== DEPLOY ======================== */}
       <section class="relative bg-[#08030f] py-24 px-4 grid-bg">
@@ -420,62 +429,48 @@ export default define.page(function Home() {
           <a href="/downloads" class="btn-neon px-10 py-4 rounded-sm text-sm">
             ▸ Download
           </a>
+        </div>
+      </section>
 
-          <div class="mt-20 pt-12 border-t border-primary-500/20">
-            <Kicker class="justify-center mb-4" label="// WHAT_COMES_NEXT" />
-            <h3 class="font-head text-2xl md:text-3xl text-white mb-3">
-              What Comes Next
-            </h3>
-            <p class="text-accent-300 mb-10 max-w-2xl mx-auto">
-              Lyrics are being built right now; the rest is where we're headed.
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
-              {[
-                [
-                  "☁️",
-                  "Hosted Instance",
-                  "Would rather not run it yourself? We'll run Microgamma for you.",
-                  "Planned",
-                ],
-                [
-                  "🔄",
-                  "Smart Queues",
-                  "Playlists that learn what you actually keep coming back to.",
-                  "Planned",
-                ],
-                [
-                  "👥",
-                  "Family & Friends",
-                  "Separate profiles for a household sharing one library.",
-                  "Planned",
-                ],
-                [
-                  "🎤",
-                  "Lyrics",
-                  "Synchronized lyrics you can follow along to, track by track.",
-                  "In progress",
-                ],
-              ].map(([icon, title, body, status]) => (
-                <div class="hud-card rounded-sm p-6">
-                  <div class="flex items-center justify-between mb-3">
-                    <span class="text-2xl">{icon}</span>
-                    <span
-                      class={`text-[10px] font-mono-tech uppercase tracking-widest rounded-sm px-2 py-0.5 border ${
-                        status === "In progress"
-                          ? "text-cyber border-cyber/40"
-                          : "text-sun border-sun/40"
-                      }`}
-                    >
-                      {status}
-                    </span>
-                  </div>
-                  <h4 class="font-head text-lg mb-2 text-primary-400">
-                    {title}
-                  </h4>
-                  <p class="text-accent-300 text-sm leading-relaxed">{body}</p>
+      {/* ==================== WHAT COMES NEXT ==================== */}
+      <section class="relative bg-[#08030f] py-24 px-4 overflow-hidden">
+        <div class="container mx-auto max-w-3xl text-center">
+          <Kicker
+            class="justify-center mb-4"
+            label="[ 07 ] // WHAT_COMES_NEXT"
+          />
+          <h2 class="font-head text-3xl md:text-5xl mb-6 text-white">
+            What Comes <span class="gradient-text">Next</span>
+          </h2>
+          <p class="text-accent-300 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
+            Neither of these is built yet. It's where we're headed.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+            {[
+              [
+                "☁️",
+                "Hosted Instance",
+                "Would rather not run it yourself? We'll run Microgamma for you.",
+              ],
+              [
+                "👥",
+                "Family & Friends",
+                "Separate profiles for a household sharing one library.",
+              ],
+            ].map(([icon, title, body]) => (
+              <div class="hud-card rounded-sm p-6">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-2xl">{icon}</span>
+                  <span class="text-[10px] font-mono-tech uppercase tracking-widest rounded-sm px-2 py-0.5 border text-sun border-sun/40">
+                    Planned
+                  </span>
                 </div>
-              ))}
-            </div>
+                <h3 class="font-head text-lg mb-2 text-primary-400">
+                  {title}
+                </h3>
+                <p class="text-accent-300 text-sm leading-relaxed">{body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

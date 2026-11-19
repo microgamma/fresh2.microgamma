@@ -2,26 +2,7 @@ import { useEffect } from "preact/hooks";
 import Kicker from "../components/Kicker.tsx";
 
 const FEATURES: [string, string, string][] = [
-  [
-    "🔒",
-    "Private by Default",
-    "Your music stays on your device. No ads, no tracking, no data harvesting — just you and your music.",
-  ],
-  [
-    "🧩",
-    "No Box, No Port Forwarding",
-    "It's an app, not an appliance: install it on the machine you already use, with no dedicated device to flash. And reaching your library from outside the house takes no port forwarding, no VPN, no argument with your router.",
-  ],
-  [
-    "📱",
-    "Every Device Is the Same Player",
-    "Open play.microgamma.io on your laptop, your phone, the box wired to your amp — it's one player, seen from wherever you are. Put a record on and it plays through every connected device at once, each with its own volume, driven from whichever screen is in your hand — no pairing, no limit. Add it to your phone's home screen and it behaves like a native app.",
-  ],
-  [
-    "🎯",
-    "Only Your Music",
-    "No streaming tab, no web radio, no podcast section. Microgamma plays the collection you own and nothing else — which is exactly why it stays fast and stays out of the way.",
-  ],
+  // The sound.
   [
     "⏭️",
     "Gapless or Crossfaded",
@@ -37,6 +18,23 @@ const FEATURES: [string, string, string][] = [
     "High-Fidelity Streaming",
     "Your files streamed peer-to-peer, straight from the machine that holds them. No re-encoding — the file you own is the file you hear.",
   ],
+  // The devices.
+  [
+    "📱",
+    "Every Device Is the Same Player",
+    "Open play.microgamma.io on your laptop, your phone, the box wired to your amp — it's one player, seen from wherever you are. Put a record on and it plays through every connected device at once, each with its own volume, driven from whichever screen is in your hand — no pairing, no limit. Add it to your phone's home screen and it behaves like a native app.",
+  ],
+  [
+    "🧩",
+    "No Box, No Port Forwarding",
+    "It's an app, not an appliance: install it on the machine you already use, with no dedicated device to flash. And reaching your library from outside the house takes no port forwarding, no VPN, no argument with your router.",
+  ],
+  [
+    "🚗",
+    "In Your Pocket and in Your Car",
+    "A native Android app with lock-screen and notification controls that keep playing in the background. Plug into Android Auto and your library is on the dashboard — recently added, forgotten favourites, suggested albums and artists, your playlists, and search — with every album and playlist ready to play or shuffle, streamed from the machine back home.",
+  ],
+  // The library.
   [
     "💿",
     "The Exact Release You Own",
@@ -48,19 +46,9 @@ const FEATURES: [string, string, string][] = [
     "Out of the box, suggestions come from your own library: same genre, same feel as the song that's playing — as good as your metadata is. Add your own DeepSeek key and they get properly smart, and anything you don't own yet comes with links to find it on Bandcamp, Spotify, YouTube Music or Amazon Music.",
   ],
   [
-    "📻",
-    "Stations From Any Song",
-    "The AI-guided mode of Auto-Queue. Hit the wand on whatever's playing, or start a station from any song, and Microgamma keeps the queue filled from your own library. Give it a theme — “same era”, “disco only”, anything you can say in words — and it steers every pick. A theme you type needs your own DeepSeek key. The AI needs Premium, or that key, and it remembers what you like.",
-  ],
-  [
-    "🚗",
-    "In Your Pocket and in Your Car",
-    "A native Android app with lock-screen and notification controls that keep playing in the background. Plug into Android Auto and your library is on the dashboard — recently added, forgotten favourites, suggested albums and artists, your playlists, and search — with every album and playlist ready to play or shuffle, streamed from the machine back home.",
-  ],
-  [
     "📺",
-    "Retro Visualizers",
-    "Seven of them — Bars, Scope, Terrain, Tunnel, Nebula, Eye and scrolling Lyrics — moving to whatever's playing. Throw one on the big screen and let the room do the rest.",
+    "Retro Visualizers and Lyrics",
+    "Seven visualizers — Bars, Scope, Terrain, Tunnel, Nebula, Eye and Lyrics — moving to whatever's playing. The Lyrics one looks a song's words up on LRCLIB when it has none: timed lyrics follow the song line by line, plain ones scroll. Throw one on the big screen and let the room do the rest.",
   ],
 ];
 
@@ -88,10 +76,14 @@ export default function KeyFeatures() {
     <section class="relative bg-accent-900 py-24 px-4 grid-bg">
       <div class="container mx-auto max-w-6xl">
         <div class="text-center mb-14">
-          <Kicker class="justify-center mb-4" label="[ 04 ] // CAPABILITIES" />
-          <h2 class="font-head text-3xl md:text-5xl text-white">
+          <Kicker class="justify-center mb-4" label="[ 03 ] // CAPABILITIES" />
+          <h2 class="font-head text-3xl md:text-5xl mb-4 text-white">
             Key <span class="gradient-text">Features</span>
           </h2>
+          <p class="text-accent-300 text-lg max-w-2xl mx-auto leading-relaxed">
+            The rest of what it does: how it sounds, where it plays, and what it
+            adds to your library.
+          </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
