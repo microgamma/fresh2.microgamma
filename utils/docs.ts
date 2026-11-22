@@ -50,10 +50,16 @@ export const docsNav: DocMeta[] = [
       "Get a free Discogs token so the basic features can fetch album and artist cover art.",
   },
   {
+    slug: "ai-provider",
+    title: "Choosing an AI Provider",
+    description:
+      "Bring your own AI provider on the basic plan: DeepSeek, OpenAI, OpenRouter, or a model on your own network with Ollama.",
+  },
+  {
     slug: "deepseek-token",
     title: "DeepSeek AI Token",
     description:
-      "Add your own DeepSeek API key to unlock Microgamma's AI features on the basic plan.",
+      "Get a DeepSeek API key, the one provider that grounds write-ups with a web search.",
   },
   {
     slug: "ice-servers",

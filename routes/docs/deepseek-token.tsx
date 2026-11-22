@@ -4,11 +4,15 @@ export default function DeepSeekTokenPage() {
   return (
     <DocPage slug="deepseek-token">
       <p>
-        Microgamma's AI features are powered by{" "}
         <a href="https://www.deepseek.com" target="_blank" rel="noopener">
           DeepSeek
-        </a>. Premium accounts get this out of the box. With the basic features
-        you can unlock the same features by bringing your own DeepSeek API key.
+        </a>{" "}
+        is one of the AI providers you can bring to Microgamma with the basic
+        features (see <a href="/docs/ai-provider">Choosing an AI provider</a>
+        {" "}
+        for the others). It's cheap, and it's the only one that grounds artist,
+        album and song write-ups with a web search. Premium accounts don't need
+        a key at all.
       </p>
 
       <h2>1. Create a DeepSeek account</h2>
@@ -40,11 +44,12 @@ export default function DeepSeekTokenPage() {
 
       <h2>4. Paste it into Microgamma</h2>
       <p>
-        In Microgamma, open <strong>Settings → Integrations</strong>{" "}
-        and paste the key into the <strong>AI token</strong>{" "}
-        field. Microgamma's AI features now run against your own DeepSeek key.
-        That covers stations and similar-song suggestions. Recommendations
-        remember earlier turns on your account.
+        In Microgamma, open <strong>Settings → Integrations</strong>, set{" "}
+        <strong>Provider</strong> to <strong>DeepSeek</strong>{" "}
+        in the AI section, and paste the key into{" "}
+        <strong>API key</strong>. The Base URL and Model are filled in for you.
+        Microgamma's AI features now run against your own DeepSeek key:
+        stations, similar-song suggestions and write-ups.
       </p>
 
       <h2>Good to know</h2>
@@ -72,8 +77,9 @@ export default function DeepSeekTokenPage() {
           Each request carries a copy, and nothing of it is stored on our side.
         </li>
         <li>
-          The token must be a DeepSeek key specifically — keys from other AI
-          providers won't work here.
+          A DeepSeek key only works with the DeepSeek provider. For a key from
+          another service, pick that provider instead — see{" "}
+          <a href="/docs/ai-provider">Choosing an AI provider</a>.
         </li>
       </ul>
     </DocPage>
