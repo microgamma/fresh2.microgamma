@@ -301,13 +301,13 @@ export default define.page(function Home() {
                 only”, anything you can say — and it steers every pick. A theme
                 you type needs your own{" "}
                 <a
-                  href="/docs/deepseek-token"
+                  href="/docs/ai-provider"
                   class="text-cyber hover:text-cyber-300 underline decoration-cyber/40 underline-offset-4"
                 >
-                  DeepSeek key
+                  AI provider
                 </a>
-                . The AI needs Premium, or that key, and it remembers what you
-                like.
+                . The AI needs Premium, or a provider of your own — even a model
+                on your home network — and it remembers what you like.
               </p>
             </div>
           </div>

@@ -91,14 +91,14 @@ export default function AutoQueuePage() {
         A station is the AI-guided mode of the same queue. Start one from any
         song, or with the wand on whatever is playing. You can steer it with a
         theme in plain words — “same era”, “disco only”, anything you can say —
-        or pick a preset. A theme you type needs your own DeepSeek key.
+        or pick a preset. A theme you type needs your own AI provider.
       </p>
       <p>
-        Stations use the same AI features as the{" "}
-        <a href="/docs/deepseek-token">DeepSeek token</a>. Premium accounts get
-        them out of the box. With the basic features, bring your own DeepSeek
-        key. Recommendations remember earlier turns on your account, and that
-        memory stays on your machine.
+        Stations run on Microgamma's AI features. Premium accounts get them out
+        of the box. With the basic features,{" "}
+        <a href="/docs/ai-provider">bring your own AI provider</a>.
+        Recommendations remember earlier turns on your account, and that memory
+        stays on your machine.
       </p>
       <p>
         Songs you had already queued stay where they are and play first. While a

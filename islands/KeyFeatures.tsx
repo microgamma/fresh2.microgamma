@@ -43,7 +43,7 @@ const FEATURES: [string, string, string][] = [
   [
     "🎧",
     "What to Play Next",
-    "Out of the box, suggestions come from your own library: same genre, same feel as the song that's playing — as good as your metadata is. Add your own DeepSeek key and they get properly smart, and anything you don't own yet comes with links to find it on Bandcamp, Spotify, YouTube Music or Amazon Music.",
+    "Out of the box, suggestions come from your own library: same genre, same feel as the song that's playing — as good as your metadata is. Bring your own AI provider — DeepSeek, OpenAI, or a model on your own network — and they get properly smart, and anything you don't own yet comes with links to find it on Bandcamp, Spotify, YouTube Music or Amazon Music.",
   ],
   [
     "📺",

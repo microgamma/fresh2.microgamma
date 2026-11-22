@@ -91,11 +91,11 @@ export default function PlaybackAndAlbumsPage() {
         preset. Songs you had already queued stay in place and play first.
       </p>
       <p>
-        Stations use the same AI features as the{" "}
-        <a href="/docs/deepseek-token">DeepSeek token</a>. Premium accounts get
-        them out of the box; with the basic features, bring your own DeepSeek
-        key. A theme you type in your own words needs that key. Recommendations
-        remember earlier turns on your account. If the AI finds nothing you own,
+        Stations run on Microgamma's AI features. Premium accounts get them out
+        of the box; with the basic features,{" "}
+        <a href="/docs/ai-provider">bring your own AI provider</a>. A theme you
+        type in your own words needs that provider. Recommendations remember
+        earlier turns on your account. If the AI finds nothing you own,
         Microgamma turns the station off, tells you it is switching to your
         library mix, and falls back to the weighted sources.
       </p>
